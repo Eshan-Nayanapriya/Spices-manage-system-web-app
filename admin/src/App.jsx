@@ -21,7 +21,8 @@ import PaymentRequests from './pages/PaymentRequests/PaymentRequests'
 import UpdatePaymentRequest from './pages/UpdatePaymentRequest/UpdatePaymentRequest';
 import AddPaymentRequest from './pages/AddPaymentRequest/AddPaymentRequest';
 import PaidPayments from './pages/PaidPayments/PaidPayments';
-import Pdfupload from './pages/PaidReportUpload/PaidReportUpload'; 
+import Pdfupload from './pages/PaidReportUpload/PaidReportUpload';
+import PromotionManagement from './pages/PromotionManagement/PromotionManagement'
 
 const App = () => {
 
@@ -41,10 +42,10 @@ const App = () => {
           <Route path="/list" element={<List url={url}/>}/>
           <Route path="/orders" element={<Orders url={url}/>}/>
           <Route path='/paymentRequests' element={<PaymentRequests/>}/>
-        <Route path='/AddPaymentRequest' element={<AddPaymentRequest/>}/>
-        <Route path='/UpdatePaymentRequest/:id' element={<UpdatePaymentRequest/>}/>
-        <Route path='/PaidPayments' element={<PaidPayments/>}/>
-        <Route path='/Pdfupload' element={<Pdfupload/>}/>
+          <Route path='/AddPaymentRequest' element={<AddPaymentRequest/>}/>
+          <Route path='/UpdatePaymentRequest/:id' element={<UpdatePaymentRequest/>}/>
+          <Route path='/PaidPayments' element={<PaidPayments/>}/>
+          <Route path='/Pdfupload' element={<Pdfupload/>}/>
 
           {/*udan part */}
           <Route path="/" element={<SupplierProfile/>}/>
@@ -58,6 +59,10 @@ const App = () => {
           <Route path="/Supplier/ratings" element={<Ratings />} />
           <Route path="/Supplier/addrating" element={<AddRating />} />          
           <Route path="/Calculation" element={< Calculation />} />
+
+          {/*sadan part */}
+          <Route path="/PromotionManagement" element={<PromotionManagement url={url}/>}/>
+
         </Routes>
       </div>
     </div>
