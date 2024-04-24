@@ -13,7 +13,7 @@ function Calculation() {
 
     
     return (
-        <div
+        <div  
   style={{ 
     marginLeft: '400px',
     backgroundImage: `url('../res/spice10.jpg')`,
