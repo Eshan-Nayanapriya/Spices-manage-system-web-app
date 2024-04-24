@@ -124,3 +124,10 @@ width: 50px;
 hr {
   margin-top: 10px;
 }
+
+h2 {
+  background-color: tomato;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+}
