@@ -1,111 +1,75 @@
-const User = require("../models/UserModel");
+import userModel from '../models/userModel.js';
+import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
+import validator from "validator"
 
-
-//data display
-const getAllUsers = async (req, res, next) => {
-    let users;
-    //get all users
+//login user
+const loginUser = async (req,res) =>{
+    const{email,password} = req.body;
     try{
-        users = await User.find();
-    }catch(err){
-        console.log(err);
+        const user = await userModel.findOne({email});
+        
+        if(!user){
+            return res.json({success: false, message:"User Doesn't exist"})
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password)
+
+        if(!isMatch){
+            return res.json({success: false, message:"Invalid Credentials"})
+        }
+
+        const token = createToken(user._id);
+        res.json({success:true,token})
+
+    }catch(error){
+        console.log(error);
+        res.json({success: false, message:"Error"})
     }
-    //not found
-    if(!users){
-        return res.status(404).json({message:"User not found"});
-    }
-    //display all users
-    return res.status(200).json({users});
-};
-
-
-//insert
-const addUsers = async (req, res, next) => {
-   
-    const{name,total} = req.body;
-
-    let users;
-
-    try{
-        users =  new User({name, total});
-        await users.save();
-    }catch(err){
-        console.log(err);
-    }
-    //users not insert
-    if(!users){
-        return res.status(404).json({message:"Unable to add user"});
-    }
-    return res.status(200).json({users});
-
-
-};
-
-
-//get users details by id
-const getById = async (req, res, next) => {
-
-    const id = req.params.id;
-
-    let user;
-
-    try{
-        user = await User.findById(id);
-    }catch(err){
-        console.log(err);
-    }
-    //users not available
-    if(!user){
-        return res.status(404).json({message:"User not found"});
-    }
-    return res.status(200).json({user});
 }
 
 
-//update user details
-const updateUser = async (req, res, next) => {
-
-    const id = req.params.id;
-    const{name,gmail,age,address} = req.body;
-
-    let users;
-
-    try{
-        users = await User.findByIdAndUpdate(id,
-        {name: name, gmail: gmail, age: age, address: address});
-        users = await users.save();
-    }catch(err){
-        console.log(err);
-    }
-    //update error
-    if(!users){
-        return res.status(404).json({message:"Unable to Update User"});
-    }
-    return res.status(200).json({users});
+const createToken = (id) =>{
+    return jwt.sign({id},process.env.JWT_SECRET)
 }
 
-
-//delete user details
-const deleteUser = async (req, res, next) => {
-    const id = req.params.id;
-
-    let user;
-
+//register user
+const registerUser = async (req,res) =>{
+    const {name, password, email}= req.body;
     try{
-        user = await User.findByIdAndDelete(id)
-    }catch(err){
-        console.log(err);
+        //checking if user already registered
+        const exists = await userModel.findOne({email})
+        if(exists){
+            return res.json({success: false, message:"User Already Registered"})
+        }
+
+        //validating email format and strong password
+        if(!validator.isEmail(email)){
+            return res.json({success: false, message:"Please enter a valid email"})
+        }
+
+        //validating password format
+        if(password.length < 8){
+            return res.json({success: false, message:"Please enter a strong password"})
+        }
+
+        //hashing user password
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password,salt)
+
+        const newUser = new userModel({
+            name:name,
+            email:email,
+            password:hashedPassword
+        })
+
+        const user = await newUser.save()
+        const token = createToken(user._id)
+        res.json({success: true, token})
+    }catch(error){
+        console.log(error);
+        res.json({success: false, message:"Error"})
     }
-    //unable to delete
-    if(!user){
-        return res.status(404).json({message:"Unable to Delete"});
-    }
-    return res.status(200).json({user});
 }
 
-
-exports.getById = getById;
-exports.addUsers = addUsers;
-exports.getAllUsers = getAllUsers;
-exports.updateUser = updateUser;
-exports.deleteUser = deleteUser;
+export {loginUser, registerUser}

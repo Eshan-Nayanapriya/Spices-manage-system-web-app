@@ -2,21 +2,24 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "server": "nodemon server.js"
   },
-  "author": "eshan",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.8",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongoose": "^8.3.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.2",
+    "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.0",
-    "react-router-dom": "^6.22.3",
-    "stripe": "^15.1.0"
+    "stripe": "^15.3.0",
+    "validator": "^13.11.0"
   }
 }
