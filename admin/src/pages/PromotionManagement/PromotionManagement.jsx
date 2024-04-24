@@ -49,27 +49,38 @@ const PromotionManagement = ({url}) => {
 
     //css for the downloaded pdf
     const styles = StyleSheet.create({
-        page: {
-          flexDirection: 'row',
-          backgroundColor: '#E4E4E4',
-          padding: 10,
-        },
-        row: {
-          flexDirection: 'row',
-          borderBottomWidth: 1,
-          borderBottomColor: '#000',
-          alignItems: 'center',
-          paddingVertical: 5,
-        },
-        cell: {
-          flex: 1,
-          textAlign: 'center',
-        },
-        image: {
-          width: 50,
-          height: 50,
-        },
-      });
+      page: {
+        flexDirection: 'column',
+        backgroundColor: '#FFFFFF',
+        padding: 10,
+      },
+      row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingBottom: 10,
+      },
+      cell: {
+        flex: 1,
+        width:50,
+        textAlign: 'center',
+        borderRightWidth: 1,
+        borderRightColor: '#000000',
+        paddingVertical: 5,
+      },
+      headerCell: { 
+        fontWeight: 'bold',
+      },
+      imageCell: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 5,
+      },
+      image: {
+        width: 120,
+        height: 120,
+      },
+    });
 
 
       //downloaded pdf
