@@ -59,22 +59,21 @@ function UpdateOrder() {
   return (
     <div 
   style={{
-    backgroundImage: `url('../res/spice10.jpg')`,
+    
     backgroundSize: "cover",
     backgroundPosition: "center",
-    display: "flex",
-    justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    backgroundColor: "#000",
+    marginLeft:"400px",
+    backgroundColor: "#ffffff",
   }}
 >
-  <div className="w-50 bg-white rounded p-3" style={{ padding: "20px" }}>
-    <form onSubmit={Update}>
+  <div className="w-50 bg-white rounded p-3" style={{ padding: "100px" }}>
+    <form onSubmit={Update}> 
       <h2>Update Request</h2>
       <div style={{ display: "flex" }}>
-        <div style={{ width: "50%" }}>
-          <div style={{ marginBottom: "10px" }}>
+        <div style={{ width: "350%" }}>
+          <div style={{ marginBottom: "20px",  marginTop:"30px", width:"200%"}}>
             <label htmlFor="">Name :</label>
             <br />
             <input
@@ -86,7 +85,7 @@ function UpdateOrder() {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div style={{ marginBottom: "10px" }}>
+          <div style={{ marginBottom: "20px" ,width:"200%"}}>
             <label htmlFor="">Request ID :</label>
             <br />
             <input
@@ -94,7 +93,7 @@ function UpdateOrder() {
               type="text"
               placeholder="Enter Request id"
               className="from-control"
-              style={{ width: "100%", padding: "8px" }}
+              style={{ width: "100%", padding: "12px" }}
               onChange={(e) => {
                 setID(e.target.value);
                 setIDError("");
@@ -102,7 +101,7 @@ function UpdateOrder() {
             />
             <span className="text-danger">{idError}</span>
           </div>
-          <div style={{ marginBottom: "10px" }}>
+          <div style={{ marginBottom: "20px" ,width:"200%"}}>
             <label htmlFor="">Quantity :</label>
             <br />
             <input
@@ -114,7 +113,7 @@ function UpdateOrder() {
               onChange={(e) => setQuantity(e.target.value)}
             />
           </div>
-          <div style={{ marginBottom: "10px" }}>
+          <div style={{ marginBottom: "20px",width:"200%" }}>
             <label htmlFor="">Price :</label>
             <br />
             <input
@@ -126,7 +125,7 @@ function UpdateOrder() {
               onChange={(e) => setPrice(e.target.value)}
             />
           </div>
-          <div style={{ marginBottom: "10px" }}>
+          <div style={{ marginBottom: "10px" ,width:"200%"}}>
             <label htmlFor="">DeadLine :</label>
             <br />
             <input
