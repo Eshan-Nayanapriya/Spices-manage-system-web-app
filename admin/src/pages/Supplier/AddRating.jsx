@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const port = 3000;
+const port = 4000;
 
 function AddRating() {
   const [Cname, setCName] = useState();
@@ -13,7 +13,7 @@ function AddRating() {
   const Submit = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:${port}/rating/create`, {
+      .post(`http://localhost:${port}/api/supplier/rating/create`, {
         item: Cname,
         feedback: feedback,
         rating: rating
@@ -26,54 +26,88 @@ function AddRating() {
   };
   return (
     <div
-      className="d-flex vh-100 bg-primary justify-content-center align-items-center"
-      style={{
-        backgroundImage: `url('../res/spice10.jpg')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="w-50 bg-white bg-opacity rounded p-4">
-      <form onSubmit={Submit}>
-                <h2> Add Rating</h2>
-                <div className="container">
-                    <div className="row">
-                    <div className="col">
-
-                          <div >
-                              <label htmlFor="">Customer Name:</label>
-                          </div>
-                          <div >
-                              <label htmlFor="">FeedBack :</label>
-                          </div>
-                          <div >
-                              <label htmlFor="">Rating :</label>
-                          </div>
-
-                        </div>
-                        <div className="col"> 
-                            <div className="row">
-                                <input type="text"  placeholder="Enter Customer Name" className="from-control"
-                                onChange={(e) => setCName(e.target.value)}/>
-                            </div>
-                            <div className="row">
-                                <input type="text"  placeholder="Enter FeedBack" className="from-control"
-                                onChange={(e) => {
-                                  setFeedback(e.target.value)
-                              }}/>
-                            </div>
-                            <div className="row">
-                                <input type="text"  placeholder="Enter Between 1-10" className="from-control"
-                                onChange={(e) => setRating(e.target.value)}/>
-                            </div>
-                          </div>  
-                    </div>
-                </div>
-                <button className="btn btn-success">Submit</button>
-
-             </form>
+  className="d-flex vh-100 justify-content-center align-items-center"
+  style={{
+    backgroundImage: `url('../res/spice10.jpg')`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundColor: "#007bff", /* Fallback color */
+    backgroundBlendMode: "screen",
+  }}
+>
+  <div 
+    className="w-50 bg-white rounded p-4"
+    style={{
+      opacity: "0.9", /* Background opacity */
+      padding: "16px",
+    }}
+  >
+    <form onSubmit={Submit}>
+      <h2 style={{ textAlign: "center" }}>Add Rating</h2>
+      <div style={{ margin: "20px auto", maxWidth: "400px" }}>
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="customerName">Customer Name:</label>
+          <input 
+            type="text" 
+            id="customerName" 
+            placeholder="Enter Customer Name" 
+            style={{
+              padding: "8px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              width: "100%",
+            }}
+            onChange={(e) => setCName(e.target.value)}
+          />
+        </div>
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="feedback">Feedback:</label>
+          <input 
+            type="text" 
+            id="feedback" 
+            placeholder="Enter Feedback" 
+            style={{
+              padding: "8px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              width: "100%",
+            }}
+            onChange={(e) => setFeedback(e.target.value)}
+          />
+        </div>
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="rating">Rating:</label>
+          <input 
+            type="text" 
+            id="rating" 
+            placeholder="Enter Between 1-10" 
+            style={{
+              padding: "8px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              width: "100%",
+            }}
+            onChange={(e) => setRating(e.target.value)}
+          />
+        </div>
+        <button 
+          type="submit" 
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#28a745",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Submit
+        </button>
       </div>
-    </div>
+    </form>
+  </div>
+</div>
+
   );
 }
 

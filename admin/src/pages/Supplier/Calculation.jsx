@@ -13,36 +13,82 @@ function Calculation() {
 
     
     return (
-        <>
-        <div         style={{
-          backgroundImage: `url('../res/spice10.jpg')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        className="d-flex vh-100 bg-black justify-content-center align-items-center ">
-            <div className="bg-black text-white rounded p-5">
-            <label id="Name" className="px-2">
-                    Full Capacity in Stores (in KG)
-            </label>         
-            <input type="text" onChange={(e) => setFullCap(e.target.value)} className="px-5" enable></input>
-            <br />
-            <br />
-            <label id="Name" className="px-2">
-                    Available Capacity in Stores (in KG)
-            </label>
-            <input type="text" onChange={(e) => setAvailCap(e.target.value)} className="px-5" enable></input>
-            <br />
-            <br />
-            <button onClick={() => {
-                CalRequest()
-                }} class="m-2 btn btn-success">
-                Calculate
-            </button>
-            <br />
-            <label>Needed Quantity : {needed} KG </label>
-        </div>
-        </div>
-        </>
+        <div
+  style={{ 
+    marginLeft: '400px',
+    backgroundImage: `url('../res/spice10.jpg')`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    backgroundColor: "#ffffff", /* Fallback color */
+    color: "#fff",
+  }}
+>
+  <div 
+    style={{
+      backgroundColor: "#000",
+      borderRadius: "10px",
+      padding: "20px",
+    }}
+  >
+    <label style={{ padding: "0 10px" }}>
+      Full Capacity in Stores (in KG)
+    </label>         
+    <input 
+      type="text" 
+      onChange={(e) => setFullCap(e.target.value)} 
+      style={{
+        padding: "8px",
+        marginLeft: "10px",
+        width: "200px",
+        borderRadius: "5px",
+        border: "1px solid #fff",
+        color: "#fff",
+        backgroundColor: "transparent",
+      }}
+    />
+    <br />
+    <br />
+    <label style={{ padding: "0 10px" }}>
+      Available Capacity in Stores (in KG)
+    </label>
+    <input 
+      type="text" 
+      onChange={(e) => setAvailCap(e.target.value)} 
+      style={{
+        padding: "8px",
+        marginLeft: "10px",
+        width: "200px",
+        borderRadius: "5px",
+        border: "1px solid #fff",
+        color: "#fff",
+        backgroundColor: "transparent",
+      }}
+    />
+    <br />
+    <br />
+    <button 
+      onClick={() => CalRequest()} 
+      style={{
+        padding: "10px 20px",
+        marginTop: "10px",
+        backgroundColor: "#28a745",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer",
+      }}
+    >
+      Calculate
+    </button>
+    <br />
+    <label>Needed Quantity: {needed} KG</label>
+  </div>
+</div>
+
+        
     )
 }
 

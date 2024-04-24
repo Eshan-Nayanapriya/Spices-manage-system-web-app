@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-const port = 3000;
+const port = 4000;
 
 function SupplyRequest() {
   const [data, setData] = useState([]);
@@ -13,17 +13,19 @@ function SupplyRequest() {
   }, [deletionFlag]); // Trigger useEffect on deletionFlag change
 
   const fetchData = () => {
-    const url = `http://localhost:${port}/request/getall/`;
+    const url = `http://localhost:${port}/api/supplier/request/getall`;
     axios.get(url).then((response) => setData(response.data));
   };
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this supply request?")) {
       axios
-        .delete(`http://localhost:${port}/request/delete/` + id)
+        .delete(`http://localhost:${port}/api/supplier/request/delete/` + id)
         .then((res) => {
           console.log(res);
-          setDeletionFlag(!deletionFlag); // Toggle the deletion flag to trigger re-render and refetch
+          //setDeletionFlag(!deletionFlag); // Toggle the deletion flag to trigger re-render and refetch
+          //fetchData()
+          setDeletionFlag(!deletionFlag);
         })
         .catch((errr) => console.log(errr));
     }
@@ -55,6 +57,7 @@ function SupplyRequest() {
             onClick={() => {
               handleDelete(Request._id);
             }}
+
           >
             Delete
           </button>
@@ -69,8 +72,13 @@ function SupplyRequest() {
         backgroundImage: `url('../res/spice9.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "left",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        backgroundColor: "#007bff", /* Fallback color */
+        backgroundBlendMode: "screen",
       }}
-      className="d-flex vh-100 bg-primary justify-content-center align-items-center"
     >
       <input
         onChange={searchfun}
@@ -86,11 +94,30 @@ function SupplyRequest() {
           marginTop: "10px",
         }}
       />
-      <div className="w-70 h-60 bg-white rounded p-4">
-        <Link to="/create" className="btn btn-success">
+      <div 
+        style={{
+          width: "70%",
+          height: "60vh",
+          backgroundColor: "#fff",
+          borderRadius: "10px",
+          padding: "16px",
+        }}
+      >
+        <a 
+          href="/create" 
+          style={{
+            display: "inline-block",
+            padding: "10px 20px",
+            backgroundColor: "#28a745",
+            color: "#fff",
+            textDecoration: "none",
+            borderRadius: "5px",
+            marginBottom: "16px",
+          }}
+        >
           ADD REQUEST +
-        </Link>
-        <table className="requestTable">
+        </a>
+        <table style={{ width: "100%" }}>
           <thead>
             <tr>
               <th style={{ padding: "5px", textAlign: "center" }}>Raw Material Name</th>
@@ -108,6 +135,7 @@ function SupplyRequest() {
       </div>
     </div>
   );
+
 }
 
 export default SupplyRequest;

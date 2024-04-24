@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-const port = 3000;
+const port = 4000;
 
 const RawMReqRes = () => {
   const [Data, setData] = useState([]);
@@ -10,14 +10,14 @@ const RawMReqRes = () => {
   }, []);
 
   const fetchData = () => {
-    const url = `http://localhost:${port}/arequest/getall/`;
+    const url = `http://localhost:${port}/api/supplier/arequest/getall/`;
     axios.get(url).then((response) => setData(response.data));
   };
 
   const deleteRequest = (id) => {
     if (window.confirm("Are you sure you want to delete this request?")) {
       axios
-        .delete(`http://localhost:${port}/arequest/delete/` + id)
+        .delete(`http://localhost:${port}/api/supplier/arequest/delete/` + id)
         .then((resp) => {
           console.log(resp);
           fetchData(); // Refresh the list after successful deletion
@@ -59,43 +59,53 @@ const RawMReqRes = () => {
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `url('../res/spice9.jpg')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-      className="d-flex vh-100 bg-primary justify-content-center align-items-center "
-    >
-      <div className="bg-white bg-opacity-10 rounded p-4 ">
-        <div className="text-center ">
-          <h1 className="text-black bg-white bg-opacity-25 ">
-            Raw Material Request Response
-          </h1>
-          <br />
-        </div>
-        <div className="d-flex rounded-2">
-          <div className="bg-black bg-opacity-25  ">
-            <div>
-              <table className="border-white">
-                <thead className="bg-white bg-opacity-25  text-black">
-                  <tr className="p-3 ">
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Dead Line</th>
-                    <th>Price (Rs.)</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <RowGen />
-                </tbody>
-              </table>
-            </div>
-          </div>
+    <div 
+  style={{
+    backgroundImage: `url('../res/spice9.jpg')`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    backgroundColor: "#007bff", /* Fallback color */
+  }}
+>
+  <div 
+    style={{
+      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      borderRadius: "10px",
+      padding: "20px",
+    }}
+  >
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      <h1 style={{ color: "#000", backgroundColor: "rgba(255, 255, 255, 0.25)", padding: "10px", borderRadius: "5px" }}>
+        Raw Material Request Response
+      </h1>
+    </div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ backgroundColor: "rgba(0, 0, 0, 0.25)", borderRadius: "5px", padding: "20px" }}>
+        <div>
+          <table style={{ borderCollapse: "collapse", border: "2px solid #fff" }}>
+            <thead style={{ backgroundColor: "rgba(255, 255, 255, 0.25)", color: "#000", border: "2px solid #fff" }}>
+              <tr>
+                <th style={{ padding: "10px" }}>Item</th>
+                <th style={{ padding: "10px" }}>Quantity</th>
+                <th style={{ padding: "10px" }}>Dead Line</th>
+                <th style={{ padding: "10px" }}>Price (Rs.)</th>
+                <th style={{ padding: "10px" }}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <RowGen />
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
   );
 };
 
