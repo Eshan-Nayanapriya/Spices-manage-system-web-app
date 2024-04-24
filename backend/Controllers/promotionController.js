@@ -45,5 +45,25 @@ const removePromotion = async (req,res) => {
     }
 }
 
+const updatePromotion = async (req, res) => {
+    try {
+        const { id, discount, date, image } = req.body;
+        const promotion = await PromotionModel.findById(id);
+        
+        promotion.discount = discount;
+        promotion.date = date;
+        if (image) {
+            fs.unlink(`uploads/${promotion.image}`, () => {});
+            promotion.image = image;
+        }
 
-export {addpromotion, listPromotion, removePromotion}
+        await promotion.save();
+        res.json({ success: true, message: "Promotion updated successfully" });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error updating promotion" });
+    }
+}
+
+
+export {addpromotion, listPromotion, removePromotion, updatePromotion}

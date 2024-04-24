@@ -16,13 +16,16 @@ const PromotionManagement = ({url}) => {
         date:''
     })
 
+    const [filteredPromotions, setFilteredPromotions] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+
     const onChangeHandler = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setData(data=>({...data, [name]: value}))
     }
 
-    //form submit
+    //Promotion add
     const onSubmitHandler = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -46,6 +49,8 @@ const PromotionManagement = ({url}) => {
             toast.error(response.data.message)
         }
     }
+
+    
 
     //css for the downloaded pdf
     const styles = StyleSheet.create({
@@ -105,7 +110,7 @@ const PromotionManagement = ({url}) => {
         </Document>
       );
 
-  //get data from the database
+  //list of promotions
   const fetchList = async () => {
     const response = await axios.get(`${url}/api/promotion/list`);
     if (response.data.success) {
@@ -116,6 +121,18 @@ const PromotionManagement = ({url}) => {
     }
   }
 
+  // Update promotion details
+  const updatePromotion = async (promotionId, updatedData) => {
+    const response = await axios.post(`${url}/api/promotion/update`, { id: promotionId, ...updatedData });
+    if (response.data.success) {
+        toast.success(response.data.message);
+        fetchList();
+    } else {
+        toast.error(response.data.message);
+    }
+  }
+
+  // Remove promotion
   const removePromotion = async (promotionId) => {
     //console.log(promotionId);
     // Show confirmation dialog before removing the promotion
@@ -131,6 +148,17 @@ const PromotionManagement = ({url}) => {
       toast.error("Error")
     }
   }
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+    const filtered = list.filter((promotion) =>
+        promotion.id.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    console.log(filtered); // Debugging statement
+    setFilteredPromotions(filtered);
+};
+
+
 
   useEffect(() => {
     fetchList();
@@ -164,6 +192,40 @@ const PromotionManagement = ({url}) => {
         <button type='submit' className='add-btn'>ADD</button>
       </form>
 
+      <hr/>
+
+      <input className='search'
+                type="text"
+                placeholder="Search by ID"
+                value={searchQuery}
+                onChange={handleSearch}
+            />
+
+            {/* Display search results below the list */}
+{searchQuery && (
+            <div className="search-results">
+                <h2>Search Results</h2>
+                <div className="list-table">
+                    <div className="list-table-format title">
+                        <b>Image</b>
+                        <b>Id</b>
+                        <b>Discount</b>
+                        <b>Date</b>
+                    </div>
+                    {/* Display search results */}
+                    {filteredPromotions.map((item, index) => (
+                        <div key={index} className="list-table-format">
+                            <img src={`${url}/images/${item.image}`} alt="" />
+                            <p>{item.id}</p>
+                            <p>{item.discount}</p>
+                            <p>{item.date}</p>
+                            <p onClick={() => removePromotion(item._id)} className='cursor'>X</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        )}
+      <hr/>
       <div className='list-add-flex-col'>
       <h2>Promotion List</h2>
       <div className="list-table">
@@ -181,9 +243,13 @@ const PromotionManagement = ({url}) => {
               <p>{item.discount}</p>
               <p>{item.date}</p>
               <p onClick={()=>removePromotion(item._id)} className='cursor'>X</p>
+              
             </div>
           )
         })}
+        
+
+
       </div>
     </div>
     <div className="download-button">
