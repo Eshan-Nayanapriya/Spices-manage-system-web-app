@@ -8,85 +8,123 @@ const SupplierProfile = () => {
   var SReg = ""
 
   return (
-    <>
-      <div
-        style={{
-          backgroundImage: `url('../res/spice3.jpg')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        className="d-flex vh-100 bg-primary justify-content-center align-items-center "
-      >
-        <div className="bg-black bg-opacity-75 rounded p-5 ">
-          <div className="text-center ">
-            <h1 className="text-white">Supplier Profile</h1>
+    <div 
+  style={{
+    backgroundImage: `url('../res/spice3.jpg')`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    backgroundColor: "#007bff", /* Fallback color */
+  }}
+>
+  <div 
+    style={{
+      backgroundColor: "rgba(0, 0, 0, 0.75)",
+      borderRadius: "10px",
+      padding: "20px",
+    }}
+  >
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      <h1 style={{ color: "#fff" }}>Supplier Profile</h1>
+    </div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div>
+        <div style={{ color: "#fff", textAlign: "center", padding: "20px" }}>
+          <div>
+            <label style={{ padding: "0 10px" }}>Name</label>
+            <br />
+            <input type="text" style={{ padding: "8px", marginLeft: "10px" }} value={SName} />
+            <br />
+            <br />
+            <label style={{ padding: "0 10px" }}>Mobile</label>
+            <br />
+            <input type="text" style={{ padding: "8px", marginLeft: "10px" }} value={SMobile} />
+            <br />
+            <br />
+            <label style={{ padding: "0 10px" }}>Email</label>
+            <br />
+            <input type="text" style={{ padding: "8px", marginLeft: "10px" }} value={SEmail} />
+            <br />
+            <br />
+            <label style={{ padding: "0 10px" }}>Reg. No.</label>
+            <br />
+            <input type="text" style={{ padding: "8px", marginLeft: "10px" }} value={SReg} />
+            <br />
             <br />
           </div>
-          <div className="d-flex rounded-2">
-            <div>
-              <div className="rounded-5  text-white text-center p-5 bg-gradient flex-md-column ">
-                <div>
-                  <label id="Name" className="px-2">
-                    Name
-                  </label>
-                  <br />
-                  <input type="text" className="px-5" value={SName} ></input>
-                  <br />
-                  <br />
-                  <label id="Name" className="px-2">
-                    Mobile
-                  </label>
-                  <br />
-                  <input type="text" className="px-5" value={SMobile} ></input>
-                  <br />
-                  <br />
-                  <label id="Name" className="px-2">
-                    Email
-                  </label>
-                  <br />
-                  <input type="text" className="px-5" value={SEmail} ></input>
-                  <br />
-                  <br />
-                  <label id="Name" className="px-2">
-                    Reg. No.{" "}
-                  </label>
-                  <br />
-                  <input type="text" className="px-5"value={SReg} ></input>
-                  <br />
-                  <br />
-                </div>
-                <button className="btn btn btn-success   bg-opacity-100 rounded-4 px-5">
-                  Edit Details
-                </button>
-              </div>
-            </div>
-            <div className="bg-black bg-opacity-25  ">
-              <div className=" text-center p-5 bg-gradient flex-md-column rounded-5 ">
-                <button
-                  onClick={() => navigate("/Supplier/RawMreq")}
-                  className="btn btn btn-primary bg-opacity-100 rounded-4 px-5"
-                >
-                  Supply Requests
-                </button>
-                <br />
-                <br />
-                <button
-                  onClick={() => navigate("/Supplier/RawMreqres")}
-                  className="btn btn btn-primary bg-opacity-100 rounded-4 px-5"
-                >
-                  Manage Supply Requests
-                </button>
-                <br />
-                <br />
-                <button className="btn btn btn-primary bg-opacity-100 rounded-4 px-5" onClick={()=>navigate('/')}>
-                  Requests Payments
-                </button>
-              </div>
-            </div>
-          </div>
+          <button 
+            style={{
+              padding: "10px 20px",
+              backgroundColor: "#28a745",
+              color: "#fff",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              opacity: "1",
+            }}
+          >
+            Edit Details
+          </button>
         </div>
       </div>
-    </>
+      <div style={{ backgroundColor: "rgba(0, 0, 0, 0.25)", borderRadius: "10px", padding: "20px" }}>
+        <div style={{ textAlign: "center", padding: "20px" }}>
+          <button 
+            onClick={() => navigate("/Supplier/RawMreq")} 
+            style={{
+              padding: "10px 20px",
+              backgroundColor: "#007bff",
+              color: "#fff",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              opacity: "1",
+            }}
+          >
+            Supply Requests
+          </button>
+          <br />
+          <br />
+          <button 
+            onClick={() => navigate("/Supplier/RawMreqres")} 
+            style={{
+              padding: "10px 20px",
+              backgroundColor: "#007bff",
+              color: "#fff",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              opacity: "1",
+            }}
+          >
+            Manage Supply Requests
+          </button>
+          <br />
+          <br />
+          <button 
+            onClick={() => navigate("/")} 
+            style={{
+              padding: "10px 20px",
+              backgroundColor: "#007bff",
+              color: "#fff",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              opacity: "1",
+            }}
+          >
+            Requests Payments
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
   );
 };
 

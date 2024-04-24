@@ -47,6 +47,7 @@ const App = () => {
         <Route path='/Pdfupload' element={<Pdfupload/>}/>
 
           {/*udan part */}
+          <Route path="/" element={<SupplierProfile/>}/>
           <Route path="/SupplyRequest" element={<SupplyRequest />}/>
           <Route path="/create" element={<CreateOrder />}/>
           <Route path="SupplyRequest/update/:id"element={<UpdateOrder />}/>

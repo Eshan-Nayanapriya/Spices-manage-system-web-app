@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import jsPDF from 'jspdf'
 import 'jspdf-autotable'
-const port = 3000;
+const port = 4000;
 
 const Ratings = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const Ratings = () => {
   }, []);
 
   function fetchData() {
-    var url = `http://localhost:${port}/rating/getall/`;
+    var url = `http://localhost:${port}/api/supplier/rating/getall/`;
     axios.get(url).then((response) => setData(response.data));
   }
 
@@ -53,7 +53,7 @@ const Ratings = () => {
   function DeleteRating(id) {
     if (window.confirm("Are you sure you want to delete this rating?")) {
       axios
-        .delete(`http://localhost:${port}/rating/delete/` + id)
+        .delete(`http://localhost:${port}/api/supplier/rating/delete/` + id)
         .then((resp) => {
           console.log(resp);
           fetchData(); // Fetch data after deletion is confirmed
@@ -83,69 +83,104 @@ const Ratings = () => {
   };
 
   return (
-    <div
+    <div 
+  style={{
+    backgroundImage: `url('../res/spices2.jpg')`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    backgroundColor: "#007bff", /* Fallback color */
+  }}
+>
+  <div>
+    <div 
       style={{
-        backgroundImage: `url('../res/spices2.jpg')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        opacity: "0.75",
+        padding: "10px",
+        backgroundColor: "#fff",
+        borderBottomLeftRadius: "15px",
+        borderBottomRightRadius: "15px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
-      className="d-flex bg-primary justify-content-center align-items-center"
     >
-      <div>
-        <div className="bg-opacity-75  px- alert-danger bg-white rounded-bottom-3   d-flex vh-30 bg-primary justify-content-center align-items-center">
-          <h1>Give ratings about product Quality</h1>
-        </div>
-        <br></br>
-        <br></br>
-        <button type="button2" className="btn btn-success" style={{ marginLeft: "1000px" }} onClick={downloadPDF}>
-          Generate Report
+      <h1>Give ratings about product Quality</h1>
+    </div>
+    <br />
+    <br />
+    <button 
+      type="button" 
+      style={{
+        marginLeft: "1000px",
+        padding: "10px 20px",
+        backgroundColor: "#28a745",
+        color: "#fff",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer",
+      }} 
+      onClick={downloadPDF}
+    >
+      Generate Report
+    </button>
+    <div 
+      style={{
+        opacity: "0",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {/* Placeholder for content */}
+    </div>
+    <div 
+      style={{
+        backgroundColor: "rgba(255, 255, 255, 0.75)",
+        display: "flex",
+        height: "50vh",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div style={{ display: "flex" }}>
+        <button 
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#28a745",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }} 
+          onClick={() => navigate('/Supplier/addrating')}
+        >
+          Add Rating
         </button>
-        <div className="opacity-0  d-flex bg-primary justify-content-center align-items-center">
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-        </div>
-
-        <div className="bg-white bg-opacity-75  d-flex h-50 bg-primary justify-content-center align-items-center">
-          <div className="d-flex">
-            <button className="btn btn-success" onClick={()=> navigate('/Supplier/addrating')}>
-              Add Rating
-            </button>
-            <div>
-              <table className="border-white border-5">
-                <thead className="bg-white text-black border-2">
-                  <tr className="px-4">
-                    <th className="px-5">Supplier Name</th>
-                    <th className="px-5">FeedBack</th>
-                    <th className="px-5">Rating</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <RowGen />
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <div>
+          <table 
+            style={{ borderCollapse: "collapse", border: "5px solid #fff" }}
+          >
+            <thead style={{ backgroundColor: "#fff", color: "#000", border: "2px solid #fff" }}>
+              <tr>
+                <th style={{ padding: "10px" }}>Supplier Name</th>
+                <th style={{ padding: "10px" }}>FeedBack</th>
+                <th style={{ padding: "10px" }}>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <RowGen />
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
   );
 };
 
