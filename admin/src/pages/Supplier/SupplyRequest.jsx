@@ -52,7 +52,7 @@ function SupplyRequest() {
             Update
           </Link>
           <button
-            style={{ margin: "10px" }}
+            style={{ margin: "40px" }}
             className="btn btn-danger"
             onClick={() => {
               handleDelete(Request._id);
@@ -69,15 +69,15 @@ function SupplyRequest() {
   return (
     <div
       style={{
-        backgroundImage: `url('../res/spice9.jpg')`,
+        
         backgroundSize: "cover",
         backgroundPosition: "left",
-        display: "flex",
-        justifyContent: "center",
+        marginTop:"50px",
+        marginLeft:"300px",
         alignItems: "center",
         minHeight: "100vh",
-        backgroundColor: "#007bff", /* Fallback color */
-        backgroundBlendMode: "screen",
+        backgroundColor: "#fff", /* Fallback color */
+        
       }}
     >
       <input
@@ -89,9 +89,9 @@ function SupplyRequest() {
           border: "10px solid #ccc",
           width: "400px",
           fontSize: "16px",
-          marginLeft: "10px",
+          marginLeft: "70px",
           marginRight: "10px",
-          marginTop: "10px",
+          marginTop: "-600px",
         }}
       />
       <div 
@@ -108,8 +108,9 @@ function SupplyRequest() {
           style={{
             display: "inline-block",
             padding: "10px 20px",
-            backgroundColor: "#28a745",
+            backgroundColor: "tomato",
             color: "#fff",
+            marginTop:"100px",
             textDecoration: "none",
             borderRadius: "5px",
             marginBottom: "16px",
@@ -117,7 +118,7 @@ function SupplyRequest() {
         >
           ADD REQUEST +
         </a>
-        <table style={{ width: "100%" }}>
+        <table style={{ width: "200%" }}>
           <thead>
             <tr>
               <th style={{ padding: "5px", textAlign: "center" }}>Raw Material Name</th>

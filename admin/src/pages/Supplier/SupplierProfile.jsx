@@ -105,7 +105,7 @@ const SupplierProfile = () => {
           <br />
           <br />
           <button 
-            onClick={() => navigate("/AddPaymentRequest")} 
+            onClick={() => navigate("/")} 
             style={{
               padding: "10px 20px",
               backgroundColor: "#007bff",

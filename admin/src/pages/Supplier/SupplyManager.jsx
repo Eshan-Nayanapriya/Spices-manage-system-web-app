@@ -11,7 +11,9 @@ const SupplyManager = () => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      height: "100vh",
+     
+      marginLeft:"300px",
+      marginTop:"40px",
       backgroundColor: "#fff",
     }}
   >
@@ -30,7 +32,7 @@ const SupplyManager = () => {
           <div 
             style={{
               backgroundColor: "rgba(0, 0, 0, 0.25)",
-              color: "#fff",
+              color: "#000",
               textAlign: "center",
               padding: "20px",
               borderRadius: "10px",
@@ -79,7 +81,7 @@ const SupplyManager = () => {
               onClick={() => navigate("/create")} 
               style={{
                 padding: "10px 20px",
-                backgroundColor: "#007bff",
+                backgroundColor: "tomato",
                 color: "#fff",
                 border: "none",
                 borderRadius: "5px",
@@ -95,7 +97,7 @@ const SupplyManager = () => {
               onClick={() => navigate("/SupplyRequest")} 
               style={{
                 padding: "10px 20px",
-                backgroundColor: "#007bff",
+                backgroundColor: "tomato",
                 color: "#fff",
                 border: "none",
                 borderRadius: "5px",
@@ -111,7 +113,7 @@ const SupplyManager = () => {
               onClick={() => navigate("/Supplier/ratings")} 
               style={{
                 padding: "10px 20px",
-                backgroundColor: "#007bff",
+                backgroundColor: "tomato",
                 color: "#fff",
                 border: "none",
                 borderRadius: "5px",
@@ -127,7 +129,7 @@ const SupplyManager = () => {
               onClick={() => navigate("/Calculation")} 
               style={{
                 padding: "10px 20px",
-                backgroundColor: "#007bff",
+                backgroundColor: "tomato",
                 color: "#fff",
                 border: "none",
                 borderRadius: "5px",
