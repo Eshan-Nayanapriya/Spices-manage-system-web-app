@@ -79,8 +79,7 @@ const PaidPayments = () => {
 
 
   return (
-    <div>
-            <div className="box">
+      <div className="box">
       <h1>PAID PAYMENTS</h1>
 
       <div className="head-line">
@@ -156,8 +155,6 @@ const PaidPayments = () => {
       <Link to={"/paymentRequests"}><button className='rpt-btn'>Back</button></Link>         
       <button onClick={handlePrint} style={{ marginLeft: "20px" }} className='rpt-btn'>Download Report</button>
       <Link to={"/Pdfupload"}><button style={{ marginLeft: "20px" }} className='rpt-btn'>Upload Report</button></Link>
-
-    </div>
     </div>
   )
 }
