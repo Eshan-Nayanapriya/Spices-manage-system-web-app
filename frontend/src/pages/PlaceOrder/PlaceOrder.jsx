@@ -96,7 +96,7 @@ const PlaceOrder = () => {
           <input type="text" name='country' onChange={onChangeHandler} value={data.country} placeholder='Country' required/>
         </div>
 
-        <input type="text" name='phone' onChange={onChangeHandler} value={data.phone} placeholder='Phone' required/>
+        <input type="text" name='phone' onChange={onChangeHandler} value={data.phone} pattern="[0-9]{10}" placeholder='Phone' required/>
       </div>
 
 
