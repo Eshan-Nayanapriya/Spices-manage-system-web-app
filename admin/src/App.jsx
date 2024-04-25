@@ -21,6 +21,10 @@ import PaymentRequests from './pages/PaymentRequests/PaymentRequests'
 import UpdatePaymentRequest from './pages/UpdatePaymentRequest/UpdatePaymentRequest';
 import AddPaymentRequest from './pages/AddPaymentRequest/AddPaymentRequest';
 import PaidPayments from './pages/PaidPayments/PaidPayments';
+
+import Pdfupload from './pages/PaidReportUpload/PaidReportUpload'; 
+import DisplayEnquiries from './pages/AllEnquiries/displayEnquiries.jsx'
+import EnquiryDetails from './pages/AllEnquiries/enquiryDetails.jsx';
 import Pdfupload from './pages/PaidReportUpload/PaidReportUpload';
 import PromotionManagement from './pages/PromotionManagement/PromotionManagement'
 
@@ -59,6 +63,11 @@ const App = () => {
           <Route path="/Supplier/ratings" element={<Ratings />} />
           <Route path="/Supplier/addrating" element={<AddRating />} />          
           <Route path="/Calculation" element={< Calculation />} />
+
+
+          {/*menusha part*/}
+          <Route path='/displayenquiry' element={<DisplayEnquiries />}></Route>
+          <Route path="/enquirydetails/:id" element={<EnquiryDetails />} />
 
           {/*sadan part */}
           <Route path="/PromotionManagement" element={<PromotionManagement url={url}/>}/>

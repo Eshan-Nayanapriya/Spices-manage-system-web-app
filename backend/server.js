@@ -9,6 +9,10 @@ import 'dotenv/config'
 import cartRouter from './routes/cartRoute.js'
 import orderRouter from './routes/orderRoute.js'
 import supplierRouter from './routes/supplierRoutes.js'
+
+import enquiryRouter from "./routes/EnquiryRoute.js"
+
+
 import promotionRoute from './routes/promotionRoute.js'
 
 //app config
@@ -32,6 +36,10 @@ app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)
 app.use("/api/supplier",supplierRouter);
 app.use("/api/promotion",promotionRoute)
+
+app.use("/api/enquiry",enquiryRouter)
+app.use("/api/displayenquiry", enquiryRouter); 
+app.use("/api/enquirydetails/:id", enquiryRouter); 
 
 app.get("/", (req, res) => {
     res.send("API Working")
