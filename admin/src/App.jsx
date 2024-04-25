@@ -21,9 +21,12 @@ import PaymentRequests from './pages/PaymentRequests/PaymentRequests'
 import UpdatePaymentRequest from './pages/UpdatePaymentRequest/UpdatePaymentRequest';
 import AddPaymentRequest from './pages/AddPaymentRequest/AddPaymentRequest';
 import PaidPayments from './pages/PaidPayments/PaidPayments';
+
 import Pdfupload from './pages/PaidReportUpload/PaidReportUpload'; 
 import DisplayEnquiries from './pages/AllEnquiries/displayEnquiries.jsx'
 import EnquiryDetails from './pages/AllEnquiries/enquiryDetails.jsx';
+import Pdfupload from './pages/PaidReportUpload/PaidReportUpload';
+import PromotionManagement from './pages/PromotionManagement/PromotionManagement'
 
 const App = () => {
 
@@ -43,12 +46,13 @@ const App = () => {
           <Route path="/list" element={<List url={url}/>}/>
           <Route path="/orders" element={<Orders url={url}/>}/>
           <Route path='/paymentRequests' element={<PaymentRequests/>}/>
-        <Route path='/AddPaymentRequest' element={<AddPaymentRequest/>}/>
-        <Route path='/UpdatePaymentRequest/:id' element={<UpdatePaymentRequest/>}/>
-        <Route path='/PaidPayments' element={<PaidPayments/>}/>
-        <Route path='/Pdfupload' element={<Pdfupload/>}/>
+          <Route path='/AddPaymentRequest' element={<AddPaymentRequest/>}/>
+          <Route path='/UpdatePaymentRequest/:id' element={<UpdatePaymentRequest/>}/>
+          <Route path='/PaidPayments' element={<PaidPayments/>}/>
+          <Route path='/Pdfupload' element={<Pdfupload/>}/>
 
           {/*udan part */}
+          
           <Route path="/SupplyRequest" element={<SupplyRequest />}/>
           <Route path="/create" element={<CreateOrder />}/>
           <Route path="SupplyRequest/update/:id"element={<UpdateOrder />}/>
@@ -60,9 +64,14 @@ const App = () => {
           <Route path="/Supplier/addrating" element={<AddRating />} />          
           <Route path="/Calculation" element={< Calculation />} />
 
+
           {/*menusha part*/}
           <Route path='/displayenquiry' element={<DisplayEnquiries />}></Route>
           <Route path="/enquirydetails/:id" element={<EnquiryDetails />} />
+
+          {/*sadan part */}
+          <Route path="/PromotionManagement" element={<PromotionManagement url={url}/>}/>
+
         </Routes>
       </div>
     </div>

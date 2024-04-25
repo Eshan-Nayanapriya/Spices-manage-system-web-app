@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-const port = 3000;
+const port = 4000;
 
 function UpdateOrder() {
   const { id } = useParams();
@@ -15,7 +15,7 @@ function UpdateOrder() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:${port}/request/getone/` + id)
+      .get(`http://localhost:${port}/api/supplier/request/getone/` + id)
       .then((result) => {
         console.log(result.data.name);
         setName(result.data.name);
@@ -31,7 +31,7 @@ function UpdateOrder() {
     e.preventDefault();
     if (validateID()) {
       axios
-        .put(`http://localhost:${port}/request/update/` + id, {
+        .put(`http://localhost:${port}/api/supplier/request/update/` + id, {
           name,
           rid,
           quantity,
@@ -57,98 +57,93 @@ function UpdateOrder() {
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `url('../res/spice10.jpg')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-      className="d-flex vh-100 bg-black justify-content-center align-items-center"
-    >
-      <div className="w-50 bg-white rounded p-3">
-        <form onSubmit={Update}>
-          <h2>Update Request</h2>
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <div class="row">
-                  <label htmlFor="">Name :</label>
-                  <br />
-                </div>
-                <div class="row">
-                  <label htmlFor="">Request ID :</label>
-                  <span className="text-danger">{idError}</span>
-                  <br />
-                </div>
-                <div class="row">
-                  <label htmlFor="">Quantity :</label>
-                  <br />
-                </div>
-                <div class="row">
-                  <label htmlFor="">Price :</label>
-                  <br />
-                </div>
-                <div class="row">
-                  <label htmlFor="">DeadLine :</label>
-                </div>
-              </div>
-
-              <div className="w-50">
-                <div>
-                  <input
-                    type="text"
-                    value={name}
-                    placeholder="Enter Raw Material Name"
-                    className="from-control"
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <input
-                    value={rid}
-                    type="text"
-                    placeholder="Enter Request id"
-                    className="from-control"
-                    onChange={(e) => {
-                      setID(e.target.value);
-                      setIDError("");
-                    }}
-                  />
-                </div>
-                <div>
-                  <input
-                    value={quantity}
-                    type="text"
-                    placeholder="Enter Quantity"
-                    className="from-control"
-                    onChange={(e) => setQuantity(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <input
-                    value={price}
-                    type="text"
-                    placeholder="Enter Price Per KG"
-                    className="from-control"
-                    onChange={(e) => setPrice(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <input
-                    value={deadLine}
-                    type="text"
-                    placeholder="Enter date"
-                    className="from-control"
-                    onChange={(e) => setDeadLine(e.target.value)}
-                  />
-                </div>
-              </div>
-            </div>
+    <div 
+  style={{
+    
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    alignItems: "center",
+    height: "100vh",
+    marginLeft:"400px",
+    backgroundColor: "#ffffff",
+  }}
+>
+  <div className="w-50 bg-white rounded p-3" style={{ padding: "100px" }}>
+    <form onSubmit={Update}> 
+      <h2>Update Request</h2>
+      <div style={{ display: "flex" }}>
+        <div style={{ width: "350%" }}>
+          <div style={{ marginBottom: "20px",  marginTop:"30px", width:"200%"}}>
+            <label htmlFor="">Name :</label>
+            <br />
+            <input
+              type="text"
+              value={name}
+              placeholder="Enter Raw Material Name"
+              className="from-control"
+              style={{ width: "100%", padding: "8px" }}
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
-          <button className="btn btn-success">Update</button>
-        </form>
+          <div style={{ marginBottom: "20px" ,width:"200%"}}>
+            <label htmlFor="">Request ID :</label>
+            <br />
+            <input
+              value={rid}
+              type="text"
+              placeholder="Enter Request id"
+              className="from-control"
+              style={{ width: "100%", padding: "12px" }}
+              onChange={(e) => {
+                setID(e.target.value);
+                setIDError("");
+              }}
+            />
+            <span className="text-danger">{idError}</span>
+          </div>
+          <div style={{ marginBottom: "20px" ,width:"200%"}}>
+            <label htmlFor="">Quantity :</label>
+            <br />
+            <input
+              value={quantity}
+              type="text"
+              placeholder="Enter Quantity"
+              className="from-control"
+              style={{ width: "100%", padding: "8px" }}
+              onChange={(e) => setQuantity(e.target.value)}
+            />
+          </div>
+          <div style={{ marginBottom: "20px",width:"200%" }}>
+            <label htmlFor="">Price :</label>
+            <br />
+            <input
+              value={price}
+              type="text"
+              placeholder="Enter Price Per KG"
+              className="from-control"
+              style={{ width: "100%", padding: "8px" }}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
+          <div style={{ marginBottom: "10px" ,width:"200%"}}>
+            <label htmlFor="">DeadLine :</label>
+            <br />
+            <input
+              value={deadLine}
+              type="text"
+              placeholder="Enter date"
+              className="from-control"
+              style={{ width: "100%", padding: "8px" }}
+              onChange={(e) => setDeadLine(e.target.value)}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+      <button style={{ padding: "10px 20px", backgroundColor: "#28a745", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer", display: "block", marginTop: "20px" }}>Update</button>
+    </form>
+  </div>
+</div>
+
   );
 }
 

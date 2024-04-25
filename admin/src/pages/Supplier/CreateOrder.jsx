@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const port = 3000;
+const port = 4000;
 
 function CreateOrder() {
   const [name, setName] = useState("");
@@ -17,7 +17,7 @@ function CreateOrder() {
     e.preventDefault();
     if (validateID()) {
       axios
-        .post(`http://localhost:${port}/request/create`, {
+        .post(`http://localhost:${port}/api/supplier/request/create`, {
           name: name,
           rid: id,
           quantity: quantity,
@@ -43,82 +43,139 @@ function CreateOrder() {
   };
 
   return (
-    <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
-      <div className="w-50 bg-white bg-opacity rounded p-4">
-        <form onSubmit={handleSubmit}>
-          <h2>Add Supply Request</h2>
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <div>
-                  <label htmlFor="name">Name:</label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter Raw Material Name"
-                    className="form-control"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-                <br />
-                <div>
-                  <label htmlFor="id">Request ID:</label>
-                  <input
-                    type="text"
-                    id="id"
-                    placeholder="Enter Request id"
-                    value={id}
-                    onChange={(e) => {
-                      setID(e.target.value);
-                      setIDError("");
-                    }}
-                  />
-                  <span className="text-danger">{idError}</span>
-                </div>
-                <br />
-                <div>
-                  <label htmlFor="quantity">Quantity:</label>
-                  <input
-                    type="text"
-                    id="quantity"
-                    placeholder="Enter Quantity"
-                    className="form-control"
-                    value={quantity}
-                    onChange={(e) => setQuantity(e.target.value)}
-                  />
-                </div>
-                <br />
-                <div>
-                  <label htmlFor="price">Price:</label>
-                  <input
-                    type="text"
-                    id="price"
-                    placeholder="Enter Price Per KG"
-                    className="form-control"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                  />
-                </div>
-                <br />
-                <div>
-                  <label htmlFor="deadline">Deadline:</label>
-                  <input
-                    type="text"
-                    id="deadline"
-                    placeholder="Enter date"
-                    className="form-control"
-                    value={deadLine}
-                    onChange={(e) => setDeadLine(e.target.value)}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <button type="submit" className="btn btn-success">Submit</button>
-        </form>
+    <div 
+  style={{
+    marginLeft:"400px",
+    marginTop:"50px",
+    width:"100%",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    backgroundColor: "#ffffff", /* Fallback color */
+    backgroundImage: `url('../res/spice9.jpg')`,
+    backgroundSize: "cover",
+    backgroundPosition: "left",
+  }}
+>
+  <div 
+    style={{
+      width: "50%",
+      backgroundColor: "tomato",
+      opacity: "0.9", /* Background opacity */
+      borderRadius: "10px",
+      padding: "16px",
+    }}
+  >
+    <form onSubmit={handleSubmit}>
+      <h2>Add Supply Request</h2>
+      <div style={{ margin: "0 auto", maxWidth: "500px" }}>
+        <div>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter Raw Material Name"
+            style={{
+              padding: "8px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              width: "100%",
+              marginBottom: "10px",
+            }}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="id">Request ID:</label>
+          <input
+            type="text"
+            id="id"
+            placeholder="Enter Request id"
+            style={{
+              padding: "8px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              width: "100%",
+              marginBottom: "10px",
+            }}
+            value={id}
+            onChange={(e) => {
+              setID(e.target.value);
+              setIDError("");
+            }}
+          />
+          <span style={{ color: "red" }}>{idError}</span>
+        </div>
+        <div>
+          <label htmlFor="quantity">Quantity:</label>
+          <input
+            type="text"
+            id="quantity"
+            placeholder="Enter Quantity"
+            style={{
+              padding: "8px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              width: "100%",
+              marginBottom: "10px",
+            }}
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="price">Price:</label>
+          <input
+            type="text"
+            id="price"
+            placeholder="Enter Price Per KG"
+            style={{
+              padding: "8px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              width: "100%",
+              marginBottom: "10px",
+            }}
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="deadline">Deadline:</label>
+          <input
+            type="text"
+            id="deadline"
+            placeholder="Enter date"
+            style={{
+              padding: "8px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              width: "100%",
+              marginBottom: "10px",
+            }}
+            value={deadLine}
+            onChange={(e) => setDeadLine(e.target.value)}
+          />
+        </div>
+        <button 
+          type="submit" 
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#28a745",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Submit
+        </button>
       </div>
-    </div>
+    </form>
+  </div>
+</div>
+
   );
 }
 
