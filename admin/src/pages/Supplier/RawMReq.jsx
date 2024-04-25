@@ -34,7 +34,7 @@ const SupplierProfile = () => {
       .delete(`http://localhost:${port}/api/supplier/request/delete/` + id)
       .then((res) => {
         console.log(res);
-        // window.location.reload();
+       
       })
       .catch((errr) => console.log(errr));
   };
@@ -53,6 +53,7 @@ const SupplierProfile = () => {
             <td className={TCellStyle}>{Request.price}</td><td></td>
             <td className={TCellStyle}>
               <button
+                
                 className="btn btn-success "
                 onClick={() => {
                   Accept(index);
@@ -78,21 +79,24 @@ const SupplierProfile = () => {
     height: "100vh",
     backgroundColor: "#fff",
     display: "flex",
+    
     justifyContent: "center"
   }}
 >
   <div 
     style={{
-      backgroundColor: "grey",
-      marginLeft:"400px",
+      backgroundColor: "tomato",
+      marginLeft:"300px",
       marginTop:"-100px",
+      display:"flex",
       borderRadius: "20px",
-      margin: "50px",
-      padding: "60px",
+      margin: "80px",
+      padding: "100px",
+      gap:"50px",
     }}
   >
     <div style={{ textAlign: "center", marginBottom: "20px" }}>
-      <h1 style={{ color: "#fff", backgroundColor: "#000", padding: "10px", borderRadius: "10px" }}>Raw Material Requests</h1>
+      <h1 style={{ color: "#fff", backgroundColor: "grey", padding: "10px", borderRadius: "10px" }}>Raw Material Requests</h1>
     </div>
     <div>
       <div 
