@@ -186,7 +186,7 @@ const PromotionManagement = ({url}) => {
         <div className="add-category-price">
             <div className="add-price flex-col">
                 <p>Product Discount</p>
-                <input onChange={onChangeHandler} value={data.discount} type="Number" id='discount' name='discount' placeholder='$20' required/>
+                <input onChange={onChangeHandler} value={data.discount} type="Number" id='discount' name='discount' placeholder='LKR' required/>
             </div>
         </div>
         <button type='submit' className='add-btn'>ADD</button>

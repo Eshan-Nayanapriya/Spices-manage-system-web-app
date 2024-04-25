@@ -25,7 +25,6 @@ import PaidPayments from './pages/PaidPayments/PaidPayments';
 import Pdfupload from './pages/PaidReportUpload/PaidReportUpload'; 
 import DisplayEnquiries from './pages/AllEnquiries/displayEnquiries.jsx'
 import EnquiryDetails from './pages/AllEnquiries/enquiryDetails.jsx';
-
 import PromotionManagement from './pages/PromotionManagement/PromotionManagement'
 
 const App = () => {

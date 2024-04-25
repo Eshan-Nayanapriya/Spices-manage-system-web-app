@@ -8,8 +8,6 @@ import menu_3 from './menu_3.png'
 import menu_4 from './menu_4.png'
 import menu_5 from './menu_5.png'
 import menu_6 from './menu_6.png'
-import menu_7 from './menu_7.png'
-import menu_8 from './menu_8.png'
 import bot from './bot.png'
 
 
