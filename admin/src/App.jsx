@@ -27,6 +27,15 @@ import DisplayEnquiries from './pages/AllEnquiries/displayEnquiries.jsx'
 import EnquiryDetails from './pages/AllEnquiries/enquiryDetails.jsx';
 import PromotionManagement from './pages/PromotionManagement/PromotionManagement'
 
+import Users from './pages/employeeManagement/Users.jsx';
+import UpdateUser from './pages/employeeManagement/UpdateUser.jsx';
+import CreateUser from './pages/employeeManagement/CreateUser.jsx';
+import SalaryU from './pages/employeeManagement/SalaryU.jsx';
+import CreateSalary from './pages/employeeManagement/CreateSalary.jsx';
+import UpdateSalary from './pages/employeeManagement/UpdateSal.jsx';
+import EmpU from './pages/employeeManagement/empU.jsx';
+import EmpLogin from './pages/employeeManagement/empLogin.jsx';
+
 const App = () => {
 
   const url = "http://localhost:4000"
@@ -70,6 +79,17 @@ const App = () => {
 
           {/*sadan part */}
           <Route path="/PromotionManagement" element={<PromotionManagement url={url}/>}/>
+
+
+          {/*torin part */}
+          <Route path='/employeeManagement' element={<Users />}></Route>
+          <Route path='/create' element={<CreateUser />}></Route>
+          <Route path='/update/:id' element={<UpdateUser />}></Route>
+          <Route path='/salaryy' element={<SalaryU />}></Route>
+          <Route path='/createsalary' element={<CreateSalary />}></Route>
+          <Route path='/updatesal/:id' element={<UpdateSalary />}></Route>
+          {/*<Route path="/login" element={<EmpLogin onLogin={handleLogin} />} />*/}
+          <Route path="/emp/:id" element={<EmpU />} />
 
         </Routes>
       </div>

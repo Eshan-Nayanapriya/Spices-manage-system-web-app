@@ -42,6 +42,10 @@ const Sidebar = () => {
                     <p>Promotion Management</p>
 
                 </NavLink>
+                <NavLink to="/employeeManagement" className="sidebar-option">
+                <img src={assets.add_icon} alt="" />
+                <p>Employee Management</p>
+            </NavLink>
             </div>
 
         </div>
