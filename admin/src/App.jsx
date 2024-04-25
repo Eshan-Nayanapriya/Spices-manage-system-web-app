@@ -56,7 +56,7 @@ const App = () => {
           <Route path="/create" element={<CreateOrder />}/>
           <Route path="SupplyRequest/update/:id"element={<UpdateOrder />}/>
           <Route path="/supplier" element={<SupplyManager url={url}/>}/>
-          <Route path="/Supplier/RawMreqres" element={<RawMreqRes />} />
+          <Route path="/Supplierpro/RawMreqres" element={<RawMreqRes />} />
           <Route path="/Supplier/RawMreq" element={<RawMReq />} />
           <Route path="/Supplierpro" element={<SupplierProfile />} />
           <Route path="/Supplier/ratings" element={<Ratings />} />

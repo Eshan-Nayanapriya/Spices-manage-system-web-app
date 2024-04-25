@@ -89,7 +89,7 @@ const SupplierProfile = () => {
           <br />
           <br />
           <button 
-            onClick={() => navigate("/Supplier/RawMreqres")} 
+            onClick={() => navigate("/Supplierpro/RawMreqres")} 
             style={{
               padding: "30px 60px",
               backgroundColor: "tomato",
@@ -105,7 +105,7 @@ const SupplierProfile = () => {
           <br />
           <br />
           <button 
-            onClick={() => navigate("/")} 
+            onClick={() => navigate("/AddPaymentRequest")} 
             style={{
               padding: "30px 60px",
               backgroundColor: "tomato",

@@ -21,6 +21,10 @@ const Sidebar = () => {
                 </NavLink>
                 <NavLink to="/supplier" className="sidebar-option">
                     <img src={assets.add_icon} alt="" />
+                    <p>Supply Manager</p>
+                </NavLink>
+                <NavLink to="/supplierpro" className="sidebar-option">
+                    <img src={assets.add_icon} alt="" />
                     <p>Supplier</p>
                 </NavLink>
                 <NavLink to="/paymentRequests" className="sidebar-option">
