@@ -30,7 +30,7 @@ function EnquiryDetails() {
             axios.delete(`http://localhost:4000/api/enquiry/deleteuser/${id}`)
                 .then(res => {
                     console.log(res);
-                    alert("Enquiry submitted successfully!");
+                    alert("Enquiry Deleted successfully!");
 
                     navigate('/displayenquiry')
                 })

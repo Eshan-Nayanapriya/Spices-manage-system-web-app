@@ -21,7 +21,7 @@ const Enquiry = () => {
         axios.post("http://localhost:4000/api/enquiry/add", { name, phone, email, product, description })
             .then(result => {
                 console.log(result);
-                alert("Enquiry submitted successfully!");
+                alert("Enquiry submitted successfully! We will Reply You Soon");
                 setSubmitted(true); // Set submitted to true after successful submission
             })
             .catch(err => console.log(err));
