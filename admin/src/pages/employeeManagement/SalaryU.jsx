@@ -64,58 +64,111 @@ function SalaryU() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            height: '100vh'  
+            height: '100vh',
+            fontFamily: 'Arial, sans-serif',
+            padding: '20px'
         }}>
-            <div ref={ComponentsRef} className="w-75 bg-secondary rounded p-3">
-                <h1 className="mb-0 text-center font-weight-bold text-black">Employees Salaries</h1>
-                <Link to="/createsalary" className='btn btn-success'>Add Employee Salary</Link>
-                <div style={{textAlign: 'center', marginBottom: '10px'}}>
+            <div ref={ComponentsRef} style={{
+                width: '75%',
+                backgroundColor: '#6c757d',
+                borderRadius: '8px',
+                padding: '20px'
+            }}>
+                <h1 style={{ 
+                    marginBottom: '0', 
+                    textAlign: 'center', 
+                    fontWeight: 'bold', 
+                    color: '#000'
+                }}>Employees Salaries</h1>
+                <a href="/createsalary" style={{ 
+                    display: 'inline-block', 
+                    margin: '10px 0', 
+                    padding: '10px 20px', 
+                    backgroundColor: '#28a745', 
+                    color: '#fff',
+                    textDecoration: 'none'
+                }}>Add Employee Salary</a>
+                <div style={{ 
+                    textAlign: 'center', 
+                    marginBottom: '10px'
+                }}>
                     <input 
                         type="text" 
                         value={searchTerm} 
                         onChange={handleChange} 
-                        placeholder="Search by Employee ID "  
-                        style={{ padding: '10px', marginRight: '5px', width: '400px' }} 
+                        placeholder="Search by Employee ID"  
+                        style={{ 
+                            padding: '10px', 
+                            marginRight: '5px', 
+                            width: '400px',
+                            borderRadius: '4px',
+                            border: '1px solid #ccc'
+                        }} 
                     />
                     <button 
                         onClick={handleSearch} 
-                        className='btn btn-primary' 
-                        style={{ padding: '10px', minWidth: '100px' }} 
+                        style={{ 
+                            padding: '10px 20px', 
+                            minWidth: '100px', 
+                            backgroundColor: '#007bff',
+                            color: '#fff',
+                            borderRadius: '4px',
+                            border: 'none'
+                        }} 
                     >
                         Search
                     </button>
                 </div>
-                <div style={{ maxHeight: '40vh', overflowY: 'auto' }}>
-                    <table className="salarytable">
+                <div style={{ 
+                    maxHeight: '40vh', 
+                    overflowY: 'auto',
+                    border: '1px solid #ccc',
+                    borderRadius: '4px'
+                }}>
+                    <table style={{ 
+                        width: '100%', 
+                        borderCollapse: 'collapse'
+                    }}>
                         <thead>
                             <tr>
-                                <th style={{ paddingRight: "20px" }}>empID</th>
-                                <th style={{ paddingRight: "20px" }}>Month</th>
-                                <th style={{ paddingRight: "20px" }}>Basic Salary</th>
-                                <th style={{ paddingRight: "20px" }}>Total OT hours</th>
-                                <th style={{ paddingRight: "20px" }}>OT Rate</th>
-                                <th style={{ paddingRight: "20px" }}>Bonus</th>
-                                <th style={{ paddingRight: "20px" }}>Total Salary</th>
-                                <th style={{ paddingRight: "20px" }}>Account Number</th>
-                                <th style={{ paddingRight: "20px" }}>Bank</th>
+                                <th>empID</th>
+                                <th>Month</th>
+                                <th>Basic Salary</th>
+                                <th>Total OT hours</th>
+                                <th>OT Rate</th>
+                                <th>Bonus</th>
+                                <th>Total Salary</th>
+                                <th>Account Number</th>
+                                <th>Bank</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {filteredSalaries.map((salaryItem, index) => (
                                 <tr key={index}>
-                                    <td style={{ paddingRight: "20px" }}>{salaryItem.empID}</td>
-                                    <td style={{ paddingRight: "20px" }}>{salaryItem.month}</td>
-                                    <td style={{ paddingRight: "20px" }}>{salaryItem.basicSalary}</td>
-                                    <td style={{ paddingRight: "20px" }}>{salaryItem.totalOTHours}</td>
-                                    <td style={{ paddingRight: "20px" }}>{salaryItem.otRate}</td>
-                                    <td style={{ paddingRight: "20px" }}>{salaryItem.bonus}</td>
-                                    <td style={{ paddingRight: "20px" }}>{salaryItem.totalSalary}</td>
-                                    <td style={{ paddingRight: "20px" }}>{salaryItem.accountNumber}</td>
-                                    <td style={{ paddingRight: "20px" }}>{salaryItem.bank}</td>
+                                    <td>{salaryItem.empID}</td>
+                                    <td>{salaryItem.month}</td>
+                                    <td>{salaryItem.basicSalary}</td>
+                                    <td>{salaryItem.totalOTHours}</td>
+                                    <td>{salaryItem.otRate}</td>
+                                    <td>{salaryItem.bonus}</td>
+                                    <td>{salaryItem.totalSalary}</td>
+                                    <td>{salaryItem.accountNumber}</td>
+                                    <td>{salaryItem.bank}</td>
                                     <td>
-                                        <Link to={`/updatesal/${salaryItem._id}`} className='btn btn-success'>Update</Link>
-                                        <Link to="/salaryy" className='btn btn-danger' onClick={(e) => handleDelete(salaryItem._id)}>Delete</Link>
+                                        <a href={`/updatesal/${salaryItem._id}`} style={{ 
+                                            marginRight: '10px', 
+                                            padding: '5px 10px', 
+                                            backgroundColor: '#28a745',
+                                            color: '#fff',
+                                            textDecoration: 'none'
+                                        }}>Update</a>
+                                        <a href="/salaryy" style={{ 
+                                            padding: '5px 10px', 
+                                            backgroundColor: '#dc3545',
+                                            color: '#fff',
+                                            textDecoration: 'none'
+                                        }} onClick={(e) => handleDelete(salaryItem._id)}>Delete</a>
                                     </td>
                                 </tr>
                             ))}
@@ -123,9 +176,16 @@ function SalaryU() {
                     </table>
                 </div>
                 <br />
-                <button onClick={handlePrint} className='btn btn-warning'>Download Report</button>
+                <button onClick={handlePrint} style={{ 
+                    padding: '10px 20px', 
+                    backgroundColor: '#ffc107',
+                    color: '#fff',
+                    borderRadius: '4px',
+                    border: 'none'
+                }}>Download Report</button>
             </div>
         </div>
+        
     );
 }
 
