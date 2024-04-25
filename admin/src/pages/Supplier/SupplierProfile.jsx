@@ -2,22 +2,22 @@ import { useNavigate } from "react-router-dom";
 
 const SupplierProfile = () => {
   let navigate = useNavigate();
-  var SName = ""
-  var SMobile = ""
-  var SEmail = ""
-  var SReg = ""
+  var SName = "Udan Pasindu"
+  var SMobile = "0717325275"
+  var SEmail = "Udanpasindu934@gmail.com"
+  var SReg = "S003"
 
   return (
     <div 
   style={{
-    backgroundImage: `url('../res/spice3.jpg')`,
+    
     backgroundSize: "cover",
     backgroundPosition: "center",
-    display: "flex",
-    justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    backgroundColor: "#007bff", /* Fallback color */
+    marginLeft:"400px",
+    marginTop:"60px",
+    backgroundColor: "#fff",
   }}
 >
   <div 
@@ -58,7 +58,7 @@ const SupplierProfile = () => {
           <button 
             style={{
               padding: "10px 20px",
-              backgroundColor: "#28a745",
+              backgroundColor: "tomato",
               color: "#fff",
               border: "none",
               borderRadius: "5px",
@@ -76,7 +76,7 @@ const SupplierProfile = () => {
             onClick={() => navigate("/Supplier/RawMreq")} 
             style={{
               padding: "10px 20px",
-              backgroundColor: "#007bff",
+              backgroundColor: "tomato",
               color: "#fff",
               border: "none",
               borderRadius: "5px",
@@ -92,7 +92,7 @@ const SupplierProfile = () => {
             onClick={() => navigate("/Supplier/RawMreqres")} 
             style={{
               padding: "10px 20px",
-              backgroundColor: "#007bff",
+              backgroundColor: "tomato",
               color: "#fff",
               border: "none",
               borderRadius: "5px",
@@ -108,7 +108,7 @@ const SupplierProfile = () => {
             onClick={() => navigate("/")} 
             style={{
               padding: "10px 20px",
-              backgroundColor: "#007bff",
+              backgroundColor: "tomato",
               color: "#fff",
               border: "none",
               borderRadius: "5px",

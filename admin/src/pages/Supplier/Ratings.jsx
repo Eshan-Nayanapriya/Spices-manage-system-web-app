@@ -56,7 +56,7 @@ const Ratings = () => {
         .delete(`http://localhost:${port}/api/supplier/rating/delete/` + id)
         .then((resp) => {
           console.log(resp);
-          fetchData(); // Fetch data after deletion is confirmed
+          fetchData(); 
         })
         .catch((errr) => console.log(errr));
     }
@@ -85,14 +85,12 @@ const Ratings = () => {
   return (
     <div 
   style={{
-    backgroundImage: `url('../res/spices2.jpg')`,
+    
     backgroundSize: "cover",
     backgroundPosition: "center",
-    display: "flex",
-    justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    backgroundColor: "#007bff", /* Fallback color */
+    backgroundColor: "tomato", 
   }}
 >
   <div>
@@ -100,7 +98,7 @@ const Ratings = () => {
       style={{
         opacity: "0.75",
         padding: "10px",
-        backgroundColor: "#fff",
+        backgroundColor: "tomato",
         borderBottomLeftRadius: "15px",
         borderBottomRightRadius: "15px",
         display: "flex",
@@ -135,11 +133,11 @@ const Ratings = () => {
         alignItems: "center",
       }}
     >
-      {/* Placeholder for content */}
+      
     </div>
     <div 
       style={{
-        backgroundColor: "rgba(255, 255, 255, 0.75)",
+        backgroundColor: "white",
         display: "flex",
         height: "50vh",
         justifyContent: "center",
@@ -150,10 +148,10 @@ const Ratings = () => {
         <button 
           style={{
             padding: "10px 20px",
-            backgroundColor: "#28a745",
+            backgroundColor: "red",
             color: "#fff",
             border: "none",
-            borderRadius: "5px",
+            borderRadius: "200px",
             cursor: "pointer",
           }} 
           onClick={() => navigate('/Supplier/addrating')}

@@ -70,62 +70,66 @@ const SupplierProfile = () => {
   };
 
   return (
-    <>
+    <div 
+  style={{
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    alignItems: "center",
+    height: "100vh",
+    backgroundColor: "#fff",
+    display: "flex",
+    justifyContent: "center"
+  }}
+>
   <div 
     style={{
-      backgroundImage: `url('../res/spice3.jpg')`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh",
-      backgroundColor: "#007bff", /* Fallback color */
+      backgroundColor: "grey",
+      marginLeft:"400px",
+      marginTop:"-100px",
+      borderRadius: "20px",
+      margin: "50px",
+      padding: "60px",
     }}
   >
-    <div 
-      style={{
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        borderRadius: "10px",
-        padding: "30px",
-      }}
-    >
-      <div style={{ textAlign: "center", padding: "20px" }}>
-        <h1 style={{ color: "#000", backgroundColor: "rgba(255, 255, 255, 0.75)", padding: "10px", borderRadius: "10px" }}>Raw Material Requests</h1>
-      </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div>
-          <div 
-            style={{
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              color: "#fff",
-              textAlign: "center",
-              padding: "20px",
-              borderRadius: "10px",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <table style={{ borderCollapse: "collapse", border: "5px solid #fff" }}>
-              <thead style={{ backgroundColor: "#fff", color: "#000", border: "2px solid #fff" }}>
-                <tr>
-                  <th>Item</th>
-                  <th>Quantity</th>
-                  <th>Deadline</th>
-                  <th>Price (Rs.)</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <RowGen />
-              </tbody>
-            </table>
-          </div>
-        </div>
+    <div style={{ textAlign: "center", marginBottom: "20px" }}>
+      <h1 style={{ color: "#fff", backgroundColor: "#000", padding: "10px", borderRadius: "10px" }}>Raw Material Requests</h1>
+    </div>
+    <div>
+      <div 
+        style={{
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          color: "#fff",
+          padding: "20px",
+          borderRadius: "10px",
+          overflowX: "auto" ,
+        }}
+      >
+       
+                <th style={{ padding: "10px" }}>Item</th>
+                <th style={{ padding: "10px" }}>Quantity</th>
+                <th style={{ padding: "10px" }}>Deadline</th>
+                <th style={{ padding: "10px" }}>Price (Rs.)</th>
+                <th style={{ padding: "10px" }}>Actions</th>
+        
+        <table >
+          <thead>
+          <tbody>
+            <RowGen />
+          </tbody>
+            
+          </thead>
+          
+        </table>
+
+        
+
+
       </div>
     </div>
   </div>
-</>
+</div>
+
+  
 
   );
 };

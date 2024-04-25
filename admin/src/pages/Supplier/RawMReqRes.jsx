@@ -20,7 +20,7 @@ const RawMReqRes = () => {
         .delete(`http://localhost:${port}/api/supplier/arequest/delete/` + id)
         .then((resp) => {
           console.log(resp);
-          fetchData(); // Refresh the list after successful deletion
+          fetchData(); 
         })
         .catch((errr) => console.log(errr));
     }
@@ -38,15 +38,18 @@ const RawMReqRes = () => {
           <td className={TCellStyle}>{Request.deadLine}</td>
           <td className={TCellStyle}>{Request.price}</td>
           <td className={TCellStyle}>
-            <button onClick={handleSubmit} className="btn btn-success m-2">
-              Submit
-            </button>
-            <button
-              onClick={() => deleteRequest(Request._id)}
-              className="btn btn-danger m-2"
-            >
-              Delete
-            </button>
+          <button onClick={handleSubmit} className="btn btn-success m-2" style={{ padding: '8px 16px', fontSize: '9px' }}>
+  Submit
+</button>
+
+<button
+  onClick={() => deleteRequest(Request._id)}
+  className="btn btn-danger m-2"
+  style={{ padding: '8px 16px', fontSize: '9px', backgroundColor: 'red', borderColor: 'red' }}
+>
+  Delete
+</button>
+
           </td>
         </tr>
       ));
@@ -61,21 +64,20 @@ const RawMReqRes = () => {
   return (
     <div 
   style={{
-    backgroundImage: `url('../res/spice9.jpg')`,
+
     backgroundSize: "cover",
     backgroundPosition: "center",
-    display: "flex",
-    justifyContent: "center",
+    display:"flex",
     alignItems: "center",
     height: "100vh",
-    backgroundColor: "#007bff", /* Fallback color */
+    backgroundColor: "tomato",
   }}
 >
   <div 
     style={{
       backgroundColor: "rgba(255, 255, 255, 0.1)",
-      borderRadius: "10px",
-      padding: "20px",
+      borderRadius: "100px",
+      padding: "200px",
     }}
   >
     <div style={{ textAlign: "center", padding: "20px" }}>
@@ -83,17 +85,17 @@ const RawMReqRes = () => {
         Raw Material Request Response
       </h1>
     </div>
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div style={{ display: "flex", justifyContent: "center"  }}>
       <div style={{ backgroundColor: "rgba(0, 0, 0, 0.25)", borderRadius: "5px", padding: "20px" }}>
         <div>
-          <table style={{ borderCollapse: "collapse", border: "2px solid #fff" }}>
-            <thead style={{ backgroundColor: "rgba(255, 255, 255, 0.25)", color: "#000", border: "2px solid #fff" }}>
+          <table style={{ borderCollapse: "collapse", border: "100px solid #fff" }}>
+            <thead style={{ backgroundColor: "rgba(255, 255, 255, 0.25)", color: "#000", border: "20px solid #fff" }}>
               <tr>
-                <th style={{ padding: "10px" }}>Item</th>
-                <th style={{ padding: "10px" }}>Quantity</th>
-                <th style={{ padding: "10px" }}>Dead Line</th>
-                <th style={{ padding: "10px" }}>Price (Rs.)</th>
-                <th style={{ padding: "10px" }}>Actions</th>
+                <th style={{ padding: "50px" }}>Item</th>
+                <th style={{ padding: "50px" }}>Quantity</th>
+                <th style={{ padding: "50px" }}>Dead Line</th>
+                <th style={{ padding: "50px" }}>Price (Rs.)</th>
+                <th style={{ padding: "50px" }}>Actions</th>
               </tr>
             </thead>
             <tbody>

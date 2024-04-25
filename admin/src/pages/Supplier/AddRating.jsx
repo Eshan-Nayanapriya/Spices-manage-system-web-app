@@ -28,23 +28,23 @@ function AddRating() {
     <div
   className="d-flex vh-100 justify-content-center align-items-center"
   style={{
-    backgroundImage: `url('../res/spice10.jpg')`,
+    
     backgroundSize: "cover",
     backgroundPosition: "center",
-    backgroundColor: "#007bff", /* Fallback color */
+    backgroundColor: "tomato",
     backgroundBlendMode: "screen",
   }}
 >
   <div 
     className="w-50 bg-white rounded p-4"
     style={{
-      opacity: "0.9", /* Background opacity */
-      padding: "16px",
+      opacity: "0.9",
+      padding: "200px",
     }}
   >
     <form onSubmit={Submit}>
       <h2 style={{ textAlign: "center" }}>Add Rating</h2>
-      <div style={{ margin: "20px auto", maxWidth: "400px" }}>
+      <div style={{ margin: "40px auto", maxWidth: "400px" }}>
         <div style={{ marginBottom: "20px" }}>
           <label htmlFor="customerName">Customer Name:</label>
           <input 
@@ -52,9 +52,9 @@ function AddRating() {
             id="customerName" 
             placeholder="Enter Customer Name" 
             style={{
-              padding: "8px",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
+              padding: "15px",
+              borderRadius: "15px",
+              border: "12px solid #ccc",
               width: "100%",
             }}
             onChange={(e) => setCName(e.target.value)}
@@ -67,9 +67,9 @@ function AddRating() {
             id="feedback" 
             placeholder="Enter Feedback" 
             style={{
-              padding: "8px",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
+              padding: "20px",
+              borderRadius: "15px",
+              border: "12px solid #ccc",
               width: "100%",
             }}
             onChange={(e) => setFeedback(e.target.value)}
@@ -82,9 +82,9 @@ function AddRating() {
             id="rating" 
             placeholder="Enter Between 1-10" 
             style={{
-              padding: "8px",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
+              padding: "15px",
+              borderRadius: "15px",
+              border: "15px solid #ccc",
               width: "100%",
             }}
             onChange={(e) => setRating(e.target.value)}

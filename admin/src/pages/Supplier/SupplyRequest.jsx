@@ -48,19 +48,26 @@ function SupplyRequest() {
         <td style={{ padding: "5px" }}>{Request.price}</td>
         <td style={{ padding: "15px" }}>{Request.deadLine}</td>
         <td>
-          <Link to={`update/${Request._id}`} className="btn btn-success">
+          <Link to={`update/${Request._id}`} className="btn btn-success ">
             Update
           </Link>
           <button
-            style={{ margin: "40px" }}
-            className="btn btn-danger"
-            onClick={() => {
-              handleDelete(Request._id);
-            }}
+  style={{
+    margin: "40px",
+    backgroundColor: "tomato", 
+    color: "white",
+    border: "none", 
+    padding: "10px 20px", 
+    borderRadius: "5px",
+    cursor:"pointer"
+  }}
+  onClick={() => {
+    handleDelete(Request._id);
+  }}
+>
+  Delete
+</button>
 
-          >
-            Delete
-          </button>
         </td>
       </tr>
     ));

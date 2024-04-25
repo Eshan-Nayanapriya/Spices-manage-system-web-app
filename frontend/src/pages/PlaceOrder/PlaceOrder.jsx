@@ -96,7 +96,7 @@ const PlaceOrder = () => {
           <input type="text" name='country' onChange={onChangeHandler} value={data.country} placeholder='Country' required/>
         </div>
 
-        <input type="text" name='phone' onChange={onChangeHandler} value={data.phone} placeholder='Phone' required/>
+        <input type="text" name='phone' onChange={onChangeHandler} value={data.phone} pattern="[0-9]{10}" placeholder='Phone' required/>
       </div>
 
 
@@ -108,17 +108,17 @@ const PlaceOrder = () => {
 
         <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+              <p>LKR {getTotalCartAmount()}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount()===0?0:2}</p>
+              <p>LKR {getTotalCartAmount()===0?0:200}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
+              <b>LKR {getTotalCartAmount()===0?0:getTotalCartAmount()+200}</b>
             </div>
 
         </div>
