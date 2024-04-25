@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+
 .title {
     font-size: 24px;
     font-weight: bold;
@@ -10,6 +11,10 @@
     color: white;
     padding: 20px;
     border-radius: 8px;
+    margin-top: 20px;
+    margin-left: 100px;
+    
+
 
 }
 
@@ -18,38 +23,51 @@
     font-family: 'Outfit', sans-serif;
     background-color: tomato;
     color: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
     width: fit-content;
-    height: fit-content;
-
+    height: auto;
+}
+.head{
+    font-weight: 700;
+    font-size: 20px;
 }
 
 .Details {
     color: #333;
     font-family: 'Outfit', sans-serif;
     padding: 20px;
+    margin-left: 100px;
+}
+.des{
+    width: max(20vw, 100px);
 }
 .flex{
     display: flex;
-    background-color: rgb(199, 199, 199);
+    background-color: rgb(216, 216, 216);
     color: white;
     padding: 20px;
     border-radius: 8px;
+    margin-left: 100px;
 }
 .controls{
- margin-left: auto;
+
+ padding: 10px;
+ display: flex;
+ gap: 3px;
+
 
 }
 .controls button{
     border: none;
     color: white;
     background-color: tomato;
-    width: max(15vw, 200px);
+    width: max(10vw, 70px);
     padding: 12px 0px;
     border-radius: 4px;
     cursor: pointer;
     font-family: 'Outfit', sans-serif;
+    
     
 }
 .button-link {
