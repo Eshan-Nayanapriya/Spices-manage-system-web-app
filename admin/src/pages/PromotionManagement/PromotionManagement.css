@@ -1,0 +1,133 @@
+.add{
+  width: 70%;
+  margin-left: max(5vw,25px);
+  margin-top: 50px;
+  color: #6d6d6d;
+  font-size: 16px;
+}
+
+.add h2{
+margin-bottom: 20px;
+}
+
+.add form {
+  gap: 20px;
+}
+
+.add-img-upload img {
+  width: 120px;
+}
+
+.add-product-name, .add-product-description {
+  width: max(40%,280px);
+}
+
+.search {
+  width: max(40%,280px);
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.add-product-name input, .add-product-description textarea, .add-product-description data {
+  padding: 10px;
+
+}
+
+.add-category-price{
+  display: flex;
+  gap: 30px;
+}
+
+.add-category-price select, .add-category-price input{
+  max-width: 120px;
+  padding: 10px;
+}
+
+.add-btn {
+  max-width: 120px;
+  border: none;
+  padding: 10px;
+  background-color: tomato;
+  color: white;
+  cursor: pointer;
+}
+
+
+
+.page {
+padding: 10pt;
+}
+
+.row {
+display: table-row;
+}
+
+.text {
+display: table-cell;
+padding: 5pt;
+}
+
+.image {
+display: table-cell;
+padding: 5pt;
+}
+
+
+.list-add-flex-col {
+width: 70%;
+margin-top: 50px;
+color: #6d6d6d;
+font-size: 16px;
+border-left: 0px;
+}
+
+.list-table-format{
+display: grid;
+grid-template-columns: 0.5fr 2fr 1fr 1fr 0.5fr;
+align-items: center;
+gap: 10px;
+padding: 12px 15px;
+border: 1px solid #cacaca;
+font-size: 13px;
+
+}
+
+.list-table-format.title{
+background-color: #f9f9f9;
+}
+
+.list-table-format img{
+width: 50px;
+}
+
+@media (max-width:600px) {
+.list-table-format{
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 15px;
+}
+.list-table-format.title{
+    display: none;
+}
+}
+
+.download-button {
+  max-width: 150px;
+  padding: 10px;
+  background-color: tomato;
+  color: white;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+hr {
+  margin-top: 10px;
+}
+
+h2 {
+  background-color: tomato;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+}

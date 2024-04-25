@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-content-left">
             <img src={assets.logo} alt="" />
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum natus commodi dolore in mollitia! Labore aperiam id hic unde consequatur!</p>
+            <p>Savor precision-crafted flavors at Sahan Grinding Mill in Matara, renowned for its rich spices. Explore our unique culinary offerings.</p>
         <div className="footer-social-icons">
             <img src={assets.facebook_icon} alt="" />
             <img src={assets.twitter_icon} alt="" />
@@ -34,7 +34,7 @@ const Footer = () => {
       </div>
       <hr />
       <p className="footer-copyright">
-        copyright 2024 U Sahan GM.com - All Right Reserved.
+        copyright 2024 Y2S2 group no T-137 - All Right Reserved.
       </p>
     </div>
   )
