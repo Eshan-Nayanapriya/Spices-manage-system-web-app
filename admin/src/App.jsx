@@ -57,7 +57,7 @@ const App = () => {
           <Route path='/AddPaymentRequest' element={<AddPaymentRequest/>}/>
           <Route path='/UpdatePaymentRequest/:id' element={<UpdatePaymentRequest/>}/>
           <Route path='/PaidPayments' element={<PaidPayments/>}/>
-          <Route path='/Pdfupload' element={<Pdfupload/>}/>
+          <Route path='/Pdfupload' element={<Pdfupload/>}/>                  
 
           {/*udan part */}
           
@@ -82,7 +82,7 @@ const App = () => {
 
 
           {/*torin part */}
-          <Route path='/employeeManagement' element={<Users />}></Route>
+          <Route path='/employeeManagement' element={<SalaryU />}></Route>
           <Route path='/create' element={<CreateUser />}></Route>
           <Route path='/update/:id' element={<UpdateUser />}></Route>
           <Route path='/salaryy' element={<SalaryU />}></Route>
