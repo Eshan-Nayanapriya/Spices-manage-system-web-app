@@ -21,8 +21,20 @@ import PaymentRequests from './pages/PaymentRequests/PaymentRequests'
 import UpdatePaymentRequest from './pages/UpdatePaymentRequest/UpdatePaymentRequest';
 import AddPaymentRequest from './pages/AddPaymentRequest/AddPaymentRequest';
 import PaidPayments from './pages/PaidPayments/PaidPayments';
-import Pdfupload from './pages/PaidReportUpload/PaidReportUpload';
+
+import Pdfupload from './pages/PaidReportUpload/PaidReportUpload'; 
+import DisplayEnquiries from './pages/AllEnquiries/displayEnquiries.jsx'
+import EnquiryDetails from './pages/AllEnquiries/enquiryDetails.jsx';
 import PromotionManagement from './pages/PromotionManagement/PromotionManagement'
+
+import Users from './pages/employeeManagement/Users.jsx';
+import UpdateUser from './pages/employeeManagement/UpdateUser.jsx';
+import CreateUser from './pages/employeeManagement/CreateUser.jsx';
+import SalaryU from './pages/employeeManagement/SalaryU.jsx';
+import CreateSalary from './pages/employeeManagement/CreateSalary.jsx';
+import UpdateSalary from './pages/employeeManagement/UpdateSal.jsx';
+import EmpU from './pages/employeeManagement/empU.jsx';
+import EmpLogin from './pages/employeeManagement/empLogin.jsx';
 
 const App = () => {
 
@@ -45,7 +57,7 @@ const App = () => {
           <Route path='/AddPaymentRequest' element={<AddPaymentRequest/>}/>
           <Route path='/UpdatePaymentRequest/:id' element={<UpdatePaymentRequest/>}/>
           <Route path='/PaidPayments' element={<PaidPayments/>}/>
-          <Route path='/Pdfupload' element={<Pdfupload/>}/>
+          <Route path='/Pdfupload' element={<Pdfupload/>}/>                  
 
           {/*udan part */}
           
@@ -53,15 +65,31 @@ const App = () => {
           <Route path="/create" element={<CreateOrder />}/>
           <Route path="SupplyRequest/update/:id"element={<UpdateOrder />}/>
           <Route path="/supplier" element={<SupplyManager url={url}/>}/>
-          <Route path="/Supplier/RawMreqres" element={<RawMreqRes />} />
+          <Route path="/Supplierpro/RawMreqres" element={<RawMreqRes />} />
           <Route path="/Supplier/RawMreq" element={<RawMReq />} />
           <Route path="/Supplierpro" element={<SupplierProfile />} />
           <Route path="/Supplier/ratings" element={<Ratings />} />
           <Route path="/Supplier/addrating" element={<AddRating />} />          
           <Route path="/Calculation" element={< Calculation />} />
 
+
+          {/*menusha part*/}
+          <Route path='/displayenquiry' element={<DisplayEnquiries />}></Route>
+          <Route path="/enquirydetails/:id" element={<EnquiryDetails />} />
+
           {/*sadan part */}
           <Route path="/PromotionManagement" element={<PromotionManagement url={url}/>}/>
+
+
+          {/*torin part */}
+          <Route path='/employeeManagement' element={<SalaryU />}></Route>
+          <Route path='/create' element={<CreateUser />}></Route>
+          <Route path='/update/:id' element={<UpdateUser />}></Route>
+          <Route path='/salaryy' element={<SalaryU />}></Route>
+          <Route path='/createsalary' element={<CreateSalary />}></Route>
+          <Route path='/updatesal/:id' element={<UpdateSalary />}></Route>
+          {/*<Route path="/login" element={<EmpLogin onLogin={handleLogin} />} />*/}
+          <Route path="/emp/:id" element={<EmpU />} />
 
         </Routes>
       </div>

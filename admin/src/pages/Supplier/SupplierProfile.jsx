@@ -15,7 +15,7 @@ const SupplierProfile = () => {
     backgroundPosition: "center",
     alignItems: "center",
     height: "100vh",
-    marginLeft:"400px",
+    marginLeft:"300px",
     marginTop:"60px",
     backgroundColor: "#fff",
   }}
@@ -24,7 +24,7 @@ const SupplierProfile = () => {
     style={{
       backgroundColor: "rgba(0, 0, 0, 0.75)",
       borderRadius: "10px",
-      padding: "20px",
+      padding: "100px",
     }}
   >
     <div style={{ textAlign: "center", padding: "20px" }}>
@@ -71,11 +71,11 @@ const SupplierProfile = () => {
         </div>
       </div>
       <div style={{ backgroundColor: "rgba(0, 0, 0, 0.25)", borderRadius: "10px", padding: "20px" }}>
-        <div style={{ textAlign: "center", padding: "20px" }}>
+        <div style={{ textAlign: "center", padding: "100px" }}>
           <button 
             onClick={() => navigate("/Supplier/RawMreq")} 
             style={{
-              padding: "10px 20px",
+              padding: "30px 60px",
               backgroundColor: "tomato",
               color: "#fff",
               border: "none",
@@ -89,9 +89,9 @@ const SupplierProfile = () => {
           <br />
           <br />
           <button 
-            onClick={() => navigate("/Supplier/RawMreqres")} 
+            onClick={() => navigate("/Supplierpro/RawMreqres")} 
             style={{
-              padding: "10px 20px",
+              padding: "30px 60px",
               backgroundColor: "tomato",
               color: "#fff",
               border: "none",
@@ -105,9 +105,9 @@ const SupplierProfile = () => {
           <br />
           <br />
           <button 
-            onClick={() => navigate("/")} 
+            onClick={() => navigate("/AddPaymentRequest")} 
             style={{
-              padding: "10px 20px",
+              padding: "30px 60px",
               backgroundColor: "tomato",
               color: "#fff",
               border: "none",
