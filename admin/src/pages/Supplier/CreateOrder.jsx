@@ -10,7 +10,7 @@ function CreateOrder() {
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
   const [deadLine, setDeadLine] = useState("");
-  const [idError, setIDError] = useState("");
+  const [priceError, setPriceError] = useState("");
   const navigate = useNavigate();
 
   const generateUniqueID = () => {
@@ -25,29 +25,34 @@ function CreateOrder() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post(`http://localhost:${port}/api/supplier/request/create`, {
-        name: name,
-        rid: id,
-        quantity: quantity,
-        price: price,
-        deadLine: deadLine,
-      })
-      .then((result) => {
-        console.log(result);
-        navigate("/SupplyRequest");
-      })
-      .catch((err) => console.log(err));
+    if (validateForm()) {
+      axios
+        .post(`http://localhost:${port}/api/supplier/request/create`, {
+          name: name,
+          rid: id,
+          quantity: quantity,
+          price: price,
+          deadLine: deadLine,
+        })
+        .then((result) => {
+          console.log(result);
+          navigate("/SupplyRequest");
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
-  const validateID = () => {
-    const regex = /^[0-9]+$/;
-    if (!id.match(regex)) {
-      setIDError("Request ID must contain only digits");
-      return false;
+  const validateForm = () => {
+    let isValid = true;
+
+    if (!price.match(/^\d+(\.\d{1,2})?$/)) {
+      isValid = false;
+      setPriceError("Price must be a number with up to 2 decimal places");
+    } else {
+      setPriceError("");
     }
-    setIDError("");
-    return true;
+
+    return isValid;
   };
 
   return (
@@ -110,7 +115,6 @@ function CreateOrder() {
                 value={id}
                 onChange={(e) => {
                   setID(e.target.value);
-                  setIDError("");
                 }}
               />
               <button
@@ -127,10 +131,9 @@ function CreateOrder() {
               >
                 Autogenerate ID
               </button>
-              <span style={{ color: "red" }}>{idError}</span>
             </div>
             <div>
-              <label htmlFor="quantity">Quantity:</label>
+              <label htmlFor="quantity">Quantity (KG & Grams):</label>
               <input
                 type="text"
                 id="quantity"
@@ -147,7 +150,7 @@ function CreateOrder() {
               />
             </div>
             <div>
-              <label htmlFor="price">Price:</label>
+              <label htmlFor="price">Price (LKR):</label>
               <input
                 type="text"
                 id="price"
@@ -162,13 +165,14 @@ function CreateOrder() {
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
+              <span style={{ color: "red" }}>{priceError}</span>
             </div>
             <div>
               <label htmlFor="deadline">Deadline:</label>
               <input
-                type="text"
+                type="date"
                 id="deadline"
-                placeholder="Enter Deadline"
+                placeholder="Select Deadline"
                 style={{
                   padding: "8px",
                   borderRadius: "5px",
