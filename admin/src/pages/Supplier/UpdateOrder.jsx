@@ -119,7 +119,7 @@ function UpdateOrder() {
                   style={{ width: "100%", padding: "8px" }}
                   onChange={(e) => setPrice(e.target.value)}
                 />
-                <span className="text-danger">{priceError}</span>
+                <span className="text-danger" style={{ color: "red" }}>{priceError}</span>
               </div>
               <div style={{ marginBottom: "10px" ,width:"200%"}}>
                 <label htmlFor="">DeadLine :</label>
