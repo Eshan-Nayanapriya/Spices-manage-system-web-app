@@ -67,7 +67,7 @@ function CreateOrder() {
     }}
   >
     <form onSubmit={handleSubmit}>
-      <h2>Add Supply Request</h2>
+      <h2>Add Supply Requests</h2>
       <div style={{ margin: "0 auto", maxWidth: "500px" }}>
         <div>
           <label htmlFor="name">Name:</label>
@@ -142,7 +142,7 @@ function CreateOrder() {
           />
         </div>
         <div>
-          <label htmlFor="deadline">Deadline:</label>
+        <label htmlFor='month'>Month</label>
           <input
             type="text"
             id="deadline"
