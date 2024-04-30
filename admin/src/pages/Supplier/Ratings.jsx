@@ -98,9 +98,7 @@ const Ratings = () => {
       style={{
         opacity: "0.75",
         padding: "10px",
-        backgroundColor: "tomato",
-        borderBottomLeftRadius: "15px",
-        borderBottomRightRadius: "15px",
+        backgroundColor: "white",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -113,12 +111,12 @@ const Ratings = () => {
     <button 
       type="button" 
       style={{
-        marginLeft: "1000px",
+        marginLeft: "1400px",
         padding: "10px 20px",
         backgroundColor: "#28a745",
         color: "#fff",
         border: "none",
-        borderRadius: "5px",
+        borderRadius: "10px",
         cursor: "pointer",
       }} 
       onClick={downloadPDF}
@@ -144,14 +142,14 @@ const Ratings = () => {
         alignItems: "center",
       }}
     >
-      <div style={{ display: "flex" }}>
+      <div>
         <button 
           style={{
-            padding: "10px 20px",
+            padding: "10px 10px",
             backgroundColor: "red",
             color: "#fff",
             border: "none",
-            borderRadius: "200px",
+            borderRadius: "10px",
             cursor: "pointer",
           }} 
           onClick={() => navigate('/Supplier/addrating')}
@@ -160,7 +158,7 @@ const Ratings = () => {
         </button>
         <div>
           <table 
-            style={{ borderCollapse: "collapse", border: "5px solid #fff" }}
+            style={{  border: "5px solid #fff" }}
           >
             <thead style={{ backgroundColor: "#fff", color: "#000", border: "2px solid #fff" }}>
               <tr>

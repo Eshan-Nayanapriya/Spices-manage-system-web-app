@@ -9,13 +9,12 @@ const SupplyManager = () => {
 
   return (
     <>
-    <div style={{ marginLeft: "50px" }}>
+    <div style={{ marginLeft: "50px", backgroundImage:"spice10.jpg"}}>
   <div
     style={{
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-     
       marginLeft:"300px",
       marginTop:"40px",
       backgroundColor: "#fff",
