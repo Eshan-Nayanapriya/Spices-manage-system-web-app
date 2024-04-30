@@ -11,6 +11,8 @@ function CreateOrder() {
   const [price, setPrice] = useState("");
   const [deadLine, setDeadLine] = useState("");
   const [priceError, setPriceError] = useState("");
+  const [idError, setIDError] = useState("");
+  const [deadlineError, setDeadlineError] = useState("");
   const navigate = useNavigate();
 
   const generateUniqueID = () => {
@@ -50,6 +52,20 @@ function CreateOrder() {
       setPriceError("Price must be a number with up to 2 decimal places");
     } else {
       setPriceError("");
+    }
+
+    if (!deadLine) {
+      isValid = false;
+      setDeadlineError("Deadline is required");
+    } else {
+      setDeadlineError("");
+    }
+
+    if (!id) {
+      isValid = false;
+      setIDError("Request ID is required");
+    } else {
+      setIDError("");
     }
 
     return isValid;
@@ -131,6 +147,7 @@ function CreateOrder() {
               >
                 Autogenerate ID
               </button>
+              <span style={{ color: "red" }}>{idError}</span>
             </div>
             <div>
               <label htmlFor="quantity">Quantity (KG & Grams):</label>
@@ -183,6 +200,7 @@ function CreateOrder() {
                 value={deadLine}
                 onChange={(e) => setDeadLine(e.target.value)}
               />
+              <span style={{ color: "red" }}>{deadlineError}</span>
             </div>
             <button
               type="submit"

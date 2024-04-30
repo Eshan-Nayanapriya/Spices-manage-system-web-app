@@ -12,6 +12,7 @@ function UpdateOrder() {
   const [deadLine, setDeadLine] = useState("");
   const [idError, setIDError] = useState("");
   const [priceError, setPriceError] = useState("");
+  const [deadlineError, setDeadlineError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,7 +30,7 @@ function UpdateOrder() {
 
   const Update = (e) => {
     e.preventDefault();
-    if (validatePrice()) {
+    if (validateForm()) {
       axios
         .put(`http://localhost:${port}/api/supplier/request/update/` + id, {
           name,
@@ -45,14 +46,24 @@ function UpdateOrder() {
     }
   };
 
-  const validatePrice = () => {
-    const regex = /^\d*\.?\d*$/;
-    if (!price.match(regex)) {
-      setPriceError("Price must be a valid number");
-      return false;
+  const validateForm = () => {
+    let isValid = true;
+
+    if (!price.match(/^\d+(\.\d{1,2})?$/)) {
+      setPriceError("Price must be a number with up to 2 decimal places");
+      isValid = false;
+    } else {
+      setPriceError("");
     }
-    setPriceError("");
-    return true;
+
+    if (!deadLine) {
+      setDeadlineError("Deadline is required");
+      isValid = false;
+    } else {
+      setDeadlineError("");
+    }
+
+    return isValid;
   };
 
   return (
@@ -132,6 +143,7 @@ function UpdateOrder() {
                   style={{ width: "100%", padding: "8px" }}
                   onChange={(e) => setDeadLine(e.target.value)}
                 />
+                <span className="text-danger">{deadlineError}</span>
               </div>
             </div>
           </div>
