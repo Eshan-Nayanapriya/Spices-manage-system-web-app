@@ -25,7 +25,7 @@ function Users() {
             .then(res => {
                 console.log(res);
                 setUsers(users.filter(user => user._id !== id));
-                setFilteredUsers(filteredUsers.filter(user => user._id !== id)); // Update filteredUsers as well
+                setFilteredUsers(filteredUsers.filter(user => user._id !== id)); 
             })
             .catch(err => console.log(err))
     }
@@ -47,9 +47,9 @@ function Users() {
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
     if (e.target.value === "") {
-      setFilteredUsers(users); // Reset filteredUsers to all users when searchTerm is empty
+      setFilteredUsers(users); 
     } else {
-      handleSearch(); // Trigger search when searchTerm changes
+      handleSearch(); 
     }
   }
 
@@ -65,7 +65,7 @@ function Users() {
     }}>
       <div className="w-75 bg-secondary rounded p-3">
         <h1 className="mb-0 text-center font-weight-bold text-black">Employee Summary</h1>
-        <Link to="/create" className='btn btn-success'>Add Employee</Link> <br></br><br></br>
+        <Link to="/empcreate" className='btn btn-success'>Add Employee</Link> <br></br><br></br>
         <Link to="/login" className='btn btn-success'>login</Link>
         <div style={{textAlign: 'center', marginBottom: '10px'}}>
           <input 
@@ -99,7 +99,7 @@ function Users() {
                   <p className="card-text">Account Number: {user.accountNumber}</p>
 
                   <div className="btn-group" role="group">
-                    <Link to={`/update/${user._id}`} className='btn btn-success'>Update</Link>
+                    <Link to={`/empupdate/${user._id}`} className='btn btn-success'>Update</Link>
                     <button onClick={() => handleDelete(user._id)} className='btn btn-danger'>Delete</button>
                   </div>
                 </div>

@@ -34,7 +34,7 @@ function CreateUser() {
         })
         .then(result => {
             console.log(result);
-            navigate('/');
+            navigate('/employeeManagement');
         })
         .catch(err => {
             console.log(err);

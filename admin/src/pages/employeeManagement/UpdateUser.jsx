@@ -44,7 +44,7 @@ function UpdateUser() {
         axios.put(`http://localhost:4000/User/updateUser/${id}`, { name, email, password, confirmpassword, age, jobroll: jobRoll, bank, accountNumber })
             .then(result => {
                 console.log(result);
-                navigate('/');
+                navigate('/employeeManagement');
             })
             .catch(err => {
                 console.log(err);

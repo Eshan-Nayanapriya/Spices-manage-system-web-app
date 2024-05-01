@@ -1,7 +1,7 @@
 
 import mongoose from 'mongoose'
 
-const UserSchema = new mongoose.Schema({
+const empUserSchema = new mongoose.Schema({
     name: String,
     password: String,
     confirmpassword:String,
@@ -13,5 +13,5 @@ const UserSchema = new mongoose.Schema({
 
 })
 
-const UserModel = mongoose.model("users", UserSchema)
-export default UserModel
+const empUserModel = mongoose.model("empusers", empUserSchema)
+export default empUserModel

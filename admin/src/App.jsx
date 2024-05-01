@@ -82,9 +82,9 @@ const App = () => {
 
 
           {/*torin part */}
-          <Route path='/employeeManagement' element={<SalaryU />}></Route>
-          <Route path='/create' element={<CreateUser />}></Route>
-          <Route path='/update/:id' element={<UpdateUser />}></Route>
+          <Route path='/employeeManagement' element={<Users />}></Route>
+          <Route path='/empcreate' element={<CreateUser />}></Route>
+          <Route path='/empupdate/:id' element={<UpdateUser />}></Route>
           <Route path='/salaryy' element={<SalaryU />}></Route>
           <Route path='/createsalary' element={<CreateSalary />}></Route>
           <Route path='/updatesal/:id' element={<UpdateSalary />}></Route>
