@@ -13,7 +13,7 @@ const Add = ({url}) => {
     name: "",
     description: "",
     price: "",
-    category : "Salad"
+    category : "Powder"
   })
 
   const onChangeHandler = (event) =>{
@@ -36,7 +36,7 @@ const Add = ({url}) => {
         name: "",
         description: "",
         price: "",
-        category : "Salad"
+        category : "Powder"
       })
       setImage(false)
       toast.success(response.data.message)
