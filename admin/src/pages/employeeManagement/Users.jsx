@@ -66,7 +66,7 @@ function Users() {
       <div className="w-75 bg-secondary rounded p-3">
         <h1 className="mb-0 text-center font-weight-bold text-black">Employee Summary</h1>
         <Link to="/empcreate" className='btn btn-success'>Add Employee</Link> <br></br><br></br>
-        <Link to="/login" className='btn btn-success'>login</Link>
+        <Link to="/emplogin" className='btn btn-success'>login</Link>
         <div style={{textAlign: 'center', marginBottom: '10px'}}>
           <input 
             type="text" 

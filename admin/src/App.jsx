@@ -88,7 +88,7 @@ const App = () => {
           <Route path='/salaryy' element={<SalaryU />}></Route>
           <Route path='/createsalary' element={<CreateSalary />}></Route>
           <Route path='/updatesal/:id' element={<UpdateSalary />}></Route>
-          {/*<Route path="/login" element={<EmpLogin onLogin={handleLogin} />} />*/}
+          <Route path="/emplogin" element={<EmpLogin  />} />
           <Route path="/emp/:id" element={<EmpU />} />
 
         </Routes>

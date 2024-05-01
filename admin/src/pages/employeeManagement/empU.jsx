@@ -32,7 +32,7 @@ function EmpU() {
                 console.log(res);
                 setUsers(users.filter(user => user._id !== id));
                 setFilteredUsers(filteredUsers.filter(user => user._id !== id)); // Update filteredUsers as well
-                navigate('/');
+                navigate('/employeeManagement');
             })
             .catch(err => console.log(err))
     }
@@ -49,9 +49,11 @@ function EmpU() {
         <p><strong>Bank:</strong> {user?.bank}</p>
         <p><strong>Account Number:</strong> {user?.accountNumber}</p>
         <div className="btn-group" role="group">
-                    <Link to={`/update/${id}`} className='btn btn-success'>Update</Link>
+                    <Link to={`/empupdate/${id}`} className='btn btn-success'>Update</Link>
                     <button onClick={() => handleDelete(id)} className='btn btn-danger'>Delete</button>
                   </div>
+                  <Link to="/salaryy" className='btn btn-warning'>Home</Link>          
+
       </div>
       
     </div>

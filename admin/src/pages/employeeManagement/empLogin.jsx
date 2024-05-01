@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-function EmpLogin({ onLogin }) {
+function EmpLogin() {
   const [empID, setEmpID] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ function EmpLogin({ onLogin }) {
   
       if (password == response.data.password) {
         navigate(`/emp/${empID}`);
-        //onLogin(response.data);
+        
       } else {
         console.log("Invalid credentials:", response.data);
         alert('Invalid credentials');
