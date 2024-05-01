@@ -46,6 +46,10 @@ const Sidebar = () => {
                 <img src={assets.add_icon} alt="" />
                 <p>Employee Management</p>
             </NavLink>
+            <NavLink to="/factoryManagement" className="sidebar-option">
+                <img src={assets.add_icon} alt="" />
+                <p>Factory Management</p>
+            </NavLink>
             </div>
 
         </div>
