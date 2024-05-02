@@ -104,7 +104,6 @@ const App = () => {
 
           {/*asela part */}
           <Route path='/factoryManagement' element={<FactoryHome />}></Route>
-          <Route path="/" element ={<FactoryHome/>}/>
           <Route path="/mainhome" element ={<FactoryHome/>}/> 
           <Route path="/addMachine" element ={<AddMachanic/>}/>  
           <Route path="/machineDetails" element ={<Machanics/>}/>
