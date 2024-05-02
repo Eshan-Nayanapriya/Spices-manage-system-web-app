@@ -38,7 +38,7 @@ export default function ADDmachin() {
     <div>
       <Nav />
       <center>
-        <h1>ADDD Machine Form</h1>
+        <h1>ADD Machine Form</h1>
         <form
           onSubmit={handleSubmit}
           style={{
