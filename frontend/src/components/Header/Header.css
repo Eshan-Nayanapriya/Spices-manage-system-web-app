@@ -25,14 +25,15 @@
 }
 
 .header-contents p{
-    color: white;
+    color: rgb(255, 255, 255);
+    font-weight: bolder ;
     font-size: 1vw;
 }
 
 .header-contents button{
     border: none;
     font-weight: 500;
-    color: #747474;
+    color: red;
     padding: 1vw 2.3vw;
     background-color: white;
     font-size: max(1vw,13px);
