@@ -148,7 +148,7 @@ const PaidPayments = () => {
                 {totalAmount !== null && (
                     <div className="popup">
                       <label >Total Paid Amount : </label>
-                      <input className='ppi' type="text" value= {totalAmount.toFixed(2)} />
+                      <input className='ppi' type="text" value= {totalAmount.toFixed(2)} disabled/>
                       </div>
                 )}
             </div>
