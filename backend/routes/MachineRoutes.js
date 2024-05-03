@@ -4,9 +4,10 @@ import express from "express"
 const router= express.Router();
 
 
-//insert MachineController
+//insert MachineController//
 //const MachineController = require("../Controllers/MachineController");
 import MachineController from "../Controllers/MachineController.js"
+
 
 
 router.get("/",MachineController.getAllMachines);
