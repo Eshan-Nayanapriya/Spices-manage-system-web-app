@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from "react";
 import "./Footer.css"
 import { assets } from '../../assets/frontend_assets/assets'
 
 const Footer = () => {
+
+  const [menu,setMenu] = useState("home");
+
   return (
     <div className='footer' id='footer'>
       <div className="footer-content">
@@ -18,7 +21,7 @@ const Footer = () => {
         <div className="footer-content-center">
             <h2>COMPANY</h2>
             <ul>
-                <li>Home</li>
+                <li><a href="/" onClick={()=> setMenu("home")} className={menu==="home"?"active":""}>Home</a></li>
                 <li>About Us</li>
                 <li>Delivery</li>
                 <li>Privacy policy</li>
