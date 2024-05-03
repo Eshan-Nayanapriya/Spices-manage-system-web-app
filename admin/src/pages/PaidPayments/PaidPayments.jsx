@@ -128,7 +128,7 @@ const PaidPayments = () => {
           <br />
           
       <div className="select-month">
-                <label >Search Totals : </label>
+                <label>Search Totals : </label>
                 <select name='month' id='month' onChange={handleMonthChange}>
                 <option value="">Select Month</option>
                 <option value="1">January</option>
