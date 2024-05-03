@@ -46,6 +46,7 @@ import UpdateMachine from './pages/Component/Update Machine/UpdateMachine';
 import Utilitis from './pages/Component/UtilityDetails/Utilitis';
 import AddUtility from './pages/Component/AddUtility/AddUtility';
 import UpdateUtility from './pages/Component/UpdateUtility/UpdateUtility';
+import EditProduct from './pages/EditProduct/EditProduct.jsx'
 
 const App = () => {
 
@@ -61,8 +62,6 @@ const App = () => {
         <Routes>
 
           {/*batta part */}
-          <Route path="/add" element={<Add url={url}/>}/>
-          <Route path="/list" element={<List url={url}/>}/>
           <Route path="/orders" element={<Orders url={url}/>}/>
           <Route path='/paymentRequests' element={<PaymentRequests/>}/>
           <Route path='/AddPaymentRequest' element={<AddPaymentRequest/>}/>
@@ -116,7 +115,11 @@ const App = () => {
           <Route path="/uDetails" element ={<Utilitis/>}/>  
           <Route path="/uAdd" element ={<AddUtility/>}/> 
           <Route path="/uDetails/:id" element ={<UpdateUtility/>}/> 
-
+           
+           {/*imashi part */}
+          <Route path="/add" element={<Add url={url}/>}/>
+          <Route path="/list" element={<List url={url}/>}/>
+          <Route path="/edit/:id" element={<EditProduct/>}/>
         </Routes>
       </div>
     </div>

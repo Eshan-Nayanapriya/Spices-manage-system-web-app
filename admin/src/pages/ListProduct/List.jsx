@@ -4,6 +4,9 @@ import { useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useEffect } from 'react'
+import {Link} from 'react-router-dom'
+import edit_icon from '../../assets/pen.png'
+import remove_icon from '../../assets/cross_icon.png'
 
 const List = ({url}) => {
   
@@ -36,26 +39,32 @@ const List = ({url}) => {
 
   
   return (
-      <div className='1ist add flex-col'>
-        <p>All Foods List</p>
-        <div className="list-table">
-          <div className="list-table-format">
-            <b>Image</b>
-            <b>Name</b>
-            <b>Category</b>
-            <b>Price</b>
-            <b>Action</b>
+      <div className='list-product'>
+        <h1>All Foods List</h1>
+          <div className="listproduct-format-main">
+            <p>Image</p>
+            <p>Name</p>
+            <p>Category</p>
+            <p>Description</p>
+            <p>Price</p>
+            <p>Update</p>
+            <p>Delete</p>
           </div>
+          <div className="listproduct-allproducts">
+            <hr />
           {list.map((item,index)=>{
-              return(
-                <div key={index} className='list-table-format' >
-                <img src={`${url}/images/`+item.image}  alt=""/>
+              
+              return <><div key={index} className='listproduct-format-main listproduct-format' >
+                <img src={`${url}/images/`+item.image}  alt="" className="listproduct-product-icon"/>
                 <p>{item.name}</p>
                 <p>{item.category}</p>
+                <p>{item.description}</p>
                 <p>{item.price}</p>
-                <p onClick={()=>removeFood(item._id)} className='cursor'>X</p>
+                <Link to={`/edit/${item._id}`}><img src={edit_icon} alt=""  className="listproduct-edit-icon" /></Link>
+                <img onClick={()=>removeFood(item._id)} src={remove_icon}className="listproduct-remove-icon" />
                 </div>
-              )
+                <hr />
+                </>
           })}
         </div>
       </div>
