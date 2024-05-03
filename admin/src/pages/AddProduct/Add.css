@@ -1,42 +1,86 @@
-.add{
-    width: 70%;
-    margin-left: max(5vw,25px);
+.container {
+    width: 600px;
+    margin: 0 auto;
     margin-top: 50px;
-    color: #6d6d6d;
-    font-size: 16px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f2c177;
+    /*height: auto; /* Increased height */
 }
-
-.add form{
-    gap: 20px;
+.container h1{
+    margin-left: 190px;
+    color: #333;
 }
-
-.add-img-upload img{
-    width: 120px;
-}
-
-.add-product-name, .add-product-description{
-    width: max(40%,280px);
-}
-
-.add-product-name input, .add-product-description textarea{
-    padding: 10px;
-}
-
-.add-category-price{
-    display: flex;
-    gap: 30px;
-}
-
-.add-category-price select, .add-category-price input{
-    max-width: 120px;
-    padding: 10px;
-}
-
-.add-btn{
-    max-width: 120px;
-    padding: 10px;
+hr {
     border: none;
-    background-color: black;
-    color: white;
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 15px;
+    
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.form-group label :hover{
     cursor: pointer;
 }
+.form-group textarea{
+    width: 556px;
+    height: 35px;
+    border: none;
+}
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="file"],
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+.form-group select {
+    background-color: #fff;
+    color: #333;
+}
+.form-group button {
+    padding: 10px 20px;
+    background-color: #ff6200d1;
+    color: #fff;
+    border: none;
+    width: 200px;
+    margin-left: 120px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+
+.form-group button:hover {
+    background-color: #dc6a19f5;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.loading-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+.uploaded-image {
+    width: 100px; /* Increased width for the uploaded image */
+    height: 100px; /* Increased height for the uploaded image */
+    object-fit: cover;
+    border-radius: 10px; /* Rounded corners for the uploaded image */
+}
+

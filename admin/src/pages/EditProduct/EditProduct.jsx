@@ -2,15 +2,21 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './EditProduct.css';
 import { useParams } from 'react-router-dom';
+import upload_area from '../../assets/upload_area.svg'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const EditProduct = () => {
     const { id } = useParams();
+    
     const [formData, setFormData] = useState({
         name: '',
         description: '',
         price: '',
         category: '',
-        image: null
+        image: null,
+        
     });
 
     const [loading, setLoading] = useState(true);
@@ -24,7 +30,8 @@ const EditProduct = () => {
                     name: data.name,
                     description: data.description,
                     price: data.price,
-                    category: data.category
+                    category: data.category,
+                    image:data.image
                     
                 });
                 setLoading(false);
@@ -65,11 +72,14 @@ const EditProduct = () => {
         try {
             const response = await axios.put(`http://localhost:4000/api/food/list/${id}`, formDataToSend, {
                 headers: { 'Content-Type': 'multipart/form-data' }
+               
             });
             console.log(response.data);
+            toast.success('Product updated successfully!'); 
             // Handle success, redirect, or show a success message
         } catch (error) {
             console.log('Error editing product:', error);
+            toast.error('Failed to update product. Please try again.');
             // Handle error, show error message to user
         }
     };
@@ -81,6 +91,9 @@ const EditProduct = () => {
     return (
         <div className='container'>
             <h1>Edit Product</h1>
+            <hr />
+            <br />
+            <br />
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                    <label htmlFor="name">Name:</label>
@@ -94,18 +107,38 @@ const EditProduct = () => {
                 <label htmlFor="price">Price:</label>
                 <input type="number" id="price" name="price" value={formData.price} onChange={handleChange} />
                 </div>
+                
                 <div className="form-group">
+                <label htmlFor="">Product category:</label>
+              <select onChange={handleChange} name="category"value={formData.category}>
+                <option value="Powder">Powder</option>
+                <option value="Pieces">Pieces</option>
+                <option value="Flour">Flour</option>
+                <option value="Oil">Oil</option>
+                <option value="Seeds">Seeds</option>
+                <option value="Other">Other</option>
+              </select>
+              </div>
+                {/*<div className="form-group">
                 <label htmlFor="category">Category:</label>
                 <input type="text" id="category" name="category" value={formData.category} onChange={handleChange} />
+                </div>*/}
+                <div className="form-group">
+                <label className="upload-area">
+                  {formData.image ? (
+                     <img src={`http://localhost:4000/images/`+formData.image} alt="Uploaded" className="uploaded-image" value={formData} />
+                          ) : (
+                     <img src={upload_area} alt="Upload Area" className="upload-icon" />
+                     )}
+                  <input type="file" id="image" name="image" onChange={handleImageChange} hidden />
+                </label>
                 </div>
                 <div className="form-group">
-                <label htmlFor="image">Image:</label>
-                <input type="file" id="image" name="image" onChange={handleImageChange} />
-                </div>
-                <div className="form-group">
+                    <br />
                 <button type="submit">Save Changes</button>
                 </div>
             </form>
+            <ToastContainer/>
         </div>
     );
 };

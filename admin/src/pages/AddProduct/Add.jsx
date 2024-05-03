@@ -1,6 +1,6 @@
 import React from 'react'
 import './Add.css'
-import { assets } from '../../assets/assets'
+import upload_area from '../../assets/upload_area.svg'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
@@ -51,26 +51,23 @@ const Add = ({url}) => {
 
 
   return (
-    <div className='add'>
-      <form className='flex-col' onSubmit={onSubmitHandler}>
-          <div className="add-img-upload flex-col">
-            <p>Upload Image</p>
-            <label htmlFor="image">
-              <img src={image?URL.createObjectURL(image):assets.upload_area} alt="" />
-            </label>
-            <input onChange={(e)=>setImage(e.target. files[0])}type="file" id='image' hidden required/>
-          </div>
-          <div className="add-product-name flex-col">
-            <p>Product name</p>
+    <div className='container'>
+      <h1>Add Product</h1>
+      <hr />
+      <br />
+      <form  onSubmit={onSubmitHandler}>
+          
+          <div className="form-group">
+          <label htmlFor="name">Product Name:</label>
             <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here'/>
           </div>
-          <div className="add-product-description flex-col">
-            <p>Product description</p>
+          <div className="form-group">
+          <label htmlFor="description">Product Description:</label>
             <textarea onChange={onChangeHandler} value={data.description} name="description" rows="6" placeholder='Write content here' required></textarea>
           </div>
-          <div className="add-category-price">
-            <div className="add-category flex-col">
-              <p>Product category</p>
+          
+            <div className="form-group">
+            <label htmlFor="">Product category:</label>
               <select onChange={onChangeHandler} name="category">
                 <option value="Powder">Powder</option>
                 <option value="Pieces">Pieces</option>
@@ -81,12 +78,22 @@ const Add = ({url}) => {
 
               </select>
             </div>
-            <div className="add-price flex-col">
-              <p>Product price</p>
+            <div className="form-group">
+            <label htmlFor="price">Product Price:</label>
               <input onChange={onChangeHandler} value={data.price} type="Number" name='price' placeholder='LKR'/>
             </div>
+          
+          <div className="form-group">
+            <label >Product Image:</label>
+            <label htmlFor="image" >
+              <img className='uploaded-image'src={image?URL.createObjectURL(image):upload_area} alt="" />
+            </label>
+            <input onChange={(e)=>setImage(e.target. files[0])}type="file" id='image' hidden required/>
           </div>
-          <button type='submit' className='add-btn'>ADD</button>
+          
+          <div className="form-group">
+          <button type='submit'>ADD</button>
+          </div>
       </form>
     </div>
   )
