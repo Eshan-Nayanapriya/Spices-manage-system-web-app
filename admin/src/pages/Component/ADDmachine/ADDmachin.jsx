@@ -20,6 +20,16 @@ export default function ADDmachin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const efficiency = parseFloat(inputs.efficiency); // Convert efficiency to a float value
+
+  // Check if efficiency is a number and within the range of 0 to 100
+  if (isNaN(efficiency) || efficiency < 0 || efficiency > 100) {
+    alert('Efficiency must be a number between 0 and 100.');
+    return;
+  }
+
+
     console.log(inputs);
     sendRequest().then(() => history('/mDetails'));
   };
@@ -91,6 +101,7 @@ export default function ADDmachin() {
             <input
               type="text"
               name="efficiency"
+              placeholder='input pracentage'
               onChange={handleChange}
               required
               value={inputs.efficiency}

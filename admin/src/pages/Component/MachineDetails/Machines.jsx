@@ -54,15 +54,20 @@ function Machines() {
       <Nav />
       <center>
         <h1>Machine Details Display page</h1>
+        <br></br><br></br><br></br>
         <input
           type="text"
           name="search"
-          placeholder="Search Machine Details"
+          placeholder="Search Machine ..."
           value={searchQuery}
+          style={{width : '200px',height:'25px'}}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button onClick={handleSearch}>Search</button>
+        <button onClick={handleSearch} style={{ marginRight: '10px', padding: '5px', backgroundColor: '#174FD0', border: 'none', color: 'white', borderRadius: '5px' ,width:'80px',height:'35px'}}>Search</button>
+        <button onClick={handlePrint} style={{ padding: '5px', backgroundColor: '#008CBA', border: 'none', color: 'white', borderRadius: '5px',height:'35px' }}>Download Report</button>
+
       </center>
+      <br></br>
 
       {noResults ? (
         <div>
@@ -75,9 +80,10 @@ function Machines() {
           ))}
         </div>
       )}
-      <button onClick={handlePrint}>Download Report</button>
     </div>
   );
 }
 
 export default Machines;
+
+///

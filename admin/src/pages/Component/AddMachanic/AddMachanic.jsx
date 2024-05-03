@@ -18,21 +18,19 @@ export default function AddMachanic() {
       [e.target.name]: e.target.value,
     }));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
+  
+    // Validate phone number length
+    if (inputs.phone.length !== 10) {
+      alert('Phone number must be 10 digits long.');
+      return; // Exit the function if validation fails
+    }
+    
     console.log(inputs);
     sendRequest().then(() => history('/machineDetails'));
-
-    e.preventDefault();
-  if (inputs.phone.length !== 10) {
-    alert('Phone number must be 10 digits long.');
-    return;
-  }
-  console.log(inputs);
-  sendRequest().then(() => history('/machineDetails'));
   };
-
+  
   
 
   const sendRequest = async () => {
@@ -145,3 +143,4 @@ export default function AddMachanic() {
     </div>
   );
 }
+//
