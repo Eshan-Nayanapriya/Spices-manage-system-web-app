@@ -59,9 +59,7 @@ const PaidPayments = () => {
         const filteredReports = request.filter(item => {
           const lowerSearchTerm = searchTerm.toLowerCase();
           return item.section.toLowerCase().includes(lowerSearchTerm) ||
-                 item.role.toLowerCase().includes(lowerSearchTerm) ||
               //   item._id.toLowerCase().includes(lowerSearchTerm) ||
-                 item.status.toLowerCase().includes(lowerSearchTerm) ||
                  item.amount.toString().toLowerCase().includes(lowerSearchTerm) || // Convert amount to string before comparison
                  item.description.toLowerCase().includes(lowerSearchTerm);
         });

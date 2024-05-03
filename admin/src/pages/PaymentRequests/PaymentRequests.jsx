@@ -53,12 +53,9 @@ const handleSearch = () => {
   const filteredReports = request.filter(item => {
     const lowerSearchTerm = searchTerm.toLowerCase();
     return item.section.toLowerCase().includes(lowerSearchTerm) ||
-           item.role.toLowerCase().includes(lowerSearchTerm) ||
         //   item._id.toLowerCase().includes(lowerSearchTerm) ||
-           item.status.toLowerCase().includes(lowerSearchTerm) ||
            item.createdAt.toLowerCase().includes(lowerSearchTerm) ||
-           item.amount.toString().toLowerCase().includes(lowerSearchTerm) || // Convert amount to string before comparison
-           item.description.toLowerCase().includes(lowerSearchTerm);
+           item.amount.toString().toLowerCase().includes(lowerSearchTerm); // Convert amount to string before comparison
   });
   setDisplayedRequest(filteredReports);
 
@@ -72,7 +69,7 @@ const handleSearch = () => {
 const handleChange = (e) => {
   setSearchTerm(e.target.value); //search bar passing changing values
   if (e.target.value === "") {
-    setDisplayedRequest(request); 
+    setDisplayedRequest(request);
   } else {
     handleSearch(); 
   }
