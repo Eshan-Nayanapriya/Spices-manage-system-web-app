@@ -71,6 +71,11 @@ const handleSearch = () => {
 
 const handleChange = (e) => {
   setSearchTerm(e.target.value); //search bar passing changing values
+  if (e.target.value === "") {
+    setDisplayedRequest(request); 
+  } else {
+    handleSearch(); 
+  }
 }
 
   return (
