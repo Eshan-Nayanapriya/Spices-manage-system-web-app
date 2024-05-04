@@ -10,7 +10,7 @@ const ProductDisplay = (props) => {
     <div className='productdisplay'>
       <div className="productdisplay-left">
         <div className="productdisplay-img">
-            <img className='productdisplay-main-img' src={product.image} alt="" />
+            <img className='productdisplay-main-img' src={`http://localhost:4000/images/${product.image}`}  alt="" />
         </div>
       </div>
       <div className="productdisplay-right">
@@ -26,8 +26,9 @@ const ProductDisplay = (props) => {
         <div className="productdisplay-right-description">
             <div className="productdisplay-right-description"><span>Description:</span><br />{product.description}</div>
             <div className="productdisplay-right-ingredients"><span>Category:</span><br />{product.category}</div>
-            <div className="productdisplay-right-medicalvalues"><span>Price(Rs):</span><br /> {product.prices}/=</div>
-            <button>Add to Cart</button>
+            <div className="productdisplay-right-medicalvalues"><span>Price(Rs):</span><br /> {product.price}/=</div>
+           
+        
         </div>
       </div>
     </div>

@@ -1,23 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect} from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import ProductDisplay from '../ProductDisplay/ProductDisplay';
+import Breadcrums from '../BreadCrums/Breadcrums';
+
 
 const ProductDetails = () => {
-  const { id } = useParams()// Get the product ID from the URL params
-  const [product, setProduct] = useState({})
+    const { id } = useParams();
+    const [foodDetails, setFoodDetails] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-  useEffect(()=>{
-    axios.get(`http://localhost:4000/api/food/list/${id}`)
-    .then(result=>setProduct(result.data))
-    .catch(err=>console.log(err))
- },[])
- if (!product) {
-    return <div>Loading...</div>;
-  }
+    useEffect(() => {
+        const fetchFoodDetails = async () => {
+            try {
+                const response = await axios.get(`http://localhost:4000/api/food/list/${id}`);
+                const { data } = response.data;
+                setFoodDetails(data);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching food details:', error);
+            }
+        };
+
+        fetchFoodDetails();
+    }, [id]);
+
+    
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (!foodDetails) {
+        return <div>Food not found.</div>;
+    }
+
   return (
     <div>
-      <ProductDisplay product={product}/>
+        <Breadcrums product={foodDetails}/>
+        <ProductDisplay product={foodDetails}/>
+      {/*<h1>{foodDetails.name}</h1>
+      <p>Description: {foodDetails.description}</p>
+      <p>Price: {foodDetails.price}</p>
+  <p>Category: {foodDetails.category}</p>*/}
     </div>
   )
 }
