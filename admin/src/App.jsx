@@ -47,6 +47,7 @@ import Utilitis from './pages/Component/UtilityDetails/Utilitis';
 import AddUtility from './pages/Component/AddUtility/AddUtility';
 import UpdateUtility from './pages/Component/UpdateUtility/UpdateUtility';
 import EditProduct from './pages/EditProduct/EditProduct.jsx'
+import Report from './pages/Report/Report.jsx'
 
 const App = () => {
 
@@ -120,6 +121,7 @@ const App = () => {
           <Route path="/add" element={<Add url={url}/>}/>
           <Route path="/list" element={<List url={url}/>}/>
           <Route path="/edit/:id" element={<EditProduct/>}/>
+          <Route path="/report" element={<Report url={url}/>}/>
         </Routes>
       </div>
     </div>

@@ -76,7 +76,7 @@
     border-radius: 8px;
     box-sizing: border-box;
     cursor: pointer;
-    font-family: "Poppins";
+    font-family: "Outfit";
   }
   .searchbar input[type="text"]:focus {
     border-color: #0f0d0b; /* Focus color, you can change this as needed */
@@ -117,4 +117,23 @@
     opacity: 0.8;
     
   }
+
+/* List.css */
+
+.rep {
+  font-size: 12px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase; /* Converts text to uppercase */
+  letter-spacing: 1px; /* Adds letter spacing */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle text shadow */
+  background-color: #f2f2f2; /* Sets background color */
+  padding: 10px 0; /* Adds padding */
+  border-radius: 5px; /* Adds rounded corners */
+  cursor: pointer;
+}
+
   
