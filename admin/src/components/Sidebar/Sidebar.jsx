@@ -29,7 +29,7 @@ const Sidebar = () => {
                 </NavLink>
                 <NavLink to="/paymentRequests" className="sidebar-option">
                     <img src={assets.add_icon} alt="" />
-                    <p>Payment</p>
+                    <p>Payment Management</p>
                 </NavLink>
 
 
