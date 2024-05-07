@@ -24,7 +24,7 @@ function AddRating() {
       })
       .catch((err) => console.log(err));
   };
-  return (
+  return ( 
     <div
   className="d-flex vh-100 justify-content-center align-items-center"
   style={{
