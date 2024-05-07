@@ -76,7 +76,7 @@ function Machines() {
       ) : (
         <div ref={componentsRef}>
           {machins && machins.map((machin, i) => (
-            <AddMachine key={i} machin={machin} />
+             <AddMachine key={i} machin={machin}  />
           ))}
         </div>
       )}

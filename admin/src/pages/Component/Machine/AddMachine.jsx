@@ -9,10 +9,14 @@ function AddMachine(props) {
 
   const deleteHandler = async () => {
     await axios.delete(`http://localhost:4000/machins/${_id}`)
-      .then(res => res.data)
-      .then(() => history("/"))
-      .then(() => history("/mDetails"));
+      .then(() => {
+        window.location.reload();
+      })
+      .catch(error => {
+        console.error('Error deleting item:', error);
+      });
   };
+  
 
   return (
     <div>
@@ -48,7 +52,12 @@ function AddMachine(props) {
         <br /><br /><br />
       </center>
     </div>
+  
+
+    
   );
 }
 
 export default AddMachine;
+
+//

@@ -48,7 +48,8 @@ export default function ADDmachin() {
     <div>
       <Nav />
       <center>
-        <h1>ADD Machine Form</h1>
+        <h1>ADD MACHINE</h1>
+        <br></br>
         <form
           onSubmit={handleSubmit}
           style={{
@@ -62,19 +63,29 @@ export default function ADDmachin() {
           <div style={{ marginBottom: '20px' }}>
             <label htmlFor="mType">Machine Type:</label>
             <br />
-            <input
-              type="text"
-              name="mType"
-              onChange={handleChange}
-              required
-              value={inputs.mType}
-              style={{
-                width: '100%',
-                padding: '5px',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-              }}
-            />
+
+            <select
+    name="mType"
+    onChange={handleChange}
+    required
+    value={inputs.mType}
+    style={{
+        width: '100%',
+        padding: '5px',
+        borderRadius: '5px',
+        border: '1px solid #ccc',
+    }}
+>
+    <option value="">Select Machine Type</option>
+    <option value="Cleaning Machines">Cleaning Machines</option>
+    <option value="Sorting Machines">Sorting Machines</option>
+    <option value="Grinding Machines">Grinding Machines</option>
+    <option value="Packaging Machines">Packaging Machines</option>
+    <option value="Labeling Machines">Labeling Machines</option>
+    <option value="Quality Control Machines">Quality Control Machines</option>
+</select>
+
+            
           </div>
 
           <div style={{ marginBottom: '20px' }}>
@@ -92,6 +103,7 @@ export default function ADDmachin() {
                 borderRadius: '5px',
                 border: '1px solid #ccc',
               }}
+              
             />
           </div>
 

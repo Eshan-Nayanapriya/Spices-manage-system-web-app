@@ -1,29 +1,28 @@
 .home-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #edac20;
-  }
-  
-  .home-ll {
-    float: left;
-  }
-  
-  .home-ll h1 {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    border-radius: 10px;
-    background-color: rgb(234, 68, 17);
-    margin: 10px;
-    
-  }
-  
- 
-  .home-ll h1:hover {
-    background-color: #f4500a;
-  }
-  
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ffcc00; /* Vibrant yellow for spice association */
+  border-bottom: 2px solid #b38600; /* Darker border for contrast */
+}
+
+.home-ll {
+  float: left;
+}
+
+.home-ll h1 {
+  display: block;
+  color: #ffffff; /* White text */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #d9534f; /* Reddish-brown for spice-like color */
+  margin: 10px;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.home-ll h1:hover {
+  background-color: #7f231e; /* Darker red on hover */
+}

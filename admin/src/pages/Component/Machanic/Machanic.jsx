@@ -9,12 +9,22 @@ export default function Machanic(props) {
 
   const deleteHandler = async () => {
     await axios.delete(`http://localhost:4000/machanics/${_id}`)
-      .then(res => res.data)
-      .then(() => history('/'))
-      .then(() => history('/machineDetails'));
+      .then(() => {
+        window.location.reload();
+      })
+      .catch(error => {
+        console.error('Error deleting item:', error);
+      });
   };
+  
+////
+
+
 
   return (
+   
+
+     
     <center>
       <table style={{ borderCollapse: 'collapse', width: '50%' }}>
         <tbody>
@@ -45,5 +55,9 @@ export default function Machanic(props) {
         </tbody>
       </table>
     </center>
+
+       
+   
   );
 }
+//
