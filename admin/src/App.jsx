@@ -36,6 +36,18 @@ import UpdateSalary from './pages/employeeManagement/UpdateSal.jsx';
 import EmpU from './pages/employeeManagement/empU.jsx';
 import EmpLogin from './pages/employeeManagement/empLogin.jsx';
 
+import FactoryHome from './pages/Component/FactoryHome.jsx'
+import Machanics from './pages/Component/Machanic Details/Machanics'
+import AddMachanic from './pages/Component/AddMachanic/AddMachanic';
+import UpdateMachanic from './pages/Component/UpdateMachanic/UpdateMachanic';
+import Machines from './pages/Component/MachineDetails/Machines';
+import ADDmachin from './pages/Component/ADDmachine/ADDmachin';
+import UpdateMachine from './pages/Component/Update Machine/UpdateMachine';
+import Utilitis from './pages/Component/UtilityDetails/Utilitis';
+import AddUtility from './pages/Component/AddUtility/AddUtility';
+import UpdateUtility from './pages/Component/UpdateUtility/UpdateUtility';
+import EditProduct from './pages/EditProduct/EditProduct.jsx'
+
 const App = () => {
 
   const url = "http://localhost:4000"
@@ -50,8 +62,6 @@ const App = () => {
         <Routes>
 
           {/*batta part */}
-          <Route path="/add" element={<Add url={url}/>}/>
-          <Route path="/list" element={<List url={url}/>}/>
           <Route path="/orders" element={<Orders url={url}/>}/>
           <Route path='/paymentRequests' element={<PaymentRequests/>}/>
           <Route path='/AddPaymentRequest' element={<AddPaymentRequest/>}/>
@@ -91,6 +101,25 @@ const App = () => {
           <Route path="/emplogin" element={<EmpLogin  />} />
           <Route path="/emp/:id" element={<EmpU />} />
 
+          {/*asela part */}
+          <Route path='/factoryManagement' element={<FactoryHome />}></Route>
+          <Route path="/mainhome" element ={<FactoryHome/>}/> 
+          <Route path="/addMachine" element ={<AddMachanic/>}/>  
+          <Route path="/machineDetails" element ={<Machanics/>}/>
+          <Route path="/machineDetails/:id" element ={<UpdateMachanic/>}/>  
+
+          <Route path="/mAdd" element ={<ADDmachin/>}/>  
+          <Route path="/mDetails" element ={<Machines/>}/>
+          <Route path="/mDetails/:id" element ={<UpdateMachine/>}/>
+
+          <Route path="/uDetails" element ={<Utilitis/>}/>  
+          <Route path="/uAdd" element ={<AddUtility/>}/> 
+          <Route path="/uDetails/:id" element ={<UpdateUtility/>}/> 
+           
+           {/*imashi part */}
+          <Route path="/add" element={<Add url={url}/>}/>
+          <Route path="/list" element={<List url={url}/>}/>
+          <Route path="/edit/:id" element={<EditProduct/>}/>
         </Routes>
       </div>
     </div>

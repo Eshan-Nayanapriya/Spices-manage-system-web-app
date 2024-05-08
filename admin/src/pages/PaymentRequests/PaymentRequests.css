@@ -130,13 +130,14 @@ td{
 
 .payment-request-table .des{
   padding: 5px;
-  max-width: 70px;
   text-align: left;
+  max-width: 150px;
 
 }
 
 .iddd{
   font-size: 12px;
+  max-width: 100px;
  
 }
 

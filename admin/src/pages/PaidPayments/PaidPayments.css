@@ -28,12 +28,12 @@
 }
   
   .popup{
-  background-color: #ffeedc; 
+  background-color: #eaeaea; 
   border-radius: 5px; 
   display: flex; 
   align-items: center; 
   padding: 5px ; 
-  width: 40%; 
+  width: 30%; 
   height: 40px;
   margin-top: 10px;
 
@@ -42,12 +42,11 @@
   .ppi{
     text-align: right;
     font-size: 18px;
-    width: 100px;
+    width: 180px;
     border: none;
     border-radius: 5px;
     padding: 3px;
-    margin-left: 80px;
-    width: 220px;
+    margin-left: 100px;
   }
 
 

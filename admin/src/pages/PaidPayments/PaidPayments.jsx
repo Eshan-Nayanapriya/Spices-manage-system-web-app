@@ -59,9 +59,7 @@ const PaidPayments = () => {
         const filteredReports = request.filter(item => {
           const lowerSearchTerm = searchTerm.toLowerCase();
           return item.section.toLowerCase().includes(lowerSearchTerm) ||
-                 item.role.toLowerCase().includes(lowerSearchTerm) ||
               //   item._id.toLowerCase().includes(lowerSearchTerm) ||
-                 item.status.toLowerCase().includes(lowerSearchTerm) ||
                  item.amount.toString().toLowerCase().includes(lowerSearchTerm) || // Convert amount to string before comparison
                  item.description.toLowerCase().includes(lowerSearchTerm);
         });
@@ -75,6 +73,11 @@ const PaidPayments = () => {
 
       const handleChange = (e) => {
         setSearchTerm(e.target.value); //search bar passing changing values
+        if (e.target.value === "") {
+          setDisplayedRequest(request); 
+        } else {
+          handleSearch(); 
+        }
       }
 
 
@@ -125,7 +128,7 @@ const PaidPayments = () => {
           <br />
           
       <div className="select-month">
-                <label >Search Totals : </label>
+                <label>Search Totals : </label>
                 <select name='month' id='month' onChange={handleMonthChange}>
                 <option value="">Select Month</option>
                 <option value="1">January</option>
@@ -145,7 +148,7 @@ const PaidPayments = () => {
                 {totalAmount !== null && (
                     <div className="popup">
                       <label >Total Paid Amount : </label>
-                      <input className='ppi' type="text" value= {totalAmount.toFixed(2)} />
+                      <input className='ppi' type="text" value= {totalAmount.toFixed(2)} disabled/>
                       </div>
                 )}
             </div>

@@ -18,6 +18,12 @@ import promotionRoute from './routes/promotionRoute.js'
 import SalaryRoutes  from './routes/salaryRoute.js';
 import UserRoutes  from './routes/empuserRoute.js';
 
+//asela
+import router from "./routes/MachanicRoutes.js"
+import routerMc from "./routes/MachineRoutes.js"
+import routerU from "./routes/UtilityRoutes.js"
+//asela
+
 //app config
 const app = express()
 const port = 4000
@@ -47,6 +53,13 @@ app.use("/api/enquirydetails/:id", enquiryRouter);
 
 app.use('/Salary', SalaryRoutes)
 app.use('/User', UserRoutes)
+
+//asela
+app.use("/machanics",router);
+app.use("/machins",routerMc)
+app.use("/utilitis",routerU)
+//asela
+
 
 app.get("/", (req, res) => {
     res.send("API Working")
