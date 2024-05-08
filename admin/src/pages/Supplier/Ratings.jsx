@@ -51,7 +51,7 @@ const Ratings = () => {
   }
 
   function DeleteRating(id) {
-    if (window.confirm("Are you sure you want to delete this rating?")) {
+    if (window.confirm("Are you sure you want to delete this rating ?")) {
       axios
         .delete(`http://localhost:${port}/api/supplier/rating/delete/` + id)
         .then((resp) => {
