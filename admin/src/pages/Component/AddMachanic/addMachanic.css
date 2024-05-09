@@ -1,0 +1,49 @@
+/* Spice Factory theme CSS */
+
+/* Form container */
+.form-container {
+    
+    max-width: 450px;
+    margin: 0 auto;
+    background-color: #cecdc9; 
+    border-radius: 5px;
+    padding: 60px;
+  }
+  
+  /* Form label */
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold; /* Make labels bold */
+  }
+  
+  /* Form input fields */
+  .form-input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+  }
+  
+  /* Form button */
+  .form-button {
+    background-color: #4CAF50; /* Green color for button */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* Form button hover effect */
+  .form-button:hover {
+    background-color: #45a049; /* Darker green color on hover */
+  }
+  
+
+  .fd{
+   
+    height: 100%;
+  }

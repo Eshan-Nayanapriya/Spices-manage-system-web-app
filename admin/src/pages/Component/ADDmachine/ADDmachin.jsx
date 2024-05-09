@@ -89,7 +89,7 @@ export default function ADDmachin() {
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="mRapiredDate">Machine Repaired Date:</label>
+            <label htmlFor="mRapiredDate">Date:</label>
             <br />
             <input
               type="date"
@@ -108,7 +108,7 @@ export default function ADDmachin() {
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="efficiency">Machine Efficiency:</label>
+            <label htmlFor="efficiency">Machine Efficiency(%):</label>
             <br />
             <input
               type="text"

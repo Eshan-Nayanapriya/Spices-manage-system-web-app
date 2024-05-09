@@ -66,7 +66,7 @@ function AddUtility() {
           <br></br>
           <div>
 
-          <form onSubmit={handleSubmit} style={{ border: '5px solid #ccc', backgroundColor: '#C9C09E', padding: '20px', borderRadius: '10px', width: '500px' }}>
+          <form onSubmit={handleSubmit} style={{ border: '5px solid #ccc',backgroundColor:'#F5F3EC', padding: '40px', borderRadius: '10px', width: '500px' ,height:'400px'}}>
   <table style={{ borderCollapse: 'collapse', width: '100%' }}>
     <tbody>
       <tr style={{ borderBottom: '1px solid #ccc' }}>
