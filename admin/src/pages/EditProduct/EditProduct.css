@@ -33,6 +33,7 @@ hr {
 .form-group input[type="text"],
 .form-group input[type="number"],
 .form-group input[type="file"],
+.form-group textarea,
 .form-group select {
     width: 100%;
     padding: 8px;

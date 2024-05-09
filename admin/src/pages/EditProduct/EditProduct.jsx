@@ -12,6 +12,7 @@ const EditProduct = () => {
     
     const [formData, setFormData] = useState({
         name: '',
+        quantity:'',
         description: '',
         price: '',
         category: '',
@@ -28,6 +29,7 @@ const EditProduct = () => {
                 const { data } = response.data;
                 setFormData({
                     name: data.name,
+                    quantity:data.quantity,
                     description: data.description,
                     price: data.price,
                     category: data.category,
@@ -60,9 +62,10 @@ const EditProduct = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { name, description, price, category, image } = formData;
+        const { name,quantity ,description, price, category, image } = formData;
         const formDataToSend = new FormData();
         formDataToSend.append('name', name);
+        formDataToSend.append('quantity',quantity);
         formDataToSend.append('description', description);
         formDataToSend.append('price', price);
         formDataToSend.append('category', category);
@@ -89,26 +92,28 @@ const EditProduct = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='add-product'>
             <h1>Edit Product</h1>
             <hr />
-            <br />
-            <br />
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
+                <div className="addproduct-itemfield">
                    <label htmlFor="name">Name:</label>
                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
                 </div>
-                <div className="form-group">
-                <label htmlFor="description">Description:</label>
-                <input type="text" id="description" name="description" value={formData.description} onChange={handleChange} />
+                <div className="addproduct-itemfield">
+                    <label htmlFor="quantity">Quantity:</label>
+                    <input type="text" id="quantity" name="quantity" value={formData.quantity} onChange={handleChange} />
                 </div>
-                <div className="form-group">
+                <div className="addproduct-itemfield">
+                 <label htmlFor="description">Description:</label>
+                <textarea type="text" id="description" name="description" value={formData.description} onChange={handleChange} />
+                </div>
+                <div className="addproduct-itemfield">
                 <label htmlFor="price">Price:</label>
                 <input type="number" id="price" name="price" value={formData.price} onChange={handleChange} />
                 </div>
                 
-                <div className="form-group">
+                <div className="addproduct-itemfield">
                 <label htmlFor="">Product category:</label>
               <select onChange={handleChange} name="category"value={formData.category}>
                 <option value="Powder">Powder</option>
@@ -123,7 +128,7 @@ const EditProduct = () => {
                 <label htmlFor="category">Category:</label>
                 <input type="text" id="category" name="category" value={formData.category} onChange={handleChange} />
                 </div>*/}
-                <div className="form-group">
+                <div className="addproduct-itemfield">
                 <label className="upload-area">
                   {formData.image ? (
                      <img src={`http://localhost:4000/images/`+formData.image} alt="Uploaded" className="uploaded-image" value={formData} />
@@ -133,7 +138,7 @@ const EditProduct = () => {
                   <input type="file" id="image" name="image" onChange={handleImageChange} hidden />
                 </label>
                 </div>
-                <div className="form-group">
+                <div className="addproduct-btn">
                     <br />
                 <button type="submit">Save Changes</button>
                 </div>

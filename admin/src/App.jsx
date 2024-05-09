@@ -49,6 +49,7 @@ import UpdateUtility from './pages/Component/UpdateUtility/UpdateUtility';
 import EditProduct from './pages/EditProduct/EditProduct.jsx'
 import Report from './pages/Report/Report.jsx'
 
+
 const App = () => {
 
   const url = "http://localhost:4000"
@@ -119,9 +120,10 @@ const App = () => {
            
            {/*imashi part */}
           <Route path="/add" element={<Add url={url}/>}/>
-          <Route path="/list" element={<List url={url}/>}/>
+          <Route path="/list"  element={<List url={url}/>}/>
           <Route path="/edit/:id" element={<EditProduct/>}/>
           <Route path="/report" element={<Report url={url}/>}/>
+          
         </Routes>
       </div>
     </div>

@@ -50,6 +50,7 @@ const Report = ({ url }) => {
           <p>Category</p>
           <p>Description</p>
           <p>Price</p>
+          <p>Quantity</p>
         </div>
         <div className="listproductallproducts">
           <hr />
@@ -60,6 +61,7 @@ const Report = ({ url }) => {
               <p>{item.category}</p>
               <p>{item.description}</p>
               <p>{item.price}</p>
+              <p>{item.quantity}</p>
             </div>
             <hr />
             </>

@@ -39,7 +39,7 @@
   }
   .listproductformatmain {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr  ;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
     gap: 65px;
     width: 100%;
     padding: 20px 0px;
@@ -50,7 +50,7 @@
   
   .listproductformat_main {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr  ;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
     gap: 65px;
     width: 100%;
     padding: 20px 0px;

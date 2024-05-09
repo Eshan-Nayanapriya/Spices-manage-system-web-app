@@ -1,4 +1,4 @@
-.container {
+.add-product {
     width: 600px;
     margin: 0 auto;
     margin-top: 50px;
@@ -6,81 +6,77 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: #f2c177;
-    /*height: auto; /* Increased height */
-}
-.container h1{
+  }
+  
+  .add-product h1 {
     margin-left: 190px;
     color: #333;
-}
-hr {
+  }
+  
+  hr {
     border: none;
     border-top: 1px solid #ccc;
     margin-bottom: 20px;
-}
-.form-group {
+  }
+  
+  .addproduct-itemfield {
     margin-bottom: 15px;
-    
-}
-
-.form-group label {
-    display: block;
-    font-weight: 500;
+  }
+  
+  /*.addproduct-itemfield p {
     margin-bottom: 5px;
-}
-.form-group label :hover{
-    cursor: pointer;
-}
-.form-group textarea{
-    width: 556px;
-    height: 35px;
-    border: none;
-}
-.form-group input[type="text"],
-.form-group input[type="number"],
-.form-group input[type="file"],
-.form-group select {
+    font-weight: bold;
+  }*/
+  
+  .addproduct-itemfield textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 3px;
     font-size: 16px;
-}
-.form-group select {
+  }
+  
+  .addproduct-itemfield select,
+  .addproduct-itemfield input[type="text"],
+  .addproduct-itemfield input[type="number"],
+  .addproduct-itemfield input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  
+  .addproduct-itemfield select {
     background-color: #fff;
     color: #333;
-}
-.form-group button {
+  }
+  
+  .addproduct-btn button {
     padding: 10px 20px;
     background-color: #ff6200d1;
     color: #fff;
     border: none;
-    width: 200px;
-    margin-left: 120px;
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    
-}
-
-.form-group button:hover {
+    width: 200px;
+    margin-left: 300px;
+  }
+  
+  .addproduct-btn button:hover {
     background-color: #dc6a19f5;
-}
-
-.loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
+  }
+  
+  .uploaded-image {
+    width: 100px;
     height: 100px;
-}
-
-.loading-text {
-    font-size: 18px;
-    font-weight: bold;
-}
-.uploaded-image {
-    width: 100px; /* Increased width for the uploaded image */
-    height: 100px; /* Increased height for the uploaded image */
     object-fit: cover;
-    border-radius: 10px; /* Rounded corners for the uploaded image */
-}
-
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+  }
+  

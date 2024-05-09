@@ -9,6 +9,7 @@ const addFood = async (req, res, next) => {
     const food = new foodmodel({
         name: req.body.name,
         description: req.body.description,
+        quantity:req.body.quantity,
         price: req.body.price,
         category: req.body.category,
         image: image_filename
@@ -51,10 +52,11 @@ const removeFood = async (req,res)=>{
 const editFood = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { name, description, price, category } = req.body;
+        const { name,quantity, description, price, category } = req.body;
 
         let updateData = {
             name,
+            quantity,
             description,
             price,
             category,

@@ -12,8 +12,8 @@
   
   .listproduct-format-main {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
-    gap: 65px;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
+    gap: 5px;
     width: 100%;
     padding: 20px 0px;
     color: #454545;
@@ -22,6 +22,7 @@
     
   }
   
+
   .listproduct-format-main p {
     text-align: center;
   }
@@ -42,7 +43,7 @@
 
   .listproduct-format {
     
-    align-items: center;
+    
     font-weight: 500;
     
   }
@@ -148,4 +149,46 @@
   cursor: pointer;
 }
 
-  
+.confirmation-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.confirmation-message h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: rgb(255, 254, 254);
+  background-color: rgba(221, 85, 40, 0.984); /* Transparent red background */
+}
+
+.confirmation-message-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.confirmation-message-buttons button {
+  margin: 0 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirmation-message-buttons .confirm-button {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.confirmation-message-buttons .cancel-button {
+  background-color: #f44336;
+  color: #fff;
+}

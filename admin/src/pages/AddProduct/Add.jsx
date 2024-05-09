@@ -12,6 +12,7 @@ const Add = ({url}) => {
   const [data, setData]= useState({
     name: "",
     description: "",
+    quantity:"",
     price: "",
     category : "Powder"
   })
@@ -27,6 +28,7 @@ const Add = ({url}) => {
     const formData = new FormData();
     formData.append( "name", data.name)
     formData.append( "description", data.description)
+    formData.append( "quantity", data.quantity)
     formData.append( "price", Number(data.price))
     formData.append( "category", data.category)
     formData.append( "image", image)
@@ -35,6 +37,7 @@ const Add = ({url}) => {
       setData({
         name: "",
         description: "",
+        quantity:"",
         price: "",
         category : "Powder"
       })
@@ -51,23 +54,25 @@ const Add = ({url}) => {
 
 
   return (
-    <div className='container'>
+    <div className='add-product'>
       <h1>Add Product</h1>
       <hr />
-      <br />
-      <form  onSubmit={onSubmitHandler}>
-          
-          <div className="form-group">
-          <label htmlFor="name">Product Name:</label>
+      <form  onSubmit={onSubmitHandler}> 
+          <div className="addproduct-itemfield">
+          <p>Product Name:</p>
             <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here'/>
           </div>
-          <div className="form-group">
+          <div className="addproduct-itemfield">
+          <label htmlFor="quantity">Product Quantity:</label>
+            <input onChange={onChangeHandler} value={data.quantity} type="text" name='quantity' placeholder='Type here'/>
+          </div>
+          <div className="addproduct-itemfield">
           <label htmlFor="description">Product Description:</label>
             <textarea onChange={onChangeHandler} value={data.description} name="description" rows="6" placeholder='Write content here' required></textarea>
           </div>
           
-            <div className="form-group">
-            <label htmlFor="">Product category:</label>
+            <div className="addproduct-itemfield">
+            <p>Product category:</p>
               <select onChange={onChangeHandler} name="category">
                 <option value="Powder">Powder</option>
                 <option value="Pieces">Pieces</option>
@@ -78,20 +83,20 @@ const Add = ({url}) => {
 
               </select>
             </div>
-            <div className="form-group">
-            <label htmlFor="price">Product Price:</label>
+            <div className="addproduct-itemfield">
+            <p>Product Price:</p>
               <input onChange={onChangeHandler} value={data.price} type="Number" name='price' placeholder='LKR'/>
             </div>
           
-          <div className="form-group">
-            <label >Product Image:</label>
+          <div className="addproduct-itemfield">
+            <p >Product Image:</p>
             <label htmlFor="image" >
               <img className='uploaded-image'src={image?URL.createObjectURL(image):upload_area} alt="" />
             </label>
             <input onChange={(e)=>setImage(e.target. files[0])}type="file" id='image' hidden required/>
           </div>
           
-          <div className="form-group">
+          <div className="addproduct-btn">
           <button type='submit'>ADD</button>
           </div>
       </form>
