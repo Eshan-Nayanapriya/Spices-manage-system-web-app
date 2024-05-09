@@ -20,6 +20,16 @@ export default function ADDmachin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const efficiency = parseFloat(inputs.efficiency); // Convert efficiency to a float value
+
+  // Check if efficiency is a number and within the range of 0 to 100
+  if (isNaN(efficiency) || efficiency < 0 || efficiency > 100) {
+    alert('Efficiency must be a number between 0 and 100.');
+    return;
+  }
+
+
     console.log(inputs);
     sendRequest().then(() => history('/mDetails'));
   };
@@ -38,7 +48,8 @@ export default function ADDmachin() {
     <div>
       <Nav />
       <center>
-        <h1>ADD Machine Form</h1>
+        <h1>ADD MACHINE</h1>
+        <br></br>
         <form
           onSubmit={handleSubmit}
           style={{
@@ -52,23 +63,33 @@ export default function ADDmachin() {
           <div style={{ marginBottom: '20px' }}>
             <label htmlFor="mType">Machine Type:</label>
             <br />
-            <input
-              type="text"
-              name="mType"
-              onChange={handleChange}
-              required
-              value={inputs.mType}
-              style={{
-                width: '100%',
-                padding: '5px',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-              }}
-            />
+
+            <select
+    name="mType"
+    onChange={handleChange}
+    required
+    value={inputs.mType}
+    style={{
+        width: '100%',
+        padding: '5px',
+        borderRadius: '5px',
+        border: '1px solid #ccc',
+    }}
+>
+    <option value="">Select Machine Type</option>
+    <option value="Cleaning Machines">Cleaning Machines</option>
+    <option value="Sorting Machines">Sorting Machines</option>
+    <option value="Grinding Machines">Grinding Machines</option>
+    <option value="Packaging Machines">Packaging Machines</option>
+    <option value="Labeling Machines">Labeling Machines</option>
+    <option value="Quality Control Machines">Quality Control Machines</option>
+</select>
+
+            
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="mRapiredDate">Machine Repaired Date:</label>
+            <label htmlFor="mRapiredDate">Date:</label>
             <br />
             <input
               type="date"
@@ -82,15 +103,17 @@ export default function ADDmachin() {
                 borderRadius: '5px',
                 border: '1px solid #ccc',
               }}
+              
             />
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="efficiency">Machine Efficiency:</label>
+            <label htmlFor="efficiency">Machine Efficiency(%):</label>
             <br />
             <input
               type="text"
               name="efficiency"
+              placeholder='input pracentage'
               onChange={handleChange}
               required
               value={inputs.efficiency}

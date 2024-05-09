@@ -62,58 +62,62 @@ function AddUtility() {
       <Nav />
       <div>
         <center>
-          <h1>Add Utility</h1>
+          <h1>ADD UTILITY</h1>
+          <br></br>
           <div>
-            <form onSubmit={handleSubmit} style={{ border: '5px solid #ccc', backgroundColor: '#DBF7F0', padding: '20px', borderRadius: '10px', width: '500px' }}>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>DATE:</td>
-                    <td>
-                      <input type="date" onChange={handleChange} name="uDate" value={inputs.uDate} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Water Bill:</td>
-                    <td>
-                      <input type="text" onChange={handleChange} name="uWater" value={inputs.uWater} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Electricity Bill:</td>
-                    <td>
-                      <input type="text" onChange={handleChange} name="uElectricity" value={inputs.uElectricity} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Mechanic Name:</td>
-                    <td>
-                      <input type="text" onChange={handleChange} name="uMachanic_01_Name" value={inputs.uMachanic_01_Name} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Amount:</td>
-                    <td>
-                      <input type="text" onChange={handleChange} name="uMachanic_01_Amount" value={inputs.uMachanic_01_Amount} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Bank & Branch:</td>
-                    <td>
-                      <input type="text" onChange={handleChange} name="uMachanic_01_bankD" value={inputs.uMachanic_01_bankD} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Account No:</td>
-                    <td>
-                      <input type="text" onChange={handleChange} name="uMachanic_01_accNo" value={inputs.uMachanic_01_accNo} />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <br />
-              <button type="submit">Submit</button>
-            </form>
+
+          <form onSubmit={handleSubmit} style={{ border: '5px solid #ccc',backgroundColor:'#F5F3EC', padding: '40px', borderRadius: '10px', width: '500px' ,height:'400px'}}>
+  <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+    <tbody>
+      <tr style={{ borderBottom: '1px solid #ccc' }}>
+        <td style={{ padding: '10px', textAlign: 'left' }}>DATE:</td>
+        <td style={{ padding: '10px' }}>
+          <input type="date" onChange={handleChange} name="uDate" value={inputs.uDate} />
+        </td>
+      </tr>
+      <tr style={{ borderBottom: '1px solid #ccc' }}>
+        <td style={{ padding: '10px', textAlign: 'left' }}>Water Bill:</td>
+        <td style={{ padding: '10px' }}>
+          <input type="text" onChange={handleChange} name="uWater" value={inputs.uWater} />
+        </td>
+      </tr>
+      <tr style={{ borderBottom: '1px solid #ccc' }}>
+        <td style={{ padding: '10px', textAlign: 'left' }}>Electricity Bill:</td>
+        <td style={{ padding: '10px' }}>
+          <input type="text" onChange={handleChange} name="uElectricity" value={inputs.uElectricity} />
+        </td>
+      </tr>
+      <tr style={{ borderBottom: '1px solid #ccc' }}>
+        <td style={{ padding: '10px', textAlign: 'left' }}>Mechanic Name:</td>
+        <td style={{ padding: '10px' }}>
+          <input type="text" onChange={handleChange} name="uMachanic_01_Name" value={inputs.uMachanic_01_Name} />
+        </td>
+      </tr>
+      <tr style={{ borderBottom: '1px solid #ccc' }}>
+        <td style={{ padding: '10px', textAlign: 'left' }}>Amount:</td>
+        <td style={{ padding: '10px' }}>
+          <input type="text" onChange={handleChange} name="uMachanic_01_Amount" value={inputs.uMachanic_01_Amount} />
+        </td>
+      </tr>
+      <tr style={{ borderBottom: '1px solid #ccc' }}>
+        <td style={{ padding: '10px', textAlign: 'left' }}>Bank & Branch:</td>
+        <td style={{ padding: '10px' }}>
+          <input type="text" onChange={handleChange} name="uMachanic_01_bankD" value={inputs.uMachanic_01_bankD} />
+        </td>
+      </tr>
+      <tr>
+        <td style={{ padding: '10px', textAlign: 'left' }}>Account No:</td>
+        <td style={{ padding: '10px' }}>
+          <input type="text" onChange={handleChange} name="uMachanic_01_accNo" value={inputs.uMachanic_01_accNo} />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+  <button type="submit">Submit</button>
+</form>
+
+            
           </div>
         </center>
       </div>

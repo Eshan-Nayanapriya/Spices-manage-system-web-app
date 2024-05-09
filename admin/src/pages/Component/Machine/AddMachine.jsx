@@ -9,17 +9,21 @@ function AddMachine(props) {
 
   const deleteHandler = async () => {
     await axios.delete(`http://localhost:4000/machins/${_id}`)
-      .then(res => res.data)
-      .then(() => history("/"))
-      .then(() => history("/mDetails"));
+      .then(() => {
+        window.location.reload();
+      })
+      .catch(error => {
+        console.error('Error deleting item:', error);
+      });
   };
+  
 
   return (
     <div>
       <center>
         <table style={{ borderCollapse: 'collapse', width: '50%', border: '1px solid #ccc', borderRadius: '5px' }}>
           <tbody>
-            <tr>
+            <tr style={{backgroundColor:'#DBDEE5'}}>
               <td style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>Machine ID</td>
               <td style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>{_id}</td>
             </tr>
@@ -27,7 +31,7 @@ function AddMachine(props) {
               <td style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>Machine Type</td>
               <td style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>{mType}</td>
             </tr>
-            <tr>
+            <tr style={{backgroundColor:'#DBDEE5'}}>
               <td style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>Repaired Date</td>
               <td style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>{mRapiredDate}</td>
             </tr>
@@ -36,7 +40,7 @@ function AddMachine(props) {
               <td style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>{efficiency}</td>
             </tr>
             <tr>
-              <td colSpan="2" style={{ textAlign: 'center', paddingTop: '20px' }}>
+              <td colSpan="2" style={{ textAlign: 'center', paddingTop: '20px' ,backgroundColor:'#DBDEE5'}}>
                 <Link to={`/mDetails/${_id}`}>
                   <button style={{ backgroundColor: 'blue', color: 'white', padding: '8px 16px', borderRadius: '5px', marginRight: '10px' }}>Update</button>
                 </Link>
@@ -48,7 +52,12 @@ function AddMachine(props) {
         <br /><br /><br />
       </center>
     </div>
+  
+
+    
   );
 }
 
 export default AddMachine;
+
+//

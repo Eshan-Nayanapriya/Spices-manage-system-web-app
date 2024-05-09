@@ -19,10 +19,15 @@ function Utility(props) {
   const history = useNavigate();
 
   const deleteHandler = async () => {
-    await axios.delete(`http://localhost:4000/utilitis/${_id}`).then((res) => res.data);
-    history('/');
-    history('/uDetails');
+    await axios.delete(`http://localhost:4000/utilitis/${_id}`)
+      .then(() => {
+        window.location.reload(); // Refresh the page after deletion
+      })
+      .catch(error => {
+        console.error('Error deleting item:', error);
+      });
   };
+  
 
   return (
     <div>

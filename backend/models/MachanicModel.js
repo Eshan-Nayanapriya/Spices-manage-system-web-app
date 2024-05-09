@@ -15,6 +15,7 @@ const machanicSchema= new Schema({
     phone:{
         type :Number,
         require:true,
+        length:10
         
        
 
