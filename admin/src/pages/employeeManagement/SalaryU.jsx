@@ -58,13 +58,11 @@ function SalaryU() {
 
     return (
         <div style={{ 
-            backgroundImage: `url('../res/bg2.JPG')`,
-            backgroundSize: 'cover', 
-            backgroundPosition: 'center',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             height: '100vh',
+            width:'120%',
             fontFamily: 'Arial, sans-serif',
             padding: '20px'
         }}>
@@ -131,31 +129,31 @@ function SalaryU() {
                     }}>
                         <thead>
                             <tr>
-                                <th>empID</th>
-                                <th>Month</th>
-                                <th>Basic Salary</th>
-                                <th>Total OT hours</th>
-                                <th>OT Rate</th>
-                                <th>Bonus</th>
-                                <th>Total Salary</th>
-                                <th>Account Number</th>
-                                <th>Bank</th>
-                                <th>Action</th>
+                                <th style={{ padding: '10px' }}>empID</th>
+                                <th style={{ padding: '10px' }}>Month</th>
+                                <th style={{ padding: '10px' }}>Basic Salary</th>
+                                <th style={{ padding: '10px' }}>Total OT hours</th>
+                                <th style={{ padding: '10px' }}>OT Rate</th>
+                                <th style={{ padding: '10px' }}>Bonus</th>
+                                <th style={{ padding: '10px' }}>Total Salary</th>
+                                <th style={{ padding: '10px' }}>Account Number</th>
+                                <th style={{ padding: '10px' }}>Bank</th>
+                                <th style={{ padding: '10px' }}>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {filteredSalaries.map((salaryItem, index) => (
                                 <tr key={index}>
-                                    <td>{salaryItem.empID}</td>
-                                    <td>{salaryItem.month}</td>
-                                    <td>{salaryItem.basicSalary}</td>
-                                    <td>{salaryItem.totalOTHours}</td>
-                                    <td>{salaryItem.otRate}</td>
-                                    <td>{salaryItem.bonus}</td>
-                                    <td>{salaryItem.totalSalary}</td>
-                                    <td>{salaryItem.accountNumber}</td>
-                                    <td>{salaryItem.bank}</td>
-                                    <td>
+                                    <td style={{ padding: '10px' }}>{salaryItem.empID}</td>
+                                    <td style={{ padding: '10px' }}>{salaryItem.month}</td>
+                                    <td style={{ padding: '10px' }}>{salaryItem.basicSalary}</td>
+                                    <td style={{ padding: '10px' }}>{salaryItem.totalOTHours}</td>
+                                    <td style={{ padding: '10px' }}>{salaryItem.otRate}</td>
+                                    <td style={{ padding: '10px' }}>{salaryItem.bonus}</td>
+                                    <td style={{ padding: '10px' }}>{salaryItem.totalSalary}</td>
+                                    <td style={{ padding: '10px' }}>{salaryItem.accountNumber}</td>
+                                    <td style={{ padding: '10px' }}>{salaryItem.bank}</td>
+                                    <td style={{ padding: '10px' }}>
                                         <a href={`/updatesal/${salaryItem._id}`} style={{ 
                                             marginRight: '10px', 
                                             padding: '5px 10px', 
@@ -185,8 +183,8 @@ function SalaryU() {
                 }}>Download Report</button>
             </div>
         </div>
-        
     );
+    
 }
 
 export default SalaryU;
