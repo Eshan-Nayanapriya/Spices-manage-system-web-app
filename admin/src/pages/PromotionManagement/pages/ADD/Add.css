@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+.promotion-add{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  background: white;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
+}
+
+.head-line{
+  margin-left: max(2vw,5px);
+  margin-top: 25px;
+}
+
+.flex-col{
+  gap: 50px;
+  padding-left: 2%;
+}
+
+.promotion-img-upload img{
+  width: 120px;
+}
+
+.add-promotion-name, .add-product-name, .add-promotion-description{
+  width: max(40%,280px);
+}
+
+.add-promotion-name input, .add-product-terms textarea, .add-promotion-description textarea{
+  padding: 10px;
+}
+
+.add-category{
+  display: flex;
+  gap: 30px;
+}
+
+.add-category select, .add-category input{
+  max-width: 120px;
+  padding: 10px;
+}

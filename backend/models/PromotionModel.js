@@ -1,27 +1,15 @@
-//assign mongoose to variable
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const promotionSchema = new mongoose.Schema({
-    id : {
-        type : String,
-        required : true //validation the name is must fill then the backend check and execute
-    },
-    discount : {
-        type : Number,
-        required: true
-    },
-    date : {
-        type : Date,
-        required: true
-    },
-    image : {
-        type : String,
-        required: true
-    }
-});
+    name: {type: "string",required: true},
+    itemName: {type: "string",required: true},
+    description: {type: "string",required: true},
+    discount: {type: "number",required: true},
+    promoimage: {type: "string",required: true},
+    validDate: {type: "string",required: true},
+    termsAndCondition: {type: "string",required: true}
+})
 
-//create table in database what value inserted
-const PromotionModel = mongoose.models.promotion || mongoose.model('Promotion', promotionSchema); //firtst value use to to database document(table name) second name use to declated variable name
+const promotionModel = mongoose.models.promotion || mongoose.model("promotion",promotionSchema);
 
-//export module to use in the routed
-export default PromotionModel;
+export default promotionModel;
