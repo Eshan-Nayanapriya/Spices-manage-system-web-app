@@ -11,6 +11,7 @@ import { toast } from 'react-toastify'
 const add = ({url}) => {
 
   const [promoimage, setImage] = useState(false);
+  const [itemSuggestions, setItemSuggestions] = useState([]);
   const [data, setData] = useState({
     name: "",
     itemName: "",
@@ -23,8 +24,41 @@ const add = ({url}) => {
   const onChangeHandler = (event) =>{
     const name = event.target.name;
     const value = event.target.value;
-    setData(data=>({...data,[name]:value}))
+
+    setData(prevData => ({ ...prevData, [name]: value }));
+    if (name === 'itemName') {
+      fetchItemSuggestions(value);
+    }
   }
+
+  const fetchItemSuggestions = async (itemName) => {
+    try {
+      if (!itemName.trim()) {
+        // If input field is empty, hide the item list
+        setItemSuggestions([]);
+        return;
+      }
+      const response = await axios.get(`${url}/api/food/list`);
+      if (response.data.success) {
+        const filteredItems = response.data.data.filter(item => {
+          // Assuming item has a property `name` that holds the name of the item
+          return item.name.toLowerCase().includes(itemName.toLowerCase());
+        });
+        setItemSuggestions(filteredItems);
+      } else {
+        setItemSuggestions([]);
+      }
+    } catch (error) {
+      console.error("Error fetching item suggestions", error);
+      setItemSuggestions([]);
+    }
+  };
+  
+
+  const selectItem = (itemName) => {
+    setData(prevData => ({ ...prevData, itemName }));
+    setItemSuggestions([]);
+  };
 
   const onSubmitHandler = async (event) =>{
     event.preventDefault();
@@ -79,6 +113,17 @@ const add = ({url}) => {
         <div className="add-product-name flex-col">
           <p>Item name</p>
           <input onChange={onChangeHandler} value={data.itemName} type="text" name='itemName' placeholder='Type here'/>
+          <div className="suggestions">
+          {itemSuggestions.length > 0 && (
+            <ul className="item-suggestions">
+              {itemSuggestions.map((item, index) => (
+                <li key={index} onClick={() => selectItem(item.name)}>
+                  {item.name}
+                </li>
+              ))}
+            </ul>
+          )}
+          </div>
         </div>
         <div className="add-promotion-description flex-col">
           <p>Promotion description</p>

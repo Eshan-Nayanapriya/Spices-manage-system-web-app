@@ -78,4 +78,6 @@ const editFood = async (req, res, next) => {
     }
 }
 
+
+
 export {addPromotion,listPromotion,removePromotion}
