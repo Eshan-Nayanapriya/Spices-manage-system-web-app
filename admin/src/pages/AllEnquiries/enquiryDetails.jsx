@@ -41,18 +41,59 @@ function EnquiryDetails() {
         const doc = new jsPDF();
         doc.setTextColor(0, 0, 0); // Set text color to black
         doc.setFontSize(12); // Set font size to 12px
-        
-        
     
-        // Add content to the PDF with specified styling
-        doc.text(`Product: ${enquiry.product}`, 50, 10);
-        doc.text(`Customer Name: ${enquiry.name}`, 10, 20);
-        doc.text(`Contact Number: 0${enquiry.phone}`, 10, 30);
-        doc.text(`Email: ${enquiry.email}`, 10, 40);
-        doc.text(`Enquiry: ${enquiry.description}`, 10, 50);
+        // Calculate position for the title
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const textWidth = doc.getStringUnitWidth("Customer Enquiry Report") * doc.internal.getFontSize() / doc.internal.scaleFactor;
+        const xOffset = (pageWidth - textWidth) / 2;
+    
+        // Add title in bold text
+        doc.setFont("bold");
+        doc.text("Customer Enquiry Report", xOffset, 10);
+    
+        // Reset font to normal
+        doc.setFont("normal");
+    
+        // Add enquiry details
+        const enquiryLines = doc.splitTextToSize(`Product: ${enquiry.product}\n\nCustomer Name: ${enquiry.name}\n\nContact Number: 0${enquiry.phone}\n\nEmail: ${enquiry.email}\n\nEnquiry:\n\n ${enquiry.description}`, 180);
+        doc.text(enquiryLines, 10, 30);
+    
+        // Calculate the y-coordinate for the start of the table
+        const tableStartY = 30 + (enquiryLines.length * 5) + 10;
+    
+        // Add table
+        const tableData1 = [
+            ["Checked by", "Checked Date","Signature"],
+            ["", "", ""]
+             // Second row with blank cells
+        ];
+        doc.autoTable({
+            startY: tableStartY,
+            head: tableData1,
+            body: [],
+            margin: { top:30 },
+            styles: { halign: "center" },
+        didDrawCell: (data) => {
+            // Draw lines for each cell
+            doc.setLineWidth(0.1);
+            doc.line(data.cell.x, data.cell.y, data.cell.x + data.cell.width, data.cell.y); // Top line
+            doc.line(data.cell.x, data.cell.y + data.cell.height, data.cell.x + data.cell.width, data.cell.y + data.cell.height); // Bottom line
+            doc.line(data.cell.x, data.cell.y, data.cell.x, data.cell.y + data.cell.height); // Left line
+            doc.line(data.cell.x + data.cell.width, data.cell.y, data.cell.x + data.cell.width, data.cell.y + data.cell.height); // Right line
+        }
+        });
     
         doc.save('enquiry_details.pdf');
     };
+    
+
+    
+    
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        return new Date(dateString).toLocaleDateString('en-GB', options);
+    };
+
     return (
         <div className="enquiriesD">
             <div className="title">
@@ -64,13 +105,14 @@ function EnquiryDetails() {
                     <p className='head'>Contact Number:</p>
                     <p>0{enquiry.phone}</p>
                     <p className='head'>Email:</p>
-                    <p>{enquiry.email}</p>
+                    <a href={`mailto:${enquiry.email}`}>{enquiry.email}</a>
                 </div>
                 <div className="Details">
                     {enquiry.product}
-                    <div className="des">{enquiry.description}</div>
+                    
+                    <p>{formatDate(enquiry.date)}</p> <hr />  <br />
+                    <div className="des">{enquiry.description}</div><br />
                     <div className="controls"> <button className="button-link" onClick={handleDelete}>Delete</button>
-                    <button className="button-link" onClick={() => navigate(`/reply/${enquiry._id}`)}>Reply</button>
                         <button className="button-link" onClick={handleDownloadPDF}>Download PDF</button></div>
 
                 </div>

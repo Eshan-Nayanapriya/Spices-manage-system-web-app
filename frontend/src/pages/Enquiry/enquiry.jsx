@@ -15,17 +15,20 @@ const Enquiry = () => {
 
     const { food_list } = useContext(StoreContext);
 
+
     const Submit = (e) => {
         e.preventDefault();
         if (!product) {
             alert('Please select a product.');
             return;
         }
-        axios.post("http://localhost:4000/api/enquiry/add", { name, phone, email, product, description })
+        axios.post("http://localhost:4000/api/enquiry/add", { name, phone, email, product, description})
             .then(result => {
                 console.log(result);
                 alert("Enquiry submitted successfully! We will Reply You Soon");
                 setSubmitted(true);
+
+
             })
             .catch(err => console.log(err));
     };
@@ -33,17 +36,11 @@ const Enquiry = () => {
     const handleProductChange = (e) => {
         const selectedProduct = e.target.value;
         setProduct(selectedProduct);
-        // Find the selected product in the food list and set its image URL
-        const selectedProductInfo = food_list.find(food => food.name === selectedProduct);
-        if (selectedProductInfo) {
-            setSelectedProductImage(selectedProductInfo.imageUrl);
-        } else {
-            setSelectedProductImage(null);
-        }
+ 
     };
 
     if (submitted) {
-        return <Navigate to="/" />;
+        return <Navigate to="/en/:id" />;
     }
 
     return (
@@ -69,14 +66,14 @@ const Enquiry = () => {
                                 {food_list.map(food => (
                                     <option key={food._id} value={food.name}>
                                         {food.name} {food.category}
+                                      
                                     </option>
                                 ))}
                             </select>
-                            {selectedProductImage && (
-                                <img src={selectedProductImage} alt="Selected Product" className="selected-product-image" />
-                            )}
+                        
                             <label>Description</label>
                             <textarea onChange={(e) => setDescription(e.target.value)} name="Description" id="" cols="50" rows="10"></textarea>
+                            
                         </div>
                         <button className="enquiry-but" type='submit'>Submit</button>
                     </div>

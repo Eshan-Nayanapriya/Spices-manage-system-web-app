@@ -47,7 +47,7 @@ app.use("/api/supplier",supplierRouter);
 
 app.use("/api/enquiry",enquiryRouter)
 app.use("/api/displayenquiry", enquiryRouter); 
-app.use("/api/enquirydetails/:id", enquiryRouter); 
+app.use("/api/enquirydetails", enquiryRouter); 
 
 //sadan
 app.use("/api/promotion",promotionRouter)
