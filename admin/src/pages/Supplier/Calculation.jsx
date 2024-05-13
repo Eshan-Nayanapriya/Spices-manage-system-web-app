@@ -16,7 +16,6 @@ function Calculation() {
         <div  
   style={{ 
     marginLeft: '450px',
-    backgroundImage: `url('../res/spice10.jpg')`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     display: "flex",
@@ -29,7 +28,7 @@ function Calculation() {
 >
   <div 
     style={{
-      backgroundColor: "#000",
+      backgroundColor: "tomato",
       borderRadius: "10px",
       padding: "20px",
     }}

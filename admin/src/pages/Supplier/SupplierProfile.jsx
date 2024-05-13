@@ -35,7 +35,7 @@ const SupplierProfile = () => {
             padding: "50px",
           }}
         >
-          <h1 style={{ color: "#fff", margin: "10" }}>Supplier Profile</h1>
+          <h1 style={{ color: "#fff", marginLeft: "180px" }}>Supplier Profile</h1>
         </div>
         <div style={{ padding: "100px" }}>
           
