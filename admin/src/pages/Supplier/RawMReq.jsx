@@ -47,7 +47,16 @@ const SupplierProfile = () => {
         <td>{request.price}</td>
         <td>
           <button
-            className="btn btn-successs" style={{ backgroundColor:"#007bff",color:"#fff",borderRadius:"2px"}}
+            className="btn btn-successs" 
+            
+            style={{
+              backgroundColor: "tomato",
+              color: "white",
+              border: "none",
+              padding: "10px 20px",
+              borderRadius: "5px",
+              cursor: "pointer"
+            }}
             onClick={() => {
               acceptRequest(index);
             }}
@@ -62,34 +71,34 @@ const SupplierProfile = () => {
   return (
     <div
       style={{
-        width:"1000px",
+        width: "2100px",
         height: "100vh",
         backgroundColor: "#fff",
-        
+
       }}
     >
       <div
         style={{
           backgroundColor: "#394a6d",
           marginLeft: "100px",
-          marginRight:"-300px",
-          height:"600px",
-          marginTop:"50px",
+          marginRight: "-300px",
+          height: "600px",
+          marginTop: "50px",
           borderRadius: "20px",
           margin: "80px",
           padding: "100px",
           gap: "5px",
-          display:"block"
+          display: "block"
         }}
       >
         <div style={{ textAlign: "center", marginBottom: "5px" }}>
           <h1
             style={{
-              
+
               color: "#fff",
               backgroundColor: "grey",
               padding: "10px",
-              width: "640px",
+              width: "1140px",
               borderRadius: "10px",
             }}
           >
@@ -106,9 +115,9 @@ const SupplierProfile = () => {
               overflowX: "auto",
             }}
           >
-            <table className="table table-dark" style={{ width: "100%", borderSpacing: "10px",textAlign:"center"}}>
+            <table className="table table-dark" style={{ width: "100%", borderSpacing: "10px", textAlign: "center" }}>
               <thead style={{
-                padding:"300px"
+                padding: "300px"
               }}>
                 <tr>
                   <th>Item</th>
@@ -118,7 +127,7 @@ const SupplierProfile = () => {
                   <th>Actions</th>
                 </tr>
               </thead>
-              <tbody>{renderTableData() }</tbody>
+              <tbody>{renderTableData()}</tbody>
             </table>
 
           </div>

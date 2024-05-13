@@ -38,14 +38,35 @@ const RawMReqRes = () => {
           <td className={TCellStyle}>{Request.deadLine}</td>
           <td className={TCellStyle}>{Request.price}</td>
           <td className={TCellStyle}>
-          <button onClick={handleSubmit} className="btn btn-success m-2" style={{ padding: '8px 16px', fontSize: '9px' }}>
+          <button onClick={handleSubmit} 
+          style={{
+            backgroundColor: "green",
+            color: "white",
+            border: "none",
+            padding: "10px 10px",
+            borderRadius: "5px",
+            cursor: "pointer",
+            marginBottom: "10px"
+            
+          }}>
   Submit
 </button>
 
 <button
+style={{
+  backgroundColor: "red",
+  color: "white",
+  border: "none",
+  padding: "10px 10px",
+  borderRadius: "5px",
+  cursor: "pointer",
+  marginBottom: "10px",
+  marginLeft:"10px"
+  
+}}
   onClick={() => deleteRequest(Request._id)}
   className="btn btn-danger m-2"
-  style={{ padding: '8px 16px', fontSize: '9px', backgroundColor: 'red', borderColor: 'red' }}
+  
 >
   Delete
 </button>
@@ -55,7 +76,7 @@ const RawMReqRes = () => {
       ));
     }
   };
-
+  
   const handleSubmit = () => {
     window.location =
       "https://docs.google.com/forms/d/e/1FAIpQLSehfvgh0QMqWBBw9mfyEglCmrfQGx4Zhx6F8mthyKyinHT-TA/viewform?usp=sf_link";
@@ -88,7 +109,7 @@ const RawMReqRes = () => {
     <div style={{ display: "flex", justifyContent: "center"  }}>
       <div style={{ backgroundColor: "rgba(0, 0, 0, 0.25)", borderRadius: "5px", padding: "20px" }}>
         <div>
-          <table style={{ borderCollapse: "collapse", border: "100px solid #fff" }}>
+          <table style={{ borderCollapse: "collapse", border: "100px solid #fff",textAlign: "center" }}>
             <thead style={{ backgroundColor: "rgba(255, 255, 255, 0.25)", color: "#000", border: "20px solid #fff" }}>
               <tr>
                 <th style={{ padding: "50px" }}>Item</th>
