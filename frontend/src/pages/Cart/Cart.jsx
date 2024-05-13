@@ -16,6 +16,7 @@ const Cart = () => {
         <div className="cart-items-title">
           <p>Items</p>
           <p>Title</p>
+          <p>discount</p>
           <p>Price</p>
           <p>Quantity</p>
           <p>Total</p>
@@ -26,8 +27,8 @@ const Cart = () => {
         {food_list.map((item)=>{
           if(cartItems[item._id]>0){
             return (
-               // eslint-disable-next-line react/jsx-key
-               <div>
+              // eslint-disable-next-line react/jsx-key
+              <div>
               <div className="cart-items-title cart-items-item">
                   <img src={url+"/images/"+item.image} alt="" />
                   <p>{item.name}</p>
