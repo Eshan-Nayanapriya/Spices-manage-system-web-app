@@ -125,6 +125,7 @@ const App = () => {
            
            {/*imashi part */}
           <Route path="/add" element={<Add url={url}/>}/>
+          <Route path="/"  element={<List url={url}/>}/>
           <Route path="/list"  element={<List url={url}/>}/>
           <Route path="/edit/:id" element={<EditProduct/>}/>
           <Route path="/report" element={<Report url={url}/>}/>
