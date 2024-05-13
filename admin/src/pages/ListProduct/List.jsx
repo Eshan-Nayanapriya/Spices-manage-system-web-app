@@ -94,7 +94,7 @@ const List = ({ url }) => {
             <p>{item.name}</p>
             <p>{item.quantity}</p>
             <p>{item.category}</p>
-            <p>{item.description}</p>
+            <p className='descr'>{item.description}</p>
             <p>{item.price}</p>
             <Link to={`/edit/${item._id}`}><img src={edit_icon} alt="" className="listproduct-edit-icon" /></Link>
             <img onClick={() => removeFood(item._id)} src={remove_icon} className="listproduct-remove-icon" alt="remove" />
