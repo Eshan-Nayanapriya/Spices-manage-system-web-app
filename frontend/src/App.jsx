@@ -9,13 +9,6 @@ import LoginPopup from './components/LoginPopup/LoginPopup';
 import Verify from './pages/Verify/Verify';
 import MyOrders from './pages/MyOrders/MyOrders';
 import Enquiry from './pages/Enquiry/enquiry'
-
-import Endetails from './pages/Enquiry/displayEnquiries'
-
-import ProductDetails from './components/ProductDetails/ProductDetails';
-import Profile from './components/User Profile/profile'
-
-
 import Endetails from './pages/Enquiry/displayEnquiries'
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import Profile from './components/User Profile/profile'
