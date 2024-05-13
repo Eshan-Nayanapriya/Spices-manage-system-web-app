@@ -15,7 +15,7 @@ const SupplierProfile = () => {
         alignItems: "center",
         width:"2000px",
         height: "100vh",
-        background: "linear-gradient(139deg, #000, #c3cfe2)",
+        background: "#fff",
       }}
     >
       <div 
@@ -30,8 +30,9 @@ const SupplierProfile = () => {
         <div 
           style={{
             backgroundColor: "#394a6d",
-            borderTopLeftRadius: "10px",
-            borderTopRightRadius: "10px",
+            borderTopLeftRadius: "20px",
+            borderRadius:"20px",
+            borderTopRightRadius: "20px",
             padding: "50px",
           }}
         >
@@ -44,7 +45,7 @@ const SupplierProfile = () => {
               onClick={() => navigate("/Supplier/RawMreq")} 
               style={{
                 padding: "30px 200px",
-                margin: "5px",
+                margin: "15px",
                 backgroundColor: "tomato",
                 color: "#fff",
                 border: "none",
@@ -58,7 +59,7 @@ const SupplierProfile = () => {
               onClick={() => navigate("/Supplierpro/RawMreqres")} 
               style={{
                 padding: "30px 175px",
-                margin: "5px",
+                margin: "15px",
                 backgroundColor: "tomato",
                 color: "#fff",
                 border: "none",
@@ -72,7 +73,7 @@ const SupplierProfile = () => {
               onClick={() => navigate("/AddPaymentRequest")} 
               style={{
                 padding: "30px 192px",
-                margin: "5px",
+                margin: "15px",
                 backgroundColor: "tomato",
                 color: "#fff",
                 border: "none",
