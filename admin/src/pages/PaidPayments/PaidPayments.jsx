@@ -32,11 +32,6 @@ const PaidPayments = () => {
         }
     };
 
-
-
-
-
-
     useEffect(() => {
         axios.get('http://localhost:4000/api/paidPayments/list')  //display details
             .then(response => {
@@ -56,42 +51,45 @@ const PaidPayments = () => {
     });
 
     const handleSearch = () => {
-        const filteredReports = request.filter(item => {
-          const lowerSearchTerm = searchTerm.toLowerCase();
-          return item.section.toLowerCase().includes(lowerSearchTerm) ||
-                 item.role.toLowerCase().includes(lowerSearchTerm) ||
-              //   item._id.toLowerCase().includes(lowerSearchTerm) ||
-                 item.status.toLowerCase().includes(lowerSearchTerm) ||
-                 item.amount.toString().toLowerCase().includes(lowerSearchTerm) || // Convert amount to string before comparison
-                 item.description.toLowerCase().includes(lowerSearchTerm);
-        });
-        setDisplayedRequest(filteredReports);
-      
-        if (!filteredReports.length) {
-          toast.error('No results found for your search.', { position: "bottom-center"}); // Display message for empty results
-        }
-      
+      const filteredReports = request.filter(item => {
+        const lowerSearchTerm = searchTerm.toLowerCase();
+        const sectionWords = item.section.toLowerCase().split(" "); // Split the section into words
+      return sectionWords.some(word => word.startsWith(lowerSearchTerm))|| // Check if any word starts with the search term
+          item.amount.toString().startsWith(lowerSearchTerm)||
+          new Date(item.createdAt).toLocaleDateString().includes(lowerSearchTerm)
+      });
+      setDisplayedRequest(filteredReports);
+  
+      if (!filteredReports.length) {
+        toast.error('No results found for your search.', { position: "bottom-center" }); // Display message for empty results
       }
+  
+    }
 
       const handleChange = (e) => {
         setSearchTerm(e.target.value); //search bar passing changing values
+        if (e.target.value === "") {
+          setDisplayedRequest(request); 
+        } else {
+          handleSearch(); 
+        }
       }
 
 
   return (
-      <div className="box">
+      <div className="pbox">
       <h1>PAID PAYMENTS</h1>
 
-      <div className="head-line">
+      <div className="ppayment-request-head-line">
       
-      <div className="search-bar">
-      <input className='search-bar'   type='text' name='search' value={searchTerm} onChange={handleChange}  autoComplete="off" placeholder='Search here...'/>
-      <button className='search-btn'onClick={handleSearch} > Search </button>
+      <div className="psearch-barpb">
+      <input className='psearch-barpb'   type='text' name='search' value={searchTerm} onChange={handleChange}  autoComplete="off" placeholder='Search by section,amount or date'/>
+      <button className='psearch-btnpb'onClick={handleSearch} > Search </button>
       </div>
 
       </div>
       <div  ref={ComponentsRef} className="print">
-      <div className='payment-r-table'>
+      <div className='ppayment-r-table'>
       <br />
       <table border={1} cellPadding={10} cellSpacing={0}>
         <thead>
@@ -124,8 +122,8 @@ const PaidPayments = () => {
       </table>
           <br />
           
-      <div className="select-month">
-                <label >Search Totals : </label>
+      <div className="pselect-month">
+                <label>Search Totals : </label>
                 <select name='month' id='month' onChange={handleMonthChange}>
                 <option value="">Select Month</option>
                 <option value="1">January</option>
@@ -141,20 +139,20 @@ const PaidPayments = () => {
                 <option value="11">November</option>
                 <option value="12">December</option>
                 </select>
-                <button className='tot-btn' style={{ marginLeft: "20px" }} onClick={handleGetTotalAmount}>Get Total Amount</button>
+                <button className='ptot-btn' style={{ marginLeft: "20px" }} onClick={handleGetTotalAmount}>Get Total Amount</button>
                 {totalAmount !== null && (
-                    <div className="popup">
-                      <label >Total Paid Amount : </label>
-                      <input className='ppi' type="text" value= {totalAmount.toFixed(2)} />
+                    <div className="ppopup">
+                      <label >Total paid amount:</label>
+                      <input className='pppi' type="text" value= {totalAmount.toFixed(2)} disabled/>
                       </div>
                 )}
             </div>
             </div>
             </div>
 
-      <Link to={"/paymentRequests"}><button className='rpt-btn'>Back</button></Link>         
-      <button onClick={handlePrint} style={{ marginLeft: "20px" }} className='rpt-btn'>Download Report</button>
-      <Link to={"/Pdfupload"}><button style={{ marginLeft: "20px" }} className='rpt-btn'>Upload Report</button></Link>
+      <Link to={"/paymentRequests"}><button className='pprpt-btn'>Back</button></Link>         
+      <button onClick={handlePrint} style={{ marginLeft: "20px" }} className='pprpt-btn'>Download Report</button>
+      <Link to={"/Pdfupload"}><button style={{ marginLeft: "20px" }} className='pprpt-btn'>Upload Report</button></Link>
     </div>
   )
 }

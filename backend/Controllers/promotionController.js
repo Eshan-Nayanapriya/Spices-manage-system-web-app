@@ -1,69 +1,83 @@
-import PromotionModel from '../models/PromotionModel.js'
+import promotionModel from "../models/PromotionModel.js";
 import fs from 'fs'
 
-//add promotion 
-const addpromotion = async(req,res) => {
-    let image_filename = `${req.file.filename}`;
+//add promotion
+const addPromotion = async (req,res) => {
+    let promoImage_filename = `${req.file.filename}`
 
-    const promotion = new PromotionModel({
-        id: req.body.id,
+    const promotion = new promotionModel({
+        name: req.body.name,
+        itemName: req.body.itemName,
+        description: req.body.description,
         discount: req.body.discount,
-        date: req.body.date,
-        image: image_filename
-    })
+        promoimage: promoImage_filename,
+        validDate: req.body.validDate,
+        quantity: req.body.quantity
+    });
     try {
         await promotion.save();
-        res.json({success: true, message:"Promotion addes success"})
-    } catch (error) {
-        console.log(error)
-        res.json({success: false, message:"Promotion addes failed"})
+        res.json({success:true,message:"Promotion Added"})
+    }catch (error){
+        console.log(error);
+        res.json({success:false,message:"Error"})
     }
 }
 
 //all promotion list
-const listPromotion = async(req, res) => {
-    try {
-        const promotion = await PromotionModel.find({});
-        res.json({success: true, data:promotion})
-    } catch (error) {
+const listPromotion = async (req, res, next) => {
+    try{
+        const promotions = await promotionModel.find({});
+        res.json({success:true,data:promotions})
+    }catch(error){
         console.log(error);
-        res.json({success: false, message:"error"})
+        res.json({success:false,message:"Error"})
     }
 }
 
 //remove promotion
-const removePromotion = async (req,res) => {
-    try {
-        const promotion = await PromotionModel.findById(req.body.id);
-        fs.unlink(`uploads/${promotion.image}`,()=>{})
+const removePromotion = async (req,res)=>{
+    try{
+        const promotions = await promotionModel.findById(req.body.id);
+        fs.unlink(`promoupload/${promotions.promoimage}`,()=>{})
 
-        await PromotionModel.findByIdAndDelete(req.body.id);
-        res.json({success: true, message:"Promotion removed success"})
-    } catch (error) {
-      console.log(error);
-      res.json({success: false, message:"Error with removing promotion"})
-    }
+        await promotionModel.findByIdAndDelete(req.body.id);
+        res.json({success:true,message:"Promotion Removed"})
+    }catch(error){
+        console.log(error);
+        res.json({success:false,message:"Error"})
+}
 }
 
-const updatePromotion = async (req, res) => {
+// Edit food item
+const editFood = async (req, res, next) => {
     try {
-        const { id, discount, date, image } = req.body;
-        const promotion = await PromotionModel.findById(id);
-        
-        promotion.discount = discount;
-        promotion.date = date;
-        if (image) {
-            fs.unlink(`uploads/${promotion.image}`, () => {});
-            promotion.image = image;
+        const { id } = req.params;
+        const { name, description, price, category } = req.body;
+
+        let updateData = {
+            name,
+            description,
+            price,
+            category,
+        };
+
+        if (req.file) {
+            let image_filename = `${req.file.filename}`;
+            updateData.image = image_filename;
         }
 
-        await promotion.save();
-        res.json({ success: true, message: "Promotion updated successfully" });
+        const updatedFood = await foodmodel.findByIdAndUpdate(id, updateData, { new: true });
+        if (!updatedFood) {
+            return res.status(404).json({ success: false, message: "Food not found" });
+        }
+
+        res.json({ success: true, data: updatedFood });
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error updating promotion" });
+        res.status(500).json({ success: false, message: "Error updating food" });
     }
 }
 
 
-export {addpromotion, listPromotion, removePromotion, updatePromotion}
+
+export {addPromotion,listPromotion,removePromotion}

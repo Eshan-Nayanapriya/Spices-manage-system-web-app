@@ -8,11 +8,13 @@
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+    border-radius: 5px;
 }
 
 .search {
     background-color: #2196ef; 
     color: white;
+    width: 90px;
 }
 
 .report {

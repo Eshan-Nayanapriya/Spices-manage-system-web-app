@@ -12,8 +12,8 @@ import supplierRouter from './routes/supplierRoutes.js'
 
 import enquiryRouter from "./routes/EnquiryRoute.js"
 
-
-import promotionRoute from './routes/promotionRoute.js'
+//sadan
+import promotionRouter from './routes/promotionRoute.js'
 
 import SalaryRoutes  from './routes/salaryRoute.js';
 import UserRoutes  from './routes/empuserRoute.js';
@@ -44,12 +44,13 @@ app.use("/api/user",userRouter)
 app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)
 app.use("/api/supplier",supplierRouter);
-app.use("/api/promotion",promotionRoute)
 
 app.use("/api/enquiry",enquiryRouter)
 app.use("/api/displayenquiry", enquiryRouter); 
 app.use("/api/enquirydetails/:id", enquiryRouter); 
 
+//sadan
+app.use("/api/promotion",promotionRouter)
 
 app.use('/Salary', SalaryRoutes)
 app.use('/User', UserRoutes)

@@ -29,11 +29,18 @@ const Navbar = ({setShowLogin}) => {
         {!token?<p></p>
         : <a href="/enquiry" onClick={()=> setMenu("enquiry")} className={menu==="enquiry"?"active":""}>Enquiry</a>
           }
+          {!token?<p></p>
+        : <a href="/myorders" onClick={()=> setMenu("myorders")} className={menu==="myorders"?"active":""}>My orders</a> /**/
+          }
        
       </ul>
 
       <div className="navbar-right">
-          <img src={assets.search_icon} alt="" />
+
+      <div className="search-bar">
+      <input className='search-bartxt'   type='text' name='search'  autoComplete="off" placeholder='Search here...'/>
+      <img className="srch" src={assets.search_icon} alt="" />
+      </div>
         <div className="navbar-search-icon">
           <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link>
           <div className={getTotalCartAmount()===0?"":"dot"}></div>
@@ -42,9 +49,9 @@ const Navbar = ({setShowLogin}) => {
          :  <div className="navbar-profile">
                 <img src={assets.profile_icon} alt="" />
                 <ul className="navbar-profile-dropdown">
-                  <li onClick={()=>navigate('/myorders')}>
+                  <li onClick={()=>navigate('/profile')}>
                       <img src={assets.bag_icon} alt="" />
-                      <p>Orders</p>
+                      <p>My Profile</p>
                   </li>
                 
                   

@@ -7,7 +7,7 @@ export default function Nav() {
     <div>
       <ul className='home-ul'>
         <li className='home-ll'>
-          <Link to="/" className="active home-a">
+          <Link to="/factoryManagement" className="active home-a">
             <h1>Factory</h1>
           </Link>
         </li>

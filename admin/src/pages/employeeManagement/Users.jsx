@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'; 
 import { Link } from "react-router-dom"; 
+import '../employeeManagement/emp.css'
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -54,62 +55,63 @@ function Users() {
   }
 
   return (
-    <div style={{ 
-      backgroundImage: `url('../res/bg1.JPEG')`,
-      backgroundSize: 'cover', 
-      backgroundPosition: 'center',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh'  
-    }}>
-      <div className="w-75 bg-secondary rounded p-3">
-        <h1 className="mb-0 text-center font-weight-bold text-black">Employee Summary</h1>
-        <Link to="/empcreate" className='btn btn-success'>Add Employee</Link> <br></br><br></br>
-        <Link to="/emplogin" className='btn btn-success'>login</Link>
-        <div style={{textAlign: 'center', marginBottom: '10px'}}>
-          <input 
-            type="text" 
-            value={searchTerm} 
-            onChange={handleChange} 
-            placeholder="Search by Name, Email, Age, Job Roll"  
-            style={{ padding: '10px', marginRight: '5px', width: '400px' }} 
-          />
-          <button 
-            onClick={handleSearch} 
-            className='btn btn-primary' 
-            style={{ padding: '10px', minWidth: '100px' }} 
-          >
-            Search
-          </button>
-        </div>
-
-        <div className="row" style={{ maxHeight: '60vh', overflowY: 'auto' }}>
-          {filteredUsers.map((user, index) => (
-            <div className="col-md-4 mb-4" key={index}>
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">{user.name}</h5>
-                  <p className="card-text">Password: {user.password}</p>
-                  <p className="card-text">EmpID: {user._id}</p>
-                  <p className="card-text">Email: {user.email}</p>
-                  <p className="card-text">Age: {user.age}</p>
-                  <p className="card-text">Job Role: {user.jobroll}</p>
-                  <p className="card-text">Bank: {user.bank}</p>
-                  <p className="card-text">Account Number: {user.accountNumber}</p>
-
-                  <div className="btn-group" role="group">
-                    <Link to={`/empupdate/${user._id}`} className='btn btn-success'>Update</Link>
-                    <button onClick={() => handleDelete(user._id)} className='btn btn-danger'>Delete</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <Link to="/salaryy" className='btn btn-warning'>Salary</Link>
+    <div className="employee-summary-container">
+    <div className="employee-summary-content">
+      <h1 className="employee-summary-heading">Employee Summary</h1>
+      <Link to="/empcreate" className='btn btn-success'>Add Employee</Link>
+      <Link to="/emplogin" className='btn btn-success'>Login</Link>
+      <div className="search-container">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={handleChange}
+          placeholder="Search by Name, Email, Age, Job Role"
+          className="search-input"
+        />
+        <button
+          onClick={handleSearch}
+          className='search-btn'
+        >
+          Search
+        </button>
       </div>
+
+      <table className="user-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Password</th>
+            <th>EmpID</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Job Role</th>
+            <th>Bank</th>
+            <th>Account Number</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredUsers.map((user, index) => (
+            <tr key={index}>
+              <td>{user.name}</td>
+              <td>{user.password}</td>
+              <td>{user._id}</td>
+              <td>{user.email}</td>
+              <td>{user.age}</td>
+              <td>{user.jobroll}</td>
+              <td>{user.bank}</td>
+              <td>{user.accountNumber}</td>
+              <td>
+                <Link to={`/empupdate/${user._id}`} className='btn btn-success'>Update</Link>
+                <button onClick={() => handleDelete(user._id)} className='btn btn-danger'>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <Link to="/salaryy" className='btn btn-warning'>Salary</Link>
     </div>
+  </div>
   );
 }
 

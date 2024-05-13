@@ -25,7 +25,10 @@ import PaidPayments from './pages/PaidPayments/PaidPayments';
 import Pdfupload from './pages/PaidReportUpload/PaidReportUpload'; 
 import DisplayEnquiries from './pages/AllEnquiries/displayEnquiries.jsx'
 import EnquiryDetails from './pages/AllEnquiries/enquiryDetails.jsx';
+
 import PromotionManagement from './pages/PromotionManagement/PromotionManagement'
+import PromotionAdd from './pages/PromotionManagement/pages/ADD/add'
+import PromotionList from './pages/PromotionManagement/pages/LIST/list'
 
 import Users from './pages/employeeManagement/Users.jsx';
 import UpdateUser from './pages/employeeManagement/UpdateUser.jsx';
@@ -91,6 +94,8 @@ const App = () => {
 
           {/*sadan part */}
           <Route path="/PromotionManagement" element={<PromotionManagement url={url}/>}/>
+          <Route path="/PromotionAdd" element={<PromotionAdd url={url}/>}/>
+          <Route path="/PromotionList" element={<PromotionList url={url}/>}/>
 
 
           {/*torin part */}
