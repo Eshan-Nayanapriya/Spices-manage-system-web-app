@@ -53,7 +53,7 @@ function UpdateMachanic() {
         </div>
         <div style={{ marginBottom: '15px' }}>
           <label style={{ display: 'block', marginBottom: '5px' }}>Phone:</label>
-          <input type='text' name="phone" onChange={handleChange} value={inputs.phone || ''} style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }} required />
+          <input  type='text' name="phone" onChange={handleChange} value={'0'+inputs.phone || ''} style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}required />
         </div>
         <div style={{ marginBottom: '15px' }}>
           <label style={{ display: 'block', marginBottom: '5px' }}>Address:</label>

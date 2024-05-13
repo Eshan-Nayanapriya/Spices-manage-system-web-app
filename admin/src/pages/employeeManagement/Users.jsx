@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link } from "react-router-dom"; 
 import '../employeeManagement/emp.css'
 
+
+
 function Users() {
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
@@ -58,8 +60,22 @@ function Users() {
     <div className="employee-summary-container">
     <div className="employee-summary-content">
       <h1 className="employee-summary-heading">Employee Summary</h1>
-      <Link to="/empcreate" className='btn btn-success'>Add Employee</Link>
-      <Link to="/emplogin" className='btn btn-success'>Login</Link>
+      <Link to="/empcreate" className='btn btn-success'style={{ 
+                                            marginRight: '10px', 
+                                            padding: '5px 10px', 
+                                            backgroundColor: '#28a745',
+                                            color: '#fff',
+                                            textDecoration: 'none',
+                                            borderRadius: '4px'
+                                        }}>Add Employee</Link>
+      <Link to="/emplogin" className='btn btn-success'style={{ 
+                                            marginRight: '10px', 
+                                            padding: '5px 10px', 
+                                            backgroundColor: '#28a745',
+                                            color: '#fff',
+                                            textDecoration: 'none',
+                                            borderRadius: '4px'
+                                        }}>Login</Link>
       <div className="search-container">
         <input
           type="text"
@@ -102,14 +118,33 @@ function Users() {
               <td>{user.bank}</td>
               <td>{user.accountNumber}</td>
               <td>
-                <Link to={`/empupdate/${user._id}`} className='btn btn-success'>Update</Link>
-                <button onClick={() => handleDelete(user._id)} className='btn btn-danger'>Delete</button>
+                <Link to={`/empupdate/${user._id}`} className='btn btn-success' style={{ 
+                                            marginRight: '10px', 
+                                            padding: '5px 10px', 
+                                            backgroundColor: '#28a745',
+                                            color: '#fff',
+                                            textDecoration: 'none',
+                                            borderRadius: '4px'
+                                        }}>Update</Link>
+                <button onClick={() => handleDelete(user._id)} className='btn btn-danger'style={{ 
+                                            padding: '5px 10px', 
+                                            backgroundColor: '#dc3545',
+                                            color: '#fff',
+                                            textDecoration: 'none',
+                                            borderRadius: '4px'
+                                        }}>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
-      <Link to="/salaryy" className='btn btn-warning'>Salary</Link>
+      </table><br></br>
+      <Link to="/salaryy" className='btn btn-warning'style={{ 
+                                            padding: '5px 10px', 
+                                            backgroundColor: '#FF8C00',
+                                            color: '#fff',
+                                            textDecoration: 'none',
+                                            borderRadius: '4px'
+                                        }}>Salary</Link>
     </div>
   </div>
   );

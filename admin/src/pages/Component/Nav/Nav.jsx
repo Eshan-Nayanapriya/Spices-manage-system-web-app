@@ -6,11 +6,7 @@ export default function Nav() {
   return (
     <div>
       <ul className='home-ul'>
-        <li className='home-ll'>
-          <Link to="/factoryManagement" className="active home-a">
-            <h1>Factory</h1>
-          </Link>
-        </li>
+        
 
         <li className='home-ll'>
           <Link to="/addMachine" className="active home-a">

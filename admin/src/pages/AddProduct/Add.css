@@ -1,42 +1,82 @@
-.add{
-    width: 70%;
-    margin-left: max(5vw,25px);
+.add-product {
+    width: 600px;
+    margin: 0 auto;
     margin-top: 50px;
-    color: #6d6d6d;
-    font-size: 16px;
-}
-
-.add form{
-    gap: 20px;
-}
-
-.add-img-upload img{
-    width: 120px;
-}
-
-.add-product-name, .add-product-description{
-    width: max(40%,280px);
-}
-
-.add-product-name input, .add-product-description textarea{
-    padding: 10px;
-}
-
-.add-category-price{
-    display: flex;
-    gap: 30px;
-}
-
-.add-category-price select, .add-category-price input{
-    max-width: 120px;
-    padding: 10px;
-}
-
-.add-btn{
-    max-width: 120px;
-    padding: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f2c177;
+  }
+  
+  .add-product h1 {
+    margin-left: 190px;
+    color: #333;
+  }
+  
+  hr {
     border: none;
-    background-color: black;
-    color: white;
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .addproduct-itemfield {
+    margin-bottom: 15px;
+  }
+  
+  /*.addproduct-itemfield p {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }*/
+  
+  .addproduct-itemfield textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  
+  .addproduct-itemfield select,
+  .addproduct-itemfield input[type="text"],
+  .addproduct-itemfield input[type="number"],
+  .addproduct-itemfield input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  
+  .addproduct-itemfield select {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .addproduct-btn button {
+    padding: 10px 20px;
+    background-color: #ff6200d1;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
     cursor: pointer;
-}
+    transition: background-color 0.3s ease;
+    width: 200px;
+    margin-left: 300px;
+  }
+  
+  .addproduct-btn button:hover {
+    background-color: #dc6a19f5;
+    
+  }
+  
+  .uploaded-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+  }
+  

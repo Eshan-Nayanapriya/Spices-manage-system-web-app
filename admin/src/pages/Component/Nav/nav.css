@@ -4,7 +4,7 @@
   padding: 0;
   overflow: hidden;
   background-color: #d2d1ce; /* Vibrant yellow for spice association */
-  border-bottom: 2px solid #b38600; /* Darker border for contrast */
+  border-bottom: 2px solid #c7342c; /* Darker border for contrast */
 }
 
 .home-ll {
@@ -18,13 +18,14 @@
   color: #fffcfc; /* White text */
   text-align: center;
   padding: 14px 16px;
+  font-size: 22px;
   text-decoration: none;
   border-radius: 10px;
-  background-color: #65540a; /* Reddish-brown for spice-like color */
+  background-color: #e95312; /* Reddish-brown for spice-like color */
   margin: 10px;
   transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
 .home-ll h1:hover {
-  background-color: #9c8d1d; /* Darker red on hover */
+  background-color: #8e5948; /* Darker red on hover */
 }
