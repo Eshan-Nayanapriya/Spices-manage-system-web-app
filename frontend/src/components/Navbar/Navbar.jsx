@@ -29,6 +29,9 @@ const Navbar = ({setShowLogin}) => {
         {!token?<p></p>
         : <a href="/enquiry" onClick={()=> setMenu("enquiry")} className={menu==="enquiry"?"active":""}>Enquiry</a>
           }
+          {!token?<p></p>
+        : <a href="/myorders" onClick={()=> setMenu("myorders")} className={menu==="myorders"?"active":""}>My orders</a> /**/
+          }
        
       </ul>
 
