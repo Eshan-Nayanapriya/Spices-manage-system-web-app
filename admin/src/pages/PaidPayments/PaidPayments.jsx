@@ -87,8 +87,8 @@ const PaidPayments = () => {
 
       <div className="head-line">
       
-      <div className="search-bar">
-      <input className='search-bar'   type='text' name='search' value={searchTerm} onChange={handleChange}  autoComplete="off" placeholder='Search here...'/>
+      <div className="search-barpb">
+      <input className='search-barpb'   type='text' name='search' value={searchTerm} onChange={handleChange}  autoComplete="off" placeholder='Search here...'/>
       <button className='search-btn'onClick={handleSearch} > Search </button>
       </div>
 

@@ -62,6 +62,7 @@
   
   
   .head-line {
+    margin-left: -100px;
     display: flex; /* Enable flexbox layout */
     justify-content: space-between; /* Align items horizontally */
   }
@@ -91,7 +92,7 @@
   /*******************************************/
   
   
-  .search-bar {
+  .search-barpb {
     background-color: #f5f5f5; /* Light gray background */ /* Gray border */
     border-radius: 5px; /* Rounded corners */
     display: flex; /* Allow for inline styling of button and input */
@@ -103,7 +104,7 @@
     margin-top: 30px;
   }
   
-  .search-bar input[type='text'] {
+  .search-barpb input[type='text'] {
     margin-bottom: 30px;
     border: none; /* Remove default input border */
     outline: none; /* Remove default focus outline */
@@ -184,7 +185,7 @@
    
   }
   
-  .search-bar{
+  .search-barpb{
     margin-left: 00px;
   }
   
