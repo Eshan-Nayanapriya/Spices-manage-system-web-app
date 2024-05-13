@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import './FoodItem.css'
 import { assets } from '../../assets/frontend_assets/assets'
 import { StoreContext } from '../../context/StoreContext'
+import { Link } from 'react-router-dom'
 
 const FoodItem = ({id,name,price,description,image}) => {
 
@@ -11,6 +12,9 @@ const FoodItem = ({id,name,price,description,image}) => {
     <div className='food-item'>
       <div className="food-item-img-container">
         <img className='food-item-image' src={url+"/images/"+image} alt="" />
+        <div class="middle">
+        <Link style={{textDecoration:'none'}}to={`/product/${id}`}><div class="text">View Product</div></Link>
+        </div>
         {!cartItems[id]
             ?<img className='add' onClick={()=>addToCart(id)} src={assets.add_icon_white} alt=""/>
             :<div className='food-item-counter'>
@@ -25,7 +29,6 @@ const FoodItem = ({id,name,price,description,image}) => {
             <p>{name}</p>
             <img src={assets.rating_starts} alt="" />
         </div>
-        <p className='food-item-desc'>{description}</p>
         <p className='food-item-price'>LKR {price}</p>
       </div>
     </div>
