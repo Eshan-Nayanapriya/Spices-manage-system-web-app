@@ -29,7 +29,14 @@ const StoreConstextProvider = (props)=>{
             if(cartItems[cartAddedItem] > 0){
                 let cartItemInfo = food_list.find((product) => product._id === cartAddedItem);
                 let promotionItem = promotionList.find((promoItem) => promoItem.itemName === cartItemInfo.name);
-                discount = promotionItem.discount *cartAddedItem[cartAddedItem];
+                let cartQuantity = cartItems[cartAddedItem];
+                console.log("cartItemInfo: ", cartItemInfo);
+                console.log("PromotionItem: ", promotionItem);
+                console.log("cartQuantity: ", cartQuantity);
+            
+                if (promotionItem && promotionItem.discount && cartQuantity >= promotionItem.quantity) {
+                    discount += promotionItem.discount;
+                }
             }
         }
         return discount;

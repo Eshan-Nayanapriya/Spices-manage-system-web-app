@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
 
-  const{getTotalCartAmount, token, food_list, cartItems, url} = useContext(StoreContext);
+  const{getTotalCartAmount, token, food_list, cartItems,promotion, url} = useContext(StoreContext);
 
   const[data,setData] = useState({
     firstName:"",
@@ -118,7 +118,7 @@ const PlaceOrder = () => {
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>LKR {getTotalCartAmount()===0?0:getTotalCartAmount()+200}</b>
+              <b>LKR {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 200-(getTotalCartAmount() * promotion()/100)}</b>
             </div>
 
         </div>
