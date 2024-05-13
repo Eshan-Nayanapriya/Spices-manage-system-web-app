@@ -9,7 +9,12 @@ import LoginPopup from './components/LoginPopup/LoginPopup';
 import Verify from './pages/Verify/Verify';
 import MyOrders from './pages/MyOrders/MyOrders';
 import Enquiry from './pages/Enquiry/enquiry'
+<<<<<<< HEAD
 import Endetails from './pages/Enquiry/displayEnquiries'
+=======
+import ProductDetails from './components/ProductDetails/ProductDetails';
+import Profile from './components/User Profile/profile'
+>>>>>>> main
 
 
 const App = () => {
@@ -28,7 +33,12 @@ const App = () => {
         <Route path='/Verify' element={<Verify/>}/>
         <Route path='/myorders' element={<MyOrders/>}/>
         <Route path='/enquiry' element={<Enquiry />}></Route>
+<<<<<<< HEAD
         <Route path='/en/:id' element={<Endetails />}></Route>
+=======
+        <Route exact path="/product/:id" element={<ProductDetails/>} />
+        <Route path='/profile' element={<Profile />}></Route>
+>>>>>>> main
       </Routes>
     </div>
     <Footer/>

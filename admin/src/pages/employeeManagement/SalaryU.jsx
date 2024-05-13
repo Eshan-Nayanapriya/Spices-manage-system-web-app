@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 
+
 function SalaryU() {
     const [salary, setSalary] = useState([]);
     const [filteredSalaries, setFilteredSalaries] = useState([]);
@@ -33,6 +34,7 @@ function SalaryU() {
     }
 
     const ComponentsRef = useRef();
+    
     const handlePrint = useReactToPrint({
         content: () => ComponentsRef.current,
         documentTitle: "Salary Report",
@@ -61,17 +63,20 @@ function SalaryU() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            height: '100vh',
-            width:'120%',
+            height: '100%',
+            width:'100%',
             fontFamily: 'Arial, sans-serif',
             padding: '20px'
         }}>
-            <div ref={ComponentsRef} style={{
-                width: '75%',
-                backgroundColor: '#6c757d',
-                borderRadius: '8px',
-                padding: '20px'
-            }}>
+           <div ref={ComponentsRef} style={{
+    backgroundColor: '#fff',
+    borderRadius: '8px',
+    padding: '20px',
+    width: '100%',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
+}}>
+
+
                 <h1 style={{ 
                     marginBottom: '0', 
                     textAlign: 'center', 
@@ -125,7 +130,8 @@ function SalaryU() {
                 }}>
                     <table style={{ 
                         width: '100%', 
-                        borderCollapse: 'collapse'
+                        borderCollapse: 'collapse',
+                        backgroundColor:'#fff'
                     }}>
                         <thead>
                             <tr>
@@ -143,7 +149,8 @@ function SalaryU() {
                         </thead>
                         <tbody>
                             {filteredSalaries.map((salaryItem, index) => (
-                                <tr key={index}>
+                                <tr key={index}> 
+                               
                                     <td style={{ padding: '10px' }}>{salaryItem.empID}</td>
                                     <td style={{ padding: '10px' }}>{salaryItem.month}</td>
                                     <td style={{ padding: '10px' }}>{salaryItem.basicSalary}</td>
@@ -159,13 +166,15 @@ function SalaryU() {
                                             padding: '5px 10px', 
                                             backgroundColor: '#28a745',
                                             color: '#fff',
-                                            textDecoration: 'none'
+                                            textDecoration: 'none',
+                                            borderRadius: '4px'
                                         }}>Update</a>
                                         <a href="/salaryy" style={{ 
                                             padding: '5px 10px', 
                                             backgroundColor: '#dc3545',
                                             color: '#fff',
-                                            textDecoration: 'none'
+                                            textDecoration: 'none',
+                                            borderRadius: '4px'
                                         }} onClick={(e) => handleDelete(salaryItem._id)}>Delete</a>
                                     </td>
                                 </tr>
@@ -176,10 +185,11 @@ function SalaryU() {
                 <br />
                 <button onClick={handlePrint} style={{ 
                     padding: '10px 20px', 
-                    backgroundColor: '#ffc107',
+                    backgroundColor: '#FFA500',
                     color: '#fff',
                     borderRadius: '4px',
-                    border: 'none'
+                    border: 'none',
+                    borderRadius: '4px'
                 }}>Download Report</button>
             </div>
         </div>

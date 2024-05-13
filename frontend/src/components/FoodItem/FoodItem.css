@@ -1,15 +1,24 @@
 .food-item{
-    width: 100%;
-    margin: auto;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px #00000015;
-    transition: 0.3s;
-    animation: fadeIn 1s;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border:none;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+.food-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .food-item-image{
     width: 100%;
-    border-radius: 15px 15px 0px 0px;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+    backface-visibility: hidden;
 }
 
 .food-item-info{
@@ -48,6 +57,11 @@
     position: relative;
 }
 
+.food-item-img-container:hover{
+    transform: scale(1.05);
+    transition: 0.6s;
+}
+
 .food-item-img-container .add{
     width: 35px;
     position: absolute;
@@ -72,3 +86,31 @@
 .food-item-counter img{
     width: 30px;
 }
+.middle {
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.181);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.food-item:hover .food-item-image{
+    opacity: 0.8;
+}
+.food-item:hover .middle{
+    opacity: 1;
+}
+.text {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
