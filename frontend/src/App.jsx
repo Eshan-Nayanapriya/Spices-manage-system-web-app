@@ -9,10 +9,10 @@ import LoginPopup from './components/LoginPopup/LoginPopup';
 import Verify from './pages/Verify/Verify';
 import MyOrders from './pages/MyOrders/MyOrders';
 import Enquiry from './pages/Enquiry/enquiry'
-
 import Endetails from './pages/Enquiry/displayEnquiries'
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import Profile from './components/User Profile/profile'
+
 
 
 
@@ -34,8 +34,15 @@ const App = () => {
         <Route path='/enquiry' element={<Enquiry />}></Route>
 
         <Route path='/en/:id' element={<Endetails />}></Route>
+
         <Route exact path="/product/:id" element={<ProductDetails/>} />
         <Route path='/profile' element={<Profile />}></Route>
+
+
+        <Route path='/en/:id' element={<Endetails />}></Route>
+        <Route exact path="/product/:id" element={<ProductDetails/>} />
+        <Route path='/profile' element={<Profile />}></Route>
+
 
       </Routes>
     </div>
