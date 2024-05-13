@@ -70,7 +70,7 @@ const RawMReqRes = () => {
     display:"flex",
     alignItems: "center",
     height: "100vh",
-    backgroundColor: "tomato",
+    backgroundColor: "rgba(255, 255, 255, 0.25)",
   }}
 >
   <div 
