@@ -78,7 +78,6 @@ const List = ({ url }) => {
       </div>
       <Link to={'/report'}><h1 className="rep">Generate Report</h1></Link>
       <div className="listproduct-format-main">
-        <p>ID</p>
         <p>Image</p>
         <p>Name</p>
         <p>Quantity</p>
@@ -91,7 +90,6 @@ const List = ({ url }) => {
         <hr />
         {list.map((item, index) => {
           return<><div key={index} className='listproduct-format-main listproduct-format'>
-            <p>{item._id}</p>
             <img src={`${url}/images/${item.image}`} alt="" className="listproduct-product-icon" />
             <p>{item.name}</p>
             <p>{item.quantity}</p>
