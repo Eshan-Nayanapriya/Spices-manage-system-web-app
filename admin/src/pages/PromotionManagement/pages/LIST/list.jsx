@@ -23,6 +23,21 @@ const list = ({url}) => {
     } 
   }
 
+  const handleSearchPromo = () => {
+    const filteredReports = request.filter(item => {
+      const lowerSearchTerm = searchTerm.toLowerCase();
+      return item.section.toLowerCase().includes(lowerSearchTerm) ||
+          //   item._id.toLowerCase().includes(lowerSearchTerm) ||
+             item.name.toString().toLowerCase().includes(lowerSearchTerm);
+    });
+    setDisplayedRequest(filteredReports);
+  
+    if (!filteredReports.length) {
+      toast.error('No results found for your search.', { position: "bottom-center"}); // Display message for empty results
+    }
+  
+  }
+
   const removepromotion = async (promotionId) => {
     console.log(promotionId);
     const response = await axios.post(`${url}/api/promotion/remove`,{id:promotionId});
@@ -41,11 +56,11 @@ const list = ({url}) => {
   return (
     <div className='list-promotion'>
       <PromoNav/>
-      <div className="head-line">
+      <div className="head-linep">
         <h1>All Promotions List</h1>
-        <div className="search-bar">
-          <input className='search-bar-int'  placeholder='Search here...'/>
-          <button className='search-btn'  > Search </button>
+        <div className="search-barp">
+          <input className='search-bar-intp'  placeholder='Search here...'/>
+          <button className='search-btnp' onClick={handleSearchPromo}> Search </button>
         </div>
       </div>
       
@@ -62,21 +77,22 @@ const list = ({url}) => {
         </div>
         <div className="listpromotion-allpromotions">
           <hr />
-          {list.map((item,index)=>{
-              return <><div key={index} className='listproduct-format-main listproduct-format' >
-                <img src={`${url}/promoupload/`+item.promoimage}  alt="promotion Image" className="listproduct-product-icon"/>
-                <p>{item.name}</p>
-                <p>{item.itemName}</p>
-                <p>{item.description}</p>
-                <p>{item.discount}</p>
-                <p>{item.validDate}</p>
-                <p>{item.quantity}</p>
-                <Link to={`/edit/${item._id}`}><img src={edit_icon} alt=""  className="listproduct-edit-icon" /></Link>
-                <img onClick={()=>removepromotion(item._id)} src={remove_icon}className="listproduct-remove-icon" />
-                </div>
-                <hr />
-                </>
-          })}
+          {list.map((item) => (
+          <div key={item._id}>
+            <div className='listpromotion-format-main listpromotion-format'>
+              <img src={`${url}/promoupload/${item.promoimage}`} alt="promotion Image" className="listproduct-product-icon"/>
+              <p>{item.name}</p>
+              <p>{item.itemName}</p>
+              <p>{item.description}</p>
+              <p>{item.discount}</p>
+              <p>{item.validDate}</p>
+              <p>{item.quantity}</p>
+              <img src={edit_icon} alt="" className="listproduct-edit-icon" />
+              <img onClick={() => removepromotion(item._id)} src={remove_icon} className="listproduct-remove-icon" />
+            </div>
+            <hr />
+          </div>
+        ))}
         </div>
     </div>
   )

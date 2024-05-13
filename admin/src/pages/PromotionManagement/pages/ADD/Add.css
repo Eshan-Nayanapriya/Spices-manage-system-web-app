@@ -10,7 +10,7 @@
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
 }
 
-.head-line{
+.head-linep{
   margin-left: max(2vw,5px);
   margin-top: 25px;
 }
@@ -32,12 +32,20 @@
   padding: 10px;
 }
 
-.add-category{
+.add-categoryp{
   display: flex;
   gap: 30px;
 }
 
-.add-category select, .add-category input{
+.add-categoryp select, .add-categoryp input{
   max-width: 120px;
   padding: 10px;
+}
+
+.item-suggestions_promo{
+  color: tomato;
+}
+
+.promotion-img-upload img{
+  width: 120px;
 }
