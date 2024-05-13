@@ -22,7 +22,7 @@ const SupplierProfile = () => {
 >
   <div 
     style={{
-      backgroundColor: "rgba(0, 0, 0, 0.75)",
+      backgroundColor: "rgba(5, 8, 2, 0.75)",
       borderRadius: "10px",
       padding: "100px",
     }}
@@ -33,41 +33,8 @@ const SupplierProfile = () => {
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div>
         <div style={{ color: "#fff", textAlign: "center", padding: "20px" }}>
-          <div>
-            <label style={{ padding: "0 10px" }}>Name</label>
-            <br />
-            <input type="text" style={{ padding: "8px", marginLeft: "10px" }} value={SName} />
-            <br />
-            <br />
-            <label style={{ padding: "0 10px" }}>Mobile</label>
-            <br />
-            <input type="text" style={{ padding: "8px", marginLeft: "10px" }} value={SMobile} />
-            <br />
-            <br />
-            <label style={{ padding: "0 10px" }}>Email</label>
-            <br />
-            <input type="text" style={{ padding: "8px", marginLeft: "10px" }} value={SEmail} />
-            <br />
-            <br />
-            <label style={{ padding: "0 10px" }}>Reg. No.</label>
-            <br />
-            <input type="text" style={{ padding: "8px", marginLeft: "10px" }} value={SReg} />
-            <br />
-            <br />
-          </div>
-          <button 
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "tomato",
-              color: "#fff",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              opacity: "1",
-            }}
-          >
-            Edit Details
-          </button>
+          
+          
         </div>
       </div>
       <div style={{ backgroundColor: "rgba(0, 0, 0, 0.25)", borderRadius: "10px", padding: "20px" }}>
