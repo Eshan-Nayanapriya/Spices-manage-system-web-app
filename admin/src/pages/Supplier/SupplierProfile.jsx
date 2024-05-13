@@ -15,24 +15,25 @@ const SupplierProfile = () => {
         alignItems: "center",
         width:"2000px",
         height: "100vh",
-        background: "#fff",
+        background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
       }}
     >
       <div 
         style={{
-          backgroundColor: "#fff",
-          borderRadius: "10px",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          backgroundColor: "grey",
+          
+          
           width: "800px",
+          background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
           
         }}
       >
         <div 
           style={{
             backgroundColor: "#394a6d",
-            borderTopLeftRadius: "20px",
-            borderRadius:"20px",
-            borderTopRightRadius: "20px",
+           
+           
+            borderTopRightRadius: "0px",
             padding: "50px",
           }}
         >
