@@ -7,7 +7,7 @@ const promotionSchema = new mongoose.Schema({
     discount: {type: "number",required: true},
     promoimage: {type: "string",required: true},
     validDate: {type: "string",required: true},
-    termsAndCondition: {type: "string",required: true}
+    quantity: {type: "number",required: true}
 })
 
 const promotionModel = mongoose.models.promotion || mongoose.model("promotion",promotionSchema);

@@ -12,7 +12,7 @@ const addPromotion = async (req,res) => {
         discount: req.body.discount,
         promoimage: promoImage_filename,
         validDate: req.body.validDate,
-        termsAndCondition: req.body.termsAndCondition
+        quantity: req.body.quantity
     });
     try {
         await promotion.save();

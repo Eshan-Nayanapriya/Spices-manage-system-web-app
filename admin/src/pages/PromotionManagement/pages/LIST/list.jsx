@@ -56,7 +56,7 @@ const list = ({url}) => {
           <p>Description</p>
           <p>Discount</p>
           <p>Valid Date</p>
-          <p>Terms And Condition</p>
+          <p>Quantity</p>
           <p>Update</p>
           <p>Delete</p>
         </div>
@@ -69,8 +69,8 @@ const list = ({url}) => {
                 <p>{item.itemName}</p>
                 <p>{item.description}</p>
                 <p>{item.discount}</p>
-                <p>{item.validDatet}</p>
-                <p>{item.termsAndCondition}</p>
+                <p>{item.validDate}</p>
+                <p>{item.quantity}</p>
                 <Link to={`/edit/${item._id}`}><img src={edit_icon} alt=""  className="listproduct-edit-icon" /></Link>
                 <img onClick={()=>removepromotion(item._id)} src={remove_icon}className="listproduct-remove-icon" />
                 </div>

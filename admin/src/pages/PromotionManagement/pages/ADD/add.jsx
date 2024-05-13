@@ -18,7 +18,7 @@ const add = ({url}) => {
     description: "",
     discount: "",
     validDate: "",
-    termsAndCondition: ""
+    quantity: ""
   })
 
   const onChangeHandler = (event) =>{
@@ -68,7 +68,7 @@ const add = ({url}) => {
     formData.append( "description", data.description)
     formData.append( "discount", Number(data.discount))
     formData.append( "validDate", data.validDate)
-    formData.append( "termsAndCondition", data.termsAndCondition)
+    formData.append( "quantity", data.quantity)
     formData.append( "promoimage", promoimage)
     const response = await axios.post(`${url}/api/promotion/addpromotion`,formData);
     if(response.data.success){
@@ -78,7 +78,7 @@ const add = ({url}) => {
         description: "",
         discount: "",
         validDate: "",
-        termsAndCondition: ""
+        quantity: ""
       })
       setImage(false)
       toast.success(response.data.message)
@@ -140,8 +140,8 @@ const add = ({url}) => {
           </div>
         </div>
         <div className="add-product-terms flex-col">
-          <p>Promotion terms and conndition</p>
-          <textarea onChange={onChangeHandler} value={data.termsAndCondition} name="termsAndCondition" rows="6" placeholder='Write content here' required></textarea>
+          <p>Quantity</p>
+          <input onChange={onChangeHandler} value={data.quantity} type="Number" name="quantity" placeholder='Write content here' required/>
         </div>
         <button type='submit' className='add-btn'>ADD</button>
       </form>
