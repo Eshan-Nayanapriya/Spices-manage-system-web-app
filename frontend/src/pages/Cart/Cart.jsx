@@ -16,7 +16,6 @@ const Cart = () => {
         <div className="cart-items-title">
           <p>Items</p>
           <p>Title</p>
-          <p>discount</p>
           <p>Price</p>
           <p>Quantity</p>
           <p>Total</p>
