@@ -6,7 +6,7 @@ import { StoreContext } from '../../context/StoreContext';
 
 const Cart = () => {
 
-  const {cartItems,food_list,removeFromCart, getTotalCartAmount, url} = useContext(StoreContext);
+  const {cartItems,food_list,removeFromCart, getTotalCartAmount, promotion, url} = useContext(StoreContext);
   const navigate = useNavigate();
 
   
@@ -59,7 +59,7 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <p>Discount</p>
-              <p>LKR {getTotalCartAmount()}</p>
+              <p>LKR {promotion()}</p>
             </div>
             <hr />
             <div className="cart-total-details">

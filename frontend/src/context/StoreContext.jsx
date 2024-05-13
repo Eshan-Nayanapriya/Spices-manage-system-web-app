@@ -15,24 +15,21 @@ const StoreConstextProvider = (props)=>{
     const fetchFoodList = async () => {
         const response = await axios.get(url+"/api/food/list")
         setFoodList(response.data.data)
-        console.log(response);
     }
 
     const fetchPromotionList = async () => {
         const response = await axios.get(url + "/api/promotion/listpromotion");
-        if (response.data.success) {
-            setPromotionList(response.data.data);
-        } else {
-            console.error("Error fetching promotion list");
-        }
+        setPromotionList(response.data.data);
+        console.log(response);
     };
 
     const promotion = () => {
         let discount = 0;
-        for (const item in cartItems){
-            console.log(item);
-            if(cartItems[item] > 0){
-                
+        for (const cartAddedItem in cartItems){
+            if(cartItems[cartAddedItem] > 0){
+                let cartItemInfo = food_list.find((product) => product._id === cartAddedItem);
+                let promotionItem = promotionList.find((promoItem) => promoItem.itemName === cartItemInfo.name);
+                discount = promotionItem.discount *cartAddedItem[cartAddedItem];
             }
         }
         return discount;
@@ -94,6 +91,7 @@ const StoreConstextProvider = (props)=>{
         removeFromCart,
         addToCart,
         getTotalCartAmount,
+        promotion,
         url,
         token,
         setToken
