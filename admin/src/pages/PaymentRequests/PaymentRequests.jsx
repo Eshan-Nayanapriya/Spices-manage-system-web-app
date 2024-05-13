@@ -53,10 +53,10 @@ function PaymentRequest() {
   const handleSearch = () => {
     const filteredReports = request.filter(item => {
       const lowerSearchTerm = searchTerm.toLowerCase();
-      return item.section.toLowerCase().includes(lowerSearchTerm) ||
-        //   item._id.toLowerCase().includes(lowerSearchTerm) ||
-        item.createdAt.toLowerCase().includes(lowerSearchTerm) ||
-        item.amount.toString().toLowerCase().includes(lowerSearchTerm); // Convert amount to string before comparison
+      const sectionWords = item.section.toLowerCase().split(" "); // Split the section into words
+    return sectionWords.some(word => word.startsWith(lowerSearchTerm))|| // Check if any word starts with the search term
+        item.amount.toString().startsWith(lowerSearchTerm)||
+        new Date(item.createdAt).toLocaleDateString().includes(lowerSearchTerm)
     });
     setDisplayedRequest(filteredReports);
 
@@ -77,17 +77,17 @@ function PaymentRequest() {
   }
 
   return (
-    <div className='payment-request-table'>
+    <div className='ppayment-request-table'>
       <h1>PAYMENT REQUESTS</h1>
 
-      <div className="payment-request-head-line">
+      <div className="ppayment-request-head-line">
         <Link to={"/AddPaymentRequest"}>
-          <button className='addbutton'>Add Payment Request</button>
+          <button className='pbattaabddbutton'>Add Payment Request</button>
         </Link>
 
-        <div className="search-barbbbb">
-          <input className='search-barbbbb' value={searchTerm} onChange={handleChange} type='text' name='search' autoComplete="off" placeholder='Search here...' />
-          <button className='search-btnbbbb' onClick={handleSearch} > Search </button>
+        <div className="psearch-barbbbb">
+          <input className='psearch-barbbbb' value={searchTerm} onChange={handleChange} type='text' name='search' autoComplete="off" placeholder='Search by section,amount or date' />
+          <button className='psearch-btnbbbb' onClick={handleSearch} > Search </button>
         </div>
 
       </div>
@@ -119,12 +119,12 @@ function PaymentRequest() {
                 <td>{new Date(Item.createdAt).toLocaleDateString()}</td>
                 <td> {Item.status} </td>
 
-                <td className='action-buttons'>
-                  <div className="button-container">
+                <td className='paction-buttons'>
+                  <div className="pbutton-container">
                     <Link to={`/UpdatePaymentRequest/${Item._id}`}>
-                      <button className='update-button'>Update</button>
+                      <button className='pupdate-button'>Update</button>
                     </Link>
-                    <button onClick={() => deleteHandler(Item._id)} className='delete-button'>Delete</button>
+                    <button onClick={() => deleteHandler(Item._id)} className='pdelete-button'>Delete</button>
                   </div>
                 </td>
               </tr>
@@ -133,8 +133,8 @@ function PaymentRequest() {
           </tbody>
         </table>
       </div>
-      <button onClick={handlePrint} className='rpt-btn'>Download Report</button>
-      <Link to={"/PaidPayments"}><button style={{ marginLeft: "20px" }} className='rpt-btn'>Paid Payments</button></Link>
+      <button onClick={handlePrint} className='prpt-btn'>Download Report</button>
+      <Link to={"/PaidPayments"}><button style={{ marginLeft: "20px" }} className='prpt-btn'>Paid Payments</button></Link>
     </div>
 
   );
