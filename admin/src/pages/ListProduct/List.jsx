@@ -70,7 +70,7 @@ const List = ({ url }) => {
 
   return (
     <div className='list-product'>
-      <h1>All Foods List</h1>
+      <h1>All Product List</h1>
       <br />
       <div className="searchbar">
         <input type="text" name='name' value={query} onChange={(e) => handleSearch(e)} placeholder='Search.....' />
@@ -91,8 +91,6 @@ const List = ({ url }) => {
         {list.map((item, index) => {
           return<><div key={index} className='listproduct-format-main listproduct-format'>
             <img src={`${url}/images/${item.image}`} alt="" className="listproduct-product-icon" />
-            <p>{item.image}</p>
-            <p>{url}</p>
             <p>{item.name}</p>
             <p>{item.quantity}</p>
             <p>{item.category}</p>
