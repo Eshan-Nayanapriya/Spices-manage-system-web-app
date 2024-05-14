@@ -40,7 +40,7 @@ const Enquiry = () => {
     };
 
     if (submitted) {
-        return <Navigate to="/en/:id" />;
+        return <Navigate to="/" />;
     }
 
     return (

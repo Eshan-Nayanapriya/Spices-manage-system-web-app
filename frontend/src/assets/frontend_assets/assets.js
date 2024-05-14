@@ -60,6 +60,10 @@ import bag_icon from './bag_icon.png'
 import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
 
+import profile from './CusProfile.png'
+import edtqbtn from './editqicon.png'
+import usericon from './user.png'
+
 export const assets = {   
     logo,
     bot,
@@ -80,7 +84,10 @@ export const assets = {
     profile_icon,
     logout_icon,
     bag_icon,
-    parcel_icon
+    parcel_icon,
+    profile,
+    edtqbtn,
+    usericon
 }
 
 export const menu_list = [
