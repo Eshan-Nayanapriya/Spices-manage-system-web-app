@@ -136,6 +136,10 @@ function SupplyRequest() {
         >
           ADD REQUEST +
         </a>
+
+        <table style={{ width: "250%",textAlign:"center",marginLeft:"-150px"}}>
+          <thead> 
+
         <table style={{ width: "250%", textAlign: "center", marginLeft: "-150px" }}>
           <thead>
             <tr>
