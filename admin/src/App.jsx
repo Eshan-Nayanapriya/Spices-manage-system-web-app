@@ -51,6 +51,7 @@ import AddUtility from './pages/Component/AddUtility/AddUtility';
 import UpdateUtility from './pages/Component/UpdateUtility/UpdateUtility';
 import EditProduct from './pages/EditProduct/EditProduct.jsx'
 import Report from './pages/Report/Report.jsx'
+import Inform from './pages/Component/InformSuplier/Inform.jsx'
 
 
 const App = () => {
@@ -122,6 +123,8 @@ const App = () => {
           <Route path="/uDetails" element ={<Utilitis/>}/>  
           <Route path="/uAdd" element ={<AddUtility/>}/> 
           <Route path="/uDetails/:id" element ={<UpdateUtility/>}/> 
+
+          <Route path="/inform" element ={<Inform/>}/>
            
            {/*imashi part */}
           <Route path="/add" element={<Add url={url}/>}/>

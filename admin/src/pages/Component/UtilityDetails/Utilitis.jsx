@@ -29,6 +29,16 @@ function Utilitis() {
     <div>
       <Nav />
       <center><h1>Utility Details page</h1></center>
+
+      <button style={{backgroundColor:"#1A14E7",
+      color:"white",borderRadius:4,height:30,fontSize:18,marginLeft:"30px"}} >
+
+     <a href='Inform'>Inform Suplier</a>
+
+     </button>
+
+     
+
       <div ref={componentsRef}>
         {utilitis && utilitis.map((utility, i) => (
           <Utility key={i} utility={utility} />
