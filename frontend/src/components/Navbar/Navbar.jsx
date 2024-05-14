@@ -5,11 +5,13 @@ import {Link, useNavigate} from 'react-router-dom';
 import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 
+
 const Navbar = ({setShowLogin}) => {
 
     const [menu,setMenu] = useState("home");
     const navigate = useNavigate();
     const {getTotalCartAmount,token,setToken} = useContext(StoreContext);
+    
 
     const logout = () => {
       localStorage.removeItem("token");
@@ -50,7 +52,7 @@ const Navbar = ({setShowLogin}) => {
                 <img src={assets.profile_icon} alt="" />
                 <ul className="navbar-profile-dropdown">
                   <li onClick={()=>navigate('/profile')}>
-                      <img src={assets.bag_icon} alt="" />
+                      <img src={assets.profile} alt="" />
                       <p>My Profile</p>
                   </li>
                 

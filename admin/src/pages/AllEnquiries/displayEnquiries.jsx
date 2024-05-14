@@ -31,6 +31,7 @@ function DisplayEnquiries() {
 
             <div className="enquiries-title">
                 <h2>Enquiries</h2>
+
                 <input
                     className='searchEn'
                     type="text"
@@ -38,15 +39,11 @@ function DisplayEnquiries() {
                     value={searchQuery}
                     onChange={e => setSearchQuery(e.target.value)}
                 />
+
             </div>
 
             <table className="enquiries-table">
-                <th>name</th>
-                <th>name</th>
-                <th>name</th>
-                <th>name</th>
-                <th>name</th>
-                <th>name</th>
+
                 <tbody>
                     {filteredEnquiries.map(enquiry => (
                         <tr key={enquiry._id}>
