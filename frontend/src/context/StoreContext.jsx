@@ -35,7 +35,7 @@ const StoreConstextProvider = (props)=>{
                 console.log("cartQuantity: ", cartQuantity);
             
                 if (promotionItem && promotionItem.discount && cartQuantity >= promotionItem.quantity) {
-                    discount += promotionItem.discount;
+                    discount = (promotionItem.discount*(cartItemInfo.price*cartQuantity)/100);
                 }
             }
         }
