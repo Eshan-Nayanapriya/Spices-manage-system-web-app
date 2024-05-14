@@ -51,7 +51,7 @@ function SalaryU() {
     }
 
     const downloadReport = () => {
-        const doc = new jsPDF('landscape'); // Set the PDF document to landscape mode
+        const doc = new jsPDF('landscape'); 
         doc.autoTable({ html: '#salary-table', columns: [{ title: "empID" }, { title: "Month" }, { title: "Basic Salary" }, { title: "Total OT hours" }, { title: "OT Rate" }, { title: "Bonus" }, { title: "Total Salary" }, { title: "Account Number" }, { title: "Bank" }] });
         doc.save('employee_report.pdf');
     }
@@ -186,7 +186,7 @@ function SalaryU() {
                         border: 'none',
                         borderRadius: '4px'
                     }}
-                    onClick={downloadReport} // Associate downloadReport function with the button
+                    onClick={downloadReport} 
                 >
                     Download Report
                 </button>
