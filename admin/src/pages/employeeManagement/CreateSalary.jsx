@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-
 
 function CreateSalary() {
     const [empID, setEmpID] = useState("");
@@ -13,14 +12,24 @@ function CreateSalary() {
     const [totalSalary, setTotalSalary] = useState("");
     const [accountNumber, setAccountNumber] = useState("");
     const [bank, setBank] = useState("");
-    
-
+    const [empName, setEmpName] = useState("");
+    const [empUsers, setEmpUsers] = useState([]); // State to store the list of employee users
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // Fetch list of employee users
+        axios.get("http://localhost:4000/User/users")
+            .then(result => {
+                setEmpUsers(result.data);
+            })
+            .catch(error => {
+                console.error('Error fetching employee users:', error);
+            });
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-       
         const calculatedTotalSalary = parseFloat(basicSalary) + (parseFloat(totalOTHours) * parseFloat(otRate)) + parseFloat(bonus);
 
         axios.post("http://localhost:4000/Salary/CreateSalary", { empID, month, basicSalary, totalOTHours, otRate, bonus, totalSalary: calculatedTotalSalary, accountNumber,  bank})
@@ -29,6 +38,15 @@ function CreateSalary() {
                 navigate('/salaryy');
             })
             .catch(err => console.log(err));
+    };
+
+    const handleOKClick = () => {
+        const selectedEmpUser = empUsers.find(empUser => empUser._id === empID);
+        if (selectedEmpUser) {
+            setBank(selectedEmpUser.bank);
+            setAccountNumber(selectedEmpUser.accountNumber);
+            setEmpName(selectedEmpUser.name);
+        }
     };
 
     return (
@@ -53,8 +71,43 @@ function CreateSalary() {
                     <h2 style={{ marginBottom: '20px', textAlign: 'center', fontWeight: 'bold', color: '#333333' }}>Add Salary</h2>
                     <div className='mb-2'>
                         <label htmlFor='empID'>EmpID</label>
-                        <input id='empID' type='text' placeholder='Enter EmpID' className='form-control'
-                            value={empID} onChange={(e) => setEmpID(e.target.value)} />
+                        <div style={{ display: 'flex' }}>
+                            <input 
+                                id='empID' 
+                                type='text' 
+                                placeholder='Enter EmpID' 
+                                className='form-control'
+                                value={empID} 
+                                onChange={(e) => setEmpID(e.target.value)} 
+                            />
+                            <button 
+                                type="button" 
+                                onClick={handleOKClick} 
+                                style={{ 
+                                    marginLeft: '5px',
+                                    padding: '8px 12px',
+                                    backgroundColor: '#007bff',
+                                    color: '#fff',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer',
+                                    transition: 'background-color 0.3s ease',
+                                }}
+                            >
+                                OK
+                            </button>
+                        </div>
+                    </div>
+                    <div className='mb-2'>
+                        <label htmlFor='empName'>Name</label>
+                        <input 
+                            id='empName' 
+                            type='text' 
+                            placeholder='Employee Name' 
+                            className='form-control'
+                            value={empName} 
+                            readOnly 
+                        />
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='month'>Month</label>
@@ -89,28 +142,31 @@ function CreateSalary() {
                     <div className='mb-2'>
                         <label htmlFor='accountNumber'>Account Number</label>
                         <input id='accountNumber' type='number' placeholder='Account Number' className='form-control'
-                            value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} />
+                            value={accountNumber} readOnly />
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='bank'>Bank</label>
                         <input id='bank' type='String' placeholder='bank' className='form-control'
-                            value={bank} onChange={(e) => setBank(e.target.value)} />
+                            value={bank} readOnly />
                     </div>
-                    <button style={{ 
-                        padding: '10px 20px', 
-                        backgroundColor: '#28a745',
-                        color: '#fff',
-                        borderRadius: '4px',
-                        border: 'none',
-                        cursor: 'pointer',
-                        display: 'block',
-                        width: '100%'
-                    }}>Submit</button>
+                    <button 
+                        style={{ 
+                            padding: '10px 20px', 
+                            backgroundColor: '#28a745',
+                            color: '#fff',
+                            borderRadius: '4px',
+                            border: 'none',
+                            cursor: 'pointer',
+                            display: 'block',
+                            width: '100%'
+                        }}
+                    >
+                        Submit
+                    </button>
                 </form>
             </div>
         </div>
     );
-    
 }
 
 export default CreateSalary;
