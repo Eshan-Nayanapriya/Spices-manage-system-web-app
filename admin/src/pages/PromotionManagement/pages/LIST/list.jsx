@@ -77,10 +77,11 @@ const list = ({url}) => {
         </div>
         <div className="listpromotion-allpromotions">
           <hr />
-          {list.map((item) => (
+          {list.map((item,index) => (
           <div key={item._id}>
             <div className='listpromotion-format-main listpromotion-format'>
-              <img src={`${url}/promoupload/${item.promoimage}`} alt="promotion Image" className="listproduct-product-icon"/>
+              <img src={`${url}/promoupload/${item.promoimage}`} alt="" className="listproduct-product-icon"/>
+              <p>{item.promoimage}</p>
               <p>{item.name}</p>
               <p>{item.itemName}</p>
               <p>{item.description}</p>
