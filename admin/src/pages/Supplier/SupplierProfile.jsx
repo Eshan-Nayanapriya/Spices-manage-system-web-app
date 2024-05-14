@@ -8,31 +8,31 @@ const SupplierProfile = () => {
   var SReg = "S003";
 
   return (
-    <div 
+    <div
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        width:"2000px",
+        width: "2000px",
         height: "100vh",
         background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
       }}
     >
-      <div 
+      <div
         style={{
           backgroundColor: "grey",
-          
-          
+
+
           width: "800px",
           background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
-          
+
         }}
       >
-        <div 
+        <div
           style={{
             backgroundColor: "#394a6d",
-           
-           
+
+
             borderTopRightRadius: "0px",
             padding: "50px",
           }}
@@ -40,10 +40,10 @@ const SupplierProfile = () => {
           <h1 style={{ color: "#fff", marginLeft: "180px" }}>Supplier Profile</h1>
         </div>
         <div style={{ padding: "100px" }}>
-          
-          <div style={{  flexDirection: "column" }}>
-            <button 
-              onClick={() => navigate("/Supplier/RawMreq")} 
+
+          <div style={{ flexDirection: "column" }}>
+            <button
+              onClick={() => navigate("/Supplier/RawMreq")}
               style={{
                 padding: "30px 200px",
                 margin: "15px",
@@ -56,8 +56,8 @@ const SupplierProfile = () => {
             >
               Supply Requests
             </button>
-            <button 
-              onClick={() => navigate("/Supplierpro/RawMreqres")} 
+            <button
+              onClick={() => navigate("/Supplierpro/RawMreqres")}
               style={{
                 padding: "30px 175px",
                 margin: "15px",
@@ -70,8 +70,8 @@ const SupplierProfile = () => {
             >
               Manage Supply Requests
             </button>
-            <button 
-              onClick={() => navigate("/AddPaymentRequest")} 
+            <button
+              onClick={() => navigate("/AddPaymentRequest")}
               style={{
                 padding: "30px 192px",
                 margin: "15px",
