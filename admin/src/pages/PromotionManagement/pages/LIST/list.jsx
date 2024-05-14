@@ -5,19 +5,18 @@ import { useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useEffect } from 'react'
-import {Link} from 'react-router-dom'
 import edit_icon from '../../../../assets/pen.png'
 import remove_icon from '../../../../assets/cross_icon.png'
 
 const list = ({url}) => {
 
-  const [list,setList] = useState([]);
+  const [promolist,setPromoList] = useState([]);
 
   const fetechList = async () => {
     const response = await axios.get(`${url}/api/promotion/listpromotion`);
     console.log(response.data);
     if(response.data.success){
-      setList(response.data.data)
+      setPromoList(response.data.data)
     }else{
       toast.error("Error")
     } 
@@ -65,7 +64,6 @@ const list = ({url}) => {
       </div>
       
         <div className="listpromotion-format-main">
-          <p>Image</p>
           <p>Name</p>
           <p>Item Name</p>
           <p>Description</p>
@@ -77,12 +75,9 @@ const list = ({url}) => {
         </div>
         <div className="listpromotion-allpromotions">
           <hr />
-          {list.map((item) => (
+          {promolist.map((item) => (
           <div key={item._id}>
             <div className='listpromotion-format-main listpromotion-format'>
-            <img src={`${url}/promoupload/${item.promoimage}`} alt="" />
-              <p>{item.promoimage}</p>
-              <p>{url}</p>
               <p>{item.name}</p>
               <p>{item.itemName}</p>
               <p>{item.description}</p>
