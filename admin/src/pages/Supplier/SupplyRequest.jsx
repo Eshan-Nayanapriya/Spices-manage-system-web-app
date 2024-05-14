@@ -48,18 +48,20 @@ function SupplyRequest() {
         <td style={{ padding: "5px" }}>{Request.price}</td>
         <td style={{ padding: "15px" }}>{Request.deadLine}</td>
         <td>
-          <Link to={`update/${Request._id}`}> <button
-            style={{
-              margin: "40px",
-              backgroundColor: "green",
-              color: "white",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "5px",
-              cursor: "pointer"
-            }}
-          >
-            Update </button>
+          <Link to={`update/${Request._id}`}>
+            <button
+              style={{
+                margin: "40px",
+                backgroundColor: "green",
+                color: "white",
+                border: "none",
+                padding: "10px 20px",
+                borderRadius: "5px",
+                cursor: "pointer"
+              }}
+            >
+              Update
+            </button>
           </Link>
 
           <button
@@ -137,9 +139,6 @@ function SupplyRequest() {
           ADD REQUEST +
         </a>
 
-        <table style={{ width: "250%",textAlign:"center",marginLeft:"-150px"}}>
-          <thead> 
-
         <table style={{ width: "250%", textAlign: "center", marginLeft: "-150px" }}>
           <thead>
             <tr>
@@ -155,10 +154,10 @@ function SupplyRequest() {
             <Rowgen />
           </tbody>
         </table>
+
       </div>
     </div>
   );
-
 }
 
 export default SupplyRequest;
