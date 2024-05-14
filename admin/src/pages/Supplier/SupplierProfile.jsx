@@ -2,10 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 const SupplierProfile = () => {
   let navigate = useNavigate();
-  var SName = "Udan Pasindu";
-  var SMobile = "0717325275";
-  var SEmail = "Udanpasindu934@gmail.com";
-  var SReg = "S003";
+ 
 
   return (
     <div
