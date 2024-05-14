@@ -48,7 +48,7 @@
   display: flex; /* Allow for inline styling of button and input */
   align-items: center; /* Vertically centers input within search bar */
   padding: 5px 10px; /* Padding around input */
-  width: 30%; /* Stretch search bar to full width */
+  width: 40%; /* Stretch search bar to full width */
   margin-left: 20px;
   height: 40px;
   margin-top: 30px;

@@ -1,12 +1,11 @@
 import React from 'react'
 import './Add.css'
+import { Link } from 'react-router-dom';
 import { assets } from '../../../../assets/assets'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
-
 import { toast } from 'react-toastify'
-
 
 const add = ({ url }) => {
 
@@ -54,7 +53,6 @@ const add = ({ url }) => {
     }
   };
 
-
   const selectItem = (itemName) => {
     setData(prevData => ({ ...prevData, itemName }));
     setItemSuggestions([]);
@@ -92,10 +90,14 @@ const add = ({ url }) => {
   }, [data])
 
   return (
-
     <div className='promotion-add'>
       <div className="head-linep">
         <h1>Promotion Add</h1>
+        <div className='promotion-request-head-line'>
+          <Link to='/PromotionList'>
+            <button className='promoaddbutton'>Promotion List</button>
+          </Link>
+        </div>
       </div>
       <form className='flex-col' onSubmit={onSubmitHandler}>
         <div className="promotion-img-upload flex-col">

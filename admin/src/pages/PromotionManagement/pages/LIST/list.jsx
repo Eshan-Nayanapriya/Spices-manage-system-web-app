@@ -28,13 +28,28 @@ const list = ({ url }) => {
 
   const removePromotion = async (promotionId) => {
     try {
-      const response = await axios.post(`${url}/api/promotion/remove`, { id: promotionId });
-      if (response.data.success) {
-        toast.success(response.data.message);
-        await fetchPromotions(); // Refresh promotions after deletion
-      } else {
-        toast.error('Error');
-      }
+      const confirmDelete = await toast.promise(
+        async (resolve, reject) => {
+          const result = window.confirm('Are you sure you want to delete this promotion?');
+          if (result) {
+            const response = await axios.post(`${url}/api/promotion/remove`, { id: promotionId });
+            if (response.data.success) {
+              toast.success(response.data.message);
+              await fetchPromotions(); // Refresh promotions after deletion
+            } else {
+              toast.error('Error');
+            }
+            resolve();
+          } else {
+            reject();
+          }
+        },
+        {
+          pending: 'Confirming...',
+          success: 'Promotion deleted successfully!',
+          error: 'Error deleting promotion!',
+        }
+      );
     } catch (error) {
       console.error('Error removing promotion:', error);
       toast.error('Error removing promotion');
@@ -50,7 +65,11 @@ const list = ({ url }) => {
         promotion.itemName.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredPromotions(filtered);
-  };
+    if (!filtered.length) {
+      toast.error('No results found for your search.', { position: "bottom-center" }); // Display message for empty results
+    }
+
+  }
 
   useEffect(() => {
     fetchPromotions();
@@ -65,15 +84,7 @@ const list = ({ url }) => {
             <button className='promoaddbutton'>Add promotion</button>
           </Link>
           <div className='search-barp'>
-            <input
-              className='search-barp'
-              type='text'
-              name='search'
-              autoComplete='off'
-              placeholder='Search by promotion name or item name'
-              value={searchQuery}
-              onChange={handleSearch}
-            />
+            <input className='search-barp' type='text' name='search' autoComplete='off' placeholder='Search by Name or Item Name' value={searchQuery} onChange={handleSearch} />
             <button className='search-btnp'>Search</button>
           </div>
         </div>
@@ -107,7 +118,7 @@ const list = ({ url }) => {
           </div>
         ))}
       </div>
-      <Link to='/PromotionAdd'>
+      <Link to='/PromotionReport'>
         <button className='pbattaabddbutton'>Generate report</button>
       </Link>
     </div>
