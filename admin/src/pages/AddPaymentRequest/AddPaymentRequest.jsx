@@ -46,10 +46,10 @@ const AddPaymentRequest = () => {
   }
   
   return (
-    <div className='payment-request-container'>
+    <div className='ppayment-request-container'>
       <h1>Payment Request Form</h1>
       <form onSubmit={handleSubmit} autoComplete="off">
-      <div className='form-input'>
+      <div className='pform-input'>
           
           <select id="section" name="section" onChange={handleChange} required>
               <option value="">Select your Section</option>
@@ -60,21 +60,21 @@ const AddPaymentRequest = () => {
               <option value="Promotion & Marcketing">Promotion & Marcketing</option>
           </select>
         </div>
-        <div className='form-input'>
+        <div className='pform-input'>
           <label>Your Role:</label>
           <select id="role" name="role" onChange={handleChange} required>
               <option value="Manager">Manager</option>
           </select>
         </div>
-        <div className='form-input'>
+        <div className='pform-input'>
           <label >Description:</label>
           <textarea id="description" name="description" onChange={handleChange} required></textarea>
         </div>
-        <div className='form-input'>
+        <div className='pform-input'>
           <label >Amount:</label>
           <input type="number" id="amount" name="amount" onChange={handleChange} required />
         </div>
-        <div className='form-input'>
+        <div className='pform-input'>
           <label >Status:</label>
           <select id="status" name="status" onChange={handleChange} required>
               <option value="Pending">Pending</option>
