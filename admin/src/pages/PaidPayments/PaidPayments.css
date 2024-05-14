@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 
- .tot-btn{
+ .ptot-btn{
     background-color: tomato; 
   color: white; 
   border: none; 
@@ -10,36 +10,36 @@
   padding: 5px 10px; 
   }
 
-  .tot-btn:hover {
+  .ptot-btn:hover {
     background-color: #d95b43; /* Darker orange on hover */
   }
 
-  .box .payment-r-table table{
+  .pbox .ppayment-r-table table{
     width: 100%;
     margin-top: 30px; 
     border-collapse: collapse;
   
   }
   
-  .payment-r-table th,
-.payment-r-table td {
+  .ppayment-r-table th,
+.ppayment-r-table td {
   padding: 0px;
   text-align: center; /* Center align text in table cells */
 }
   
-  .popup{
+  .ppopup{
   background-color: #eaeaea; 
   border-radius: 5px; 
   display: flex; 
   align-items: center; 
   padding: 5px ; 
-  width: 30%; 
+  width: 40%; 
   height: 40px;
   margin-top: 10px;
 
   }
 
-  .ppi{
+  .pppi{
     text-align: right;
     font-size: 18px;
     width: 180px;
@@ -49,24 +49,27 @@
     margin-left: 100px;
   }
 
+  .pppi input{
+    margin: 0px;
+  } 
 
-  .box{
+
+  .pbox{
     width: 100%;
     background-color: rgb(255, 255, 255);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.065);
+    box-shadow: 13px 13px 10px rgba(0, 0, 0, 0.065);
     border-radius: 5px;
     margin : 50px;
     padding: 50px;
-  }
-  
-  
-  
-  .head-line {
+  }/*ok*/
+ 
+  .phead-line {
+    margin-left: -100px;
     display: flex; /* Enable flexbox layout */
     justify-content: space-between; /* Align items horizontally */
   }
 
-  .box h1 {
+  .pbox h1 {
     font-size: 40px;
     font-weight: 600;
     background-image: linear-gradient(to left, #8cd2e5, #051033);
@@ -75,7 +78,7 @@
     -webkit-background-clip: text;
   }
   
-  .rpt-btn{
+  .pprpt-btn{
     margin-top: 30px;
     text-decoration: none;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
@@ -91,7 +94,7 @@
   /*******************************************/
   
   
-  .search-bar {
+  .psearch-barpb {
     background-color: #f5f5f5; /* Light gray background */ /* Gray border */
     border-radius: 5px; /* Rounded corners */
     display: flex; /* Allow for inline styling of button and input */
@@ -103,8 +106,9 @@
     margin-top: 30px;
   }
   
-  .search-bar input[type='text'] {
+  .psearch-barpb input[type='text'] {
     margin-bottom: 30px;
+    margin-left: 20px;
     border: none; /* Remove default input border */
     outline: none; /* Remove default focus outline */
     font-size: 16px; /* Set input font size */
@@ -112,7 +116,7 @@
     width: 100%; /* Stretch input to fill search bar width */
   }
   
-  .search-btn {
+  .psearch-btnpb {
     background-color: tomato; /* Orange background color */
     color: white; /* White text color */
     border: none; /* Remove default button border */
@@ -121,62 +125,35 @@
     padding: 5px 10px; /* Add padding to button */
   }
   
-  .search-btn:hover {
+  .psearch-btnpb:hover {
     background-color: #d95b43; /* Darker orange on hover */
   }
-  
   
   /**********************************************/
   
-  .addbutton:hover {
+  .paddbutton:hover {
     background-color: #d95b43; /* Darker orange on hover */
   }
-  .rpt-btn:hover {
+  .pprpt-btn:hover {
     background-color: rgb(152, 136, 152); /* Darker orange on hover */
   }
   
-  .addbutton{
-    margin-top: 30px;
-     text-decoration: none;
-     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
-     border: none;
-      color: white;
-      background-color: tomato;
-      width: max(10vw, 200px);
-      padding:10px 0px;
-      border-radius: 4px;
-      cursor: pointer;
-  }
   
-  .payment-r-table table{
+  .ppayment-r-table table{
     width: 100%;
     margin-top: 30px; 
     border-collapse: collapse;
   
   }
-  
-  .action-buttons button{
-      border: 0;
-      outline: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      background-color: bisque;
-  }
-  .action-buttons{
-    width: 120px;
-    padding: 5px;
-  }
-  
- 
+
   td{
     padding-left: 5px;
   }
   
-  .payment-r-table .des{
+  .ppayment-r-table .des{
     padding: 5px;
-    max-width: 70px;
     text-align: left;
+    max-width: 250px;
   }
   
   .iddd{
@@ -184,17 +161,12 @@
    
   }
   
-  .search-bar{
+  .psearch-barpb{
     margin-left: 00px;
   }
   
   
-  
-  .action-buttons {
-    padding: 10px;
-  }
-  
-  .button-container {
+  .pbutton-container {
     display: flex; /* Display buttons in a row */
     align-items: center;
     padding: 5px; /* Align buttons vertically */

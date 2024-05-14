@@ -16,6 +16,30 @@ function UpdateUser() {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
+    const jobRollOptions = [
+        "Production Manager",
+        "Quality Control Inspector",
+        "Packaging Supervisor",
+        "Supply Chain Manager",
+        "Marketing Manager",
+        "Quality Assurance Manager",
+        "Human Resources Manager",
+        "Driver",
+        "Clark",
+        "Assistant"
+    ];
+
+    const bankOptions = [
+        "Bank of Ceylon",
+        "People's Bank",
+        "Commercial Bank of Ceylon",
+        "Hatton National Bank",
+        "Sampath Bank",
+        "Nations Trust Bank",
+        "DFCC Bank",
+        "Seylan Bank"
+    ];
+
     useEffect(() => {
         axios.get(`http://localhost:4000/User/getEmpuser/${id}`)
             .then(result => {
@@ -86,13 +110,21 @@ function UpdateUser() {
               </div>
               <div className='form-group'>
                 <label htmlFor='jobroll'>Job Roll</label>
-                <input id='jobroll' type="text" placeholder="Enter Job Roll" className="form-control"
-                  value={jobRoll} onChange={(e) => setJobRoll(e.target.value)} />
+                <select id='jobroll' className="form-control" value={jobRoll} onChange={(e) => setJobRoll(e.target.value)}>
+                    <option value="">Select Job Roll</option>
+                    {jobRollOptions.map((option, index) => (
+                        <option key={index} value={option}>{option}</option>
+                    ))}
+                </select>
               </div>
               <div className='form-group'>
                 <label htmlFor='bank'>Bank</label>
-                <input id='bank' type="text" placeholder="Enter bank" className="form-control"
-                  value={bank} onChange={(e) => setBank(e.target.value)} />
+                <select id='bank' className="form-control" value={bank} onChange={(e) => setBank(e.target.value)}>
+                    <option value="">Select Bank</option>
+                    {bankOptions.map((option, index) => (
+                        <option key={index} value={option}>{option}</option>
+                    ))}
+                </select>
               </div>
               <div className='form-group'>
                 <label htmlFor='accountNumber'>Account Number</label>

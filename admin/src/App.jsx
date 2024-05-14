@@ -25,7 +25,10 @@ import PaidPayments from './pages/PaidPayments/PaidPayments';
 import Pdfupload from './pages/PaidReportUpload/PaidReportUpload'; 
 import DisplayEnquiries from './pages/AllEnquiries/displayEnquiries.jsx'
 import EnquiryDetails from './pages/AllEnquiries/enquiryDetails.jsx';
+
 import PromotionManagement from './pages/PromotionManagement/PromotionManagement'
+import PromotionAdd from './pages/PromotionManagement/pages/ADD/add'
+import PromotionList from './pages/PromotionManagement/pages/LIST/list'
 
 import Users from './pages/employeeManagement/Users.jsx';
 import UpdateUser from './pages/employeeManagement/UpdateUser.jsx';
@@ -33,8 +36,7 @@ import CreateUser from './pages/employeeManagement/CreateUser.jsx';
 import SalaryU from './pages/employeeManagement/SalaryU.jsx';
 import CreateSalary from './pages/employeeManagement/CreateSalary.jsx';
 import UpdateSalary from './pages/employeeManagement/UpdateSal.jsx';
-import EmpU from './pages/employeeManagement/empU.jsx';
-import EmpLogin from './pages/employeeManagement/empLogin.jsx';
+
 
 import FactoryHome from './pages/Component/FactoryHome.jsx'
 import Machanics from './pages/Component/Machanic Details/Machanics'
@@ -47,6 +49,8 @@ import Utilitis from './pages/Component/UtilityDetails/Utilitis';
 import AddUtility from './pages/Component/AddUtility/AddUtility';
 import UpdateUtility from './pages/Component/UpdateUtility/UpdateUtility';
 import EditProduct from './pages/EditProduct/EditProduct.jsx'
+import Report from './pages/Report/Report.jsx'
+
 
 const App = () => {
 
@@ -89,6 +93,8 @@ const App = () => {
 
           {/*sadan part */}
           <Route path="/PromotionManagement" element={<PromotionManagement url={url}/>}/>
+          <Route path="/PromotionAdd" element={<PromotionAdd url={url}/>}/>
+          <Route path="/PromotionList" element={<PromotionList url={url}/>}/>
 
 
           {/*torin part */}
@@ -98,8 +104,7 @@ const App = () => {
           <Route path='/salaryy' element={<SalaryU />}></Route>
           <Route path='/createsalary' element={<CreateSalary />}></Route>
           <Route path='/updatesal/:id' element={<UpdateSalary />}></Route>
-          <Route path="/emplogin" element={<EmpLogin  />} />
-          <Route path="/emp/:id" element={<EmpU />} />
+         
 
           {/*asela part */}
           <Route path='/factoryManagement' element={<FactoryHome />}></Route>
@@ -118,8 +123,11 @@ const App = () => {
            
            {/*imashi part */}
           <Route path="/add" element={<Add url={url}/>}/>
-          <Route path="/list" element={<List url={url}/>}/>
+          <Route path="/"  element={<List url={url}/>}/>
+          <Route path="/list"  element={<List url={url}/>}/>
           <Route path="/edit/:id" element={<EditProduct/>}/>
+          <Route path="/report" element={<Report url={url}/>}/>
+          
         </Routes>
       </div>
     </div>

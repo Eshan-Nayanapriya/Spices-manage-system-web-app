@@ -7,9 +7,9 @@ const SupplyManager = () => {
     <>
       <div
         style={{
-          
+
           backgroundSize: "auto",
-          backgroundColor:"#fff",
+          backgroundColor: "#fff",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -20,21 +20,25 @@ const SupplyManager = () => {
           style={{
             backgroundColor: "grey",
             borderRadius: "20px",
-            marginLeft:"250px",
+            marginLeft: "250px",
             padding: "40px",
             maxWidth: "800px",
             width: "100%",
             boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.2)",
           }}
         >
-          <h1 style={{ textAlign: "center", marginBottom: "40px", color: "#333",
-          marginLeft:"100px",
-          marginRight:"100px",
-          marginTop:"-100px" }}>
+          <h1 style={{
+            textAlign: "center", marginBottom: "40px", color: "#333",
+            marginLeft: "100px",
+            marginRight: "100px",
+            marginTop: "-100px"
+          }}>
             Supply Manager Dashboard
           </h1>
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px" ,
-          width:"600px",marginLeft:"40px"}}>
+          <div style={{
+            display: "flex", flexDirection: "column", gap: "20px",
+            width: "600px", marginLeft: "40px"
+          }}>
             <button
               onClick={() => navigate("/create")}
               style={{

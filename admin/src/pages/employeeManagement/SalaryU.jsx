@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios'; 
 import { Link } from "react-router-dom";
-import { useReactToPrint } from "react-to-print";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 function SalaryU() {
     const [salary, setSalary] = useState([]);
     const [filteredSalaries, setFilteredSalaries] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    
+
     useEffect(() => {
         axios.get('http://localhost:4000/Salary/getSalary')  
             .then(response => {
@@ -32,13 +33,6 @@ function SalaryU() {
         }
     }
 
-    const ComponentsRef = useRef();
-    const handlePrint = useReactToPrint({
-        content: () => ComponentsRef.current,
-        documentTitle: "Salary Report",
-        onAfterPrint: () => alert("Salary Report Successfully Downloaded!")
-    });
-
     const handleSearch = () => {
         const newFilteredSalaries = salary.filter(item => {
             return item.empID.toLowerCase().includes(searchTerm.toLowerCase()) 
@@ -56,21 +50,27 @@ function SalaryU() {
         }
     }
 
+    const downloadReport = () => {
+        const doc = new jsPDF('landscape'); 
+        doc.autoTable({ html: '#salary-table', columns: [{ title: "empID" }, { title: "Month" }, { title: "Basic Salary" }, { title: "Total OT hours" }, { title: "OT Rate" }, { title: "Bonus" }, { title: "Total Salary" }, { title: "Account Number" }, { title: "Bank" }] });
+        doc.save('employee_report.pdf');
+    }
     return (
         <div style={{ 
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            height: '100vh',
-            width:'120%',
+            height: '100%',
+            width:'100%',
             fontFamily: 'Arial, sans-serif',
             padding: '20px'
         }}>
-            <div ref={ComponentsRef} style={{
-                width: '75%',
-                backgroundColor: '#6c757d',
+            <div style={{
+                backgroundColor: '#fff',
                 borderRadius: '8px',
-                padding: '20px'
+                padding: '20px',
+                width: '100%',
+                boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
             }}>
                 <h1 style={{ 
                     marginBottom: '0', 
@@ -123,9 +123,10 @@ function SalaryU() {
                     border: '1px solid #ccc',
                     borderRadius: '4px'
                 }}>
-                    <table style={{ 
+                    <table id="salary-table" style={{ 
                         width: '100%', 
-                        borderCollapse: 'collapse'
+                        borderCollapse: 'collapse',
+                        backgroundColor:'#fff'
                     }}>
                         <thead>
                             <tr>
@@ -143,7 +144,7 @@ function SalaryU() {
                         </thead>
                         <tbody>
                             {filteredSalaries.map((salaryItem, index) => (
-                                <tr key={index}>
+                                <tr key={index}> 
                                     <td style={{ padding: '10px' }}>{salaryItem.empID}</td>
                                     <td style={{ padding: '10px' }}>{salaryItem.month}</td>
                                     <td style={{ padding: '10px' }}>{salaryItem.basicSalary}</td>
@@ -159,13 +160,15 @@ function SalaryU() {
                                             padding: '5px 10px', 
                                             backgroundColor: '#28a745',
                                             color: '#fff',
-                                            textDecoration: 'none'
+                                            textDecoration: 'none',
+                                            borderRadius: '4px'
                                         }}>Update</a>
                                         <a href="/salaryy" style={{ 
                                             padding: '5px 10px', 
                                             backgroundColor: '#dc3545',
                                             color: '#fff',
-                                            textDecoration: 'none'
+                                            textDecoration: 'none',
+                                            borderRadius: '4px'
                                         }} onClick={(e) => handleDelete(salaryItem._id)}>Delete</a>
                                     </td>
                                 </tr>
@@ -174,17 +177,22 @@ function SalaryU() {
                     </table>
                 </div>
                 <br />
-                <button onClick={handlePrint} style={{ 
-                    padding: '10px 20px', 
-                    backgroundColor: '#ffc107',
-                    color: '#fff',
-                    borderRadius: '4px',
-                    border: 'none'
-                }}>Download Report</button>
+                <button 
+                    style={{ 
+                        padding: '10px 20px', 
+                        backgroundColor: '#FFA500',
+                        color: '#fff',
+                        borderRadius: '4px',
+                        border: 'none',
+                        borderRadius: '4px'
+                    }}
+                    onClick={downloadReport} 
+                >
+                    Download Report
+                </button>
             </div>
         </div>
     );
-    
 }
 
 export default SalaryU;
