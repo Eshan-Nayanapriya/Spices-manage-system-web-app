@@ -137,7 +137,7 @@ function SupplyRequest() {
           ADD REQUEST +
         </a>
         <table style={{ width: "250%",textAlign:"center",marginLeft:"-150px"}}>
-          <thead>
+          <thead> 
             <tr>
               <th style={{ padding: "5px", textAlign: "center" }}>Raw Material Name</th>
               <th style={{ padding: "5px" }}>Request Id</th>
