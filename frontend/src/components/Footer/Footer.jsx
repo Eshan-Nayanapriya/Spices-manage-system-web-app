@@ -33,6 +33,7 @@ const Footer = () => {
                 <li>+1-212-456-7890</li>
                 <li>contact@SGM.com</li>
             </ul>
+           Email us with your contact number if you want to Apply a job, we will contact you - <a href="sahanempadmin@gmail.com">sahanempadmin@gmail.com</a>
         </div>
       </div>
       <hr />

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
-import { Link } from "react-router-dom";
 import './enquiryDetails.css'
 import jsPDF from 'jspdf';
+import { toast } from 'react-toastify'
 
 function EnquiryDetails() {
     const { id } = useParams();
@@ -30,7 +30,8 @@ function EnquiryDetails() {
             axios.delete(`http://localhost:4000/api/enquiry/deleteuser/${id}`)
                 .then(res => {
                     console.log(res);
-                    alert("Enquiry Deleted successfully!");
+                    
+                    toast.success("Successfully deleted!")
 
                     navigate('/displayenquiry')
                 })
