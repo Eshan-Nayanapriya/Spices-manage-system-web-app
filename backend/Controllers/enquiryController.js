@@ -11,7 +11,8 @@ const addEnquiry = async (req, res) => {
         phone: req.body.phone,
         email: req.body.email,
         product: req.body.product,
-        description: req.body.description
+        description: req.body.description,
+        date: new Date()
     })
     try {
         await enquiry.save();

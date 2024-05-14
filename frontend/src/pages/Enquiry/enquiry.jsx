@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './enquiry.css';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
+import { StoreContext } from '../../context/StoreContext';
 
 const Enquiry = () => {
     const [name, setName] = useState('');
@@ -9,26 +10,37 @@ const Enquiry = () => {
     const [email, setEmail] = useState('');
     const [product, setProduct] = useState('');
     const [description, setDescription] = useState('');
-    const [submitted, setSubmitted] = useState(false); // Track if the form has been submitted
+    const [submitted, setSubmitted] = useState(false);
+    const [selectedProductImage, setSelectedProductImage] = useState(null); // State to hold the selected product image URL
+
+    const { food_list } = useContext(StoreContext);
+
 
     const Submit = (e) => {
         e.preventDefault();
-        console.log({ name, phone, email, product, description }); // Check what you are sending
         if (!product) {
             alert('Please select a product.');
             return;
         }
-        axios.post("http://localhost:4000/api/enquiry/add", { name, phone, email, product, description })
+        axios.post("http://localhost:4000/api/enquiry/add", { name, phone, email, product, description})
             .then(result => {
                 console.log(result);
                 alert("Enquiry submitted successfully! We will Reply You Soon");
-                setSubmitted(true); // Set submitted to true after successful submission
+                setSubmitted(true);
+
+
             })
             .catch(err => console.log(err));
     };
 
+    const handleProductChange = (e) => {
+        const selectedProduct = e.target.value;
+        setProduct(selectedProduct);
+ 
+    };
+
     if (submitted) {
-        return <Navigate to="/" />; // Redirect to the home page if the form has been submitted
+        return <Navigate to="/en/:id" />;
     }
 
     return (
@@ -49,17 +61,19 @@ const Enquiry = () => {
                             <input name='phone' onChange={(e) => setPhone(e.target.value)} type="text" placeholder='Phone' />
                             <input name='email' onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Email' />
                             <label>Select here the product that you want to enquire about</label>
-                            <select name='product' onChange={(e) => setProduct(e.target.value)} id="">
-                                <option value="0">Select Product</option>
-                                <option value="chilli">Chilli powder</option>
-                                <option value="turmeric">Turmeric powder</option>
-                                <option value="saffron">Saffron powder</option>
-                                <option value="blackpepper">Black Pepper</option>
-                                <option value="currypowder">Curry Powder</option>
-                                <option value="mustard">Mustard powder</option>
+                            <select id="food-select" onChange={handleProductChange}>
+                                <option value="">Select a product</option>
+                                {food_list.map(food => (
+                                    <option key={food._id} value={food.name}>
+                                        {food.name} {food.category}
+                                      
+                                    </option>
+                                ))}
                             </select>
-                            <label htmlFor="">Description</label>
+                        
+                            <label>Description</label>
                             <textarea onChange={(e) => setDescription(e.target.value)} name="Description" id="" cols="50" rows="10"></textarea>
+                            
                         </div>
                         <button className="enquiry-but" type='submit'>Submit</button>
                     </div>

@@ -6,7 +6,7 @@ const enquirySchema = new mongoose.Schema({
     email: { type: String, required: true },
     product: { type: String, required: true },
     description: { type: String, required: true },
-
+    date: {type: Date,  default: Date.now}
 })
 const enquiryModel = mongoose.models.enquiry || mongoose.model("enquiry",enquirySchema);
 

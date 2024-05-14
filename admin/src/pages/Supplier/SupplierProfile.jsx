@@ -2,129 +2,92 @@ import { useNavigate } from "react-router-dom";
 
 const SupplierProfile = () => {
   let navigate = useNavigate();
-  var SName = "Udan Pasindu"
-  var SMobile = "0717325275"
-  var SEmail = "Udanpasindu934@gmail.com"
-  var SReg = "S003"
+  var SName = "Udan Pasindu";
+  var SMobile = "0717325275";
+  var SEmail = "Udanpasindu934@gmail.com";
+  var SReg = "S003";
 
   return (
     <div 
-  style={{
-    
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    alignItems: "center",
-    height: "100vh",
-    marginLeft:"300px",
-    marginTop:"60px",
-    backgroundColor: "#fff",
-  }}
->
-  <div 
-    style={{
-      backgroundColor: "rgba(0, 0, 0, 0.75)",
-      borderRadius: "10px",
-      padding: "100px",
-    }}
-  >
-    <div style={{ textAlign: "center", padding: "20px" }}>
-      <h1 style={{ color: "#fff" }}>Supplier Profile</h1>
-    </div>
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <div>
-        <div style={{ color: "#fff", textAlign: "center", padding: "20px" }}>
-          <div>
-            <label style={{ padding: "0 10px" }}>Name</label>
-            <br />
-            <input type="text" style={{ padding: "8px", marginLeft: "10px" }} value={SName} />
-            <br />
-            <br />
-            <label style={{ padding: "0 10px" }}>Mobile</label>
-            <br />
-            <input type="text" style={{ padding: "8px", marginLeft: "10px" }} value={SMobile} />
-            <br />
-            <br />
-            <label style={{ padding: "0 10px" }}>Email</label>
-            <br />
-            <input type="text" style={{ padding: "8px", marginLeft: "10px" }} value={SEmail} />
-            <br />
-            <br />
-            <label style={{ padding: "0 10px" }}>Reg. No.</label>
-            <br />
-            <input type="text" style={{ padding: "8px", marginLeft: "10px" }} value={SReg} />
-            <br />
-            <br />
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width:"2000px",
+        height: "100vh",
+        background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
+      }}
+    >
+      <div 
+        style={{
+          backgroundColor: "grey",
+          
+          
+          width: "800px",
+          background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
+          
+        }}
+      >
+        <div 
+          style={{
+            backgroundColor: "#394a6d",
+           
+           
+            borderTopRightRadius: "0px",
+            padding: "50px",
+          }}
+        >
+          <h1 style={{ color: "#fff", marginLeft: "180px" }}>Supplier Profile</h1>
+        </div>
+        <div style={{ padding: "100px" }}>
+          
+          <div style={{  flexDirection: "column" }}>
+            <button 
+              onClick={() => navigate("/Supplier/RawMreq")} 
+              style={{
+                padding: "30px 200px",
+                margin: "15px",
+                backgroundColor: "tomato",
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              Supply Requests
+            </button>
+            <button 
+              onClick={() => navigate("/Supplierpro/RawMreqres")} 
+              style={{
+                padding: "30px 175px",
+                margin: "15px",
+                backgroundColor: "tomato",
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              Manage Supply Requests
+            </button>
+            <button 
+              onClick={() => navigate("/AddPaymentRequest")} 
+              style={{
+                padding: "30px 192px",
+                margin: "15px",
+                backgroundColor: "tomato",
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              Requests Payments
+            </button>
           </div>
-          <button 
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "tomato",
-              color: "#fff",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              opacity: "1",
-            }}
-          >
-            Edit Details
-          </button>
-        </div>
-      </div>
-      <div style={{ backgroundColor: "rgba(0, 0, 0, 0.25)", borderRadius: "10px", padding: "20px" }}>
-        <div style={{ textAlign: "center", padding: "100px" }}>
-          <button 
-            onClick={() => navigate("/Supplier/RawMreq")} 
-            style={{
-              padding: "30px 60px",
-              backgroundColor: "tomato",
-              color: "#fff",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              opacity: "1",
-            }}
-          >
-            Supply Requests
-          </button>
-          <br />
-          <br />
-          <button 
-            onClick={() => navigate("/Supplierpro/RawMreqres")} 
-            style={{
-              padding: "30px 60px",
-              backgroundColor: "tomato",
-              color: "#fff",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              opacity: "1",
-            }}
-          >
-            Manage Supply Requests
-          </button>
-          <br />
-          <br />
-          <button 
-            onClick={() => navigate("/AddPaymentRequest")} 
-            style={{
-              padding: "30px 60px",
-              backgroundColor: "tomato",
-              color: "#fff",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              opacity: "1",
-            }}
-          >
-            Requests Payments
-          </button>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-  
   );
 };
 

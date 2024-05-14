@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import './DisplayEnquiries.css'; 
+import { StoreContext } from '../../context/StoreContext';
+
 
 
 function DisplayEnquiries() {
     const [enquiries, setEnquiries] = useState([]);
+    const {token} = useContext(StoreContext);
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/displayenquiry/en')
+        axios.get('http://localhost:4000/api/displayenquiry',{},{headers:{token}})
             .then(response => {
                 console.log(response.data);
                 setEnquiries(response.data);
@@ -31,6 +34,7 @@ function DisplayEnquiries() {
                     </tr>
                 </thead>
                 <tbody>
+                    
                     {enquiries.map(enquiry => (
                         <tr key={enquiry._id}>
                            

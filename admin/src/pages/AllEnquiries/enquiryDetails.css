@@ -12,7 +12,7 @@
     padding: 20px;
     border-radius: 8px;
     margin-top: 20px;
-    margin-left: 100px;
+    margin-left: 20px;
     
 
 
@@ -36,11 +36,12 @@
 .Details {
     color: #333;
     font-family: 'Outfit', sans-serif;
-    padding: 20px;
-    margin-left: 100px;
+    padding: 40px;
+    margin-left: 40px;
+    max-width: auto;
 }
 .des{
-    width: max(20vw, 100px);
+    width: max(50vw, 200px);
 }
 .flex{
     display: flex;
@@ -48,7 +49,7 @@
     color: white;
     padding: 20px;
     border-radius: 8px;
-    margin-left: 100px;
+    margin-left: 20px;
 }
 .controls{
 
