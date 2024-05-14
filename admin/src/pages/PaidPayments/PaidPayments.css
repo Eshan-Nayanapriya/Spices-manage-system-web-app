@@ -57,14 +57,12 @@
   .pbox{
     width: 100%;
     background-color: rgb(255, 255, 255);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.065);
+    box-shadow: 13px 13px 10px rgba(0, 0, 0, 0.065);
     border-radius: 5px;
     margin : 50px;
     padding: 50px;
-  }
-  
-  
-  
+  }/*ok*/
+ 
   .phead-line {
     margin-left: -100px;
     display: flex; /* Enable flexbox layout */
@@ -155,6 +153,7 @@
   .ppayment-r-table .des{
     padding: 5px;
     text-align: left;
+    max-width: 250px;
   }
   
   .iddd{
