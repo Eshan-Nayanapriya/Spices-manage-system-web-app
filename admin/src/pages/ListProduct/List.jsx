@@ -91,6 +91,8 @@ const List = ({ url }) => {
         {list.map((item, index) => {
           return<><div key={index} className='listproduct-format-main listproduct-format'>
             <img src={`${url}/images/${item.image}`} alt="" className="listproduct-product-icon" />
+            <p>{item.image}</p>
+            <p>{url}</p>
             <p>{item.name}</p>
             <p>{item.quantity}</p>
             <p>{item.category}</p>
