@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios'; 
 import { Link } from "react-router-dom";
-import { useReactToPrint } from "react-to-print";
-
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 function SalaryU() {
     const [salary, setSalary] = useState([]);
     const [filteredSalaries, setFilteredSalaries] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    
+
     useEffect(() => {
         axios.get('http://localhost:4000/Salary/getSalary')  
             .then(response => {
@@ -33,14 +33,6 @@ function SalaryU() {
         }
     }
 
-    const ComponentsRef = useRef();
-    
-    const handlePrint = useReactToPrint({
-        content: () => ComponentsRef.current,
-        documentTitle: "Salary Report",
-        onAfterPrint: () => alert("Salary Report Successfully Downloaded!")
-    });
-
     const handleSearch = () => {
         const newFilteredSalaries = salary.filter(item => {
             return item.empID.toLowerCase().includes(searchTerm.toLowerCase()) 
@@ -58,6 +50,11 @@ function SalaryU() {
         }
     }
 
+    const downloadReport = () => {
+        const doc = new jsPDF('landscape'); // Set the PDF document to landscape mode
+        doc.autoTable({ html: '#salary-table', columns: [{ title: "empID" }, { title: "Month" }, { title: "Basic Salary" }, { title: "Total OT hours" }, { title: "OT Rate" }, { title: "Bonus" }, { title: "Total Salary" }, { title: "Account Number" }, { title: "Bank" }] });
+        doc.save('employee_report.pdf');
+    }
     return (
         <div style={{ 
             display: 'flex',
@@ -68,15 +65,13 @@ function SalaryU() {
             fontFamily: 'Arial, sans-serif',
             padding: '20px'
         }}>
-           <div ref={ComponentsRef} style={{
-    backgroundColor: '#fff',
-    borderRadius: '8px',
-    padding: '20px',
-    width: '100%',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
-}}>
-
-
+            <div style={{
+                backgroundColor: '#fff',
+                borderRadius: '8px',
+                padding: '20px',
+                width: '100%',
+                boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
+            }}>
                 <h1 style={{ 
                     marginBottom: '0', 
                     textAlign: 'center', 
@@ -128,7 +123,7 @@ function SalaryU() {
                     border: '1px solid #ccc',
                     borderRadius: '4px'
                 }}>
-                    <table style={{ 
+                    <table id="salary-table" style={{ 
                         width: '100%', 
                         borderCollapse: 'collapse',
                         backgroundColor:'#fff'
@@ -150,7 +145,6 @@ function SalaryU() {
                         <tbody>
                             {filteredSalaries.map((salaryItem, index) => (
                                 <tr key={index}> 
-                               
                                     <td style={{ padding: '10px' }}>{salaryItem.empID}</td>
                                     <td style={{ padding: '10px' }}>{salaryItem.month}</td>
                                     <td style={{ padding: '10px' }}>{salaryItem.basicSalary}</td>
@@ -183,18 +177,22 @@ function SalaryU() {
                     </table>
                 </div>
                 <br />
-                <button onClick={handlePrint} style={{ 
-                    padding: '10px 20px', 
-                    backgroundColor: '#FFA500',
-                    color: '#fff',
-                    borderRadius: '4px',
-                    border: 'none',
-                    borderRadius: '4px'
-                }}>Download Report</button>
+                <button 
+                    style={{ 
+                        padding: '10px 20px', 
+                        backgroundColor: '#FFA500',
+                        color: '#fff',
+                        borderRadius: '4px',
+                        border: 'none',
+                        borderRadius: '4px'
+                    }}
+                    onClick={downloadReport} // Associate downloadReport function with the button
+                >
+                    Download Report
+                </button>
             </div>
         </div>
     );
-    
 }
 
 export default SalaryU;

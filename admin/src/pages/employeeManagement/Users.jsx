@@ -68,14 +68,7 @@ function Users() {
                                             textDecoration: 'none',
                                             borderRadius: '4px'
                                         }}>Add Employee</Link>
-      <Link to="/emplogin" className='btn btn-success'style={{ 
-                                            marginRight: '10px', 
-                                            padding: '5px 10px', 
-                                            backgroundColor: '#28a745',
-                                            color: '#fff',
-                                            textDecoration: 'none',
-                                            borderRadius: '4px'
-                                        }}>Login</Link>
+      
       <div className="search-container">
         <input
           type="text"

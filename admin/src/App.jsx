@@ -36,8 +36,7 @@ import CreateUser from './pages/employeeManagement/CreateUser.jsx';
 import SalaryU from './pages/employeeManagement/SalaryU.jsx';
 import CreateSalary from './pages/employeeManagement/CreateSalary.jsx';
 import UpdateSalary from './pages/employeeManagement/UpdateSal.jsx';
-import EmpU from './pages/employeeManagement/empU.jsx';
-import EmpLogin from './pages/employeeManagement/empLogin.jsx';
+
 
 import FactoryHome from './pages/Component/FactoryHome.jsx'
 import Machanics from './pages/Component/Machanic Details/Machanics'
@@ -105,8 +104,7 @@ const App = () => {
           <Route path='/salaryy' element={<SalaryU />}></Route>
           <Route path='/createsalary' element={<CreateSalary />}></Route>
           <Route path='/updatesal/:id' element={<UpdateSalary />}></Route>
-          <Route path="/emplogin" element={<EmpLogin  />} />
-          <Route path="/emp/:id" element={<EmpU />} />
+         
 
           {/*asela part */}
           <Route path='/factoryManagement' element={<FactoryHome />}></Route>
