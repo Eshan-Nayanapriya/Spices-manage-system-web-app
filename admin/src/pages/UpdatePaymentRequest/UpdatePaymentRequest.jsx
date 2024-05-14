@@ -46,14 +46,14 @@ function UpdatePaymentRequest()  {
   };
  
   return (
-    <div className='payment-request-container'>
+    <div className='ppayment-request-container'>
       <h1>Update Payment Request Form</h1>
       <form onSubmit={UpdateSalary} autoComplete="off" >
-      <div className='form-input'>
+      <div className='pform-input'>
           <label >Request ID:</label>
           <input type="text"  name="id"  value={id} disabled/>
         </div>
-        <div className='form-input'>
+        <div className='pform-input'>
           <label >Section:</label>
           <select id="section" name="section" value={section} onChange={(e) => setSection(e.target.value)} required>
               <option value="">Select your Section</option>
@@ -64,21 +64,21 @@ function UpdatePaymentRequest()  {
               <option value="Promotion & Marcketing">Promotion & Marcketing</option>
           </select>
         </div>
-        <div className='form-input'>
+        <div className='pform-input'>
           <label>Your Role:</label>
           <select id="role" name="role" value={role} onChange={(e) => setRole(e.target.value)} required>
               <option value="Manager">Manager</option>
           </select>
         </div>
-        <div className='form-input'>
+        <div className='pform-input'>
           <label >Description:</label>
           <textarea id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} required></textarea>
         </div>
-        <div className='form-input'>
+        <div className='pform-input'>
           <label >Amount:</label>
           <input type="number" id="amount" name="amount" value={amount} onChange={(e) => setAmount(e.target.value)} required />
         </div>
-        <div className='form-input'>
+        <div className='pform-input'>
           <label >Status:</label>
           <select id="status" name="status" value={status} onChange={(e) => setStatus(e.target.value)} required>
               <option value="Pending">Pending</option>
