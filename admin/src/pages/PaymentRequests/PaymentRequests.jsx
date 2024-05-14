@@ -1,10 +1,11 @@
-import React from 'react'
-import './PaymentRequests.css'
+import React from 'react';
+import './PaymentRequests.css';
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { useReactToPrint } from "react-to-print";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 function PaymentRequest() {
 
@@ -26,14 +27,6 @@ function PaymentRequest() {
       });
   }, []);
 
-
-  const ComponentsRef = useRef();   //report generation
-  const handlePrint = useReactToPrint({
-    content: () => ComponentsRef.current,
-    documentTitle: "Payment Requests Report"
-  });
-
-
   const deleteHandler = (id) => {
     const confirmDelete = window.confirm("Please Confirm Delete ?");  //delete function
     if (confirmDelete) {
@@ -54,7 +47,7 @@ function PaymentRequest() {
     const filteredReports = request.filter(item => {
       const lowerSearchTerm = searchTerm.toLowerCase();
       const sectionWords = item.section.toLowerCase().split(" "); // Split the section into words
-    return sectionWords.some(word => word.startsWith(lowerSearchTerm))|| // Check if any word starts with the search term
+      return sectionWords.some(word => word.startsWith(lowerSearchTerm))|| // Check if any word starts with the search term
         item.amount.toString().startsWith(lowerSearchTerm)||
         new Date(item.createdAt).toLocaleDateString().includes(lowerSearchTerm)
     });
@@ -66,7 +59,6 @@ function PaymentRequest() {
 
   }
 
-
   const handleChange = (e) => {
     setSearchTerm(e.target.value); //search bar passing changing values
     if (e.target.value === "") {
@@ -74,6 +66,36 @@ function PaymentRequest() {
     } else {
       handleSearch();
     }
+  }
+
+  const downloadReport = () => {
+    const doc = new jsPDF();
+
+    const tableColumn = ["Request ID", "Section", "Role", "Description", "Amount", "Submitted Date", "Status"];
+    const tableRows = [];
+
+    displayedRequest.forEach(item => {
+      const itemData = [
+        item._id,
+        item.section,
+        item.role,
+        item.description,
+        item.amount.toFixed(2),
+        new Date(item.createdAt).toLocaleDateString(),
+        item.status
+      ];
+      tableRows.push(itemData);
+    });
+
+    doc.autoTable({
+      head: [tableColumn],
+      body: tableRows,
+      startY: 20,
+      styles: { fontSize: 8 }
+    });
+
+    doc.text("Payment Requests Report", 14, 15);
+    doc.save('payment_requests_report.pdf');
   }
 
   return (
@@ -91,7 +113,7 @@ function PaymentRequest() {
         </div>
 
       </div>
-      <div ref={ComponentsRef} className="print1">
+      <div className="print1">
         <br />
         <table border={1} cellPadding={10} cellSpacing={0}>
           <thead>
@@ -133,11 +155,11 @@ function PaymentRequest() {
           </tbody>
         </table>
       </div>
-      <button onClick={handlePrint} className='prpt-btn'>Download Report</button>
+      <button className='prpt-btn' onClick={downloadReport}>Download Report</button>
       <Link to={"/PaidPayments"}><button style={{ marginLeft: "20px" }} className='prpt-btn'>Paid Payments</button></Link>
     </div>
 
   );
 }
 
-export default PaymentRequest
+export default PaymentRequest;

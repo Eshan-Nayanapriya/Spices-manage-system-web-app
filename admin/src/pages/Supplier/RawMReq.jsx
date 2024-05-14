@@ -47,8 +47,8 @@ const SupplierProfile = () => {
         <td>{request.price}</td>
         <td>
           <button
-            className="btn btn-successs" 
-            
+            className="btn btn-successs"
+
             style={{
               backgroundColor: "tomato",
               color: "white",

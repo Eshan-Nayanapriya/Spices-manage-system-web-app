@@ -11,20 +11,20 @@ function Calculation() {
     }
 
     return (
-        <div  
-            style={{ 
+        <div
+            style={{
                 display: "flex",
                 justifyContent: "center",
-                width:"1500px",
+                width: "1500px",
                 alignItems: "center",
                 minHeight: "100vh",
                 background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
                 color: "#fff",
                 fontFamily: "Arial, sans-serif",
-            
+
             }}
         >
-            <div 
+            <div
                 style={{
                     backgroundColor: "rgba(255, 255, 255, 0.1)",
                     borderRadius: "10px",
@@ -34,16 +34,17 @@ function Calculation() {
             >
                 <form onSubmit={(e) => e.preventDefault()}>
                     <div style={{ marginBottom: "20px" }}>
-                        <label htmlFor="fullCap" style={{ padding: "0 10px",
-                          color:"white"
-                         }}>
+                        <label htmlFor="fullCap" style={{
+                            padding: "0 10px",
+                            color: "white"
+                        }}>
                             Full Capacity in Stores (in KG)
-                        </label>         
-                        <input 
-                            type="number" 
-                            id="fullCap" 
+                        </label>
+                        <input
+                            type="number"
+                            id="fullCap"
                             value={fullCap}
-                            onChange={(e) => setFullCap(e.target.value)} 
+                            onChange={(e) => setFullCap(e.target.value)}
                             style={{
                                 padding: "8px",
                                 marginLeft: "10px",
@@ -56,16 +57,17 @@ function Calculation() {
                         />
                     </div>
                     <div style={{ marginBottom: "20px" }}>
-                        <label htmlFor="availCap" style={{ padding: "0 10px",
-                          color:"white"
-                         }}>
+                        <label htmlFor="availCap" style={{
+                            padding: "0 10px",
+                            color: "white"
+                        }}>
                             Available Capacity in Stores (in KG)
                         </label>
-                        <input 
-                            type="number" 
-                            id="availCap" 
+                        <input
+                            type="number"
+                            id="availCap"
                             value={availCap}
-                            onChange={(e) => setAvailCap(e.target.value)} 
+                            onChange={(e) => setAvailCap(e.target.value)}
                             style={{
                                 padding: "8px",
                                 marginLeft: "10px",
@@ -77,9 +79,9 @@ function Calculation() {
                             }}
                         />
                     </div>
-                    <button 
+                    <button
                         type="submit"
-                        onClick={() => CalRequest()} 
+                        onClick={() => CalRequest()}
                         style={{
                             padding: "10px 20px",
                             marginTop: "10px",
@@ -93,7 +95,7 @@ function Calculation() {
                     </button>
                 </form>
                 <br />
-                <label style ={{color:"white"}}>Needed Quantity: {needed} KG</label>
+                <label style={{ color: "white" }}>Needed Quantity: {needed} KG</label>
             </div>
         </div>
     );

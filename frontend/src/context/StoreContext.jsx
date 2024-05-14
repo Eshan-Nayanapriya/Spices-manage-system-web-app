@@ -11,6 +11,7 @@ const StoreConstextProvider = (props)=>{
     const [token,setToken] = useState("")
     const [food_list,setFoodList] = useState([]);
     const [promotionList, setPromotionList] = useState([]);
+    const [userId, setUserId] = useState(""); // Add this line to create a state for userId
 
     const fetchFoodList = async () => {
         const response = await axios.get(url+"/api/food/list")
@@ -81,11 +82,31 @@ const StoreConstextProvider = (props)=>{
 
     useEffect(() =>{
         async function loadData(){
+
             await fetchFoodList();
             await fetchPromotionList();
             if(localStorage.getItem("token")){
                setToken(localStorage.getItem("token"));
                await loadCartData(localStorage.getItem("token"));
+
+            
+            const storedToken = localStorage.getItem("token");
+            if(storedToken){
+               setToken(storedToken);
+               await loadCartData(storedToken);
+
+               // Fetch user profile data to get userId
+               try {
+                 const response = await axios.get(`${url}/api/user/getuser`, {
+                   headers: {
+                     Authorization: storedToken,
+                   },
+                 });
+                 setUserId(response.data.user._id); // Here you are setting the userId state
+               } catch (error) {
+                 console.error("Error fetching user profile:", error);
+               }
+
             }
         }
         loadData();
@@ -101,11 +122,11 @@ const StoreConstextProvider = (props)=>{
         promotion,
         url,
         token,
-        setToken
+        setToken,
+        userId, // Include userId in context value
     }
 
     return(
-
         <StoreContext.Provider value={contextValue}>
             {props.children}
         </StoreContext.Provider>
