@@ -10,45 +10,70 @@
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
 }
 
+.promoaddbutton {
+  margin-top: 30px;
+   text-decoration: none;
+   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
+   border: none;
+    color: white;
+    background-color: tomato;
+    width: max(10vw, 200px);
+    padding:10px 0px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.promotion-request-head-line {
+  display: flex; /* Enable flexbox layout */
+  justify-content: space-between; /* Align items horizontally */
+}
+
+.list-promotion h1 {
+  font-size: 40px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #f6e9b4, #07692b);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
 .head-linep{
   margin-left: max(2vw,5px);
   margin-top: 15px;
 }
 
-.head-linep h1{
-  margin-left: max(2vw,5px);
-  margin-top: 15px;
-}
-
 .search-barp {
-  margin-right: 5%;
-  margin-top: 1%;
+  background-color: #f5f5f5; /* Light gray background */ /* Gray border */
+  border-radius: 5px; /* Rounded corners */
+  display: flex; /* Allow for inline styling of button and input */
+  align-items: center; /* Vertically centers input within search bar */
+  padding: 5px 10px; /* Padding around input */
+  width: 30%; /* Stretch search bar to full width */
+  margin-left: 20px;
+  height: 40px;
+  margin-top: 30px;
 }
 
-.search-bar-intp {
-  background-color: #f5f5f5;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  border: none;
-}
-
-.search-bar-intp input[type='text'] {
-  border: none;
-  outline: none;
-  font-size: 16px;
+.search-barp input[type='text'] {
+  margin-bottom: 30px;
+  border: none; /* Remove default input border */
+  outline: none; /* Remove default focus outline */
+  font-size: 16px; /* Set input font size */
+  padding: 5px; /* Add padding to input */
+  width: 100%; /* Stretch input to fill search bar width */
 }
 
 .search-btnp {
-  background-color: tomato;
-  color: white;
-  border: none;
-  cursor: pointer;
+  background-color: tomato; /* Orange background color */
+  color: white; /* White text color */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Set cursor to pointer on hover */
+  padding: 5px 10px; /* Add padding to button */
 }
 
 .search-btnp:hover {
-  background-color: #d95b43;
+  background-color: #d95b43; /* Darker orange on hover */
 }
 
 .listpromotion-format-main {
