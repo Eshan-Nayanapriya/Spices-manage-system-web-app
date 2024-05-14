@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import edit_icon from '../../../../assets/pen.png';
 import remove_icon from '../../../../assets/cross_icon.png';
+import jsPDF from 'jspdf';
 
 const list = ({ url }) => {
   const [promotions, setPromotions] = useState([]);
@@ -68,9 +69,27 @@ const list = ({ url }) => {
     if (!filtered.length) {
       toast.error('No results found for your search.', { position: "bottom-center" }); // Display message for empty results
     }
+  };
 
-  }
-
+  const generateReport = () => {
+    const doc = new jsPDF();
+    const currentDate = new Date().toLocaleDateString();
+    const currentTime = new Date().toLocaleTimeString();
+    const dateTime = `${currentDate} ${currentTime}`;
+  
+    const tableRows = [];
+    filteredPromotions.forEach((item) => {
+      tableRows.push([item.name, item.itemName, item.description, item.discount, item.validDate, item.quantity]);
+    });
+  
+    doc.autoTable({
+      head: [['Name', 'Item Name', 'Description', 'Discount', 'Valid Date', 'Quantity']],
+      body: tableRows,
+    });
+    doc.text(`Promotions Report (${dateTime})`, 14, 10); // Adding date and time to the header
+  
+    doc.save('promotions_report.pdf');
+  };
   useEffect(() => {
     fetchPromotions();
   }, []);
@@ -118,9 +137,7 @@ const list = ({ url }) => {
           </div>
         ))}
       </div>
-      <Link to='/PromotionReport'>
-        <button className='pbattaabddbutton'>Generate report</button>
-      </Link>
+      <button className='promoreportbutton' onClick={generateReport}>Generate report</button>
     </div>
   );
 };

@@ -36,7 +36,7 @@ const StoreConstextProvider = (props)=>{
                 console.log("cartQuantity: ", cartQuantity);
             
                 if (promotionItem && promotionItem.discount && cartQuantity >= promotionItem.quantity) {
-                    discount = (promotionItem.discount*(cartItemInfo.price*cartQuantity)/100);
+                    discount += (promotionItem.discount*(cartItemInfo.price*cartQuantity)/100);
                 }
             }
         }
@@ -82,14 +82,8 @@ const StoreConstextProvider = (props)=>{
 
     useEffect(() =>{
         async function loadData(){
-
-            await fetchFoodList();
             await fetchPromotionList();
-            if(localStorage.getItem("token")){
-               setToken(localStorage.getItem("token"));
-               await loadCartData(localStorage.getItem("token"));
-
-            
+            await fetchFoodList()
             const storedToken = localStorage.getItem("token");
             if(storedToken){
                setToken(storedToken);
@@ -106,7 +100,6 @@ const StoreConstextProvider = (props)=>{
                } catch (error) {
                  console.error("Error fetching user profile:", error);
                }
-
             }
         }
         loadData();
