@@ -78,7 +78,7 @@ function CreateSalary() {
                                 placeholder='Enter EmpID' 
                                 className='form-control'
                                 value={empID} 
-                                onChange={(e) => setEmpID(e.target.value)} 
+                                onChange={(e) => setEmpID(e.target.value)} required 
                             />
                             <button 
                                 type="button" 
@@ -112,27 +112,27 @@ function CreateSalary() {
                     <div className='mb-2'>
                         <label htmlFor='month'>Month</label>
                         <input id='month' type='month' placeholder='Enter Month' className='form-control'
-                            value={month} onChange={(e) => setMonth(e.target.value)} />
+                            value={month} onChange={(e) => setMonth(e.target.value)} required />
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='basicSalary'>Basic Salary</label>
                         <input id='basicSalary' type='number' placeholder='Enter Basic Salary' className='form-control'
-                            value={basicSalary} onChange={(e) => setBasicSalary(e.target.value)} />
+                            value={basicSalary} onChange={(e) => setBasicSalary(e.target.value)} required />
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='totalOTHours'>Total OT Hours</label>
                         <input id='totalOTHours' type='number' placeholder='Enter Total OT Hours' className='form-control'
-                            value={totalOTHours} onChange={(e) => setTotalOTHours(e.target.value)} />
+                            value={totalOTHours} onChange={(e) => setTotalOTHours(e.target.value)} required />
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='otRate'>OT Rate</label>
                         <input id='otRate' type='number' placeholder='Enter OT Rate' className='form-control'
-                            value={otRate} onChange={(e) => setOtRate(e.target.value)} />
+                            value={otRate} onChange={(e) => setOtRate(e.target.value)} required />
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='bonus'>Bonus</label>
                         <input id='bonus' type='number' placeholder='Enter Bonus' className='form-control'
-                            value={bonus} onChange={(e) => setBonus(e.target.value)} />
+                            value={bonus} onChange={(e) => setBonus(e.target.value)} required  />
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='totalSalary'>Total Salary</label>

@@ -76,31 +76,31 @@ function CreateUser() {
                     <div className='form-group mb-2'>
                         <label htmlFor='name'>Name</label>
                         <input id='name' type='text' placeholder='Enter Name' className='form-control'
-                            onChange={(e) => setName(e.target.value)} />
+                            onChange={(e) => setName(e.target.value)} required />
                     </div>
                     <div className='form-group mb-2'>
                         <label htmlFor='password'>Password</label>
                         <input id='password' type='password' placeholder='Enter password' className='form-control'
-                            onChange={(e) => setPassword(e.target.value)} />
+                            onChange={(e) => setPassword(e.target.value)} required />
                     </div>
                     <div className='form-group mb-2'>
                         <label htmlFor='confirmpassword'>Confirm Password</label>
                         <input id='confirmpassword' type='password' placeholder='Enter password' className='form-control'
-                            onChange={(e) => setConfPassword(e.target.value)} />
+                            onChange={(e) => setConfPassword(e.target.value)} required />
                     </div>
                     <div className='form-group mb-2'>
                         <label htmlFor='email'>Email</label>
                         <input id='email' type='email' placeholder='Enter Email' className='form-control'
-                            onChange={(e) => setEmail(e.target.value)} />
+                            onChange={(e) => setEmail(e.target.value)} required />
                     </div>
                     <div className='form-group mb-2'>
                         <label htmlFor='age'>Age</label>
                         <input id='age' type="text" placeholder="Enter Age" className="form-control"
-                            onChange={(e) => setAge(e.target.value)} />
+                            onChange={(e) => setAge(e.target.value)} required  />
                     </div>
                     <div className='form-group mb-2'>
                         <label htmlFor='jobroll'>Job Roll</label>
-                        <select id='jobroll' className="form-control" onChange={(e) => setJobRoll(e.target.value)}>
+                        <select id='jobroll' className="form-control" onChange={(e) => setJobRoll(e.target.value)} required>
                             <option value="">Select Job Roll</option>
                             {jobRollOptions.map((option, index) => (
                                 <option key={index} value={option}>{option}</option>
@@ -109,7 +109,7 @@ function CreateUser() {
                     </div>
                     <div className='form-group mb-2'>
                         <label htmlFor='bank'>Bank</label>
-                        <select id='bank' className="form-control" onChange={(e) => setBank(e.target.value)}>
+                        <select id='bank' className="form-control" onChange={(e) => setBank(e.target.value)} required>
                             <option value="">Select Bank</option>
                             {bankOptions.map((option, index) => (
                                 <option key={index} value={option}>{option}</option>
@@ -119,7 +119,7 @@ function CreateUser() {
                     <div className='form-group mb-2'>
                         <label htmlFor='accountNumber'>Account Number</label>
                         <input id='accountNumber' type="text" placeholder="Enter Account Number" className="form-control"
-                            onChange={(e) => setAccountNumber(e.target.value)} />
+                            onChange={(e) => setAccountNumber(e.target.value)} required />
                     </div>
                     <button className="submit-btn">Submit</button>
                 </form>
