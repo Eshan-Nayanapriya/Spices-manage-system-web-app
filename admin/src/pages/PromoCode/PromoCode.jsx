@@ -22,9 +22,13 @@ const PromoCode = ({ url }) => {
     }
 
     // Function to handle changes in input fields
-    const onChangeHandler = (e) => {
-        setData(prevState => ({ ...prevState, [e.target.name]: e.target.value }));
-    };
+const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    if (name === 'discount' && (!value || /^\d{0,2}$/.test(value))) {
+        setData(prevState => ({ ...prevState, [name]: value }));
+    }
+};
+
 
     // Function to handle form submission
     const onSubmitHandler = async (event) => {
