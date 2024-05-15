@@ -5,6 +5,11 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import spice from '../../assets/spices.png'
+import quantity from '../../assets/delivery.png'
+import description from '../../assets/description.png'
+import category from '../../assets/categories.png'
+import pricetag from '../../assets/pricetag.png'
 
 const Add = ({url}) => {
 
@@ -56,43 +61,50 @@ const Add = ({url}) => {
   return (
     <div className='add-product'>
       <h1>Add Product</h1>
-      <hr />
+      <br />
       <form  onSubmit={onSubmitHandler}> 
           <div className="addproduct-itemfield">
-          <p>Product Name:</p>
-            <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here'/>
+          <label>Product Name:</label>
+            <img src={spice} alt="" className='name' /> 
+          <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here'required/>
           </div>
+
           <div className="addproduct-itemfield">
           <label htmlFor="quantity">Product Quantity:</label>
-            <input onChange={onChangeHandler} value={data.quantity} type="text" name='quantity' placeholder='Type here'/>
+          <img src={quantity} alt="" className='quant'/>
+          <input onChange={onChangeHandler} value={data.quantity} type="text" name='quantity' placeholder='Type here'required/>
           </div>
+
           <div className="addproduct-itemfield">
           <label htmlFor="description">Product Description:</label>
-            <textarea onChange={onChangeHandler} value={data.description} name="description" rows="6" placeholder='Write content here' required></textarea>
+          <img src={description} alt="" className='descri'/>
+          <textarea onChange={onChangeHandler} value={data.description} name="description" rows="6" placeholder='Write content here' required></textarea>
           </div>
           
             <div className="addproduct-itemfield">
-            <p>Product category:</p>
-              <select onChange={onChangeHandler} name="category">
+            <label>Product category:</label> 
+            <img src={category} alt="" className='cat' />
+            <select onChange={onChangeHandler} name="category">
                 <option value="Powder">Powder</option>
                 <option value="Pieces">Pieces</option>
                 <option value="Flour">Flour</option>
                 <option value="Oil">Oil</option>
                 <option value="Seeds">Seeds</option>
                 <option value="Other">Other</option>
-
               </select>
             </div>
+
             <div className="addproduct-itemfield">
-            <p>Product Price:</p>
+            <label>Product Price:</label>
+            <img src={pricetag} alt=""  className='pricetag'/>
               <input onChange={onChangeHandler} value={data.price} type="Number" name='price' placeholder='LKR'/>
             </div>
           
-          <div className="addproduct-itemfield">
-            <p >Product Image:</p>
-            <label htmlFor="image" >
+          <div className="addproduct-itemfieldd">
+            <label htmlFor="image">Product Image:</label>
+            <br />
               <img className='uploaded-image'src={image?URL.createObjectURL(image):upload_area} alt="" />
-            </label>
+          
             <input onChange={(e)=>setImage(e.target. files[0])}type="file" id='image' hidden required/>
           </div>
           
@@ -101,6 +113,7 @@ const Add = ({url}) => {
           </div>
       </form>
     </div>
+    
   )
 }
 

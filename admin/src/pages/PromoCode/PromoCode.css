@@ -1,0 +1,47 @@
+.add-promocode{
+    width: 70%;
+    margin-left: max(5vm,25px);
+    margin-top: 50px;
+    color: #6d6d6d;
+    font-size: 16px;
+}
+
+.add-promocode form{
+    gap: 20px;
+}
+
+.add-promo-code, .discount-price{
+    width: max(20%,280px);
+}
+
+.add-promo-code input{
+    padding: 10px;
+}
+
+.discount-price{
+    gap: 10px;
+}
+
+.discount-price select{
+    max-width: 120px;
+    padding: 10px;
+}
+
+.add-btn{
+    max-width: 120px;
+    border: none;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    margin-left: 18px;
+}
+
+.refresf-btn{
+    max-width: 120px;
+    border: none;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}

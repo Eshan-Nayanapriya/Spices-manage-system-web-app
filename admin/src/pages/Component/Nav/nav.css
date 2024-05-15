@@ -2,6 +2,8 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  width: 100%;
+  margin-right: 0;
   overflow: hidden;
   background-color: #d2d1ce; /* Vibrant yellow for spice association */
   border-bottom: 2px solid #c7342c; /* Darker border for contrast */
@@ -14,11 +16,12 @@
 }
 
 .home-ll h1 {
+  
   display: block;
   color: #fffcfc; /* White text */
   text-align: center;
   padding: 14px 16px;
-  font-size: 22px;
+  font-size: 20px;
   text-decoration: none;
   border-radius: 10px;
   background-color: #e95312; /* Reddish-brown for spice-like color */

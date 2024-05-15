@@ -6,7 +6,7 @@ import { StoreContext } from '../../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
 
 
-const PlaceOrder = () => {
+const PlaceOrder = ({ setShowLogin }) => {
 
   const{getTotalCartAmount, token, food_list, cartItems,promotion, url} = useContext(StoreContext);
 
@@ -61,6 +61,7 @@ const PlaceOrder = () => {
 
   useEffect(()=>{
     if(!token) {
+      setShowLogin(true);
       navigate('/cart')
     }
     else if(getTotalCartAmount() === 0)
