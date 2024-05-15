@@ -1,5 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+.promotion_update{
+  width: 100%;
+  background-color: white;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
+  border-radius: 5px;
+  margin : 50px;
+  padding: 50px;
+}
+
+.promotion_update h1{
+  font-size: 40px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #f6e9b4, #ff8800);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 .promotion-add{
   width: 100%;
   background-color: white;
@@ -12,7 +32,7 @@
 .promotion-add h1{
   font-size: 40px;
   font-weight: 600;
-  background-image: linear-gradient(to left, #f6e9b4, #ff8800);
+  background-image: linear-gradient(to left, #f6e9b4, #07692b);
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;

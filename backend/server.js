@@ -57,6 +57,7 @@ app.use("/api/promo",promoRouter)
 
 //sadan
 app.use("/api/promotion",promotionRouter)
+app.use("/promoimage",express.static('promoupload'))
 
 app.use('/Salary', SalaryRoutes)
 app.use('/User', UserRoutes)
