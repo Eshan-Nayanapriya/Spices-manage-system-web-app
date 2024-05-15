@@ -71,7 +71,7 @@ const SupplierProfile = () => {
   return (
     <div
       style={{
-        width: "2100px",
+        width: "1400px",
         height: "100vh",
         backgroundColor: "#fff",
 
@@ -82,7 +82,7 @@ const SupplierProfile = () => {
           backgroundColor: "#394a6d",
           marginLeft: "100px",
           marginRight: "-300px",
-          height: "600px",
+          height: "80vh",
           marginTop: "50px",
           borderRadius: "20px",
           margin: "80px",
@@ -98,7 +98,7 @@ const SupplierProfile = () => {
               color: "#fff",
               backgroundColor: "grey",
               padding: "10px",
-              width: "1140px",
+              width: "1030px",
               borderRadius: "10px",
             }}
           >

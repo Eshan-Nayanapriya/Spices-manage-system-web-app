@@ -2,11 +2,18 @@ import React from 'react'
 import './Sidebar.css'
 import { assets } from '../../assets/assets'
 import { NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import { AdminContext } from '../../context/AdminContext.jsx';
 
 const Sidebar = () => {
+    const { Token } = useContext(AdminContext);
     return (
         <div className='sidebar'>
             <div className="sidebar-options">
+            <NavLink to="/addadmin" className="sidebar-option" style={{backgroundColor:"tomato",color:"white"}}>
+                    <img src={assets.admin_icon} alt="" width={24}/>
+                    <p>Admins</p>
+                </NavLink>
                 <NavLink to="/add" className="sidebar-option">
                     <img src={assets.add_icon} alt="" />
                     <p>Add Products</p>
@@ -27,12 +34,14 @@ const Sidebar = () => {
                     <img src={assets.add_icon} alt="" />
                     <p>Supplier</p>
                 </NavLink>
-                <NavLink to="/paymentRequests" className="sidebar-option">
-                    <img src={assets.add_icon} alt="" />
+                <NavLink to="/paymentRequests" className="sidebar-option" >
+                    <img src={assets.income} alt="" />
                     <p>Payment Management</p>
                 </NavLink>
-
-
+                <NavLink to="/OrderPayments" className="sidebar-option">
+                    <img src={assets.analysis} alt="" />
+                    <p>Payment Summary</p>
+                </NavLink>
                 <NavLink to="/displayenquiry" className="sidebar-option">
                     <img src={assets.add_icon} alt="" />
                     <p>Enquries</p>
@@ -43,6 +52,7 @@ const Sidebar = () => {
 
                 </NavLink>
                 <NavLink to="/employeeManagement" className="sidebar-option">
+
                 <img src={assets.add_icon} alt="" />
                 <p>Employee Management</p>
             </NavLink>
@@ -54,6 +64,7 @@ const Sidebar = () => {
                 <img src={assets.add_icon} alt="" />
                 <p>Add Promo</p>
             </NavLink>
+
             </div>
 
         </div>

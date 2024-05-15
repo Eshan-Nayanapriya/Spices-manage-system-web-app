@@ -18,7 +18,7 @@ function DisplayEnquiries() {
 
     // Function to filter enquiries based on search query
     const filteredEnquiries = enquiries.filter(enquiry =>
-        enquiry.product.toLowerCase().includes(searchQuery.toLowerCase())
+        enquiry.product.toLowerCase().includes(searchQuery.toLowerCase(),)
     );
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: '2-digit', day: '2-digit' };

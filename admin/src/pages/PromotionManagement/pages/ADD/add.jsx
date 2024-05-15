@@ -91,13 +91,11 @@ const add = ({ url }) => {
 
   return (
     <div className='promotion-add'>
-      <div className="head-linep">
-        <h1>Promotion Add</h1>
-        <div className='promotion-request-head-line'>
-          <Link to='/PromotionList'>
-            <button className='promoaddbutton'>Promotion List</button>
-          </Link>
-        </div>
+      <h1>Promotion Add</h1>
+      <div className='promotion-request-head-line'>
+        <Link to='/PromotionList'>
+          <button className='promoaddbutton1'>Promotion List</button>
+        </Link>
       </div>
       <form className='flex-col' onSubmit={onSubmitHandler}>
         <div className="promotion-img-upload flex-col">
@@ -144,7 +142,7 @@ const add = ({ url }) => {
             <input onChange={onChangeHandler} value={data.quantity} type="Number" name="quantity" placeholder='Write content here' required />
           </div>
         </div>
-        <button type='submit' className='add-btn'>ADD</button>
+        <button type='submit' className='add-btnp'>ADD</button>
       </form>
     </div>
   )

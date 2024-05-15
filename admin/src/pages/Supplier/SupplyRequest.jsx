@@ -39,7 +39,9 @@ function SupplyRequest() {
     return data.filter(
       (e) =>
         e.rid.toLowerCase().includes(serQuery) ||
-        e.name.includes(serQuery)
+        e.name.includes(serQuery)||
+        e.deadLine.includes(serQuery)
+        
     ).map((Request) => (
       <tr key={Request._id}>
         <td style={{ margin: "15px" }}>{Request.name}</td>

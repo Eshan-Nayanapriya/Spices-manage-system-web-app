@@ -1,11 +1,19 @@
 /* Profile.css */
+.container-cusprofile{
+  display: flex;
+  flex-direction: column;
+  
+ 
+}
+
 .cusprofile {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
-  margin-top: 50px;
+  margin-top: 0px;
+ 
+ 
 
 
 }
@@ -21,7 +29,8 @@
   gap: 20px;
   border: 2px solid tomato;
   padding: 30px;
-  border-radius: 20px;
+  border-radius: 20px ;
+  
 
 }
 
@@ -32,12 +41,14 @@
 
 }
 
-.custitle {
-  font-size: 40px;
+.custitle123 {
+  font-size: 30px;
   background-color: tomato;
   padding: 10px;
-  border-radius: 20px 20px 0 0 ;
+  border-radius: 20px 0px 0 0 ;
   color: white;
+  font-size: 20px;
+ 
 }
 
 .custable {
