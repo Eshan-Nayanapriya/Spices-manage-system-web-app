@@ -1,12 +1,17 @@
 import React from 'react'
+import 'react-toastify/dist/ReactToastify.css';
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
+import { useContext } from 'react'
+import { AdminContext } from './context/AdminContext.jsx';
 import Navbar from './components/Navbar/Navbar'
 import Sidebar from './components/Sidebar/Sidebar'
-import { Routes, Route, Navigate } from 'react-router-dom'
+
 import Add from './pages/AddProduct/Add'
 import List from './pages/ListProduct/List'
 import Orders from './pages/Orders/Orders'
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+
 import SupplyManager from './pages/Supplier/SupplyManager'
 import SupplierProfile from "./pages/Supplier/SupplierProfile";
 import Ratings from "./pages/Supplier/Ratings";
@@ -52,8 +57,7 @@ import EditProduct from './pages/EditProduct/EditProduct.jsx'
 import Report from './pages/Report/Report.jsx'
 import AdminLog from './pages/AdminLoging/adminLoging.jsx'
 import AddAdmin from './pages/AdminLoging/AdminADD.jsx'
-import { useContext } from 'react'
-import { AdminContext } from './context/AdminContext.jsx';
+
 
 import adminlogin from './pages/AdminLoging/adminLoging.jsx'
 
