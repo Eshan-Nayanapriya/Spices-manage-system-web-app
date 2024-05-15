@@ -154,7 +154,7 @@ position: fixed;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
-background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+background-color: rgba(239, 79, 30, 0.8); /* Transparent white background */
 border: 1px solid #ccc;
 border-radius: 5px;
 padding: 20px;
@@ -165,8 +165,7 @@ z-index: 1000;
 .confirmation-message h2 {
 margin-bottom: 10px;
 font-size: 18px;
-color: rgb(255, 254, 254);
-background-color: rgba(221, 85, 40, 0.984); /* Transparent red background */
+color: rgb(234, 224, 224);
 }
 
 .confirmation-message-buttons {

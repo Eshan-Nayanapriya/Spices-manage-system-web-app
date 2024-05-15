@@ -26,12 +26,13 @@ const ProductDisplay = (props) => {
         <div className="productdisplay-right-description">
             <div className="productdisplay-right-description"><span>Description:</span><br />{product.description}</div>
             <div className="productdisplay-right-ingredients"><span>Category:</span><br />{product.category}</div>
+            <div className="productdisplay-right-quantity"><span>Available pack size:</span><br /></div>{product.quantity}</div>
             <div className="productdisplay-right-medicalvalues"><span>Price(Rs):</span><br /> {product.price}/=</div>
            
         
         </div>
       </div>
-    </div>
+    
   )
 }
 

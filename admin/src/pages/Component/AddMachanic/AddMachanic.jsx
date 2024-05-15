@@ -59,6 +59,7 @@ export default function AddMachanic() {
   <div style={{ marginBottom: '15px' }}>
     <label className="form-label">Name:</label>
     <input
+    placeholder='Enter Name ...'
       type="text"
       name="name"
       onChange={handleChange}
@@ -70,6 +71,7 @@ export default function AddMachanic() {
   <div style={{ marginBottom: '15px' }}>
     <label className="form-label">Age:</label>
     <input
+     placeholder='Enter Age ...'
       type="text"
       name="age"
       onChange={handleChange}
@@ -81,6 +83,7 @@ export default function AddMachanic() {
   <div style={{ marginBottom: '15px' }}>
     <label className="form-label">Phone:</label>
     <input
+     placeholder='EnterPhone Number ...'
       type="text"
       name="phone"
       onChange={handleChange}
@@ -92,6 +95,7 @@ export default function AddMachanic() {
   <div style={{ marginBottom: '15px' }}>
     <label className="form-label">Address:</label>
     <input
+     placeholder='Enter Address ...'
       type="text"
       name="address"
       onChange={handleChange}

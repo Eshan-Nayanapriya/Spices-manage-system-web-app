@@ -2,7 +2,7 @@ import promotionModel from "../models/PromotionModel.js";
 import fs from 'fs'
 
 //add promotion
-const addPromotion = async (req,res) => {
+const addPromotion = async (req, res) => {
     let promoImage_filename = `${req.file.filename}`
 
     const promotion = new promotionModel({
@@ -16,68 +16,65 @@ const addPromotion = async (req,res) => {
     });
     try {
         await promotion.save();
-        res.json({success:true,message:"Promotion Added"})
-    }catch (error){
+        res.json({ success: true, message: "Promotion Added" })
+    } catch (error) {
         console.log(error);
-        res.json({success:false,message:"Error"})
+        res.json({ success: false, message: "Error" })
     }
 }
 
 //all promotion list
 const listPromotion = async (req, res, next) => {
-    try{
+    try {
         const promotions = await promotionModel.find({});
-        res.json({success:true,data:promotions})
-    }catch(error){
+        res.json({ success: true, data: promotions })
+    } catch (error) {
         console.log(error);
-        res.json({success:false,message:"Error"})
+        res.json({ success: false, message: "Error" })
     }
 }
 
 //remove promotion
-const removePromotion = async (req,res)=>{
-    try{
+const removePromotion = async (req, res) => {
+    try {
         const promotions = await promotionModel.findById(req.body.id);
-        fs.unlink(`promoupload/${promotions.promoimage}`,()=>{})
+        fs.unlink(`promoupload/${promotions.promoimage}`, () => { })
 
         await promotionModel.findByIdAndDelete(req.body.id);
-        res.json({success:true,message:"Promotion Removed"})
-    }catch(error){
-        console.log(error);
-        res.json({success:false,message:"Error"})
-}
-}
-
-// Edit food item
-const editFood = async (req, res, next) => {
-    try {
-        const { id } = req.params;
-        const { name, description, price, category } = req.body;
-
-        let updateData = {
-            name,
-            description,
-            price,
-            category,
-        };
-
-        if (req.file) {
-            let image_filename = `${req.file.filename}`;
-            updateData.image = image_filename;
-        }
-
-        const updatedFood = await foodmodel.findByIdAndUpdate(id, updateData, { new: true });
-        if (!updatedFood) {
-            return res.status(404).json({ success: false, message: "Food not found" });
-        }
-
-        res.json({ success: true, data: updatedFood });
+        res.json({ success: true, message: "Promotion Removed" })
     } catch (error) {
         console.log(error);
-        res.status(500).json({ success: false, message: "Error updating food" });
+        res.json({ success: false, message: "Error" })
     }
 }
 
+// Edit promotion
+const editPromotion = async (req, res, next) => {
+    const id = req.params.id;
+    const { name, description, itemName, validDate, discount, quantity } = req.body;
+    try {
+        // Find the promotion by ID
+        let promotion = await promotionModel.findById(id);
 
+        if (!promotion) {
+            return res.status(404).json({ message: "Promotion not found" });
+        }
 
-export {addPromotion,listPromotion,removePromotion}
+        // Update promotion data
+        promotion = await promotionModel.findByIdAndUpdate(id, {
+            name: name || promotion.name,
+            validDate: validDate || promotion.validDate,
+            description: description || promotion.description,
+            itemName: itemName || promotion.itemName,
+            discount: discount || promotion.discount,
+            quantity: quantity || promotion.quantity
+        }, { new: true }); // Return the updated document
+
+        return res.status(200).json({ message: "Promotion updated successfully", promotion });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+export { addPromotion, listPromotion, removePromotion, editPromotion }

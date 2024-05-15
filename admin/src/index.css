@@ -21,6 +21,7 @@ a{
 hr{
     border: none;
     height: 1px;
+    margin: 0px;
     background-color: #a9a9a9;
 }
 

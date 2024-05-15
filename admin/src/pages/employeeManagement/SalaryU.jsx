@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios'; 
 import { Link } from "react-router-dom";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import '../employeeManagement/emp.css'
 
 function SalaryU() {
     const [salary, setSalary] = useState([]);
@@ -55,137 +56,67 @@ function SalaryU() {
         doc.autoTable({ html: '#salary-table', columns: [{ title: "empID" }, { title: "Month" }, { title: "Basic Salary" }, { title: "Total OT hours" }, { title: "OT Rate" }, { title: "Bonus" }, { title: "Total Salary" }, { title: "Account Number" }, { title: "Bank" }] });
         doc.save('employee_report.pdf');
     }
+    
     return (
-        <div style={{ 
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100%',
-            width:'100%',
-            fontFamily: 'Arial, sans-serif',
-            padding: '20px'
-        }}>
-            <div style={{
-                backgroundColor: '#fff',
-                borderRadius: '8px',
-                padding: '20px',
-                width: '100%',
-                boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
-            }}>
-                <h1 style={{ 
-                    marginBottom: '0', 
-                    textAlign: 'center', 
-                    fontWeight: 'bold', 
-                    color: '#000'
-                }}>Employees Salaries</h1>
-                <a href="/createsalary" style={{ 
-                    display: 'inline-block', 
-                    margin: '10px 0', 
-                    padding: '10px 20px', 
-                    backgroundColor: '#28a745', 
-                    color: '#fff',
-                    textDecoration: 'none'
-                }}>Add Employee Salary</a>
-                <div style={{ 
-                    textAlign: 'center', 
-                    marginBottom: '10px'
-                }}>
+        <div className="salaryu-container">
+            <div className="salaryu-content">
+                <h1 className="salaryu-heading">Employees Salaries</h1>
+                <Link to="/createsalary" className="add-salary-link">Add Employee Salary</Link>
+                <div className="search-container">
                     <input 
                         type="text" 
                         value={searchTerm} 
                         onChange={handleChange} 
                         placeholder="Search by Employee ID"  
-                        style={{ 
-                            padding: '10px', 
-                            marginRight: '5px', 
-                            width: '400px',
-                            borderRadius: '4px',
-                            border: '1px solid #ccc'
-                        }} 
+                        className="search-input" 
                     />
                     <button 
                         onClick={handleSearch} 
-                        style={{ 
-                            padding: '10px 20px', 
-                            minWidth: '100px', 
-                            backgroundColor: '#007bff',
-                            color: '#fff',
-                            borderRadius: '4px',
-                            border: 'none'
-                        }} 
+                        className="search-btn" 
                     >
                         Search
                     </button>
                 </div>
-                <div style={{ 
-                    maxHeight: '40vh', 
-                    overflowY: 'auto',
-                    border: '1px solid #ccc',
-                    borderRadius: '4px'
-                }}>
-                    <table id="salary-table" style={{ 
-                        width: '100%', 
-                        borderCollapse: 'collapse',
-                        backgroundColor:'#fff'
-                    }}>
+                <div className="salary-table-container">
+                    <table id="salary-table" className="salary-table">
                         <thead>
                             <tr>
-                                <th style={{ padding: '10px' }}>empID</th>
-                                <th style={{ padding: '10px' }}>Month</th>
-                                <th style={{ padding: '10px' }}>Basic Salary</th>
-                                <th style={{ padding: '10px' }}>Total OT hours</th>
-                                <th style={{ padding: '10px' }}>OT Rate</th>
-                                <th style={{ padding: '10px' }}>Bonus</th>
-                                <th style={{ padding: '10px' }}>Total Salary</th>
-                                <th style={{ padding: '10px' }}>Account Number</th>
-                                <th style={{ padding: '10px' }}>Bank</th>
-                                <th style={{ padding: '10px' }}>Action</th>
+                                <th>empID</th>
+                                <th>Month</th>
+                                <th>Basic Salary</th>
+                                <th>Total OT hours</th>
+                                <th>OT Rate</th>
+                                <th>Bonus</th>
+                                <th>Total Salary</th>
+                                <th>Account Number</th>
+                                <th>Bank</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {filteredSalaries.map((salaryItem, index) => (
                                 <tr key={index}> 
-                                    <td style={{ padding: '10px' }}>{salaryItem.empID}</td>
-                                    <td style={{ padding: '10px' }}>{salaryItem.month}</td>
-                                    <td style={{ padding: '10px' }}>{salaryItem.basicSalary}</td>
-                                    <td style={{ padding: '10px' }}>{salaryItem.totalOTHours}</td>
-                                    <td style={{ padding: '10px' }}>{salaryItem.otRate}</td>
-                                    <td style={{ padding: '10px' }}>{salaryItem.bonus}</td>
-                                    <td style={{ padding: '10px' }}>{salaryItem.totalSalary}</td>
-                                    <td style={{ padding: '10px' }}>{salaryItem.accountNumber}</td>
-                                    <td style={{ padding: '10px' }}>{salaryItem.bank}</td>
-                                    <td style={{ padding: '10px' }}>
-                                        <a href={`/updatesal/${salaryItem._id}`} style={{ 
-                                            marginRight: '10px', 
-                                            padding: '5px 10px', 
-                                            backgroundColor: '#28a745',
-                                            color: '#fff',
-                                            textDecoration: 'none',
-                                            borderRadius: '4px'
-                                        }}>Update</a>
-                                        <a href="/salaryy" style={{ 
-                                            padding: '5px 10px', 
-                                            backgroundColor: '#dc3545',
-                                            color: '#fff',
-                                            textDecoration: 'none',
-                                            borderRadius: '4px'
-                                        }} onClick={(e) => handleDelete(salaryItem._id)}>Delete</a>
+                                    <td>{salaryItem.empID}</td>
+                                    <td>{salaryItem.month}</td>
+                                    <td>{salaryItem.basicSalary}</td>
+                                    <td>{salaryItem.totalOTHours}</td>
+                                    <td>{salaryItem.otRate}</td>
+                                    <td>{salaryItem.bonus}</td>
+                                    <td>{salaryItem.totalSalary}</td>
+                                    <td>{salaryItem.accountNumber}</td>
+                                    <td>{salaryItem.bank}</td>
+                                    <td className="action-buttons">
+                                        <Link to={`/updatesal/${salaryItem._id}`} className="btn btn-success">Update</Link>
+                                        <button className="deletesalbtn" onClick={() => handleDelete(salaryItem._id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
-                <br />
+                <br></br>
                 <button 
-                    style={{ 
-                        padding: '10px 20px', 
-                        backgroundColor: '#FFA500',
-                        color: '#fff',
-                        borderRadius: '4px',
-                        border: 'none',
-                        borderRadius: '4px'
-                    }}
+                    className="download-report-btn" 
                     onClick={downloadReport} 
                 >
                     Download Report

@@ -70,7 +70,7 @@ const List = ({ url }) => {
 
   return (
     <div className='list-product'>
-      <h1>All Foods List</h1>
+      <h1>All Product List</h1>
       <br />
       <div className="searchbar">
         <input type="text" name='name' value={query} onChange={(e) => handleSearch(e)} placeholder='Search.....' />

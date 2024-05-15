@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/frontend_assets/assets";
 import {Link, useNavigate} from 'react-router-dom';
@@ -12,12 +12,12 @@ const Navbar = ({setShowLogin}) => {
     const navigate = useNavigate();
     const {getTotalCartAmount,token,setToken} = useContext(StoreContext);
     
-
     const logout = () => {
       localStorage.removeItem("token");
       setToken("");
       navigate("/")
     }
+    
 
   return (
     <div className="navbar">
@@ -43,6 +43,7 @@ const Navbar = ({setShowLogin}) => {
       <input className='search-bartxt'   type='text' name='search'  autoComplete="off" placeholder='Search here...'/>
       <img className="srch" src={assets.search_icon} alt="" />
       </div>
+     
         <div className="navbar-search-icon">
           <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link>
           <div className={getTotalCartAmount()===0?"":"dot"}></div>

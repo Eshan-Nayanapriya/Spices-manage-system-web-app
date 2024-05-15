@@ -37,7 +37,7 @@ const Sidebar = () => {
                     <img src={assets.add_icon} alt="" />
                     <p>Enquries</p>
                 </NavLink>
-                <NavLink to="/promotionManagement" className="sidebar-option">
+                <NavLink to="/PromotionList" className="sidebar-option">
                     <img src={assets.add_icon} alt="" />
                     <p>Promotion Management</p>
 
@@ -49,6 +49,10 @@ const Sidebar = () => {
             <NavLink to="/addMachine" className="sidebar-option">
                 <img src={assets.add_icon} alt="" />
                 <p>Factory Management</p>
+            </NavLink>
+            <NavLink to="/promocode" className="sidebar-option">
+                <img src={assets.add_icon} alt="" />
+                <p>Add Promo</p>
             </NavLink>
             </div>
 

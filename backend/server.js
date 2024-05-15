@@ -24,6 +24,9 @@ import routerMc from "./routes/MachineRoutes.js"
 import routerU from "./routes/UtilityRoutes.js"
 //asela
 
+//KP
+import promoRouter from './routes/PromoRoutes.js'
+
 //app config
 const app = express()
 const port = 4000
@@ -49,8 +52,12 @@ app.use("/api/enquiry",enquiryRouter)
 app.use("/api/displayenquiry", enquiryRouter); 
 app.use("/api/enquirydetails", enquiryRouter); 
 
+//KP
+app.use("/api/promo",promoRouter)
+
 //sadan
 app.use("/api/promotion",promotionRouter)
+app.use("/promoimage",express.static('promoupload'))
 
 app.use('/Salary', SalaryRoutes)
 app.use('/User', UserRoutes)
