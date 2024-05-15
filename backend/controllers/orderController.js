@@ -109,5 +109,15 @@ const updateStatus = async (req, res) => {
     }
 };
 
+// New function to handle order deletion
+const deleteOrder = async (req, res) => {
+    try {
+        await orderModel.findByIdAndDelete(req.params.id);
+        res.json({ success: true, message: "Order Deleted" });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" });
+    }
+};
 
-export { placeOrder, verifyOrder, userOrders, listOrders, updateStatus }
+export { placeOrder, verifyOrder, userOrders, listOrders, updateStatus, deleteOrder };

@@ -1,49 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import './PaidReportUpload.css'
+import './PaidReportUpload.css';
 import axios from 'axios';
 import { assets } from '../../assets/assets';
+import { jsPDF } from 'jspdf';
+import { toast } from 'react-toastify';
 
 const PaidReportUpload = ({ url }) => {
-  const [orders, setOrders] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0); // State for total amount
+  const [totalDeliveredOrders, setTotalDeliveredOrders] = useState(0); // State for total number of delivered orders
 
   const fetchAllOrders = async () => {
     try {
       const response = await axios.get(url + '/api/order/list');
       if (response.data.success) {
+        // Filter for delivered orders
         const deliveredOrders = response.data.data.filter(order => order.status === 'Delivered');
-        setOrders(deliveredOrders);
         setFilteredOrders(deliveredOrders);
+
+        // Initialize totals
+        let amount = 0;
+
+        // Calculate total amount and delivered orders
+        deliveredOrders.forEach(order => {
+          // Ensure order.amount is a number
+          amount += parseFloat(order.amount) || 0;
+        });
+
+        // Set the calculated totals
+        setTotalAmount(amount);
+        setTotalDeliveredOrders(deliveredOrders.length); // Set total number of delivered orders
       } else {
-        toast.error('Error');
+        toast.error('Error fetching orders');
       }
     } catch (error) {
       console.error('Error fetching orders:', error);
-    }
-  };
-
-
-  // Change: Added confirmation dialog and status update
-  const statusHandler = async (event, orderId) => {
-    const newStatus = event.target.value;
-
-    // Change: Check if the new status is 'Delivered'
-    if (newStatus === 'Delivered') {
-      const confirmDelivery = window.confirm('Confirm delivered');
-      if (!confirmDelivery) {
-        return;
-      }
-    }
-
-    const response = await axios.post(url + '/api/order/status', {
-      orderId,
-      status: newStatus,
-    });
-
-    if (response.data.success) {
-      await fetchAllOrders();
-    } else {
-      toast.error('Error updating status');
     }
   };
 
@@ -51,11 +42,36 @@ const PaidReportUpload = ({ url }) => {
     fetchAllOrders();
   }, []);
 
+  // New function to handle order deletion
+  const deleteOrder = async (orderId) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this order?');
+    if (!confirmDelete) {
+      return;
+    }
+
+    try {
+      const response = await axios.delete(url + `/api/order/delete/${orderId}`);
+      if (response.data.success) {
+        toast.success('Order deleted successfully');
+        await fetchAllOrders();
+      } else {
+        toast.error('Error deleting order');
+      }
+    } catch (error) {
+      console.error('Error deleting order:', error);
+      toast.error('Error deleting order');
+    }
+  };
+
   return (
     <div className="orderadd">
       <div className="ppppsearch-bar">
-        <h1>Completed Orders</h1>
+        <h1>Completed Order Payments</h1>
         <button className="ppppsearch-barbtn">Download Report</button>
+      </div>
+      <div className="order-summary">
+        <p>Total Amount: LKR {totalAmount.toFixed(2)}</p> {/* Display total amount */}
+        <p>Total Delivered Orders: {totalDeliveredOrders}</p> {/* Display total delivered orders */}
       </div>
       <div className="order-listz">
         {filteredOrders.map((order, index) => (
@@ -88,19 +104,18 @@ const PaidReportUpload = ({ url }) => {
             <select
               onChange={(event) => statusHandler(event, order._id)}
               value={order.status}
-              // Change: Disable the dropdown if the status is 'Delivered'
               disabled={order.status === 'Delivered'}
             >
               <option value="Food Processing">Food Processing</option>
               <option value="Out of delivery">Out of delivery</option>
               <option value="Delivered">Delivered</option>
             </select>
+            <button onClick={() => deleteOrder(order._id)}>Delete</button>
           </div>
         ))}
       </div>
     </div>
   );
+};
 
-  };
-
-export default PaidReportUpload
+export default PaidReportUpload;
