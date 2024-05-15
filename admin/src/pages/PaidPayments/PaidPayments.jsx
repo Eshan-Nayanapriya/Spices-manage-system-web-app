@@ -174,7 +174,7 @@ const PaidPayments = () => {
             <button style={{ marginLeft: "20px" }} className='pprpt-btn' onClick={downloadReport}>Download Report</button><br/>
             {/* <Link to={"/Pdfupload"}><button style={{ marginLeft: "20px" }} className='pprpt-btn'>Upload Report</button></Link> */}
             <Link to={"/OrderPayments"}>
-                <button className='orderpsymentsbtn'>Order Payments</button>
+                <button className='orderpaymentsbtn'>Completed Order Payments</button>
             </Link>
         </div>
     )

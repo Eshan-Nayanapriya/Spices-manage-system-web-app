@@ -36,18 +36,6 @@
     cursor: pointer;
 }
 
-.orderpsymentsbtn{
-  margin-top: 50px;
-  text-decoration: none;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
-  border: none;
-   color: white;
-   background-color: tomato;
-   width: max(10vw, 200px);
-   padding:10px 0px;
-   border-radius: 4px;
-   cursor: pointer;
-}
 
 .psearch-barbbbb {
   background-color: #f5f5f5; /* Light gray background */ /* Gray border */
