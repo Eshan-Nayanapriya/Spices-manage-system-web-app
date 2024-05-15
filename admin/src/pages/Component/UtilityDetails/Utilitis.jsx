@@ -17,7 +17,7 @@ function Utilitis() {
     fetchHandler().then((data) => setUtility(data.utilitis));
   }, []);
 
-  // PDF download
+  // PDF download//
   const componentsRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentsRef.current,
@@ -30,12 +30,8 @@ function Utilitis() {
       <Nav />
       <center><h1>Utility Details page</h1></center>
 
-      <button style={{backgroundColor:"#1A14E7",
-      color:"white",borderRadius:4,height:30,fontSize:18,marginLeft:"30px"}} >
-
-     <a href='Inform'>Inform Suplier</a>
-
-     </button>
+     <button onClick={handlePrint} style={{backgroundColor:"#1A14E7",
+      color:"white",borderRadius:4,height:30,fontSize:18,marginLeft:"30px"}} >Download Report</button>
 
      
 
@@ -44,9 +40,9 @@ function Utilitis() {
           <Utility key={i} utility={utility} />
         ))}
       </div>
-      <button onClick={handlePrint}>Download Report</button>
+     
     </div>
   );
 }
-
+//
 export default Utilitis;

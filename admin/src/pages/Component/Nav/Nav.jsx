@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 export default function Nav() {
   return (
     <div>
-      <ul className='home-ul'>
+      <ul className='home-ul' >
         
 
         <li className='home-ll'>
           <Link to="/addMachine" className="active home-a">
-            <h1>ADD Mechanic</h1>
+            <h1>Add Mechanic</h1>
           </Link>
         </li>
 
@@ -44,6 +44,12 @@ export default function Nav() {
           </Link>
         </li>
 
+        <li className='home-ll'>
+          <Link to="/Inform" className="active home-a">
+            <h1>Contact</h1>
+          </Link>
+        </li>
+       
         
       </ul>
     </div>
