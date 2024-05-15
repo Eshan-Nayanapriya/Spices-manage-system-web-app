@@ -28,7 +28,7 @@ import EnquiryDetails from './pages/AllEnquiries/enquiryDetails.jsx';
 
 import PromotionAdd from './pages/PromotionManagement/pages/ADD/add'
 import PromotionList from './pages/PromotionManagement/pages/LIST/list'
-import PromotionReport from './pages/PromotionManagement/pages/REPORT/report'
+import PromotionEdit from './pages/PromotionManagement/pages/EDIT/edit'
 
 import Users from './pages/employeeManagement/Users.jsx';
 import UpdateUser from './pages/employeeManagement/UpdateUser.jsx';
@@ -94,7 +94,7 @@ const App = () => {
           {/*sadan part */}
           <Route path="/PromotionAdd" element={<PromotionAdd url={url} />} />
           <Route path="/PromotionList" element={<PromotionList url={url} />} />
-          <Route path="/PromotionReport" element={<PromotionReport url={url} />} />
+          <Route path="/PromotionEdit/:id" element={<PromotionEdit />} />
 
 
           {/*torin part */}

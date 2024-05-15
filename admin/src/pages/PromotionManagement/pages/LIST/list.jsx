@@ -130,7 +130,9 @@ const list = ({ url }) => {
               <p>{item.discount}</p>
               <p>{item.validDate}</p>
               <p>{item.quantity}</p>
-              <img src={edit_icon} alt='' className='listproduct-edit-icon' />
+              <Link to={`/PromotionEdit/${item._id}`}>
+                <img src={edit_icon} alt='' className='listproduct-edit-icon' />
+              </Link>
               <img onClick={() => removePromotion(item._id)} src={remove_icon} className='listproduct-remove-icon' />
             </div>
             <hr />
