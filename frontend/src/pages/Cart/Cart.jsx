@@ -27,7 +27,6 @@ const Cart = () => {
         {food_list.map((item)=>{
           if(cartItems[item._id]>0){
             return (
-              // eslint-disable-next-line react/jsx-key
               <div>
               <div className="cart-items-title cart-items-item">
                   <img src={url+"/images/"+item.image} alt="" />
@@ -72,7 +71,7 @@ const Cart = () => {
         <div className="cart-promocode">
           <div>
             <p>If you have a promo code, Enter it here</p>
-            <div className='cart-promocode-input'>
+            <div className='cart-promocode-input-search'>
                 <input type="text" placeholder='promo code'/>
                 <button>Submit</button>
             </div>
