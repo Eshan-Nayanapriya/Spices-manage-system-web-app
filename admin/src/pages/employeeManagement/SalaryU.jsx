@@ -116,6 +116,16 @@ function SalaryU() {
                 </div>
                 <br></br>
                 <button 
+
+                    style={{ 
+                        padding: '10px 20px', 
+                        backgroundColor: '#FFA500',
+                        color: '#fff',
+                        borderRadius: '4px',
+                        border: 'none'
+                        
+                    }}
+
                     className="download-report-btn" 
                     onClick={downloadReport} 
                 >

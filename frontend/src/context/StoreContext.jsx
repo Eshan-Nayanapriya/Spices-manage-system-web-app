@@ -8,10 +8,14 @@ const StoreConstextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
     const url = "http://localhost:4000"
+
+
+
     const [token, setToken] = useState("")
     const [food_list, setFoodList] = useState([]);
     const [promotionList, setPromotionList] = useState([]);
     const [userId, setUserId] = useState(""); // Add this line to create a state for userId
+
 
     const fetchFoodList = async () => {
         const response = await axios.get(url + "/api/food/list")

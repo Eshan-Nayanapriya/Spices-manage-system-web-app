@@ -80,11 +80,15 @@ const UserProfile = () => {
   };
 
   return (
-    <div className='cusprofile'>
-      <h1 className='custitle'>User Profile</h1>
+   <div className="container-cusprofile">
+    
+     <div className='cusprofile'>
+     
+
       <div className="cusdetails">
+      <h1>User Profile</h1>
         <div className="cusprofileimage">
-          <img src={assets.profile} alt="" width={280} />
+          <img src={assets.profile} alt="" width={250} />
         </div>
         <div className="abc">
           <table className='custable'>
@@ -156,6 +160,7 @@ const UserProfile = () => {
         </div>
       </div>
     </div>
+   </div>
   );
 }
 export default UserProfile;
