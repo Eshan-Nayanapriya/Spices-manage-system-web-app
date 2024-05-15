@@ -43,18 +43,24 @@ const AddAdminForm = () => {
   };
 
   const handleDelete = async (id) => {
-    try {
-      const response = await axios.delete(`http://localhost:4000/api/admin/delete/${id}`);
-      if (response.data.success) {
-        alert('Admin deleted successfully');
-        fetchAdmins();
-      } else {
-        alert(response.data.message);
+    if (window.confirm("Are you sure you want to delete this admin?")) {
+      try {
+        const response = await axios.delete(`http://localhost:4000/api/admin/delete/${id}`);
+        if (response.data.success) {
+          alert('Admin deleted successfully');
+          fetchAdmins(); 
+        } else {
+          alert(response.data.message);
+        }
+      } catch (error) {
+        console.error('Error deleting admin:', error);
+        alert('Failed to delete admin.');
       }
-    } catch (error) {
-      console.error('Error deleting admin:', error);
+    } else {
+      console.log("Deletion cancelled by user.");
     }
   };
+  
 
   return (
     <div>
