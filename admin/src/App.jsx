@@ -50,6 +50,7 @@ import AddUtility from './pages/Component/AddUtility/AddUtility';
 import UpdateUtility from './pages/Component/UpdateUtility/UpdateUtility';
 import EditProduct from './pages/EditProduct/EditProduct.jsx'
 import Report from './pages/Report/Report.jsx'
+import PromoCode from './pages/PromoCode/PromoCode.jsx'
 
 
 const App = () => {
@@ -72,6 +73,9 @@ const App = () => {
           <Route path='/UpdatePaymentRequest/:id' element={<UpdatePaymentRequest />} />
           <Route path='/PaidPayments' element={<PaidPayments />} />
           <Route path='/Pdfupload' element={<Pdfupload />} />
+
+          {/*KP part */}
+          <Route path='/promocode' element={<PromoCode url={url}/>} />
 
           {/*udan part */}
 
