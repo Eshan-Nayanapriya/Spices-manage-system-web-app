@@ -1,3 +1,5 @@
+// Machanics.jsx
+
 import React, { useEffect, useRef, useState } from 'react';
 import Nav from '../Nav/Nav';
 import axios from 'axios';
@@ -56,7 +58,7 @@ export default function Machanics() {
 
       <center>
         <input
-          style={{borderRadius:'5px'}}
+          style={{ borderRadius: '5px' }}
           className='sBox'
           type="text"
           name="search"
@@ -78,7 +80,7 @@ export default function Machanics() {
           {machanics &&
             machanics.map((machanic, i) => (
               <div key={i}>
-                <Machanic machanic={machanic} />
+                <Machanic machanic={machanic} showButtons={false} />
               </div>
             ))}
         </div>
@@ -86,4 +88,3 @@ export default function Machanics() {
     </div>
   );
 }
-//
