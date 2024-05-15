@@ -36,6 +36,12 @@
     padding: 10px;
     outline: none;
 }
+.containerkulinu{
+    display: flex;
+    gap: 932px;
+    margin-top: 30px;
+    height: 40px;
+}
 
 .search-bar {
     display: flex;
@@ -53,19 +59,12 @@
     flex-grow: 1;
 }
 
-.search-bar button {
-    margin-left: 800px;
-    padding: 5px 50px;
-    font-size: 16px;
-    background-color: tomato;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.searchbarbtnrpt{
+    padding: 5px;
 }
 
-.search-bar button:hover {
-    background-color: rgb(255, 38, 0);
+.searchbarbtnrpt:hover {
+    background-color: rgb(236, 118, 97);
 }
 
 @media(max-width:1000px) {
