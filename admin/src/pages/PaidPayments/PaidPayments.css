@@ -171,6 +171,9 @@
     align-items: center;
     padding: 5px; /* Align buttons vertically */
   }
+  .orderpaymentsbtn{
+    margin-top: 30px;
+  }
   
   @media print {
     .print{

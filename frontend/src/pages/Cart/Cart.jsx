@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Cart.css";
 import { useContext } from 'react';
 import {useNavigate} from 'react-router-dom';
@@ -6,9 +6,10 @@ import { StoreContext } from '../../context/StoreContext';
 
 const Cart = () => {
 
-  const{cartItems,food_list,removeFromCart, getTotalCartAmount, url} = useContext(StoreContext);
-
+  const {cartItems,food_list,removeFromCart, getTotalCartAmount, promotion, url} = useContext(StoreContext);
   const navigate = useNavigate();
+
+  
 
   return (
     <div className='cart'>
@@ -26,7 +27,6 @@ const Cart = () => {
         {food_list.map((item)=>{
           if(cartItems[item._id]>0){
             return (
-              // eslint-disable-next-line react/jsx-key
               <div>
               <div className="cart-items-title cart-items-item">
                   <img src={url+"/images/"+item.image} alt="" />
@@ -57,8 +57,13 @@ const Cart = () => {
             </div>
             <hr />
             <div className="cart-total-details">
+              <p>Discount</p>
+              <p>LKR {promotion()}</p>
+            </div>
+            <hr />
+            <div className="cart-total-details">
               <b>Total</b>
-              <b>LKR {getTotalCartAmount()===0?0:getTotalCartAmount()+200}</b>
+              <b>LKR {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 200-promotion()}</b>
             </div>     
           </div>
             <button onClick={()=>navigate('/order')}>PROCEED TO CHECKOUT</button>
@@ -66,7 +71,7 @@ const Cart = () => {
         <div className="cart-promocode">
           <div>
             <p>If you have a promo code, Enter it here</p>
-            <div className='cart-promocode-input'>
+            <div className='cart-promocode-input-search'>
                 <input type="text" placeholder='promo code'/>
                 <button>Submit</button>
             </div>

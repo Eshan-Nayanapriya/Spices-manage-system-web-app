@@ -28,31 +28,73 @@ const Orders = ({ url }) => {
     setSearchQuery(event.target.value);
   };
 
-
-  const generatePDF = () => {
+  const generatePDFReport = () => {
     const doc = new jsPDF();
-    const yPos = 10;
 
-    doc.text('Order Report', 10, yPos);
-
+    const tableRows = [];
     filteredOrders.forEach((order, index) => {
-      const yPosOrder = yPos + (index + 1) * 30;
-      doc.text(`Order ${index + 1}`, 10, yPosOrder);
-
-      let itemYPos = yPosOrder + 10;
-      order.items.forEach((item, itemIndex) => {
-        doc.text(`Item ${itemIndex + 1}: ${item.name} x ${item.quantity}`, 10, itemYPos);
-        itemYPos += 10;
-      });
-
-      doc.text(`Amount: LKR ${order.amount}`, 10, itemYPos);
-      doc.text(`Address: ${order.address.street}, ${order.address.city}, ${order.address.state}, ${order.address.country}, ${order.address.zipcode}`, 10, itemYPos + 10);
-      doc.text(`Phone: ${order.address.phone}`, 10, itemYPos + 20);
-
-      doc.text('----------------------------------------', 10, itemYPos + 30);
+      const rowData = [
+        index + 1,
+        order.items.map((item) => `${item.name} x ${item.quantity}`).join(', '),
+        `${order.address.firstName} ${order.address.lastName}`,
+        `${order.address.street}, ${order.address.city}, ${order.address.state}, ${order.address.country}, ${order.address.zipcode}`,
+        order.address.phone,
+        order.items.length,
+        `LKR ${order.amount}`,
+        order.status
+      ];
+      tableRows.push(rowData);
     });
 
-    doc.save('order_report.pdf');
+    doc.autoTable({
+      head: [['#', 'Items', 'Name', 'Address', 'Phone', 'Item Count', 'Amount', 'Status']],
+      body: tableRows,
+    });
+
+    doc.save('orders_report.pdf');
+  };
+
+  const statusHandler = async (event, orderId) => {
+    const newStatus = event.target.value;
+
+    if (newStatus === 'Delivered') {
+      const confirmDelivery = window.confirm('Confirm delivered');
+      if (!confirmDelivery) {
+        return;
+      }
+    }
+
+    const response = await axios.post(url + '/api/order/status', {
+      orderId,
+      status: newStatus,
+    });
+
+    if (response.data.success) {
+      await fetchAllOrders();
+    } else {
+      toast.error('Error updating status');
+    }
+  };
+
+  // New function to handle order deletion
+  const deleteOrder = async (orderId) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this order?');
+    if (!confirmDelete) {
+      return;
+    }
+
+    try {
+      const response = await axios.delete(url + `/api/order/delete/${orderId}`);
+      if (response.data.success) {
+        toast.success('Order deleted successfully');
+        await fetchAllOrders();
+      } else {
+        toast.error('Error deleting order');
+      }
+    } catch (error) {
+      console.error('Error deleting order:', error);
+      toast.error('Error deleting order');
+    }
   };
 
   useEffect(() => {
@@ -69,16 +111,17 @@ const Orders = ({ url }) => {
   }, [searchQuery, orders]);
 
   return (
-    <div className="order add">
+    <div className="orderadd">
       <h3>Order Page</h3>
+      <div className="containerkulinu">
       <div className="search-bar">
         <input
           type="text"
           placeholder="Search by item name"
           value={searchQuery}
           onChange={handleSearch}
-        />
-        <button onClick={generatePDF}>Generate PDF Report</button>
+        /></div>
+        <button className="searchbarbtnrpt" onClick={generatePDFReport}>Get PDF Report</button>
       </div>
       <div className="order-listz">
         {filteredOrders.map((order, index) => (
@@ -108,12 +151,16 @@ const Orders = ({ url }) => {
             </div>
             <p>Items : {order.items.length}</p>
             <p>LKR {order.amount}</p>
-            <select>
+            <select
+              onChange={(event) => statusHandler(event, order._id)}
+              value={order.status}
+              disabled={order.status === 'Delivered'}
+            >
               <option value="Food Processing">Food Processing</option>
               <option value="Out of delivery">Out of delivery</option>
               <option value="Delivered">Delivered</option>
             </select>
-            <button onClick="">Delete</button>
+            <button onClick={() => deleteOrder(order._id)}>Delete</button>
           </div>
         ))}
       </div>

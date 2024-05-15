@@ -37,7 +37,7 @@ function PaymentRequest() {
           setDisplayedRequest(prevDisplayedRequests => prevDisplayedRequests.filter(item => item._id !== id));
           console.log('Item deleted successfully');
         })
-        .then(() => toast.success(`Request Deleted`, { position: "bottom-center" }))
+        .then(() => toast.success(`Request Deleted`))
         .then(() => navigate("/paymentRequests"))
         .catch(err => console.log(err))
     }
@@ -70,6 +70,7 @@ function PaymentRequest() {
 
   const downloadReport = () => {
     const doc = new jsPDF();
+    const currentDate = new Date().toLocaleDateString();
 
     const tableColumn = ["Request ID", "Section", "Role", "Description", "Amount", "Submitted Date", "Status"];
     const tableRows = [];
@@ -93,8 +94,9 @@ function PaymentRequest() {
       startY: 20,
       styles: { fontSize: 8 }
     });
+    doc.text(`Payment Requests Report (${currentDate})`, 14, 10);
 
-    doc.text("Payment Requests Report", 14, 15);
+    //doc.text("Payment Requests Report", 14, 15);
     doc.save('payment_requests_report.pdf');
   }
 
@@ -156,7 +158,8 @@ function PaymentRequest() {
         </table>
       </div>
       <button className='prpt-btn' onClick={downloadReport}>Download Report</button>
-      <Link to={"/PaidPayments"}><button style={{ marginLeft: "20px" }} className='prpt-btn'>Paid Payments</button></Link>
+      <Link to={"/PaidPayments"}><button style={{ marginLeft: "20px" }} className='prpt-btn'>Paid Payments</button></Link><br/>
+      
     </div>
 
   );

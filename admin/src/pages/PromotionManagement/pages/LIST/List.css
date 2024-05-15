@@ -1,75 +1,148 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 .list-promotion {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  height: auto;
-  border-radius: 6px;
-  background: white;
+  background-color: white;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
+  border-radius: 5px;
+  margin : 50px;
+  padding: 50px;
 }
 
-.head-line{
-  margin-left: max(2vw,5px);
-  margin-top: 15px;
+.list-promotion h1 {
+  font-size: 40px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #f6e9b4, #ff8800);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
-.head-line h1{
-  margin-left: max(2vw,5px);
-  margin-top: 15px;
+.promotion-request-head-line {
+  display: flex;
+  justify-content: space-between;
 }
 
-.search-bar {
-  margin-right: 5%;
-  margin-top: 1%;
+.promotion_button img {
+  width:30px;
 }
 
-.search-bar-int {
+.promoaddbutton{
+  margin-top: 30px;
+   text-decoration: none;
+   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+   border: none;
+    color: white;
+    background-color: tomato;
+    width: max(10vw, 200px);
+    padding:10px 0px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.search-barp {
   background-color: #f5f5f5;
   border-radius: 5px;
   display: flex;
   align-items: center;
-  width: 100%;
-  border: none;
+  padding: 5px 10px;
+  width: 50%;
+  margin-left: 20px;
+  height: 40px;
+  margin-top: 30px;
 }
 
-.search-bar-int input[type='text'] {
+.search-barp input[type='text'] {
+  margin-bottom: 30px;
   border: none;
   outline: none;
   font-size: 16px;
+  padding: 5px;
+  width: 100%;
 }
 
-.search-btn {
+.search-btnp {
   background-color: tomato;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  padding: 5px 10px;
 }
 
-.search-btn:hover {
+.promoreportbutton{
+  margin-top: 30px;
+  text-decoration: none;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
+  border: none;
+   color: rgb(0, 0, 0);
+   background-color: thistle;
+   width: max(8vw, 100px);
+   padding:10px 0px;
+   border-radius: 4px;
+   cursor: pointer;
+
+}
+
+.search-btnp:hover {
   background-color: #d95b43;
 }
 
-.listpromotion-format-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 65px;
-  width: 100%;
-  padding: 20px 0px;
-  color: #454545;
-  font-size: 15px;
-  font-weight: 600;
+.promoaddbutton:hover {
+  background-color: #d95b43;
+}
+.promoreportbutton:hover {
+  background-color: rgb(152, 136, 152);
 }
 
-.listpromotion-allpromotions {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 65px;
+.list-promotion table{
   width: 100%;
-  padding: 20px 0px;
-  color: #454545;
-  font-size: 15px;
-  font-weight: 600;
+  margin-top: 30px; 
+  border-collapse: collapse;
+
 }
+
+.promotion_button button{
+    border: 0;
+    outline: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: bisque;
+}
+.promotion_button{
+  width: 120px;
+  padding: 5px;
+}
+
+.list-promotion th,
+.list-promotion td {
+  padding: 10px;
+  text-align: center;
+}
+
+td{
+  padding-left: 5px;
+}
+
+.list-promotion .des{
+  padding: 5px;
+  text-align: left;
+  max-width: 150px;
+
+}
+
+.search-barp{
+  margin-left: 00px;
+}
+
+.imagepromoList {
+  width: 40px;
+}
+
+@media print {
+  .promotiontable{
+    margin: 30px;
+  }
+  }

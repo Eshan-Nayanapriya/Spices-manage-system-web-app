@@ -47,9 +47,9 @@ export default function Machanic(props) {
           <tr>
             <td colSpan="2" style={{ padding: '8px', border: '1px solid #ddd' }}>
               <Link to={`/machineDetails/${_id}`}>
-                <button style={{ backgroundColor: 'green', color: 'white', padding: '5px 10px', marginRight: '5px', border: 'none' }}>Update</button>
+                <button style={{ backgroundColor: 'green', color: 'white', padding: '5px 10px', marginRight: '5px', border: '2px' ,borderRadius:'5px'}}>Update</button>
               </Link>
-              <button onClick={deleteHandler} style={{ backgroundColor: 'red', color: 'white', padding: '5px 10px', border: 'none' }}>Delete</button>
+              <button onClick={deleteHandler} style={{ backgroundColor: 'red', color: 'white', padding: '5px 10px', border: 'none' ,borderRadius:'5px'}}>Delete</button>
             </td>
           </tr>
         </tbody>

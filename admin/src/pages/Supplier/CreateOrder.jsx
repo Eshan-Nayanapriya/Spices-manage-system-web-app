@@ -77,12 +77,11 @@ function CreateOrder() {
       style={{
         marginLeft: "400px",
         marginTop: "50px",
-        width: "100%",
+        width: "60%",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+        height: "60vh",
         backgroundColor: "#ffffff",
-        backgroundImage: `url('../res/spice9.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "left",
       }}

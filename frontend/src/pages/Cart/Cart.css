@@ -71,8 +71,7 @@
     color: #555;
 }
 
-.cart-promocode-input{
-    margin-top: 10px;
+.cart-promocode-input-search{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -80,14 +79,15 @@
     border-radius: 4px;
 }
 
-.cart-promocode-input input{
+.cart-promocode-input-search input{
     border: none;
     background: transparent;
     outline: none;
     padding-left: 10px;
 }
 
-.cart-promocode-input button{
+.cart-promocode-input-search button{
+    margin-bottom: 20px;
     width: max(10vw, 150px);
     padding: 12px 5px;
     background-color: black;

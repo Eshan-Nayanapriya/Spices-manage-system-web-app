@@ -18,7 +18,7 @@ const ProductDetails = () => {
                 setFoodDetails(data);
                 setLoading(false);
             } catch (error) {
-                console.error('Error fetching food details:', error);
+                console.log('Error fetching food details:', error);
             }
         };
 

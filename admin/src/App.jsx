@@ -26,9 +26,9 @@ import Pdfupload from './pages/PaidReportUpload/PaidReportUpload';
 import DisplayEnquiries from './pages/AllEnquiries/displayEnquiries.jsx'
 import EnquiryDetails from './pages/AllEnquiries/enquiryDetails.jsx';
 
-import PromotionManagement from './pages/PromotionManagement/PromotionManagement'
 import PromotionAdd from './pages/PromotionManagement/pages/ADD/add'
 import PromotionList from './pages/PromotionManagement/pages/LIST/list'
+import PromotionEdit from './pages/PromotionManagement/pages/EDIT/edit'
 
 import Users from './pages/employeeManagement/Users.jsx';
 import UpdateUser from './pages/employeeManagement/UpdateUser.jsx';
@@ -58,6 +58,11 @@ import { AdminContext } from './context/AdminContext.jsx';
 import adminlogin from './pages/AdminLoging/adminLoging.jsx'
 
 
+import Inform from './pages/Component/InformSuplier/Inform.jsx'
+
+import PromoCode from './pages/PromoCode/PromoCode.jsx'
+
+
 
 const App = () => {
 
@@ -69,8 +74,10 @@ const App = () => {
       <Navbar />
       <hr />
       <div className="app-content">
+
       {Token &&<Sidebar />}
       
+
         <Routes>
    
           {/*batta part */}
@@ -79,7 +86,14 @@ const App = () => {
           <Route path='/AddPaymentRequest' element={<AddPaymentRequest />} />
           <Route path='/UpdatePaymentRequest/:id' element={<UpdatePaymentRequest />} />
           <Route path='/PaidPayments' element={<PaidPayments />} />
+
           <Route path='/Pdfupload' element={<Pdfupload />} />
+
+          <Route path='/OrderPayments' element={<Pdfupload url={url} />} />
+
+          {/*KP part */}
+          <Route path='/promocode' element={<PromoCode url={url}/>} />
+
 
           {/*udan part */}
 
@@ -102,9 +116,14 @@ const App = () => {
           <Route path="/" element={<AdminLog />} />
 
           {/*sadan part */}
+
           <Route path="/PromotionManagement" element={<PromotionManagement url={url} />} />
+    
+
           <Route path="/PromotionAdd" element={<PromotionAdd url={url} />} />
           <Route path="/PromotionList" element={<PromotionList url={url} />} />
+          <Route path="/PromotionEdit/:id" element={<PromotionEdit />} />
+
 
 
           {/*torin part */}
@@ -118,6 +137,30 @@ const App = () => {
 
           {/*asela part */}
           <Route path='/factoryManagement' element={<FactoryHome />}></Route>
+
+
+          <Route path="/mainhome" element ={<FactoryHome/>}/> 
+          <Route path="/addMachine" element ={<AddMachanic/>}/>  
+          <Route path="/machineDetails" element ={<Machanics/>}/>
+          <Route path="/machineDetails/:id" element ={<UpdateMachanic/>}/>  
+
+          <Route path="/mAdd" element ={<ADDmachin/>}/>  
+          <Route path="/mDetails" element ={<Machines/>}/>
+          <Route path="/mDetails/:id" element ={<UpdateMachine/>}/>
+
+          <Route path="/uDetails" element ={<Utilitis/>}/>  
+          <Route path="/uAdd" element ={<AddUtility/>}/> 
+          <Route path="/uDetails/:id" element ={<UpdateUtility/>}/> 
+
+          <Route path="/inform" element ={<Inform/>}/>
+           
+           {/*imashi part */}
+          <Route path="/add" element={<Add url={url}/>}/>
+          <Route path="/list"  element={<List url={url}/>}/>
+          <Route path="/edit/:id" element={<EditProduct/>}/>
+          <Route path="/report" element={<Report url={url}/>}/>
+
+
           <Route path="/mainhome" element={<FactoryHome />} />
           <Route path="/addMachine" element={<AddMachanic />} />
           <Route path="/machineDetails" element={<Machanics />} />
@@ -133,9 +176,13 @@ const App = () => {
 
           {/*imashi part */}
           <Route path="/add" element={<Add url={url} />} />
+
+          <Route path="/" element={<List url={url} />} />
+
           <Route path="/list" element={<List url={url} />} />
           <Route path="/edit/:id" element={<EditProduct />} />
           <Route path="/report" element={<Report url={url} />} />
+
 
         </Routes>
       </div>

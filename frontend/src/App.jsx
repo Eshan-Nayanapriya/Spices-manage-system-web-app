@@ -27,18 +27,12 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/cart' element={<Cart/>}/>
-        <Route path='/order' element={<PlaceOrder/>}/>
+        <Route path='/order' element={<PlaceOrder setShowLogin={setShowLogin} />} />
         <Route path='/Verify' element={<Verify/>}/>
         <Route path='/myorders' element={<MyOrders/>}/>
         <Route path='/enquiry' element={<Enquiry />}></Route>
-
-
         <Route exact path="/product/:id" element={<ProductDetails/>} />
         <Route path='/profile' element={<Profile />}></Route>
-
-
-
-
       </Routes>
     </div>
     <Footer/>

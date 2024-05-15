@@ -54,7 +54,7 @@ function CreateSalary() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            height: '100vh',
+            height: '70%',
             fontFamily: 'Arial, sans-serif',
             padding: '20px',
             background: '#f0f0f0',
