@@ -50,6 +50,10 @@ const Sidebar = () => {
                 <img src={assets.add_icon} alt="" />
                 <p>Factory Management</p>
             </NavLink>
+            <NavLink to="/promocode" className="sidebar-option">
+                <img src={assets.add_icon} alt="" />
+                <p>Add Promo</p>
+            </NavLink>
             </div>
 
         </div>
