@@ -31,7 +31,7 @@
     color: white;
     background-color: tomato;
     width: max(10vw, 200px);
-    padding:10px 0px;
+    padding: 10px 0px;
     border-radius: 4px;
     cursor: pointer;
 }
@@ -59,7 +59,7 @@
 }
 
 .psearch-btnbbbb {
-  background-color: tomato; /* Orange background color */
+  background-color: rgb(155, 150, 149); /* Orange background color */
   color: white; /* White text color */
   border: none; /* Remove default button border */
   border-radius: 5px; /* Rounded corners */

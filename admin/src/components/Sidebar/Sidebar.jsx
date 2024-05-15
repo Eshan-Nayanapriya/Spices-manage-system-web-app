@@ -34,12 +34,14 @@ const Sidebar = () => {
                     <img src={assets.add_icon} alt="" />
                     <p>Supplier</p>
                 </NavLink>
-                <NavLink to="/paymentRequests" className="sidebar-option">
-                    <img src={assets.add_icon} alt="" />
+                <NavLink to="/paymentRequests" className="sidebar-option" >
+                    <img src={assets.income} alt="" />
                     <p>Payment Management</p>
                 </NavLink>
-
-
+                <NavLink to="/OrderPayments" className="sidebar-option">
+                    <img src={assets.analysis} alt="" />
+                    <p>Payment Summary</p>
+                </NavLink>
                 <NavLink to="/displayenquiry" className="sidebar-option">
                     <img src={assets.add_icon} alt="" />
                     <p>Enquries</p>

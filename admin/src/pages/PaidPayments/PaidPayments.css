@@ -2,7 +2,7 @@
 
 
  .ptot-btn{
-    background-color: tomato; 
+    background-color: rgb(218, 113, 95); 
   color: white; 
   border: none; 
   border-radius: 5px; 
@@ -11,7 +11,7 @@
   }
 
   .ptot-btn:hover {
-    background-color: #d95b43; /* Darker orange on hover */
+    background-color: tomato; /* Darker orange on hover */
   }
 
   .pbox .ppayment-r-table table{
@@ -173,8 +173,19 @@
   }
   .orderpaymentsbtn{
     margin-top: 30px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: 1px solid tomato;
+    background-color: #ffe8e4;
+    cursor: pointer;
+    margin-right: 30px;
+    transition: background-color 0.3s;
   }
   
+  .orderpaymentsbtn:hover{
+    background-color: #d95b43; /* Darker orange on hover */
+    color: white;
+  }
   @media print {
     .print{
       margin-left: 10px;

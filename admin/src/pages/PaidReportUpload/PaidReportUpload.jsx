@@ -79,7 +79,7 @@ const PaidReportUpload = ({ url }) => {
     const currentDate = new Date().toLocaleDateString();
 
     doc.setFontSize(18);
-    doc.text(`Completed Order Payments Report (${currentDate})`, 14, 22);
+    doc.text(`Payment Summary Report (${currentDate})`, 14, 22);
 
     doc.setFontSize(12);
     doc.text(`Total Amount: LKR ${totalAmount.toFixed(2)}`, 14, 40);
@@ -111,7 +111,7 @@ const PaidReportUpload = ({ url }) => {
   return (
     <div className="orderadd">
       <div className="ppppsearch-bar">
-        <h1>Completed Order Payments</h1>
+        <h1>Payment Summary</h1>
         <button className="ppppsearch-barbtn" onClick={generateReport}>Download Report</button>
       </div>
       <div className="order-summary">
@@ -124,7 +124,7 @@ const PaidReportUpload = ({ url }) => {
       <div className="order-listz">
         {filteredOrders.map((order, index) => (
           <div key={index} className="order-item">
-            <img src={assets.parcel_icon} alt="" />
+            <img src={assets.deliveredicon} alt="" />
             <div>
               <p className="order-item-food">
                 {order.items.map((item, index) => {
