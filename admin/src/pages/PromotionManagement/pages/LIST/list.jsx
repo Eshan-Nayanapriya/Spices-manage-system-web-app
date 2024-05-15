@@ -76,18 +76,18 @@ const list = ({ url }) => {
     const currentDate = new Date().toLocaleDateString();
     const currentTime = new Date().toLocaleTimeString();
     const dateTime = `${currentDate} ${currentTime}`;
-  
+
     const tableRows = [];
     filteredPromotions.forEach((item) => {
       tableRows.push([item.name, item.itemName, item.description, item.discount, item.validDate, item.quantity]);
     });
-  
+
     doc.autoTable({
       head: [['Name', 'Item Name', 'Description', 'Discount', 'Valid Date', 'Quantity']],
       body: tableRows,
     });
     doc.text(`Promotions Report (${dateTime})`, 14, 10); // Adding date and time to the header
-  
+
     doc.save('promotions_report.pdf');
   };
   useEffect(() => {
@@ -96,48 +96,51 @@ const list = ({ url }) => {
 
   return (
     <div className='list-promotion'>
-      <div className='head-linep'>
-        <h1>All Promotions List</h1>
-        <div className='promotion-request-head-line'>
-          <Link to='/PromotionAdd'>
-            <button className='promoaddbutton'>Add promotion</button>
-          </Link>
-          <div className='search-barp'>
-            <input className='search-barp' type='text' name='search' autoComplete='off' placeholder='Search by Name or Item Name' value={searchQuery} onChange={handleSearch} />
-            <button className='search-btnp'>Search</button>
-          </div>
+      <h1>All Promotions List</h1>
+      <div className='promotion-request-head-line'>
+        <Link to='/PromotionAdd'>
+          <button className='promoaddbutton'>Add promotion</button>
+        </Link>
+        <div className='search-barp'>
+          <input className='search-barp' type='text' name='search' autoComplete='off' placeholder='Search by Name or Item Name' value={searchQuery} onChange={handleSearch} />
+          <button className='search-btnp'>Search</button>
         </div>
       </div>
-
-      <div className='listpromotion-format-main'>
-        <p>Name</p>
-        <p>Item Name</p>
-        <p>Description</p>
-        <p>Discount</p>
-        <p>Valid Date</p>
-        <p>Quantity</p>
-        <p>Update</p>
-        <p>Delete</p>
-      </div>
-      <div className='listpromotion-allpromotions'>
-        <hr />
-        {filteredPromotions.map((item) => (
-          <div key={item._id}>
-            <div className='listpromotion-format-main listpromotion-format'>
-              <p>{item.name}</p>
-              <p>{item.itemName}</p>
-              <p>{item.description}</p>
-              <p>{item.discount}</p>
-              <p>{item.validDate}</p>
-              <p>{item.quantity}</p>
-              <Link to={`/PromotionEdit/${item._id}`}>
-                <img src={edit_icon} alt='' className='listproduct-edit-icon' />
-              </Link>
-              <img onClick={() => removePromotion(item._id)} src={remove_icon} className='listproduct-remove-icon' />
-            </div>
-            <hr />
-          </div>
-        ))}
+      <div className="promotiontable">
+        <br />
+        <table border={1} cellPadding={10} cellSpacing={0}>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Item Name</th>
+              <th>Description</th>
+              <th>Discount</th>
+              <th>Valid Date</th>
+              <th>Quantity</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredPromotions.map((item) => (
+              <tr key={item._id}>
+                <td>{item.name}</td>
+                <td>{item.itemName}</td>
+                <td>{item.description}</td>
+                <td>{item.discount}</td>
+                <td>{item.validDate}</td>
+                <td>{item.quantity}</td>
+                <td className='promotion_button'>
+                  <Link to={`/PromotionEdit/${item._id}`}>
+                    <img src={edit_icon} alt='' />
+                  </Link></td>
+                <td>
+                  <img onClick={() => removePromotion(item._id)} src={remove_icon} className='listproduct-remove-icon' />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       <button className='promoreportbutton' onClick={generateReport}>Generate report</button>
     </div>

@@ -66,7 +66,7 @@ const Add = ({url}) => {
           <div className="addproduct-itemfield">
           <label>Product Name:</label>
             <img src={spice} alt="" className='name' /> 
-          <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here'required/>
+            <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here'required/>
           </div>
 
           <div className="addproduct-itemfield">
