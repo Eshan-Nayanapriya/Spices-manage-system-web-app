@@ -3,6 +3,8 @@ import './PaidReportUpload.css';
 import axios from 'axios';
 import { assets } from '../../assets/assets';
 import { toast } from 'react-toastify';
+import { jsPDF } from 'jspdf';
+import 'jspdf-autotable';
 
 const PaidReportUpload = ({ url }) => {
   const [filteredOrders, setFilteredOrders] = useState([]);
@@ -72,11 +74,45 @@ const PaidReportUpload = ({ url }) => {
     }
   };
 
+  const generateReport = () => {
+    const doc = new jsPDF();
+    const currentDate = new Date().toLocaleDateString();
+
+    doc.setFontSize(18);
+    doc.text(`Completed Order Payments Report (${currentDate})`, 14, 22);
+
+    doc.setFontSize(12);
+    doc.text(`Total Amount: LKR ${totalAmount.toFixed(2)}`, 14, 40);
+    doc.text(`Total Delivered Orders: ${totalDeliveredOrders}`, 14, 50);
+    if (totalPaidAmount !== null) {
+      doc.text(`Total Paid Payments: LKR ${totalPaidAmount.toFixed(2)}`, 14, 60);
+    }
+
+    const tableColumn = ["Order ID", "Name", "Address", "Phone", "Items", "Amount"];
+    const tableRows = [];
+
+    filteredOrders.forEach(order => {
+      const orderData = [
+        order._id,
+        `${order.address.firstName} ${order.address.lastName}`,
+        `${order.address.street}, ${order.address.city}, ${order.address.state}, ${order.address.country}, ${order.address.zipcode}`,
+        order.address.phone,
+        order.items.map(item => `${item.name} x ${item.quantity}`).join(', '),
+        `LKR ${order.amount}`
+      ];
+      tableRows.push(orderData);
+    });
+
+    doc.autoTable(tableColumn, tableRows, { startY: 70 });
+
+    doc.save('completed_orders_report.pdf');
+  };
+
   return (
     <div className="orderadd">
       <div className="ppppsearch-bar">
         <h1>Completed Order Payments</h1>
-        <button className="ppppsearch-barbtn">Download Report</button>
+        <button className="ppppsearch-barbtn" onClick={generateReport}>Download Report</button>
       </div>
       <div className="order-summary">
         <p>Total Amount: LKR {totalAmount.toFixed(2)}</p> 
