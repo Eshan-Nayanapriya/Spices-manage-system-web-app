@@ -3,7 +3,9 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import './Edit.css'
 import { assets } from '../../../../assets/assets'
+import { Link } from 'react-router-dom';
 
 function edit() {
     const navigate = useNavigate();
@@ -50,8 +52,12 @@ function edit() {
         <div>
             <div className="promotion_update">
                 <h1>Update promotion Details</h1>
+                <div className='promotion-request-head-line'>
+                    <Link to='/PromotionList'>
+                        <button className='promoaddbutton1'>Promotion List</button>
+                    </Link>
+                </div>
                 <form onSubmit={UpdatePromotion} autoComplete="off">
-                    
                     <div className="add-promotion-name flex-col">
                         <p>Promotion name</p>
                         <input onChange={(e) => setName(e.target.value)} value={name} type="text" name='name' placeholder='Type here' />
@@ -78,7 +84,7 @@ function edit() {
                             <input onChange={(e) => setQuantity(e.target.value)} value={quantity} type="Number" name="quantity" placeholder='Write content here' required />
                         </div>
                     </div>
-                    <button type='submit' className='add-btn'>ADD</button>
+                    <button type='submit' className='add-btnp'>ADD</button>
                 </form>
             </div>
         </div>

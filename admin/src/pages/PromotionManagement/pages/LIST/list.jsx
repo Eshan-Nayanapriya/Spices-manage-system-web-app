@@ -3,8 +3,8 @@ import './List.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import edit_icon from '../../../../assets/pen.png';
-import remove_icon from '../../../../assets/cross_icon.png';
+import edit_icon from '../../../../assets/editbuttonPromo.png';
+import remove_icon from '../../../../assets/deletebuttonPromo.png';
 import jsPDF from 'jspdf';
 
 const list = ({ url }) => {
@@ -133,8 +133,9 @@ const list = ({ url }) => {
                 <td className='promotion_button'>
                   <Link to={`/PromotionEdit/${item._id}`}>
                     <img src={edit_icon} alt='' />
-                  </Link></td>
-                <td>
+                  </Link>
+                </td>
+                <td className='promotion_button'>
                   <img onClick={() => removePromotion(item._id)} src={remove_icon} className='listproduct-remove-icon' />
                 </td>
               </tr>
