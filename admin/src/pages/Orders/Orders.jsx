@@ -54,13 +54,27 @@ const Orders = ({ url }) => {
     doc.save('orders_report.pdf');
   };
 
+  // Change: Added confirmation dialog and status update
   const statusHandler = async (event, orderId) => {
+    const newStatus = event.target.value;
+
+    // Change: Check if the new status is 'Delivered'
+    if (newStatus === 'Delivered') {
+      const confirmDelivery = window.confirm('Confirm delivered');
+      if (!confirmDelivery) {
+        return;
+      }
+    }
+
     const response = await axios.post(url + '/api/order/status', {
       orderId,
-      status: event.target.value,
+      status: newStatus,
     });
+
     if (response.data.success) {
       await fetchAllOrders();
+    } else {
+      toast.error('Error updating status');
     }
   };
 
@@ -117,7 +131,12 @@ const Orders = ({ url }) => {
             </div>
             <p>Items : {order.items.length}</p>
             <p>LKR {order.amount}</p>
-            <select onChange={(event) => statusHandler(event, order._id)} value={order.status}>
+            <select
+              onChange={(event) => statusHandler(event, order._id)}
+              value={order.status}
+              // Change: Disable the dropdown if the status is 'Delivered'
+              disabled={order.status === 'Delivered'}
+            >
               <option value="Food Processing">Food Processing</option>
               <option value="Out of delivery">Out of delivery</option>
               <option value="Delivered">Delivered</option>
