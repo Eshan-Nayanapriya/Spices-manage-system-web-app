@@ -13,19 +13,28 @@ function UpdateSalary() {
     const [totalSalary, setTotalSalary] = useState("");
     const [accountNumber, setAccountNumber] = useState("");
     const [bank, setBank] = useState("");
+    const [banksList, setBanksList] = useState([
+        "Bank of Ceylon",
+        "People's Bank",
+        "Commercial Bank of Ceylon",
+        "Hatton National Bank",
+        "Sampath Bank",
+        "Nations Trust Bank",
+        "DFCC Bank",
+        "Seylan Bank"
+    ]);
     const navigate = useNavigate();
 
-    
     const calculateTotalSalary = () => {
         const calculatedTotalSalary = parseFloat(basicSalary) + (parseFloat(totalOTHours) * parseFloat(otRate)) + parseFloat(bonus);
-        setTotalSalary(calculatedTotalSalary.toFixed(2)); 
+        setTotalSalary(calculatedTotalSalary.toFixed(2));
     };
 
     useEffect(() => {
         axios.get(`http://localhost:4000/Salary/getSalary/${id}`)
             .then(result => {
                 console.log('Fetched data:', result.data);
-                const salaryData = result.data; 
+                const salaryData = result.data;
                 setEmpID(salaryData.empID);
                 setMonth(salaryData.month);
                 setBasicSalary(salaryData.basicSalary);
@@ -40,15 +49,15 @@ function UpdateSalary() {
                 console.error('Error fetching salary:', error);
             });
     }, [id]);
-    
-    
+
+
     useEffect(() => {
         calculateTotalSalary();
     }, [basicSalary, totalOTHours, otRate, bonus]);
 
     const updateSalary = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:4000/Salary/updateSal/${id}`, { empID, month, basicSalary, totalOTHours, otRate, bonus, totalSalary, accountNumber, bank})
+        axios.put(`http://localhost:4000/Salary/updateSal/${id}`, { empID, month, basicSalary, totalOTHours, otRate, bonus, totalSalary, accountNumber, bank })
             .then(result => {
                 console.log(result);
                 navigate('/salaryy');
@@ -57,12 +66,12 @@ function UpdateSalary() {
     };
 
     return (
-        <div style={{ 
+        <div style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             height: '100vh',
-            width:'120%',
+            width: '120%',
             background: '#f0f0f0'
         }}>
             <div style={{
@@ -116,11 +125,15 @@ function UpdateSalary() {
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='bank'>Bank</label>
-                        <input id='bank' type='String' placeholder='bank' style={{ padding: '10px', width: '100%' }}
-                            value={bank} onChange={(e) => setBank(e.target.value)} />
+                        <select id='bank' style={{ padding: '10px', width: '100%' }}
+                            value={bank} onChange={(e) => setBank(e.target.value)}>
+                            {banksList.map((bankName, index) => (
+                                <option key={index} value={bankName}>{bankName}</option>
+                            ))}
+                        </select>
                     </div>
-                    <button style={{ 
-                        padding: '10px 20px', 
+                    <button style={{
+                        padding: '10px 20px',
                         backgroundColor: '#28a745',
                         color: '#fff',
                         borderRadius: '4px',
@@ -133,7 +146,7 @@ function UpdateSalary() {
             </div>
         </div>
     );
-    
+
 }
 
 export default UpdateSalary;
