@@ -6,9 +6,9 @@ import { StoreContext } from '../../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
 
 
-const PlaceOrder = () => {
+const PlaceOrder = ({ setShowLogin }) => {
 
-  const{getTotalCartAmount, token, food_list, cartItems, url} = useContext(StoreContext);
+  const{getTotalCartAmount, token, food_list, cartItems,promotion, url} = useContext(StoreContext);
 
   const[data,setData] = useState({
     firstName:"",
@@ -43,6 +43,7 @@ const PlaceOrder = () => {
       address:data,
       items:orderItems,
       amount:getTotalCartAmount()+2,
+      promotion: promotion()
     }
 
     let response = await axios.post(url+"/api/order/place",orderData,{headers:{token}});
@@ -60,6 +61,7 @@ const PlaceOrder = () => {
 
   useEffect(()=>{
     if(!token) {
+      setShowLogin(true);
       navigate('/cart')
     }
     else if(getTotalCartAmount() === 0)
@@ -117,8 +119,13 @@ const PlaceOrder = () => {
             </div>
             <hr />
             <div className="cart-total-details">
+              <p>Discount</p>
+              <p>LKR {promotion()}</p>
+            </div>
+            <hr />
+            <div className="cart-total-details">
               <b>Total</b>
-              <b>LKR {getTotalCartAmount()===0?0:getTotalCartAmount()+200}</b>
+              <b>LKR {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 200-promotion()}</b>
             </div>
 
         </div>

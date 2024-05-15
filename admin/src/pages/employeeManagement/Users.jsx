@@ -35,6 +35,7 @@ function Users() {
   const handleSearch = () => {
     const newFilteredUsers = users.filter(user => {
       return (
+        user._id.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.age.toString().includes(searchTerm.toLowerCase()) ||
@@ -56,62 +57,48 @@ function Users() {
 
   return (
     <div className="employee-summary-container">
-    <div className="employee-summary-content">
-      <h1 className="employee-summary-heading">Employee Summary</h1>
-      <Link to="/empcreate" className='btn btn-success'>Add Employee</Link>
-      <Link to="/emplogin" className='btn btn-success'>Login</Link>
-      <div className="search-container">
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={handleChange}
-          placeholder="Search by Name, Email, Age, Job Role"
-          className="search-input"
-        />
-        <button
-          onClick={handleSearch}
-          className='search-btn'
-        >
-          Search
-        </button>
-      </div>
+      <div className="employee-summary-content">
+        <h1 className="employee-summary-heading">Employee Summary</h1>
+        <Link to="/empcreate" className='btn btn-success'>Add Employee</Link>
+        <Link to="/salaryy" className='btn btn-warning'>Salary Page</Link>
+        <div className="search-container">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={handleChange}
+            placeholder="Search by Name, Email, Age, Job Role"
+            className="search-input"
+          />
+          <button
+            onClick={handleSearch}
+            className='search-btn'
+          >
+            Search
+          </button>
+        </div>
 
-      <table className="user-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Password</th>
-            <th>EmpID</th>
-            <th>Email</th>
-            <th>Age</th>
-            <th>Job Role</th>
-            <th>Bank</th>
-            <th>Account Number</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+        <div className="user-card-container">
           {filteredUsers.map((user, index) => (
-            <tr key={index}>
-              <td>{user.name}</td>
-              <td>{user.password}</td>
-              <td>{user._id}</td>
-              <td>{user.email}</td>
-              <td>{user.age}</td>
-              <td>{user.jobroll}</td>
-              <td>{user.bank}</td>
-              <td>{user.accountNumber}</td>
-              <td>
+            <div key={index} className="user-card">
+              <h3>{user.name}</h3>
+              <p>Password: {user.password}</p>
+              <p>EmpID: {user._id}</p>
+              <p>Email: {user.email}</p>
+              <p>Age: {user.age}</p>
+              <p>Job Role: {user.jobroll}</p>
+              <p>Bank: {user.bank}</p>
+              <p>Account Number: {user.accountNumber}</p>
+              <div className="user-actions">
                 <Link to={`/empupdate/${user._id}`} className='btn btn-success'>Update</Link>
                 <button onClick={() => handleDelete(user._id)} className='btn btn-danger'>Delete</button>
-              </td>
-            </tr>
+              </div>
+            </div>
           ))}
-        </tbody>
-      </table>
-      <Link to="/salaryy" className='btn btn-warning'>Salary</Link>
+        </div>
+        
+        
+      </div>
     </div>
-  </div>
   );
 }
 

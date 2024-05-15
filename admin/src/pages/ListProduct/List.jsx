@@ -70,7 +70,7 @@ const List = ({ url }) => {
 
   return (
     <div className='list-product'>
-      <h1>All Foods List</h1>
+      <h1>All Product List</h1>
       <br />
       <div className="searchbar">
         <input type="text" name='name' value={query} onChange={(e) => handleSearch(e)} placeholder='Search.....' />
@@ -78,7 +78,6 @@ const List = ({ url }) => {
       </div>
       <Link to={'/report'}><h1 className="rep">Generate Report</h1></Link>
       <div className="listproduct-format-main">
-        <p>ID</p>
         <p>Image</p>
         <p>Name</p>
         <p>Quantity</p>
@@ -91,12 +90,11 @@ const List = ({ url }) => {
         <hr />
         {list.map((item, index) => {
           return<><div key={index} className='listproduct-format-main listproduct-format'>
-            <p>{item._id}</p>
             <img src={`${url}/images/${item.image}`} alt="" className="listproduct-product-icon" />
             <p>{item.name}</p>
             <p>{item.quantity}</p>
             <p>{item.category}</p>
-            <p>{item.description}</p>
+            <p className='descr'>{item.description}</p>
             <p>{item.price}</p>
             <Link to={`/edit/${item._id}`}><img src={edit_icon} alt="" className="listproduct-edit-icon" /></Link>
             <img onClick={() => removeFood(item._id)} src={remove_icon} className="listproduct-remove-icon" alt="remove" />

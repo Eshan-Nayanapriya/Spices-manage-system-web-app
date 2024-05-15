@@ -22,13 +22,13 @@ import UpdatePaymentRequest from './pages/UpdatePaymentRequest/UpdatePaymentRequ
 import AddPaymentRequest from './pages/AddPaymentRequest/AddPaymentRequest';
 import PaidPayments from './pages/PaidPayments/PaidPayments';
 
-import Pdfupload from './pages/PaidReportUpload/PaidReportUpload'; 
+import Pdfupload from './pages/PaidReportUpload/PaidReportUpload';
 import DisplayEnquiries from './pages/AllEnquiries/displayEnquiries.jsx'
 import EnquiryDetails from './pages/AllEnquiries/enquiryDetails.jsx';
 
-import PromotionManagement from './pages/PromotionManagement/PromotionManagement'
 import PromotionAdd from './pages/PromotionManagement/pages/ADD/add'
 import PromotionList from './pages/PromotionManagement/pages/LIST/list'
+import PromotionReport from './pages/PromotionManagement/pages/REPORT/report'
 
 import Users from './pages/employeeManagement/Users.jsx';
 import UpdateUser from './pages/employeeManagement/UpdateUser.jsx';
@@ -36,8 +36,7 @@ import CreateUser from './pages/employeeManagement/CreateUser.jsx';
 import SalaryU from './pages/employeeManagement/SalaryU.jsx';
 import CreateSalary from './pages/employeeManagement/CreateSalary.jsx';
 import UpdateSalary from './pages/employeeManagement/UpdateSal.jsx';
-import EmpU from './pages/employeeManagement/empU.jsx';
-import EmpLogin from './pages/employeeManagement/empLogin.jsx';
+
 
 import FactoryHome from './pages/Component/FactoryHome.jsx'
 import Machanics from './pages/Component/Machanic Details/Machanics'
@@ -51,7 +50,11 @@ import AddUtility from './pages/Component/AddUtility/AddUtility';
 import UpdateUtility from './pages/Component/UpdateUtility/UpdateUtility';
 import EditProduct from './pages/EditProduct/EditProduct.jsx'
 import Report from './pages/Report/Report.jsx'
+
 import Inform from './pages/Component/InformSuplier/Inform.jsx'
+
+import PromoCode from './pages/PromoCode/PromoCode.jsx'
+
 
 
 const App = () => {
@@ -60,32 +63,35 @@ const App = () => {
 
   return (
     <div>
-      <ToastContainer/>
-      <Navbar/>
+      <ToastContainer />
+      <Navbar />
       <hr />
       <div className="app-content">
-        <Sidebar/>
+        <Sidebar />
         <Routes>
 
           {/*batta part */}
-          <Route path="/orders" element={<Orders url={url}/>}/>
-          <Route path='/paymentRequests' element={<PaymentRequests/>}/>
-          <Route path='/AddPaymentRequest' element={<AddPaymentRequest/>}/>
-          <Route path='/UpdatePaymentRequest/:id' element={<UpdatePaymentRequest/>}/>
-          <Route path='/PaidPayments' element={<PaidPayments/>}/>
-          <Route path='/Pdfupload' element={<Pdfupload/>}/>                  
+          <Route path="/orders" element={<Orders url={url} />} />
+          <Route path='/paymentRequests' element={<PaymentRequests />} />
+          <Route path='/AddPaymentRequest' element={<AddPaymentRequest />} />
+          <Route path='/UpdatePaymentRequest/:id' element={<UpdatePaymentRequest />} />
+          <Route path='/PaidPayments' element={<PaidPayments />} />
+          <Route path='/OrderPayments' element={<Pdfupload url={url} />} />
+
+          {/*KP part */}
+          <Route path='/promocode' element={<PromoCode url={url}/>} />
 
           {/*udan part */}
-          
-          <Route path="/SupplyRequest" element={<SupplyRequest />}/>
-          <Route path="/create" element={<CreateOrder />}/>
-          <Route path="SupplyRequest/update/:id"element={<UpdateOrder />}/>
-          <Route path="/supplier" element={<SupplyManager url={url}/>}/>
+
+          <Route path="/SupplyRequest" element={<SupplyRequest />} />
+          <Route path="/create" element={<CreateOrder />} />
+          <Route path="SupplyRequest/update/:id" element={<UpdateOrder />} />
+          <Route path="/supplier" element={<SupplyManager url={url} />} />
           <Route path="/Supplierpro/RawMreqres" element={<RawMreqRes />} />
           <Route path="/Supplier/RawMreq" element={<RawMReq />} />
           <Route path="/Supplierpro" element={<SupplierProfile />} />
           <Route path="/Supplier/ratings" element={<Ratings />} />
-          <Route path="/Supplier/addrating" element={<AddRating />} />          
+          <Route path="/Supplier/addrating" element={<AddRating />} />
           <Route path="/Calculation" element={< Calculation />} />
 
 
@@ -94,9 +100,9 @@ const App = () => {
           <Route path="/enquirydetails/:id" element={<EnquiryDetails />} />
 
           {/*sadan part */}
-          <Route path="/PromotionManagement" element={<PromotionManagement url={url}/>}/>
-          <Route path="/PromotionAdd" element={<PromotionAdd url={url}/>}/>
-          <Route path="/PromotionList" element={<PromotionList url={url}/>}/>
+          <Route path="/PromotionAdd" element={<PromotionAdd url={url} />} />
+          <Route path="/PromotionList" element={<PromotionList url={url} />} />
+          <Route path="/PromotionReport" element={<PromotionReport url={url} />} />
 
 
           {/*torin part */}
@@ -106,11 +112,11 @@ const App = () => {
           <Route path='/salaryy' element={<SalaryU />}></Route>
           <Route path='/createsalary' element={<CreateSalary />}></Route>
           <Route path='/updatesal/:id' element={<UpdateSalary />}></Route>
-          <Route path="/emplogin" element={<EmpLogin  />} />
-          <Route path="/emp/:id" element={<EmpU />} />
+
 
           {/*asela part */}
           <Route path='/factoryManagement' element={<FactoryHome />}></Route>
+
           <Route path="/mainhome" element ={<FactoryHome/>}/> 
           <Route path="/addMachine" element ={<AddMachanic/>}/>  
           <Route path="/machineDetails" element ={<Machanics/>}/>
@@ -131,7 +137,28 @@ const App = () => {
           <Route path="/list"  element={<List url={url}/>}/>
           <Route path="/edit/:id" element={<EditProduct/>}/>
           <Route path="/report" element={<Report url={url}/>}/>
-          
+
+          <Route path="/mainhome" element={<FactoryHome />} />
+          <Route path="/addMachine" element={<AddMachanic />} />
+          <Route path="/machineDetails" element={<Machanics />} />
+          <Route path="/machineDetails/:id" element={<UpdateMachanic />} />
+
+          <Route path="/mAdd" element={<ADDmachin />} />
+          <Route path="/mDetails" element={<Machines />} />
+          <Route path="/mDetails/:id" element={<UpdateMachine />} />
+
+          <Route path="/uDetails" element={<Utilitis />} />
+          <Route path="/uAdd" element={<AddUtility />} />
+          <Route path="/uDetails/:id" element={<UpdateUtility />} />
+
+          {/*imashi part */}
+          <Route path="/add" element={<Add url={url} />} />
+          <Route path="/" element={<List url={url} />} />
+          <Route path="/list" element={<List url={url} />} />
+          <Route path="/edit/:id" element={<EditProduct />} />
+          <Route path="/report" element={<Report url={url} />} />
+
+
         </Routes>
       </div>
     </div>

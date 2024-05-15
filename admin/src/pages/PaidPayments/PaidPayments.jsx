@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
 import { Link } from "react-router-dom";
-import './PaidPayments.css'
-import  { useState, useEffect, useRef } from "react";
+import './PaidPayments.css';
+import { useState, useEffect } from "react";
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { useReactToPrint } from "react-to-print";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 const PaidPayments = () => {
   
@@ -44,12 +45,6 @@ const PaidPayments = () => {
             });
     }, []);
 
-    const ComponentsRef = useRef();   //report generation
-    const handlePrint = useReactToPrint({
-        content: () => ComponentsRef.current,
-        documentTitle: "paid payments Report"
-    });
-
     const handleSearch = () => {
       const filteredReports = request.filter(item => {
         const lowerSearchTerm = searchTerm.toLowerCase();
@@ -66,95 +61,123 @@ const PaidPayments = () => {
   
     }
 
-      const handleChange = (e) => {
+    const handleChange = (e) => {
         setSearchTerm(e.target.value); //search bar passing changing values
         if (e.target.value === "") {
           setDisplayedRequest(request); 
         } else {
           handleSearch(); 
         }
-      }
+    }
 
+    const downloadReport = () => {
+        const doc = new jsPDF();
+        const currentDate = new Date().toLocaleDateString();
 
-  return (
-      <div className="pbox">
-      <h1>PAID PAYMENTS</h1>
+        const tableColumn = ["Payment ID", "Section", "Role", "Description", "Amount", "Uploaded Date", "Status"];
+        const tableRows = [];
 
-      <div className="ppayment-request-head-line">
-      
-      <div className="psearch-barpb">
-      <input className='psearch-barpb'   type='text' name='search' value={searchTerm} onChange={handleChange}  autoComplete="off" placeholder='Search by section,amount or date'/>
-      <button className='psearch-btnpb'onClick={handleSearch} > Search </button>
-      </div>
+        displayedRequest.forEach(item => {
+            const itemData = [
+                item._id,
+                item.section,
+                item.role,
+                item.description,
+                item.amount.toFixed(2),
+                new Date(item.createdAt).toLocaleDateString(),
+                item.status
+            ];
+            tableRows.push(itemData);
+        });
 
-      </div>
-      <div  ref={ComponentsRef} className="print">
-      <div className='ppayment-r-table'>
-      <br />
-      <table border={1} cellPadding={10} cellSpacing={0}>
-        <thead>
-          <tr>
-            <th>Payment ID</th>
-            <th>Section</th>
-            <th>Role</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Uploaded Date</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-        {displayedRequest.map((Item, index) => (
+        doc.autoTable({
+            head: [tableColumn],
+            body: tableRows,
+            startY: 20,
+            styles: { fontSize: 8 }
+        });
+        doc.text(`Paid Payments Report (${currentDate})`, 14, 10);
 
-<tr key={index}>
-              
-<td className='iddd'> {Item._id} </td>
-            <td> {Item.section} </td>
-            <td> {Item.role} </td>
-            <td className='des'> {Item.description} </td>
-            <td> {Item.amount.toFixed(2)} </td>
-            <td>{new Date(Item.createdAt).toLocaleDateString()}</td>
-            <td> {Item.status} </td>  
-          </tr>
-          ))}
+        //doc.text("Paid Payments Report", 14, 15);
+        doc.save('paid_payments_report.pdf');
+    }
 
-        </tbody>
-      </table>
-          <br />
-          
-      <div className="pselect-month">
-                <label>Search Totals : </label>
-                <select name='month' id='month' onChange={handleMonthChange}>
-                <option value="">Select Month</option>
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-                </select>
-                <button className='ptot-btn' style={{ marginLeft: "20px" }} onClick={handleGetTotalAmount}>Get Total Amount</button>
-                {totalAmount !== null && (
-                    <div className="ppopup">
-                      <label >Total paid amount:</label>
-                      <input className='pppi' type="text" value= {totalAmount.toFixed(2)} disabled/>
-                      </div>
-                )}
+    return (
+        <div className="pbox">
+            <h1>PAID PAYMENTS</h1>
+
+            <div className="ppayment-request-head-line">
+                <div className="psearch-barpb">
+                    <input className='psearch-barpb' type='text' name='search' value={searchTerm} onChange={handleChange} autoComplete="off" placeholder='Search by section,amount or date' />
+                    <button className='psearch-btnpb' onClick={handleSearch}> Search </button>
+                </div>
             </div>
-            </div>
+            <div className="print">
+                <div className='ppayment-r-table'>
+                    <br />
+                    <table border={1} cellPadding={10} cellSpacing={0}>
+                        <thead>
+                            <tr>
+                                <th>Payment ID</th>
+                                <th>Section</th>
+                                <th>Role</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Uploaded Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {displayedRequest.map((Item, index) => (
+                                <tr key={index}>
+                                    <td className='iddd'> {Item._id} </td>
+                                    <td> {Item.section} </td>
+                                    <td> {Item.role} </td>
+                                    <td className='des'> {Item.description} </td>
+                                    <td> {Item.amount.toFixed(2)} </td>
+                                    <td>{new Date(Item.createdAt).toLocaleDateString()}</td>
+                                    <td> {Item.status} </td>  
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <br />
+                    <div className="pselect-month">
+                        <label>Search Totals : </label>
+                        <select name='month' id='month' onChange={handleMonthChange}>
+                            <option value="">Select Month</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <button className='ptot-btn' style={{ marginLeft: "20px" }} onClick={handleGetTotalAmount}>Get Total Amount</button>
+                        {totalAmount !== null && (
+                            <div className="ppopup">
+                                <label>Total paid amount:</label>
+                                <input className='pppi' type="text" value={totalAmount.toFixed(2)} disabled />
+                            </div>
+                        )}
+                    </div>
+                </div>
             </div>
 
-      <Link to={"/paymentRequests"}><button className='pprpt-btn'>Back</button></Link>         
-      <button onClick={handlePrint} style={{ marginLeft: "20px" }} className='pprpt-btn'>Download Report</button>
-      <Link to={"/Pdfupload"}><button style={{ marginLeft: "20px" }} className='pprpt-btn'>Upload Report</button></Link>
-    </div>
-  )
+            <Link to={"/paymentRequests"}><button className='pprpt-btn'>Back</button></Link>         
+            <button style={{ marginLeft: "20px" }} className='pprpt-btn' onClick={downloadReport}>Download Report</button><br/>
+            {/* <Link to={"/Pdfupload"}><button style={{ marginLeft: "20px" }} className='pprpt-btn'>Upload Report</button></Link> */}
+            <Link to={"/OrderPayments"}>
+                <button className='orderpsymentsbtn'>Order Payments</button>
+            </Link>
+        </div>
+    )
 }
 
-export default PaidPayments
+export default PaidPayments;

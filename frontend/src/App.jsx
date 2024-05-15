@@ -13,6 +13,8 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import Profile from './components/User Profile/profile'
 
 
+
+
 const App = () => {
 
   const [showLogin,setShowLogin] = useState(false)
@@ -25,7 +27,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/cart' element={<Cart/>}/>
-        <Route path='/order' element={<PlaceOrder/>}/>
+        <Route path='/order' element={<PlaceOrder setShowLogin={setShowLogin} />} />
         <Route path='/Verify' element={<Verify/>}/>
         <Route path='/myorders' element={<MyOrders/>}/>
         <Route path='/enquiry' element={<Enquiry />}></Route>

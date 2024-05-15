@@ -91,6 +91,7 @@ function CreateOrder() {
         style={{
           width: "50%",
           backgroundColor: "tomato",
+          marginTop: "70px",
           opacity: "0.9",
           borderRadius: "10px",
           padding: "16px",
@@ -121,7 +122,7 @@ function CreateOrder() {
               <input
                 type="text"
                 id="id"
-                placeholder="Enter Request id"
+
                 style={{
                   padding: "8px",
                   borderRadius: "5px",

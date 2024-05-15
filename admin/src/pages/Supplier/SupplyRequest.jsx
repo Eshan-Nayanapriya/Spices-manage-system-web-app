@@ -48,25 +48,37 @@ function SupplyRequest() {
         <td style={{ padding: "5px" }}>{Request.price}</td>
         <td style={{ padding: "15px" }}>{Request.deadLine}</td>
         <td>
-          <Link to={`update/${Request._id}`} className="btn btn-success ">
-            Update
+          <Link to={`update/${Request._id}`}>
+            <button
+              style={{
+                margin: "40px",
+                backgroundColor: "green",
+                color: "white",
+                border: "none",
+                padding: "10px 20px",
+                borderRadius: "5px",
+                cursor: "pointer"
+              }}
+            >
+              Update
+            </button>
           </Link>
+
           <button
-  style={{
-    margin: "40px",
-    backgroundColor: "tomato", 
-    color: "white",
-    border: "none", 
-    padding: "10px 20px", 
-    borderRadius: "5px",
-    cursor:"pointer"
-  }}
-  onClick={() => {
-    handleDelete(Request._id);
-  }}
->
-  Delete
-</button>
+            style={{
+              backgroundColor: "tomato",
+              color: "white",
+              border: "none",
+              padding: "10px 20px",
+              borderRadius: "5px",
+              cursor: "pointer"
+            }}
+            onClick={() => {
+              handleDelete(Request._id);
+            }}
+          >
+            Delete
+          </button>
 
         </td>
       </tr>
@@ -76,15 +88,15 @@ function SupplyRequest() {
   return (
     <div
       style={{
-        
+
         backgroundSize: "cover",
         backgroundPosition: "left",
-        marginTop:"50px",
-        marginLeft:"300px",
+        marginTop: "50px",
+        marginLeft: "300px",
         alignItems: "center",
         minHeight: "100vh",
         backgroundColor: "#fff", /* Fallback color */
-        
+
       }}
     >
       <input
@@ -101,7 +113,7 @@ function SupplyRequest() {
           marginTop: "-600px",
         }}
       />
-      <div 
+      <div
         style={{
           width: "70%",
           height: "60vh",
@@ -110,14 +122,15 @@ function SupplyRequest() {
           padding: "16px",
         }}
       >
-        <a 
-          href="/create" 
+        <a
+          href="/create"
           style={{
             display: "inline-block",
             padding: "10px 20px",
             backgroundColor: "tomato",
             color: "#fff",
-            marginTop:"100px",
+            marginLeft: "-150px",
+            marginTop: "100px",
             textDecoration: "none",
             borderRadius: "5px",
             marginBottom: "16px",
@@ -125,7 +138,8 @@ function SupplyRequest() {
         >
           ADD REQUEST +
         </a>
-        <table style={{ width: "200%" }}>
+
+        <table style={{ width: "250%", textAlign: "center", marginLeft: "-150px" }}>
           <thead>
             <tr>
               <th style={{ padding: "5px", textAlign: "center" }}>Raw Material Name</th>
@@ -140,10 +154,10 @@ function SupplyRequest() {
             <Rowgen />
           </tbody>
         </table>
+
       </div>
     </div>
   );
-
 }
 
 export default SupplyRequest;

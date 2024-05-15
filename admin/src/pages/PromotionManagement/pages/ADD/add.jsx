@@ -1,14 +1,13 @@
 import React from 'react'
-import PromoNav from '../../PromoNav/PromoNav'
 import './Add.css'
+import { Link } from 'react-router-dom';
 import { assets } from '../../../../assets/assets'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-
-const add = ({url}) => {
+const add = ({ url }) => {
 
   const [promoimage, setImage] = useState(false);
   const [itemSuggestions, setItemSuggestions] = useState([]);
@@ -21,7 +20,7 @@ const add = ({url}) => {
     quantity: ""
   })
 
-  const onChangeHandler = (event) =>{
+  const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
 
@@ -53,25 +52,24 @@ const add = ({url}) => {
       setItemSuggestions([]);
     }
   };
-  
 
   const selectItem = (itemName) => {
     setData(prevData => ({ ...prevData, itemName }));
     setItemSuggestions([]);
   };
 
-  const onSubmitHandler = async (event) =>{
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append( "name", data.name)
-    formData.append( "itemName", data.itemName)
-    formData.append( "description", data.description)
-    formData.append( "discount", Number(data.discount))
-    formData.append( "validDate", data.validDate)
-    formData.append( "quantity", data.quantity)
-    formData.append( "promoimage", promoimage)
-    const response = await axios.post(`${url}/api/promotion/addpromotion`,formData);
-    if(response.data.success){
+    formData.append("name", data.name)
+    formData.append("itemName", data.itemName)
+    formData.append("description", data.description)
+    formData.append("discount", Number(data.discount))
+    formData.append("validDate", data.validDate)
+    formData.append("quantity", data.quantity)
+    formData.append("promoimage", promoimage)
+    const response = await axios.post(`${url}/api/promotion/addpromotion`, formData);
+    if (response.data.success) {
       setData({
         name: "",
         itemName: "",
@@ -82,66 +80,69 @@ const add = ({url}) => {
       })
       setImage(false)
       toast.success(response.data.message)
-    }else{
+    } else {
       toast.error(response.data.message)
-    } 
+    }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(data); //checking data in console
-  },[data])
+  }, [data])
 
   return (
-    
     <div className='promotion-add'>
-      <PromoNav/>
-      <div className="head-line">
+      <div className="head-linep">
         <h1>Promotion Add</h1>
+        <div className='promotion-request-head-line'>
+          <Link to='/PromotionList'>
+            <button className='promoaddbutton'>Promotion List</button>
+          </Link>
+        </div>
       </div>
       <form className='flex-col' onSubmit={onSubmitHandler}>
         <div className="promotion-img-upload flex-col">
           <p>Upload Image</p>
-          <label htmlFor="image">
-            <img src={promoimage?URL.createObjectURL(promoimage):assets.upload_area} alt="" />
+          <label htmlFor="promoimage">
+            <img src={promoimage ? URL.createObjectURL(promoimage) : assets.upload_area} alt="" />
           </label>
-          <input onChange={(e)=>setImage(e.target. files[0])}type="file" id='promoimage' required />
+          <input onChange={(e) => setImage(e.target.files[0])} type="file" id='promoimage' hidden required />
         </div>
         <div className="add-promotion-name flex-col">
           <p>Promotion name</p>
-          <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here'/>
-        </div>
-        <div className="add-product-name flex-col">
-          <p>Item name</p>
-          <input onChange={onChangeHandler} value={data.itemName} type="text" name='itemName' placeholder='Type here'/>
-          <div className="suggestions">
-          {itemSuggestions.length > 0 && (
-            <ul className="item-suggestions">
-              {itemSuggestions.map((item, index) => (
-                <li key={index} onClick={() => selectItem(item.name)}>
-                  {item.name}
-                </li>
-              ))}
-            </ul>
-          )}
-          </div>
+          <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here' />
         </div>
         <div className="add-promotion-description flex-col">
           <p>Promotion description</p>
           <textarea onChange={onChangeHandler} value={data.description} name="description" rows="6" placeholder='Write content here' required></textarea>
         </div>
-        <div className="add-category">
+        <div className="add-product-name flex-col">
+          <p>Item name</p>
+          <input onChange={onChangeHandler} value={data.itemName} type="text" name='itemName' placeholder='Type here' />
+          <div className="suggestions">
+            {itemSuggestions.length > 0 && (
+              <ul className="item-suggestions_promo">
+                {itemSuggestions.map((item, index) => (
+                  <li key={index} onClick={() => selectItem(item.name)}>
+                    {item.name}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+        <div className="add-categoryp">
           <div className="add-valid-date flex-col">
             <p>Product valid date</p>
-            <input onChange={onChangeHandler} value={data.validDate} type="date" name='validDate' placeholder='Type here'/>
+            <input onChange={onChangeHandler} value={data.validDate} type="date" name='validDate' placeholder='Type here' />
           </div>
           <div className="add-discount flex-col">
             <p>Discount</p>
-            <input onChange={onChangeHandler} value={data.discount} type="Number" name='discount' placeholder='%'/>
+            <input onChange={onChangeHandler} value={data.discount} type="Number" name='discount' placeholder='%' />
           </div>
-        </div>
-        <div className="add-product-terms flex-col">
-          <p>Quantity</p>
-          <input onChange={onChangeHandler} value={data.quantity} type="Number" name="quantity" placeholder='Write content here' required/>
+          <div className="add-product-terms flex-col">
+            <p>Quantity</p>
+            <input onChange={onChangeHandler} value={data.quantity} type="Number" name="quantity" placeholder='Write content here' required />
+          </div>
         </div>
         <button type='submit' className='add-btn'>ADD</button>
       </form>

@@ -67,22 +67,22 @@ function UpdateOrder() {
   };
 
   return (
-    <div 
+    <div
       style={{
         backgroundSize: "cover",
         backgroundPosition: "center",
         alignItems: "center",
         height: "100vh",
-        marginLeft:"400px",
+        marginLeft: "400px",
         backgroundColor: "#ffffff",
       }}
     >
       <div className="w-50 bg-white rounded p-3" style={{ padding: "100px" }}>
-        <form onSubmit={Update}> 
+        <form onSubmit={Update}>
           <h2>Update Request</h2>
           <div style={{ display: "flex" }}>
             <div style={{ width: "350%" }}>
-              <div style={{ marginBottom: "20px", marginTop:"30px", width:"200%"}}>
+              <div style={{ marginBottom: "20px", marginTop: "30px", width: "200%" }}>
                 <label htmlFor="">Name :</label>
                 <br />
                 <input
@@ -94,7 +94,7 @@ function UpdateOrder() {
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div style={{ marginBottom: "20px" ,width:"200%"}}>
+              <div style={{ marginBottom: "20px", width: "200%" }}>
                 <label htmlFor="">Request ID :</label>
                 <br />
                 <input
@@ -107,7 +107,7 @@ function UpdateOrder() {
                 />
                 <span className="text-danger">{idError}</span>
               </div>
-              <div style={{ marginBottom: "20px" ,width:"200%"}}>
+              <div style={{ marginBottom: "20px", width: "200%" }}>
                 <label htmlFor="">Quantity :</label>
                 <br />
                 <input
@@ -119,7 +119,7 @@ function UpdateOrder() {
                   onChange={(e) => setQuantity(e.target.value)}
                 />
               </div>
-              <div style={{ marginBottom: "20px",width:"200%" }}>
+              <div style={{ marginBottom: "20px", width: "200%" }}>
                 <label htmlFor="">Price :</label>
                 <br />
                 <input
@@ -132,7 +132,7 @@ function UpdateOrder() {
                 />
                 <span className="text-danger" style={{ color: "red" }}>{priceError}</span>
               </div>
-              <div style={{ marginBottom: "10px" ,width:"200%"}}>
+              <div style={{ marginBottom: "10px", width: "200%" }}>
                 <label htmlFor="">DeadLine :</label>
                 <br />
                 <input

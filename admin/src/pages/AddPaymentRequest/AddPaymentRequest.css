@@ -1,36 +1,36 @@
 
-.payment-request-container {
-    width: 100%;
+.ppayment-request-container {
+    width: 50%;
     padding: 30px;
     border: 1px solid #ccc;
     margin :10px;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
     border-radius: 8px;
     background-color: #f9f9f9;
-    margin-left: 300px;
+    margin-left: 200px;
     margin-top: 50px;
     margin-bottom: 900px;
   }
   
-  .payment-request-container h1 {
+  .ppayment-request-container h1 {
     font-size: 24px;
     margin-bottom: 20px;
     text-align: center;
   }
   
-  .payment-request-container form {
+  .ppayment-request-container form {
     display: grid;
     gap: 15px;
   }
   
-  .payment-request-container label {
+  .ppayment-request-container label {
     font-weight: bold;
   }
   
-  .payment-request-container select,
-  .payment-request-container input[type="text"],
-  .payment-request-container input[type="number"],
-  .payment-request-container textarea {
+  .ppayment-request-container select,
+  .ppayment-request-container input[type="text"],
+  .ppayment-request-container input[type="number"],
+  .ppayment-request-container textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -39,11 +39,11 @@
   
 
   
-  .payment-request-container textarea {
+  .ppayment-request-container textarea {
     resize: vertical;
   }
   
-  .payment-request-container button[type="submit"] {
+  .ppayment-request-container button[type="submit"] {
     background-color: tomato;
     color: #fff;
     padding: 12px 20px;
@@ -55,7 +55,7 @@
     transition: background-color 0.3s ease;
   }
   
-  .payment-request-container button[type="submit"]:hover {
+  .ppayment-request-container button[type="submit"]:hover {
     background-color: rgb(146, 67, 53);
   }
   
