@@ -113,14 +113,15 @@ const Orders = ({ url }) => {
   return (
     <div className="orderadd">
       <h3>Order Page</h3>
+      <div className="containerkulinu">
       <div className="search-bar">
         <input
           type="text"
           placeholder="Search by item name"
           value={searchQuery}
           onChange={handleSearch}
-        />
-        <button onClick={generatePDFReport}>Get PDF Report</button>
+        /></div>
+        <button className="searchbarbtnrpt" onClick={generatePDFReport}>Get PDF Report</button>
       </div>
       <div className="order-listz">
         {filteredOrders.map((order, index) => (
