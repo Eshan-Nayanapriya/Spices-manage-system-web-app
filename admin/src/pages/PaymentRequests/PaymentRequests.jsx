@@ -158,7 +158,8 @@ function PaymentRequest() {
         </table>
       </div>
       <button className='prpt-btn' onClick={downloadReport}>Download Report</button>
-      <Link to={"/PaidPayments"}><button style={{ marginLeft: "20px" }} className='prpt-btn'>Paid Payments</button></Link>
+      <Link to={"/PaidPayments"}><button style={{ marginLeft: "20px" }} className='prpt-btn'>Paid Payments</button></Link><br/>
+      
     </div>
 
   );
