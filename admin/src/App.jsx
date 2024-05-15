@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './components/Navbar/Navbar'
 import Sidebar from './components/Sidebar/Sidebar'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Add from './pages/AddProduct/Add'
 import List from './pages/ListProduct/List'
 import Orders from './pages/Orders/Orders'
@@ -50,6 +50,13 @@ import AddUtility from './pages/Component/AddUtility/AddUtility';
 import UpdateUtility from './pages/Component/UpdateUtility/UpdateUtility';
 import EditProduct from './pages/EditProduct/EditProduct.jsx'
 import Report from './pages/Report/Report.jsx'
+import AdminLog from './pages/AdminLoging/adminLoging.jsx'
+import AddAdmin from './pages/AdminLoging/AdminADD.jsx'
+import { useContext } from 'react'
+import { AdminContext } from './context/AdminContext.jsx';
+
+import adminlogin from './pages/AdminLoging/adminLoging.jsx'
+
 
 import Inform from './pages/Component/InformSuplier/Inform.jsx'
 
@@ -60,26 +67,33 @@ import PromoCode from './pages/PromoCode/PromoCode.jsx'
 const App = () => {
 
   const url = "http://localhost:4000"
-
+  const { Token } = useContext(AdminContext);
   return (
     <div>
       <ToastContainer />
       <Navbar />
       <hr />
       <div className="app-content">
-        <Sidebar />
-        <Routes>
 
+      {Token &&<Sidebar />}
+      
+
+        <Routes>
+   
           {/*batta part */}
           <Route path="/orders" element={<Orders url={url} />} />
           <Route path='/paymentRequests' element={<PaymentRequests />} />
           <Route path='/AddPaymentRequest' element={<AddPaymentRequest />} />
           <Route path='/UpdatePaymentRequest/:id' element={<UpdatePaymentRequest />} />
           <Route path='/PaidPayments' element={<PaidPayments />} />
+
+          <Route path='/Pdfupload' element={<Pdfupload />} />
+
           <Route path='/OrderPayments' element={<Pdfupload url={url} />} />
 
           {/*KP part */}
           <Route path='/promocode' element={<PromoCode url={url}/>} />
+
 
           {/*udan part */}
 
@@ -98,11 +112,18 @@ const App = () => {
           {/*menusha part*/}
           <Route path='/displayenquiry' element={<DisplayEnquiries />}></Route>
           <Route path="/enquirydetails/:id" element={<EnquiryDetails />} />
+          <Route path="/addadmin" element={<AddAdmin />} />
+          <Route path="/" element={<AdminLog />} />
 
           {/*sadan part */}
+
+          <Route path="/PromotionManagement" element={<PromotionManagement url={url} />} />
+    
+
           <Route path="/PromotionAdd" element={<PromotionAdd url={url} />} />
           <Route path="/PromotionList" element={<PromotionList url={url} />} />
           <Route path="/PromotionEdit/:id" element={<PromotionEdit />} />
+
 
 
           {/*torin part */}
@@ -116,6 +137,7 @@ const App = () => {
 
           {/*asela part */}
           <Route path='/factoryManagement' element={<FactoryHome />}></Route>
+
 
           <Route path="/mainhome" element ={<FactoryHome/>}/> 
           <Route path="/addMachine" element ={<AddMachanic/>}/>  
@@ -138,6 +160,7 @@ const App = () => {
           <Route path="/edit/:id" element={<EditProduct/>}/>
           <Route path="/report" element={<Report url={url}/>}/>
 
+
           <Route path="/mainhome" element={<FactoryHome />} />
           <Route path="/addMachine" element={<AddMachanic />} />
           <Route path="/machineDetails" element={<Machanics />} />
@@ -153,7 +176,9 @@ const App = () => {
 
           {/*imashi part */}
           <Route path="/add" element={<Add url={url} />} />
+
           <Route path="/" element={<List url={url} />} />
+
           <Route path="/list" element={<List url={url} />} />
           <Route path="/edit/:id" element={<EditProduct />} />
           <Route path="/report" element={<Report url={url} />} />
