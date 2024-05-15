@@ -33,7 +33,7 @@ const LoginAdmin = () => {
       setRole(response.data.role); // Set the role in the context
       sessionStorage.setItem("token", response.data.token);
       sessionStorage.setItem("role", response.data.role); // Store the role in sessionStorage
-      toast.success("Success");
+      toast.success("Successfully logged in");
       navigate('/list');
     } else {
       alert(response.data.message);

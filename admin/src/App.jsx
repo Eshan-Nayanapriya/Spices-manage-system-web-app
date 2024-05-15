@@ -116,10 +116,6 @@ const App = () => {
           <Route path="/" element={<AdminLog />} />
 
           {/*sadan part */}
-
-          <Route path="/PromotionManagement" element={<PromotionManagement url={url} />} />
-    
-
           <Route path="/PromotionAdd" element={<PromotionAdd url={url} />} />
           <Route path="/PromotionList" element={<PromotionList url={url} />} />
           <Route path="/PromotionEdit/:id" element={<PromotionEdit />} />
