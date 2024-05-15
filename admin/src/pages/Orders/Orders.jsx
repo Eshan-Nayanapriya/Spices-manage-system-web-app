@@ -101,7 +101,7 @@ const Orders = ({ url }) => {
           value={searchQuery}
           onChange={handleSearch}
         />
-        <button onClick={generatePDFReport}>Generate PDF Report</button>
+        <button onClick={generatePDFReport}>Get PDF Report</button>
       </div>
       <div className="order-listz">
         {filteredOrders.map((order, index) => (

@@ -22,20 +22,23 @@ const PromoCode = ({ url }) => {
     }
 
     // Function to handle changes in input fields
-const onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    if (name === 'discount' && (!value || /^\d{0,2}$/.test(value))) {
-        setData(prevState => ({ ...prevState, [name]: value }));
-    }
-};
-
+    const onChangeHandler = (e) => {
+        const { name, value } = e.target;
+        if (name === 'discount' && (!value || /^\d{0,2}$/.test(value))) {
+            setData(prevState => ({ ...prevState, [name]: value }));
+        }
+    };
 
     // Function to handle form submission
     const onSubmitHandler = async (event) => {
         event.preventDefault();
+        if (data.discount.trim() === "") {
+            alert("Please enter a discount price.");
+            return;
+        }
+
         try {
-            console.log(data);
-            const response = await axios.post(url+'/api/promo/addpromo',{
+            const response = await axios.post(url + '/api/promo/addpromo', {
                 promocode: String(data.code),
                 promodiscount: Number(data.discount)
             });
@@ -58,7 +61,7 @@ const onChangeHandler = (e) => {
     // Function to fetch promo codes and discounts from the backend
     const fetchPromoCodes = async () => {
         try {
-            const response = await axios.get(url+'/api/promo/promocodes');
+            const response = await axios.get(url + '/api/promo/promocodes');
             setPromoList(response.data);
         } catch (error) {
             console.error("Error:", error);
@@ -84,6 +87,20 @@ const onChangeHandler = (e) => {
         alert(`Promo code "${code}" copied to clipboard.`);
     };
 
+// Function to handle promo code deletion
+const deletePromo = async (id) => {
+    if (window.confirm("Are you sure you want to delete this promo code?")) {
+        try {
+            await axios.delete(`${url}/api/promo/deletepromo/${id}`);
+            setPromoList(promoList.filter(promo => promo._id !== id));
+        } catch (error) {
+            console.error("Error:", error);
+            console.log("Failed to delete promo code.");
+        }
+    }
+};
+
+
     return (
         <div className='add-promocode'>
             <form className='flex-col' onSubmit={onSubmitHandler}>
@@ -101,13 +118,14 @@ const onChangeHandler = (e) => {
                 </div>
             </form>
             <div className="promo-list">
-                <h2>Added Discounts and Promo Codes</h2>
+                <h2 style={{ textAlign: 'center' }}>Added Discounts and Promo Codes</h2>
                 <table>
                     <thead>
                         <tr>
                             <th>Promo Code</th>
                             <th>Discount</th>
                             <th>Copy</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -116,6 +134,7 @@ const onChangeHandler = (e) => {
                                 <td>{promo.promocode}</td>
                                 <td>{promo.promodiscount}</td>
                                 <td><button onClick={() => copyToClipboard(promo.promocode)}>Copy</button></td>
+                                <td><button onClick={() => deletePromo(promo._id)}>Delete</button></td>
                             </tr>
                         ))}
                     </tbody>
