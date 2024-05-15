@@ -131,6 +131,21 @@ function SalaryU() {
                 >
                     Download Report
                 </button>
+                <Link to="/AddPaymentRequest">
+                <button 
+                    style={{ 
+                        marginLeft: '10px',
+                        padding: '10px 20px', 
+                        backgroundColor: '#FFA500',
+                        color: '#fff',
+                        borderRadius: '4px',
+                        border: 'none'
+                        
+                    }}
+                    className="download-report-btn" 
+                >
+                    Request Salary
+                </button></Link>
             </div>
         </div>
     );
