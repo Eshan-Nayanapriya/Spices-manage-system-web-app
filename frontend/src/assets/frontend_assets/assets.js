@@ -2,14 +2,14 @@ import basket_icon from './basket_icon.png'
 import logo from './logo.png'
 import heade_img from './heade_img.png'
 import search_icon from './search_icon.png'
-import pieces from './pieces.png'
-import powder from './spice.png'
-import flour from './wheat.png'
-import seeds from './seeds.png'
-import oil from './olive-oil.png'
-import other from './other.png'
 import bot from './bot.png'
 
+import menu_1 from './menu_1.png'
+import menu_2 from './menu_2.png'
+import menu_3 from './menu_3.png'
+import menu_4 from './menu_4.png'
+import menu_5 from './menu_5.png'
+import menu_6 from './menu_6.png'
 
 
 
@@ -57,32 +57,32 @@ export const assets = {
     parcel_icon,
     profile,
     edtqbtn,
-    usericon
+    usericon,
 }
 
 export const menu_list = [
     {
         menu_name: "Powder",
-        menu_image: powder
+        menu_image: menu_1
     },
     {
         menu_name: "Pieces",
-        menu_image: pieces
+        menu_image: menu_2
     },
     {
         menu_name: "Flour",
-        menu_image: flour
+        menu_image: menu_6
     },
     {
         menu_name: "Oil",
-        menu_image: oil
+        menu_image: menu_3
     },
     {
         menu_name: "Seeds",
-        menu_image: seeds
+        menu_image: menu_4
     },
     {
         menu_name: "Other",
-        menu_image: other
+        menu_image: menu_5
     }]
 
