@@ -2,39 +2,49 @@ import React, { useEffect, useState } from 'react';
 import './PaidReportUpload.css';
 import axios from 'axios';
 import { assets } from '../../assets/assets';
-import { jsPDF } from 'jspdf';
 import { toast } from 'react-toastify';
 
 const PaidReportUpload = ({ url }) => {
   const [filteredOrders, setFilteredOrders] = useState([]);
-  const [totalAmount, setTotalAmount] = useState(0); // State for total amount
-  const [totalDeliveredOrders, setTotalDeliveredOrders] = useState(0); // State for total number of delivered orders
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [totalDeliveredOrders, setTotalDeliveredOrders] = useState(0);
+  const [totalPaidAmount, setTotalPaidAmount] = useState(null); // Initialize as null initially
+
+  useEffect(() => {
+    const fetchTotalPaidAmount = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/api/paidPayments/totalAmount');
+        console.log(response);
+        setTotalPaidAmount(response.data); // Update totalPaidAmount directly with response
+      } catch (error) {
+        console.error('Error fetching total paid amount:', error);
+        toast.error('Error fetching total paid amount');
+      }
+    };
+
+    fetchTotalPaidAmount();
+  }, []);
 
   const fetchAllOrders = async () => {
     try {
       const response = await axios.get(url + '/api/order/list');
       if (response.data.success) {
-        // Filter for delivered orders
         const deliveredOrders = response.data.data.filter(order => order.status === 'Delivered');
         setFilteredOrders(deliveredOrders);
 
-        // Initialize totals
         let amount = 0;
-
-        // Calculate total amount and delivered orders
         deliveredOrders.forEach(order => {
-          // Ensure order.amount is a number
           amount += parseFloat(order.amount) || 0;
         });
 
-        // Set the calculated totals
         setTotalAmount(amount);
-        setTotalDeliveredOrders(deliveredOrders.length); // Set total number of delivered orders
+        setTotalDeliveredOrders(deliveredOrders.length);
       } else {
         toast.error('Error fetching orders');
       }
     } catch (error) {
       console.error('Error fetching orders:', error);
+      toast.error('Error fetching orders');
     }
   };
 
@@ -42,7 +52,6 @@ const PaidReportUpload = ({ url }) => {
     fetchAllOrders();
   }, []);
 
-  // New function to handle order deletion
   const deleteOrder = async (orderId) => {
     const confirmDelete = window.confirm('Are you sure you want to delete this order?');
     if (!confirmDelete) {
@@ -70,8 +79,11 @@ const PaidReportUpload = ({ url }) => {
         <button className="ppppsearch-barbtn">Download Report</button>
       </div>
       <div className="order-summary">
-        <p>Total Amount: LKR {totalAmount.toFixed(2)}</p> {/* Display total amount */}
-        <p>Total Delivered Orders: {totalDeliveredOrders}</p> {/* Display total delivered orders */}
+        <p>Total Amount: LKR {totalAmount.toFixed(2)}</p> 
+        <p>Total Delivered Orders: {totalDeliveredOrders}</p>
+        {totalPaidAmount !== null && (
+          <p>Total paid payments: LKR {totalPaidAmount.toFixed(2)}</p>
+        )}
       </div>
       <div className="order-listz">
         {filteredOrders.map((order, index) => (

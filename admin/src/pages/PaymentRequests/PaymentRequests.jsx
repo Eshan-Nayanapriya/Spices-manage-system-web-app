@@ -37,7 +37,7 @@ function PaymentRequest() {
           setDisplayedRequest(prevDisplayedRequests => prevDisplayedRequests.filter(item => item._id !== id));
           console.log('Item deleted successfully');
         })
-        .then(() => toast.success(`Request Deleted`, { position: "bottom-center" }))
+        .then(() => toast.success(`Request Deleted`))
         .then(() => navigate("/paymentRequests"))
         .catch(err => console.log(err))
     }
