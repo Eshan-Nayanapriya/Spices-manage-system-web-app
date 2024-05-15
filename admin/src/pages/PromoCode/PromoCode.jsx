@@ -1,5 +1,3 @@
-// PromoCode.jsx
-
 import React, { useState, useEffect } from 'react';
 import './PromoCode.css';
 import axios from 'axios';
@@ -24,7 +22,7 @@ const PromoCode = ({ url }) => {
     // Function to handle changes in input fields
     const onChangeHandler = (e) => {
         const { name, value } = e.target;
-        if (name === 'discount' && (!value || /^\d{0,2}$/.test(value))) {
+        if (name === 'discount' && (!value || (value >= 0 && /^\d*$/.test(value)))) {
             setData(prevState => ({ ...prevState, [name]: value }));
         }
     };
@@ -87,19 +85,18 @@ const PromoCode = ({ url }) => {
         alert(`Promo code "${code}" copied to clipboard.`);
     };
 
-// Function to handle promo code deletion
-const deletePromo = async (id) => {
-    if (window.confirm("Are you sure you want to delete this promo code?")) {
-        try {
-            await axios.delete(`${url}/api/promo/deletepromo/${id}`);
-            setPromoList(promoList.filter(promo => promo._id !== id));
-        } catch (error) {
-            console.error("Error:", error);
-            console.log("Failed to delete promo code.");
+    // Function to handle promo code deletion
+    const deletePromo = async (id) => {
+        if (window.confirm("Are you sure you want to delete this promo code?")) {
+            try {
+                await axios.delete(`${url}/api/promo/deletepromo/${id}`);
+                setPromoList(promoList.filter(promo => promo._id !== id));
+            } catch (error) {
+                console.error("Error:", error);
+                console.log("Failed to delete promo code.");
+            }
         }
-    }
-};
-
+    };
 
     return (
         <div className='add-promocode'>
@@ -111,7 +108,7 @@ const deletePromo = async (id) => {
                 </div>
                 <div className="discount-price flex-col">
                     <p>Discount price</p>
-                    <input onChange={onChangeHandler} value={data.discount} type="number" name="discount" placeholder='100%' />
+                    <input onChange={onChangeHandler} value={data.discount} type="number" name="discount" placeholder='Discount' />
                 </div>
                 <div className="btn-container">
                     <button type="submit" className="add-btn">ADD</button>
@@ -133,8 +130,8 @@ const deletePromo = async (id) => {
                             <tr key={index}>
                                 <td>{promo.promocode}</td>
                                 <td>{promo.promodiscount}</td>
-                                <td><button onClick={() => copyToClipboard(promo.promocode)}>Copy</button></td>
-                                <td><button onClick={() => deletePromo(promo._id)}>Delete</button></td>
+                                <td><button className="copy-btn" onClick={() => copyToClipboard(promo.promocode)}>Copy</button></td>
+                                <td><button className="delete-btn" onClick={() => deletePromo(promo._id)}>Delete</button></td>
                             </tr>
                         ))}
                     </tbody>
