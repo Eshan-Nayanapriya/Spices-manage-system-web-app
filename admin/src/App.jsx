@@ -72,7 +72,7 @@ const App = () => {
           <Route path='/AddPaymentRequest' element={<AddPaymentRequest />} />
           <Route path='/UpdatePaymentRequest/:id' element={<UpdatePaymentRequest />} />
           <Route path='/PaidPayments' element={<PaidPayments />} />
-          <Route path='/Pdfupload' element={<Pdfupload />} />
+          <Route path='/OrderPayments' element={<Pdfupload url={url} />} />
 
           {/*KP part */}
           <Route path='/promocode' element={<PromoCode url={url}/>} />

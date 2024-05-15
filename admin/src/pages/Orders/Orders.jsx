@@ -78,7 +78,7 @@ const Orders = ({ url }) => {
   }, [searchQuery, orders]);
 
   return (
-    <div className="order add">
+    <div className="orderadd">
       <h3>Order Page</h3>
       <div className="search-bar">
         <input
