@@ -50,7 +50,11 @@ import AddUtility from './pages/Component/AddUtility/AddUtility';
 import UpdateUtility from './pages/Component/UpdateUtility/UpdateUtility';
 import EditProduct from './pages/EditProduct/EditProduct.jsx'
 import Report from './pages/Report/Report.jsx'
+
+import Inform from './pages/Component/InformSuplier/Inform.jsx'
+
 import PromoCode from './pages/PromoCode/PromoCode.jsx'
+
 
 
 const App = () => {
@@ -112,6 +116,28 @@ const App = () => {
 
           {/*asela part */}
           <Route path='/factoryManagement' element={<FactoryHome />}></Route>
+
+          <Route path="/mainhome" element ={<FactoryHome/>}/> 
+          <Route path="/addMachine" element ={<AddMachanic/>}/>  
+          <Route path="/machineDetails" element ={<Machanics/>}/>
+          <Route path="/machineDetails/:id" element ={<UpdateMachanic/>}/>  
+
+          <Route path="/mAdd" element ={<ADDmachin/>}/>  
+          <Route path="/mDetails" element ={<Machines/>}/>
+          <Route path="/mDetails/:id" element ={<UpdateMachine/>}/>
+
+          <Route path="/uDetails" element ={<Utilitis/>}/>  
+          <Route path="/uAdd" element ={<AddUtility/>}/> 
+          <Route path="/uDetails/:id" element ={<UpdateUtility/>}/> 
+
+          <Route path="/inform" element ={<Inform/>}/>
+           
+           {/*imashi part */}
+          <Route path="/add" element={<Add url={url}/>}/>
+          <Route path="/list"  element={<List url={url}/>}/>
+          <Route path="/edit/:id" element={<EditProduct/>}/>
+          <Route path="/report" element={<Report url={url}/>}/>
+
           <Route path="/mainhome" element={<FactoryHome />} />
           <Route path="/addMachine" element={<AddMachanic />} />
           <Route path="/machineDetails" element={<Machanics />} />
@@ -131,6 +157,7 @@ const App = () => {
           <Route path="/list" element={<List url={url} />} />
           <Route path="/edit/:id" element={<EditProduct />} />
           <Route path="/report" element={<Report url={url} />} />
+
 
         </Routes>
       </div>

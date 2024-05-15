@@ -56,6 +56,7 @@ export default function Machanics() {
 
       <center>
         <input
+          style={{borderRadius:'5px'}}
           className='sBox'
           type="text"
           name="search"
