@@ -72,6 +72,7 @@ const PaidPayments = () => {
 
     const downloadReport = () => {
         const doc = new jsPDF();
+        const currentDate = new Date().toLocaleDateString();
 
         const tableColumn = ["Payment ID", "Section", "Role", "Description", "Amount", "Uploaded Date", "Status"];
         const tableRows = [];
@@ -95,8 +96,9 @@ const PaidPayments = () => {
             startY: 20,
             styles: { fontSize: 8 }
         });
+        doc.text(`Paid Payments Report (${currentDate})`, 14, 10);
 
-        doc.text("Paid Payments Report", 14, 15);
+        //doc.text("Paid Payments Report", 14, 15);
         doc.save('paid_payments_report.pdf');
     }
 

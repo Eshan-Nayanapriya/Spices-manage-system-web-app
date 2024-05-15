@@ -70,6 +70,7 @@ function PaymentRequest() {
 
   const downloadReport = () => {
     const doc = new jsPDF();
+    const currentDate = new Date().toLocaleDateString();
 
     const tableColumn = ["Request ID", "Section", "Role", "Description", "Amount", "Submitted Date", "Status"];
     const tableRows = [];
@@ -93,8 +94,9 @@ function PaymentRequest() {
       startY: 20,
       styles: { fontSize: 8 }
     });
+    doc.text(`Payment Requests Report (${currentDate})`, 14, 10);
 
-    doc.text("Payment Requests Report", 14, 15);
+    //doc.text("Payment Requests Report", 14, 15);
     doc.save('payment_requests_report.pdf');
   }
 
