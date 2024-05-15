@@ -15,38 +15,4 @@
     row-gap: 50px;
 }
 
-.search-container {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 2px;
-    width: 300px;
-    background-color: #fff;
-    margin-left: 800px;
-    box-shadow: 0 2px 4px tomato;
-    transition: border-color 0.3s ease;
-}
 
-.search-container:hover {
-    border-color: tomato;
-}
-
-.search-container img {
-    width: 20px;
-    margin-right: 10px;
-}
-
-.search-container input {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    padding: 8px;
-    background: transparent;
-    color: #333;
-}
-
-.search-container input::placeholder {
-    color: tomato;
-}
