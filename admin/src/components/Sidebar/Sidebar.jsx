@@ -2,11 +2,18 @@ import React from 'react'
 import './Sidebar.css'
 import { assets } from '../../assets/assets'
 import { NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import { AdminContext } from '../../context/AdminContext.jsx';
 
 const Sidebar = () => {
+    const { Token } = useContext(AdminContext);
     return (
         <div className='sidebar'>
             <div className="sidebar-options">
+            <NavLink to="/addadmin" className="sidebar-option" style={{backgroundColor:"tomato",color:"white"}}>
+                    <img src={assets.admin_icon} alt="" width={24}/>
+                    <p>Admins</p>
+                </NavLink>
                 <NavLink to="/add" className="sidebar-option">
                     <img src={assets.add_icon} alt="" />
                     <p>Add Products</p>
@@ -43,13 +50,13 @@ const Sidebar = () => {
 
                 </NavLink>
                 <NavLink to="/employeeManagement" className="sidebar-option">
-                <img src={assets.add_icon} alt="" />
-                <p>Employee Management</p>
-            </NavLink>
-            <NavLink to="/addMachine" className="sidebar-option">
-                <img src={assets.add_icon} alt="" />
-                <p>Factory Management</p>
-            </NavLink>
+                    <img src={assets.add_icon} alt="" />
+                    <p>Employee Management</p>
+                </NavLink>
+                <NavLink to="/addMachine" className="sidebar-option">
+                    <img src={assets.add_icon} alt="" />
+                    <p>Factory Management</p>
+                </NavLink>
             </div>
 
         </div>

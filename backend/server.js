@@ -22,6 +22,7 @@ import UserRoutes  from './routes/empuserRoute.js';
 import router from "./routes/MachanicRoutes.js"
 import routerMc from "./routes/MachineRoutes.js"
 import routerU from "./routes/UtilityRoutes.js"
+import adminRouter from "./routes/adminRouter.js"
 //asela
 
 //app config
@@ -48,6 +49,7 @@ app.use("/api/supplier",supplierRouter);
 app.use("/api/enquiry",enquiryRouter)
 app.use("/api/displayenquiry", enquiryRouter); 
 app.use("/api/enquirydetails", enquiryRouter); 
+app.use("/api/admin", adminRouter);
 
 //sadan
 app.use("/api/promotion",promotionRouter)

@@ -183,8 +183,8 @@ function SalaryU() {
                         backgroundColor: '#FFA500',
                         color: '#fff',
                         borderRadius: '4px',
-                        border: 'none',
-                        borderRadius: '4px'
+                        border: 'none'
+                        
                     }}
                     onClick={downloadReport} 
                 >
