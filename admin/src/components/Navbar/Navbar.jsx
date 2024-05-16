@@ -12,6 +12,7 @@ const Navbar = () => {
   const handleLogout = () => {
     setToken('');
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('role');
     navigate('/');
   };
   return (

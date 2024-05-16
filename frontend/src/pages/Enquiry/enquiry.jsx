@@ -11,10 +11,12 @@ const Enquiry = () => {
     const [product, setProduct] = useState('');
     const [description, setDescription] = useState('');
     const [submitted, setSubmitted] = useState(false);
-    const [selectedProductImage, setSelectedProductImage] = useState(null); // State to hold the selected product image URL
-
     const { food_list } = useContext(StoreContext);
 
+    const validatePhoneNumber = (phoneNumber) => {
+        const phonePattern = /^\d{10}$/;
+        return phonePattern.test(phoneNumber);
+    };
 
     const Submit = (e) => {
         e.preventDefault();
@@ -22,13 +24,15 @@ const Enquiry = () => {
             alert('Please select a product.');
             return;
         }
-        axios.post("http://localhost:4000/api/enquiry/add", { name, phone, email, product, description})
+        if (!validatePhoneNumber(phone)) {
+            alert('Phone number must be exactly 10 digits.');
+            return;
+        }
+        axios.post("http://localhost:4000/api/enquiry/add", { name, phone, email, product, description })
             .then(result => {
                 console.log(result);
                 alert("Enquiry submitted successfully! We will Reply You Soon");
                 setSubmitted(true);
-
-
             })
             .catch(err => console.log(err));
     };
@@ -36,7 +40,6 @@ const Enquiry = () => {
     const handleProductChange = (e) => {
         const selectedProduct = e.target.value;
         setProduct(selectedProduct);
- 
     };
 
     if (submitted) {
@@ -57,23 +60,20 @@ const Enquiry = () => {
                     <div className="enquiry-left">
                         <p className="titlex">Enquiry Form</p>
                         <div className="multifields">
-                            <input name='name' onChange={(e) => setName(e.target.value)} type="text" placeholder='Name' />
-                            <input name='phone' onChange={(e) => setPhone(e.target.value)} type="text" placeholder='Phone' />
-                            <input name='email' onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Email' />
+                            <input name='name' onChange={(e) => setName(e.target.value)} type="text" placeholder='Name' required />
+                            <input name='phone' onChange={(e) => setPhone(e.target.value)} type="text" placeholder='Phone' required />
+                            <input name='email' onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Email' required />
                             <label>Select here the product that you want to enquire about</label>
-                            <select id="food-select" onChange={handleProductChange}>
+                            <select id="food-select" onChange={handleProductChange} required>
                                 <option value="">Select a product</option>
                                 {food_list.map(food => (
                                     <option key={food._id} value={food.name}>
                                         {food.name} {food.category}
-                                      
                                     </option>
                                 ))}
                             </select>
-                        
                             <label>Description</label>
-                            <textarea onChange={(e) => setDescription(e.target.value)} name="Description" id="" cols="50" rows="10"></textarea>
-                            
+                            <textarea onChange={(e) => setDescription(e.target.value)} name="Description" id="" cols="50" rows="10" required></textarea>
                         </div>
                         <button className="enquiry-but" type='submit'>Submit</button>
                     </div>
