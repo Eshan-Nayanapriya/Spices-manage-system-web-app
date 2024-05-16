@@ -23,15 +23,15 @@ const Sidebar = () => {
                     <p>Product List</p>
                 </NavLink>
                 <NavLink to="/orders" className="sidebar-option">
-                    <img src={assets.add_icon} alt="" />
+                    <img src={assets.orders_icon} alt="" />
                     <p>Orders</p>
                 </NavLink>
                 <NavLink to="/supplier" className="sidebar-option">
-                    <img src={assets.add_icon} alt="" />
+                    <img src={assets.supplyermanage_icon} alt="" />
                     <p>Supply Manager</p>
                 </NavLink>
                 <NavLink to="/supplierpro" className="sidebar-option">
-                    <img src={assets.add_icon} alt="" />
+                    <img src={assets.supplyer_icon} alt="" />
                     <p>Supplier</p>
                 </NavLink>
                 <NavLink to="/paymentRequests" className="sidebar-option" >
@@ -43,7 +43,7 @@ const Sidebar = () => {
                     <p>Payment Summary</p>
                 </NavLink>
                 <NavLink to="/displayenquiry" className="sidebar-option">
-                    <img src={assets.add_icon} alt="" />
+                    <img src={assets.enquries_icon} alt="" />
                     <p>Enquries</p>
                 </NavLink>
                 <NavLink to="/PromotionList" className="sidebar-option">
@@ -53,15 +53,15 @@ const Sidebar = () => {
                 </NavLink>
                 <NavLink to="/employeeManagement" className="sidebar-option">
 
-                <img src={assets.add_icon} alt="" />
+                <img src={assets.employee_icon} alt="" />
                 <p>Employee Management</p>
             </NavLink>
             <NavLink to="/addMachine" className="sidebar-option">
-                <img src={assets.add_icon} alt="" />
+                <img src={assets.factory_icon} alt="" />
                 <p>Factory Management</p>
             </NavLink>
             <NavLink to="/promocode" className="sidebar-option">
-                <img src={assets.add_icon} alt="" />
+                <img src={assets.promocode_icon} alt="" />
                 <p>Add Promo</p>
             </NavLink>
 
