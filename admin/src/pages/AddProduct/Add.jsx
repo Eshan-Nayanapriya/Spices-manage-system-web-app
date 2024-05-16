@@ -10,6 +10,7 @@ import quantity from '../../assets/delivery.png'
 import description from '../../assets/description.png'
 import category from '../../assets/categories.png'
 import pricetag from '../../assets/pricetag.png'
+import { useRef } from 'react'
 
 const Add = ({url}) => {
 
@@ -21,6 +22,8 @@ const Add = ({url}) => {
     price: "",
     category : "Powder"
   })
+
+  const fileInputRef = useRef(null);
 
   const onChangeHandler = (event) =>{
     const name = event.target.name;
@@ -57,6 +60,10 @@ const Add = ({url}) => {
     console.log(data); //checking data in console
   },[data])
 
+  ////
+  const handleUploadAreaClick = () => {
+    fileInputRef.current.click();
+  };
 
   return (
     <div className='add-product'>
@@ -66,7 +73,7 @@ const Add = ({url}) => {
           <div className="addproduct-itemfield">
           <label>Product Name:</label>
             <img src={spice} alt="" className='name' /> 
-            <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here'required/>
+          <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here'required/>
           </div>
 
           <div className="addproduct-itemfield">
@@ -100,12 +107,12 @@ const Add = ({url}) => {
               <input onChange={onChangeHandler} value={data.price} type="Number" name='price' placeholder='LKR'/>
             </div>
           
-          <div className="addproduct-itemfieldd">
+          <div className="addproduct-itemfieldd" onClick={handleUploadAreaClick}>
             <label htmlFor="image">Product Image:</label>
             <br />
               <img className='uploaded-image'src={image?URL.createObjectURL(image):upload_area} alt="" />
           
-            <input onChange={(e)=>setImage(e.target. files[0])}type="file" id='image' hidden required/>
+            <input ref={fileInputRef} onChange={(e)=>setImage(e.target. files[0])}type="file" id='image' hidden required/>
           </div>
           
           <div className="addproduct-btn">
