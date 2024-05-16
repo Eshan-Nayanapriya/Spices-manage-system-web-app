@@ -42,7 +42,7 @@ const PlaceOrder = ({ setShowLogin }) => {
     let orderData={
       address:data,
       items:orderItems,
-      amount:getTotalCartAmount()+200,
+      amount:getTotalCartAmount()+200-promotion(),
       promotion: promotion()
     }
 
