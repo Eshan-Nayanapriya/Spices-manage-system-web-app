@@ -87,17 +87,14 @@ const PlaceOrder = ({ setShowLogin }) => {
         </div>
         <input type="email" name='email' onChange={onChangeHandler} value={data.email} placeholder='Email Name' required/>
         <input type="text" name='street' onChange={onChangeHandler} value={data.street} placeholder='Street' required/>
-
         <div className="multi-fields">
           <input type="text" name='city' onChange={onChangeHandler} value={data.city} placeholder='City' required/>
           <input type="text" name='state' onChange={onChangeHandler} value={data.state} placeholder='State' required/>
         </div>
-
         <div className="multi-fields">
           <input type="text" name='zipcode' onChange={onChangeHandler} value={data.zipcode} placeholder='Zip code' required/>
           <input type="text" name='country' onChange={onChangeHandler} value={data.country} placeholder='Country' required/>
         </div>
-
         <input type="text" name='phone' onChange={onChangeHandler} value={data.phone} pattern="[0-9]{10}" placeholder='Phone' required/>
       </div>
 
@@ -127,7 +124,6 @@ const PlaceOrder = ({ setShowLogin }) => {
               <b>Total</b>
               <b>LKR {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 200-promotion()}</b>
             </div>
-
         </div>
 
         <button type='submit'>PROCEED TO PAYMENT</button>

@@ -31,7 +31,7 @@ const placeOrder = async (req, res) => {
                 unit_amount: item.price * 100
             },
             quantity: item.quantity
-        }))
+        }));
 
         line_items.push({
             price_data: {
@@ -42,7 +42,18 @@ const placeOrder = async (req, res) => {
                 unit_amount: 200 * 100
             },
             quantity: 1
-        })
+        });
+
+        line_items.push({
+            price_data: {
+                currency: "lkr",
+                product_data: {
+                    name: "Discount"
+                },
+                unit_amount: (req.body.promotion) * 100
+            },
+            quantity: 1
+        });
 
         const session = await stripe.checkout.sessions.create({
             line_items: line_items,
