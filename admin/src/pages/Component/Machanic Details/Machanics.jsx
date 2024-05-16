@@ -1,4 +1,4 @@
-//
+// Machanics.jsx
 
 import React, { useEffect, useRef, useState } from 'react';
 import Nav from '../Nav/Nav';
@@ -25,7 +25,23 @@ export default function Machanics() {
     content: () => componentsRef.current,
     documentTitle: 'Machanic Report',
     onAfterPrint: () => alert('Machanic Report Successfully Downloaded!!'),
+    pageStyle: `
+      @page {
+        margin: 20mm;
+      }
+      @media print {
+        footer {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          text-align: center;
+        }
+      }
+    `,
   });
+
+  // Current date
+  const currentDate = new Date().toLocaleDateString();
 
   // Search function
   const [searchQuery, setSearchQuery] = useState('');
@@ -85,7 +101,11 @@ export default function Machanics() {
             ))}
         </div>
       )}
+
+      {/* Footer for PDF */}
+      <footer>
+        <p>Generated on: {currentDate}</p>
+      </footer>
     </div>
   );
 }
-//

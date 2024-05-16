@@ -1,4 +1,4 @@
-//Machanics.jsx
+//Machanic.jsx
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -18,15 +18,8 @@ export default function Machanic(props) {
         console.error('Error deleting item:', error);
       });
   };
-  
-////
-
-
 
   return (
-   
-
-     
     <center>
       <table style={{ borderCollapse: 'collapse', width: '50%' }}>
         <tbody>
@@ -57,9 +50,5 @@ export default function Machanic(props) {
         </tbody>
       </table>
     </center>
-
-       
-   
   );
 }
-//

@@ -24,3 +24,10 @@
 .sBox{
     height: 30px;
 }
+
+@media print {
+    button {
+      display: none;
+    }
+  }
+  
