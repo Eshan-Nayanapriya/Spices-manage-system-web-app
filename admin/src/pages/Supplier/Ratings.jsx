@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import jsPDF from 'jspdf'
-import 'jspdf-autotable'
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
 const port = 4000;
 
 const Ratings = () => {
@@ -51,7 +52,7 @@ const Ratings = () => {
   }
 
   function DeleteRating(id) {
-    if (window.confirm("Are you sure you want to delete this rating ?")) {
+    if (window.confirm("Are you sure you want to delete this rating?")) {
       axios
         .delete(`http://localhost:${port}/api/supplier/rating/delete/` + id)
         .then((resp) => {
@@ -68,13 +69,13 @@ const Ratings = () => {
     } else {
       return Data.map((Rating, index) => (
         <tr className="py-4" key={index}>
-          <td>{Rating.item}</td>
-          <td>{Rating.feedback}</td>
-          <td>{Rating.rating}</td>
-          <td>
+          <td style={{ padding: "15px", border: "1px solid black" }}>{Rating.item}</td>
+          <td style={{ padding: "15px", border: "1px solid black" }}>{Rating.feedback}</td>
+          <td style={{ padding: "15px", border: "1px solid black" }}>{Rating.rating}</td>
+          <td style={{ padding: "15px", border: "1px solid black" }}>
             <button
               style={{
-                backgroundColor: "#dc3545", // Red color
+                backgroundColor: "#dc3545",
                 color: "white",
                 border: "none",
                 padding: "8px 12px",
@@ -86,7 +87,9 @@ const Ratings = () => {
               onClick={() => {
                 DeleteRating(Rating._id);
               }}
-              className="btn btn-danger" >Delete</button>
+            >
+              Delete
+            </button>
           </td>
         </tr>
       ));
@@ -101,7 +104,7 @@ const Ratings = () => {
         display: "flex",
         alignItems: "center",
         height: "100vh",
-        backgroundColor: "#f8f9fa", // Light gray background
+        backgroundColor: "#f8f9fa",
       }}
     >
       <div>
@@ -109,14 +112,15 @@ const Ratings = () => {
           style={{
             opacity: "0.75",
             padding: "10px",
-            backgroundColor: "#fff",
+            backgroundColor: "#343a40",
             display: "flex",
+            marginTop:"5px",
+            width:"1400px",
             justifyContent: "center",
             alignItems: "center",
-
           }}
         >
-          <h1>Give ratings about product Quality</h1>
+          <h1 style={{ color: "#fff" }}>Give ratings about product Quality</h1>
         </div>
         <br />
         <br />
@@ -137,7 +141,7 @@ const Ratings = () => {
         </button>
         <div
           style={{
-            backgroundColor: "#f8f9fa", // Light gray background
+            backgroundColor: "#f8f9fa",
             display: "flex",
             height: "70vh",
             justifyContent: "center",
@@ -148,7 +152,7 @@ const Ratings = () => {
             <button
               style={{
                 padding: "20px 30px",
-                backgroundColor: "#007bff", // Blue color
+                backgroundColor: "#007bff",
                 marginLeft: "-250px",
                 marginBottom: "830px",
                 color: "#fff",
@@ -167,19 +171,16 @@ const Ratings = () => {
                   textAlign: "center",
                   marginLeft: "-250px",
                   marginTop: "-800px",
-                  borderCollapse: "separate", // Added border collapse
-                  border: "10px solid #000", // Added border style
+                  borderCollapse: "collapse",
+                  border: "1px solid black",
                 }}
               >
-                <thead style={{
-                  backgroundColor: "#343a40",
-                  color: "#fff", border: "10px"
-                }}>
+                <thead style={{ backgroundColor: "#343a40", color: "#fff" }}>
                   <tr>
-                    <th style={{ padding: "25px", border: "1px solid #fff" }}>Supplier Name</th>
-                    <th style={{ padding: "15px", border: "1px solid #fff" }}>FeedBack</th>
-                    <th style={{ padding: "15px", border: "1px solid #fff" }}>Rating</th>
-                    <th style={{ padding: "15px", border: "1px solid #fff" }}>Actions</th>
+                    <th style={{ padding: "15px", border: "1px solid black" }}>Supplier Name</th>
+                    <th style={{ padding: "15px", border: "1px solid black" }}>FeedBack</th>
+                    <th style={{ padding: "15px", border: "1px solid black" }}>Rating</th>
+                    <th style={{ padding: "15px", border: "1px solid black" }}>Actions</th>
                   </tr>
                 </thead>
                 <tbody>

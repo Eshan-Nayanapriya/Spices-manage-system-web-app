@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
+
 const AddPaymentRequest = () => {
 
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const AddPaymentRequest = () => {
         status: String (inputs.status),
     })
     .then(()=>{
-      toast.success(`Request added succedssfully`,{position:"bottom-center"})
+      toast.success(`Request added succedssfully`)
     })
     .catch(error => console.log(error))
   }

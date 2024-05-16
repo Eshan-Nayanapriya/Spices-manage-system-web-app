@@ -13,11 +13,11 @@ function CreateSalary() {
     const [accountNumber, setAccountNumber] = useState("");
     const [bank, setBank] = useState("");
     const [empName, setEmpName] = useState("");
-    const [empUsers, setEmpUsers] = useState([]); // State to store the list of employee users
+    const [empUsers, setEmpUsers] = useState([]); //  store the list of employee users
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch list of employee users
+       
         axios.get("http://localhost:4000/User/users")
             .then(result => {
                 setEmpUsers(result.data);

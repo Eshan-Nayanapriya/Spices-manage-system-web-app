@@ -39,7 +39,7 @@ function UpdatePaymentRequest()  {
     axios.put(`http://localhost:4000/api/paymentRequest/list/${id}`,{section, role, description, amount, status})
     .then(result => {
       console.log(result);
-      toast.success(`Request Updated succedssfully`,{position:"bottom-center"})
+      toast.success(`Request Updated succedssfully`)
       navigate('/paymentRequests');
     })
     .catch(err => console.log(err));
@@ -92,4 +92,3 @@ function UpdatePaymentRequest()  {
 }
 
 export default UpdatePaymentRequest
-

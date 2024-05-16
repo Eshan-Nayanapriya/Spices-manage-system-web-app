@@ -49,6 +49,12 @@ export default function Nav() {
             <h1>Contact</h1>
           </Link>
         </li>
+
+        <li className='home-ll'>
+          <Link to="/AddPaymentRequest" className="active home-a">
+            <h1>Request payment</h1>
+          </Link>
+        </li>
        
         
       </ul>

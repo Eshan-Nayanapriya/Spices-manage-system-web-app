@@ -52,10 +52,38 @@ function SalaryU() {
     }
 
     const downloadReport = () => {
-        const doc = new jsPDF('landscape'); 
-        doc.autoTable({ html: '#salary-table', columns: [{ title: "empID" }, { title: "Month" }, { title: "Basic Salary" }, { title: "Total OT hours" }, { title: "OT Rate" }, { title: "Bonus" }, { title: "Total Salary" }, { title: "Account Number" }, { title: "Bank" }] });
+        const doc = new jsPDF('landscape');
+    
+        
+        doc.setFontSize(18);
+        doc.text('Salary Report', 14, 22);
+    
+       
+        const currentDate = new Date().toLocaleDateString();
+        doc.setFontSize(12);
+        doc.text(`Date: ${currentDate}`, 14, 30);
+    
+       
+        doc.autoTable({
+            html: '#salary-table',
+            startY: 35, 
+            columns: [
+                { title: "empID", dataKey: "empID" },
+                { title: "Month", dataKey: "Month" },
+                { title: "Basic Salary", dataKey: "Basic Salary" },
+                { title: "Total OT hours", dataKey: "Total OT hours" },
+                { title: "OT Rate", dataKey: "OT Rate" },
+                { title: "Bonus", dataKey: "Bonus" },
+                { title: "Total Salary", dataKey: "Total Salary" },
+                { title: "Account Number", dataKey: "Account Number" },
+                { title: "Bank", dataKey: "Bank" }
+            ]
+        });
+    
+        
         doc.save('employee_report.pdf');
     }
+    
     
     return (
         <div className="salaryu-container">
@@ -116,11 +144,36 @@ function SalaryU() {
                 </div>
                 <br></br>
                 <button 
+
+                    style={{ 
+                        padding: '10px 20px', 
+                        backgroundColor: '#FFA500',
+                        color: '#fff',
+                        borderRadius: '4px',
+                        border: 'none'
+                        
+                    }}
+
                     className="download-report-btn" 
                     onClick={downloadReport} 
                 >
                     Download Report
                 </button>
+                <Link to="/AddPaymentRequest">
+                <button 
+                    style={{ 
+                        marginLeft: '10px',
+                        padding: '10px 20px', 
+                        backgroundColor: '#FFA500',
+                        color: '#fff',
+                        borderRadius: '4px',
+                        border: 'none'
+                        
+                    }}
+                    className="download-report-btn" 
+                >
+                    Request Salary
+                </button></Link>
             </div>
         </div>
     );

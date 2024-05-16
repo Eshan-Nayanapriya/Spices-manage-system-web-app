@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import './PaidPayments.css';
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -172,9 +172,8 @@ const PaidPayments = () => {
 
             <Link to={"/paymentRequests"}><button className='pprpt-btn'>Back</button></Link>         
             <button style={{ marginLeft: "20px" }} className='pprpt-btn' onClick={downloadReport}>Download Report</button><br/>
-            {/* <Link to={"/Pdfupload"}><button style={{ marginLeft: "20px" }} className='pprpt-btn'>Upload Report</button></Link> */}
             <Link to={"/OrderPayments"}>
-                <button className='orderpsymentsbtn'>Order Payments</button>
+                <button className='orderpaymentsbtn'>Completed Order Payments</button>
             </Link>
         </div>
     )

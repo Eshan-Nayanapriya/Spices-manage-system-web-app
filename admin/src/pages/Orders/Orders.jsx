@@ -54,11 +54,9 @@ const Orders = ({ url }) => {
     doc.save('orders_report.pdf');
   };
 
-  // Change: Added confirmation dialog and status update
   const statusHandler = async (event, orderId) => {
     const newStatus = event.target.value;
 
-    // Change: Check if the new status is 'Delivered'
     if (newStatus === 'Delivered') {
       const confirmDelivery = window.confirm('Confirm delivered');
       if (!confirmDelivery) {
@@ -78,6 +76,27 @@ const Orders = ({ url }) => {
     }
   };
 
+  // New function to handle order deletion
+  const deleteOrder = async (orderId) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this order?');
+    if (!confirmDelete) {
+      return;
+    }
+
+    try {
+      const response = await axios.delete(url + `/api/order/delete/${orderId}`);
+      if (response.data.success) {
+        toast.success('Order deleted successfully');
+        await fetchAllOrders();
+      } else {
+        toast.error('Error deleting order');
+      }
+    } catch (error) {
+      console.error('Error deleting order:', error);
+      toast.error('Error deleting order');
+    }
+  };
+
   useEffect(() => {
     fetchAllOrders();
   }, []);
@@ -94,14 +113,15 @@ const Orders = ({ url }) => {
   return (
     <div className="orderadd">
       <h3>Order Page</h3>
+      <div className="containerkulinu">
       <div className="search-bar">
         <input
           type="text"
           placeholder="Search by item name"
           value={searchQuery}
           onChange={handleSearch}
-        />
-        <button onClick={generatePDFReport}>Generate PDF Report</button>
+        /></div>
+        <button className="searchbarbtnrpt" onClick={generatePDFReport}>Get PDF Report</button>
       </div>
       <div className="order-listz">
         {filteredOrders.map((order, index) => (
@@ -134,13 +154,13 @@ const Orders = ({ url }) => {
             <select
               onChange={(event) => statusHandler(event, order._id)}
               value={order.status}
-              // Change: Disable the dropdown if the status is 'Delivered'
               disabled={order.status === 'Delivered'}
             >
               <option value="Food Processing">Food Processing</option>
               <option value="Out of delivery">Out of delivery</option>
               <option value="Delivered">Delivered</option>
             </select>
+            <button onClick={() => deleteOrder(order._id)}>Delete</button>
           </div>
         ))}
       </div>

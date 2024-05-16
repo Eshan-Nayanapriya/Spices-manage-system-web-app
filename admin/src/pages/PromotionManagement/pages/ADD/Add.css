@@ -1,32 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 .promotion-add{
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  height: auto;
-  border-radius: 6px;
-  background: white;
+  background-color: white;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
+  border-radius: 5px;
+  margin : 50px;
+  padding: 50px;
 }
 
 .promotion-add h1{
   font-size: 40px;
   font-weight: 600;
-  background-image: linear-gradient(to left, #f6e9b4, #07692b);
+  background-image: linear-gradient(to left, #f6e9b4, #ff8800);
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
-}
-
-.head-linep{
-  margin-left: max(2vw,5px);
-  margin-top: 25px;
-}
-
-.flex-col{
-  gap: 50px;
-  padding-left: 2%;
 }
 
 .promotion-img-upload img{
@@ -37,7 +26,7 @@
   width: max(40%,280px);
 }
 
-.add-promotion-name input, .add-product-terms textarea, .add-promotion-description textarea{
+.add-product-name input, .add-promotion-name input, .add-product-terms textarea, .add-promotion-description textarea{
   padding: 10px;
 }
 
@@ -57,4 +46,34 @@
 
 .promotion-img-upload img{
   width: 120px;
+}
+
+.promotion-request-head-line{
+  margin-bottom: 20px;
+}
+
+.add-btnp {
+  margin-top: 30px;
+   text-decoration: none;
+   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+   border: none;
+    color: white;
+    background-color: tomato;
+    width: max(10vw, 200px);
+    padding:10px 0px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.promoaddbutton1 {
+  margin-top: 30px;
+   text-decoration: none;
+   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+   border: none;
+    color: white;
+    background-color: tomato;
+    width: max(10vw, 200px);
+    padding:10px 0px;
+    border-radius: 4px;
+    cursor: pointer;
 }
