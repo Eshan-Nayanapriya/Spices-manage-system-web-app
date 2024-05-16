@@ -84,7 +84,7 @@ function edit() {
                             <input onChange={(e) => setQuantity(e.target.value)} value={quantity} type="Number" name="quantity" placeholder='Write content here' required />
                         </div>
                     </div>
-                    <button type='submit' className='add-btnp'>ADD</button>
+                    <button type='submit' className='add-btnp'>UPDATE</button>
                 </form>
             </div>
         </div>
