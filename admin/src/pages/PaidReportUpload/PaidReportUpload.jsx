@@ -59,7 +59,6 @@ const PaidReportUpload = ({ url }) => {
     if (!confirmDelete) {
       return;
     }
-
     try {
       const response = await axios.delete(url + `/api/order/delete/${orderId}`);
       if (response.data.success) {
@@ -72,7 +71,7 @@ const PaidReportUpload = ({ url }) => {
       console.error('Error deleting order:', error);
       toast.error('Error deleting order');
     }
-  };
+  }
 
   const generateReport = () => {
     const doc = new jsPDF();
@@ -104,7 +103,6 @@ const PaidReportUpload = ({ url }) => {
     });
 
     doc.autoTable(tableColumn, tableRows, { startY: 70 });
-
     doc.save('completed_orders_report.pdf');
   };
 
@@ -163,7 +161,7 @@ const PaidReportUpload = ({ url }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default PaidReportUpload;

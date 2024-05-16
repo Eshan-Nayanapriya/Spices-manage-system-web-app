@@ -111,6 +111,7 @@ const AddAdminForm = () => {
                 <option value="customer manager">Customer Manager</option>
                 <option value="factory manager">Factory Manager</option>
                 <option value="order manager">Order Manager</option>
+                <option value="product manager">Product Manager</option>
                 <option value="Admin">Admin</option>
               </select>
               <br />
