@@ -12,7 +12,7 @@ function Users() {
     axios.get('http://localhost:4000/User/users')  
       .then(response => {
         setUsers(response.data);
-        setFilteredUsers(response.data); // Set filteredUsers initially with all users
+        setFilteredUsers(response.data); 
       })
       .catch(error => {
         console.error('Error fetching users:', error);
