@@ -4,14 +4,17 @@ export const AdminContext = createContext();
 
 export const AdminProvider = ({ children }) => {
   const [token, setToken] = useState(sessionStorage.getItem('token') || '');
-  const [role, setRole] = useState(sessionStorage.getItem('role') || ''); // New state for the role
+  const [role, setRole] = useState(''); 
 
-  console.log(role)
+  const Role = sessionStorage.getItem('role');
+
+  console.log(Role)
   console.log(token)
   const Token = Boolean(token);
+  const Role1 = Boolean(Role);
 
   return (
-    <AdminContext.Provider value={{ Token, setToken, role, setRole }}> {/* Include role and setRole in the context */}
+    <AdminContext.Provider value={{ Token, setToken, role, setRole,Role1 }}>
       {children}
     </AdminContext.Provider>
   );

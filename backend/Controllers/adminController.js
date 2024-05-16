@@ -18,26 +18,31 @@ const loginadmin = async(req, res)=> {
           return res.json({ success: false, message: "Invalid Credentials" })
       }
 
-      const token = createToken(admin.username);
-      res.json({ success: true,token })
-
+      const token = createTokenid(admin.username);
       
-     
+      // Check if the admin's role is 'Admin'
+      if (admin.role === 'Admin') {
+        const role = createTokenid(admin.role); 
+        return res.json({ success: true, token, role });
+      }
+
+      res.json({ success: true, token });
 
   } catch (error) {
       console.log(error);
       res.json({ success: false, message: "Error" })
   }
-  };
-  const createToken = (id) => {
-    try {
-      return jwt.sign({ id }, process.env.JWT_SECRET);
-    } catch (error) {
-      console.error('Error creating token:', error);
-      return null;
-    }
-  };
-  
+};
+
+const createTokenid = (id) => {
+  try {
+    return jwt.sign({ id }, process.env.JWT_SECRET);
+  } catch (error) {
+    console.error('Error creating token:', error);
+    return null;
+  }
+};
+
 
   const getallAdmins = async (req,res) => {
       try {

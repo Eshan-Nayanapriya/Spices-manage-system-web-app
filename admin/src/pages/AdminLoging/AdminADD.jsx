@@ -67,7 +67,7 @@ const AddAdminForm = () => {
       <div className='wwwww'>
         <div className="header-ad">
         <h2 className='ad-heading'>Managers</h2>       
-        <button className='ad-button' onClick={() => setShowForm(true)}>Add Manager +</button>
+        {role && <button className='ad-button' onClick={() => setShowForm(true)}>Add Manager +</button>}
          
         </div>
         <hr/>
@@ -78,8 +78,8 @@ const AddAdminForm = () => {
                 <tr className='ad-tr' key={admin._id}>
                   <td className='ad-td'>{admin.username}</td>
                   <td className='ad-td'>{admin.role}</td>
-                  <td><a onClick={() => handleDelete(admin._id)}><img src={assets.admin_delete} alt="" width={30} /></a>
-                  </td>
+                  {role && <td><a onClick={() => handleDelete(admin._id)}><img src={assets.admin_delete} alt="" width={30} /></a>
+                  </td>}
                 </tr>
               ))}
             </tbody>
@@ -89,7 +89,7 @@ const AddAdminForm = () => {
 
      
 
-      {showForm && (
+     {showForm && (
         <div className="modal">
           <div className="modal-content">
             <h1>Add Manager</h1>

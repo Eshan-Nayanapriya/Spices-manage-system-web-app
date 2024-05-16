@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import './admin.css';
 
 const LoginAdmin = () => {
-  const { setToken, setRole } = useContext(AdminContext); // Get setRole from the context
+  const { setToken, setRole } = useContext(AdminContext);
   const navigate = useNavigate();
   const [data, setData] = useState({
     username: "",
@@ -20,7 +20,6 @@ const LoginAdmin = () => {
   };
 
   useEffect(() => {
-    console.log(data); // Checking values, testing
   }, [data]);
 
   const onLogin = async (event) => {
@@ -29,14 +28,14 @@ const LoginAdmin = () => {
     const response = await axios.post('http://localhost:4000/api/admin/login/ad', data);
 
     if (response.data.success) {
-      setToken(response.data.token);
+      setToken(response.data.token);// Set the token in the context
       setRole(response.data.role); // Set the role in the context
       sessionStorage.setItem("token", response.data.token);
       sessionStorage.setItem("role", response.data.role); // Store the role in sessionStorage
       toast.success("Successfully logged in");
       navigate('/list');
     } else {
-      alert(response.data.message);
+      toast.error(response.data.message)
     }
   };
 
