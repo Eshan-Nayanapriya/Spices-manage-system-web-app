@@ -89,7 +89,7 @@ export default function Machanics() {
       
       {noResults ? (
         <div>
-          <p>No Machanic Found</p>
+          <p>No Machanic Found !</p>
         </div>
       ) : (
         <div ref={componentsRef}>
