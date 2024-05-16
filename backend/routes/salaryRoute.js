@@ -1,8 +1,8 @@
 import express from 'express';
 const router = express.Router();
-import salaryController from '../controllers/salaryController.js'; // Updated import
+import salaryController from '../controllers/salaryController.js'; 
 
-const { getSalary, createSalary, salaryGetById, updateSalary, deleteSalaryById } = salaryController; // Destructuring the functions from the imported object
+const { getSalary, createSalary, salaryGetById, updateSalary, deleteSalaryById } = salaryController; 
 
 router.get('/getSalary', getSalary);
 router.post('/CreateSalary', createSalary);

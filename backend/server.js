@@ -15,6 +15,7 @@ import enquiryRouter from "./routes/EnquiryRoute.js"
 //sadan
 import promotionRouter from './routes/promotionRoute.js'
 
+//torin
 import SalaryRoutes  from './routes/salaryRoute.js';
 import UserRoutes  from './routes/empuserRoute.js';
 
