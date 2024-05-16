@@ -3,12 +3,13 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import '../employeeManagement/emp.css'
+import '../employeeManagement/emp.css';
 
 function SalaryU() {
     const [salary, setSalary] = useState([]);
     const [filteredSalaries, setFilteredSalaries] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [searchDate, setSearchDate] = useState("");
 
     useEffect(() => {
         axios.get('http://localhost:4000/Salary/getSalary')  
@@ -19,7 +20,7 @@ function SalaryU() {
             .catch(error => {
                 console.error('Error fetching salary:', error);
             });
-    }, [])
+    }, []);
 
     const handleDelete = (id) => {
         const confirmDelete = window.confirm("Do you want to delete?");
@@ -32,38 +33,39 @@ function SalaryU() {
                 })
                 .catch(err => console.log(err))
         }
-    }
+    };
 
     const handleSearch = () => {
         const newFilteredSalaries = salary.filter(item => {
-            return item.empID.toLowerCase().includes(searchTerm.toLowerCase()) 
-                
+            const empIDMatch = item.empID.toLowerCase().includes(searchTerm.toLowerCase());
+            const dateMatch = item.month.toLowerCase().includes(searchDate.toLowerCase());
+            return empIDMatch && dateMatch;
         });
         setFilteredSalaries(newFilteredSalaries);
-    }
+    };
 
     const handleChange = (e) => {
         setSearchTerm(e.target.value);
-        if (e.target.value === "") {
-            setFilteredSalaries(salary); 
-        } else {
-            handleSearch(); 
-        }
-    }
+    };
+
+    const handleDateChange = (e) => {
+        setSearchDate(e.target.value);
+    };
+
+    useEffect(() => {
+        handleSearch();
+    }, [searchTerm, searchDate]);
 
     const downloadReport = () => {
         const doc = new jsPDF('landscape');
-    
-        
+
         doc.setFontSize(18);
         doc.text('Salary Report', 14, 22);
-    
-       
+
         const currentDate = new Date().toLocaleDateString();
         doc.setFontSize(12);
         doc.text(`Date: ${currentDate}`, 14, 30);
-    
-       
+
         doc.autoTable({
             html: '#salary-table',
             startY: 35, 
@@ -79,12 +81,10 @@ function SalaryU() {
                 { title: "Bank", dataKey: "Bank" }
             ]
         });
-    
-        
+
         doc.save('employee_report.pdf');
-    }
-    
-    
+    };
+
     return (
         <div className="salaryu-container">
             <div className="salaryu-content">
@@ -96,6 +96,13 @@ function SalaryU() {
                         value={searchTerm} 
                         onChange={handleChange} 
                         placeholder="Search by Employee ID"  
+                        className="search-input" 
+                    />
+                    <input 
+                        type="month" 
+                        value={searchDate} 
+                        onChange={handleDateChange} 
+                        placeholder="Search by Month"  
                         className="search-input" 
                     />
                     <button 
@@ -142,38 +149,35 @@ function SalaryU() {
                         </tbody>
                     </table>
                 </div>
-                <br></br>
+                <br />
                 <button 
-
                     style={{ 
                         padding: '10px 20px', 
                         backgroundColor: '#FFA500',
                         color: '#fff',
                         borderRadius: '4px',
                         border: 'none'
-                        
                     }}
-
                     className="download-report-btn" 
                     onClick={downloadReport} 
                 >
                     Download Report
                 </button>
                 <Link to="/AddPaymentRequest">
-                <button 
-                    style={{ 
-                        marginLeft: '10px',
-                        padding: '10px 20px', 
-                        backgroundColor: '#FFA500',
-                        color: '#fff',
-                        borderRadius: '4px',
-                        border: 'none'
-                        
-                    }}
-                    className="download-report-btn" 
-                >
-                    Request Salary
-                </button></Link>
+                    <button 
+                        style={{ 
+                            marginLeft: '10px',
+                            padding: '10px 20px', 
+                            backgroundColor: '#FFA500',
+                            color: '#fff',
+                            borderRadius: '4px',
+                            border: 'none'
+                        }}
+                        className="download-report-btn" 
+                    >
+                        Request Salary
+                    </button>
+                </Link>
             </div>
         </div>
     );
