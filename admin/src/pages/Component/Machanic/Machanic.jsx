@@ -1,3 +1,5 @@
+//Machanic.jsx
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -16,15 +18,8 @@ export default function Machanic(props) {
         console.error('Error deleting item:', error);
       });
   };
-  
-////
-
-
 
   return (
-   
-
-     
     <center>
       <table style={{ borderCollapse: 'collapse', width: '50%' }}>
         <tbody>
@@ -45,7 +40,7 @@ export default function Machanic(props) {
             <td style={{ padding: '8px', border: '10px solid #ddd' }}>{address}</td>
           </tr>
           <tr>
-            <td colSpan="2" style={{ padding: '8px', border: '1px solid #ddd' }}>
+            <td colSpan="2" style ={{ padding: '8px', border: '1px solid #ddd' }}>
               <Link to={`/machineDetails/${_id}`}>
                 <button style={{ backgroundColor: 'green', color: 'white', padding: '5px 10px', marginRight: '5px', border: '2px' ,borderRadius:'5px'}}>Update</button>
               </Link>
@@ -55,9 +50,5 @@ export default function Machanic(props) {
         </tbody>
       </table>
     </center>
-
-       
-   
   );
 }
-//

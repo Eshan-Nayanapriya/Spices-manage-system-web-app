@@ -44,9 +44,10 @@ function UpdateUtility() {
   };
 
   return (
-    <div className='bg'>
+    <div >
+      <br></br> <br></br>
       <div>
-        <div className='c'>
+        <div className='c' style={{marginLeft:'390px'}}>
           <form className='form' onSubmit={handleSubmit}>
             <h1 className='h1'>Update Utility</h1>
             <table style={{ width: '30%' }}>
@@ -131,7 +132,7 @@ function UpdateUtility() {
               </tbody>
             </table>
             <br />
-            <button type='submit'>Submit</button>
+            <button style={{backgroundColor:'#F05D3C',fontSize:'18px',marginLeft:'150px',borderRadius:'5px'}} type='submit'>Submit</button>
           </form>
         </div>
       </div>

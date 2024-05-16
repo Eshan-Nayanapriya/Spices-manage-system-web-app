@@ -40,6 +40,8 @@ function UpdateMachine() {
 
   return (
     <div>
+      <br></br><br></br><br></br>
+      <div style={{marginLeft:'450px'}}>
       <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto', border: '2px solid #007bff', borderRadius: '10px', padding: '20px' }}>
         <div style={{ marginBottom: '20px' }}>
           <label htmlFor="mType">Machine Type:</label><br />
@@ -79,6 +81,7 @@ function UpdateMachine() {
 
         <button style={{ backgroundColor: '#007bff', color: '#fff', padding: '10px 20px', borderRadius: '5px', border: 'none' }}>Submit</button>
       </form>
+      </div>
     </div>
   );
 }
