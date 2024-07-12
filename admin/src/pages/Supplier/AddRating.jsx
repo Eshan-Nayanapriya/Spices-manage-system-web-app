@@ -52,7 +52,7 @@ function AddRating() {
               <label htmlFor="customerName" style={{
                 display: "block",
                 marginBottom: "5px"
-              }}>Customer Name:</label>
+              }}>Supplier Name:</label>
               <input
                 type="text"
                 id="customerName"
