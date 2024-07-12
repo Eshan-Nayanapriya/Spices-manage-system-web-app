@@ -56,7 +56,7 @@ function AddRating() {
               <input
                 type="text"
                 id="customerName"
-                placeholder="Enter Customer Name"
+                placeholder="Enter Supplier Name"
                 style={{
                   padding: "10px 300px",
                   borderRadius: "5px",
